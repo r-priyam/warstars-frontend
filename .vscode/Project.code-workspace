@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\backend"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"volar.tsPlugin": true,
+		"files.associations": {
+			"*.css": "postcss"
+		}
+	}
+}
