@@ -1,10 +1,18 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
-	<img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+	<div class="min-h-full grid grid-layout">
+		<div id="container" class="grid grid-layout-container lg:custom-scroll">
+			<div class="bg-white dark:bg-[#1d1d1d]">
+				<router-view />
+			</div>
+		</div>
+	</div>
 </template>
+
+<style>
+.grid-layout {
+	grid-template-rows: auto 1fr;
+}
+.grid-layout-container {
+	grid-template-rows: 1fr auto;
+}
+</style>
