@@ -22,8 +22,3 @@
 		<code>components/HelloWorld.vue</code> to test hot module replacement.
 	</p>
 </template>
-
-<script setup lang="ts">
-import { setCookie } from '~/utility/utils';
-setCookie('cookieTest', '1213434653467532.456');
-</script>
