@@ -1,9 +1,3 @@
-export const getLocalToken = () => localStorage.getItem('token');
-
-export const saveLocalToken = (token: string) => localStorage.setItem('token', token);
-
-export const removeLocalToken = () => localStorage.removeItem('token');
-
 export function setCookie(name: string, val: string) {
 	const date = new Date();
 	const value = val;
