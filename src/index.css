@@ -1,3 +1,121 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html,
+	body {
+		@apply bg-main-blue-600;
+	}
+
+	body {
+		overscroll-behavior-y: none;
+		@apply min-h-screen min-w-full fixed;
+	}
+
+	#container {
+		overscroll-behavior-y: none;
+		@apply overflow-auto h-[calc(100vh-64px)];
+	}
+
+	img {
+		@apply inline-block !m-0;
+	}
+}
+
+@layer components {
+	.popover-panel {
+		@apply absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2;
+	}
+	.popover-container {
+		@apply rounded-xl shadow-xl overflow-hidden;
+	}
+	.popover-panel-grid {
+		@apply gap-6 grid px-5 py-6 relative rounded-lg sm:gap-8 sm:p-8;
+	}
+	.popover-panel-grid-item {
+		@apply -m-3 flex hover:bg-main-600 items-start p-2 rounded-lg;
+	}
+	.navbar-drop-arrow {
+		@apply rounded-sm inline-flex items-center text-base font-medium hover:text-gray-300;
+	}
+	.navbar-open-menu {
+		@apply focus:outline-none hover:text-gray-400 inline-flex items-center justify-center p-2 rounded-md text-gray-300;
+	}
+	.noprose {
+		@apply !m-0;
+	}
+
+	.noprose p {
+		@apply !m-0;
+	}
+
+	.noprose > div.info,
+	.noprose > div.warn {
+		@apply !mt-4;
+	}
+
+	.noprose li {
+		@apply !m-0;
+	}
+
+	.no-list li {
+		padding-left: 0.25rem !important;
+	}
+
+	.no-list li::before {
+		content: none !important;
+	}
+
+	.custom-scroll {
+		scrollbar-width: thin;
+		scrollbar-color: theme('colors.main.blue.500') #1d1d1d;
+	}
+
+	.custom-scroll::-webkit-scrollbar {
+		height: 8px; /* Manually measured based on the original thin scrollbar on Firefox */
+		width: 8px; /* Manually measured based on the original thin scrollbar on Firefox */
+	}
+
+	.custom-scroll::-webkit-scrollbar-thumb {
+		background: theme('colors.main.blue.500');
+	}
+
+	.custom-scroll::-webkit-scrollbar-thumb:hover {
+		background: theme('colors.main.blue.400');
+	}
+
+	.custom-scroll::-webkit-scrollbar-track {
+		background: rgba(0, 0, 0, 0.07);
+	}
+
+	#container.custom-scroll::-webkit-scrollbar-track {
+		background: #ffffff;
+	}
+
+	.dark #container.custom-scroll::-webkit-scrollbar-track {
+		background: #1d1d1d;
+	}
+}
+
+@layer utilities {
+	.break-words-legacy {
+		word-break: break-word;
+	}
+
+	.scroll-to {
+		scroll-margin-top: theme('spacing.16');
+	}
+}
+
+.info {
+	@apply dark:text-gray-200 p-2 border-l-4 border-main-green-500 mt-4;
+	/* prettier-ignore */
+	background: theme('colors.main.green.400')50;
+}
+
+.warn {
+	@apply dark:text-gray-200 p-2 border-l-4 border-main-red-500 mt-4;
+	/* prettier-ignore */
+	background: theme('colors.main.red.400')50;
+}
