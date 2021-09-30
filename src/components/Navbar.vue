@@ -1,5 +1,5 @@
 <template>
-	<Popover class="sticky top-0 z-0 bg-main-blue-530">
+	<Popover class="sticky top-0 z-0 bg-main-primary-550">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6">
 			<div class="flex justify-between items-center border-gray-100 py-2 md:justify-start">
 				<div class="flex justify-start lg:w-0 lg:flex-1">
@@ -18,8 +18,8 @@
 							items-center
 							justify-center
 							text-gray-200
-							hover:text-gray-200 hover:bg-main-blue-630
-							focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-blue-600
+							hover:text-gray-200 hover:bg-main-primary-700
+							focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-primary-650
 						"
 						:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 						@click="toggleDarkMode()"
@@ -27,22 +27,22 @@
 						<heroicons-outline-sun v-if="!isDarkMode" class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
 						<heroicons-outline-moon v-else class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
 					</button>
-					<PopoverButton class="navbar-open-menu text-gray-200 hover:text-gray-200 hover:bg-main-blue-630">
+					<PopoverButton class="navbar-open-menu text-gray-200 hover:text-gray-200 hover:bg-main-primary-700">
 						<span class="sr-only">Open menu</span>
 						<heroicons-outline-menu class="h-6 w-6" aria-hidden="true" />
 					</PopoverButton>
 				</div>
 				<PopoverGroup as="nav" class="hidden md:flex space-x-4">
-					<router-link to="/" class="navbar-item" active-class="bg-main-blue-600"
+					<router-link to="/" class="navbar-item" active-class="bg-main-primary-650"
 						><heroicons-outline:home class="h-5 w-5" /> <span class="ml-1">Home</span>
 					</router-link>
-					<router-link to="/clans" class="navbar-item" active-class="bg-main-blue-600"
+					<router-link to="/clans" class="navbar-item" active-class="bg-main-primary-650"
 						><heroicons-outline:shield-check class="h-5 w-5" /> <span class="ml-1">Clans</span>
 					</router-link>
-					<router-link to="/leagues" class="navbar-item" active-class="bg-main-blue-600"
+					<router-link to="/leagues" class="navbar-item" active-class="bg-main-primary-650"
 						><heroicons-outline:globe class="h-5 w-5" /><span class="ml-1">Leagues</span>
 					</router-link>
-					<router-link to="/docs" class="navbar-item" active-class="bg-main-blue-600"
+					<router-link to="/docs" class="navbar-item" active-class="bg-main-primary-650"
 						><heroicons-outline:document-text class="h-5 w-5" /><span class="ml-1">Docs</span>
 					</router-link>
 				</PopoverGroup>
@@ -57,8 +57,8 @@
 							items-center
 							justify-center
 							text-gray-200
-							hover:text-gray-200 hover:bg-main-blue-630
-							focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-blue-600
+							hover:text-gray-200 hover:bg-main-primary-700
+							focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-primary-650
 						"
 						:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 						@click="toggleDarkMode()"
@@ -68,8 +68,8 @@
 					</button>
 					<router-link
 						to="/sign-in"
-						class="navbar-item bg-main-blue-700 hover:bg-main-blue-730"
-						active-class="bg-main-blue-600"
+						class="navbar-item bg-main-primary-750 hover:bg-main-primary-800"
+						active-class="bg-main-primary-600"
 						>Login</router-link
 					>
 				</div>
@@ -85,11 +85,11 @@
 			leave-to-class="opacity-0 scale-95"
 		>
 			<PopoverPanel focus class="absolute inset-x-0 md:hidden origin-top-right top-0 transform transition z-20">
-				<div class="bg-main-blue-530 divide-gray-200 divide-y-2 ring-2 ring-main-blue-600 rounded-lg shadow-2xl">
+				<div class="bg-main-primary-550 divide-gray-200 divide-y-2 ring-2 ring-main-primary-600 rounded-lg shadow-2xl">
 					<div class="px-5 pt-5 pb-6">
 						<div class="flex items-center justify-between">
 							<div>
-								<img class="h-12 w-auto" src="../assets/favicon.svg" alt="LeagueStats" />
+								<!-- <img class="h-12 w-auto" src="../assets/favicon.svg" alt="LeagueStats" /> -->
 							</div>
 							<div class="-mr-2">
 								<PopoverButton
@@ -100,7 +100,7 @@
 										items-center
 										justify-center
 										text-gray-200
-										hover:text-gray-200 hover:bg-main-blue-630
+										hover:text-gray-200 hover:bg-main-primary-700
 										focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
 									"
 								>
@@ -111,16 +111,16 @@
 						</div>
 						<div class="mt-6">
 							<nav class="grid gap-y-8">
-								<router-link to="/" class="navbar-mobile-item">
+								<router-link to="/" class="navbar-mobile-item" active-class="bg-main-primary-650">
 									<heroicons-outline:home /><span class="navbar-mobile-item-name">Home</span>
 								</router-link>
-								<router-link to="/clans" class="navbar-mobile-item">
+								<router-link to="/clans" class="navbar-mobile-item" active-class="bg-main-primary-650">
 									<heroicons-outline:shield-check /><span class="navbar-mobile-item-name">Clans</span>
 								</router-link>
-								<router-link to="/league" class="navbar-mobile-item">
+								<router-link to="/league" class="navbar-mobile-item" active-class="bg-main-primary-650">
 									<heroicons-outline:globe /><span class="navbar-mobile-item-name">Leagues</span>
 								</router-link>
-								<router-link to="/docs" class="navbar-mobile-item">
+								<router-link to="/docs" class="navbar-mobile-item" active-class="bg-main-primary-650">
 									<heroicons-outline:document-text /><span class="navbar-mobile-item-name">Documentation</span>
 								</router-link>
 							</nav>
@@ -143,15 +143,17 @@
 									text-base
 									font-medium
 									text-gray-200
-									bg-main-blue-630-m-10
-									hover:bg-main-blue-660
+									bg-main-primary-750
+									hover:bg-main-primary-800
 								"
 								>Sign up
 							</router-link>
 							<p class="mt-6 text-center text-base font-medium text-gray-200">
 								Existing user?
 								{{ ' ' }}
-								<router-link to="/sign-in" class="text-main-blue-660 hover:text-main-blue-700">Sign in</router-link>
+								<router-link to="/sign-in" class="text-main-primary-750 hover:text-main-primary-800"
+									>Sign in</router-link
+								>
 							</p>
 							<br />
 							<div class="text-center"></div>
