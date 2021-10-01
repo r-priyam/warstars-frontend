@@ -90,7 +90,11 @@
 				leave-from-class="opacity-100 scale-100"
 				leave-to-class="opacity-0 scale-95"
 			>
-				<PopoverPanel focus class="absolute inset-x-0 md:hidden origin-top-right top-0 transform transition z-20">
+				<PopoverPanel
+					v-slot="{ close }"
+					focus
+					class="absolute inset-x-0 md:hidden origin-top-right top-0 transform transition z-20"
+				>
 					<div
 						class="bg-main-primary-550 divide-gray-200 divide-y-2 ring-2 ring-main-primary-600 rounded-lg shadow-2xl"
 					>
@@ -117,23 +121,44 @@
 									</PopoverButton>
 								</div>
 							</div>
+
 							<div class="mt-6">
 								<nav class="grid gap-y-8">
-									<router-link to="/" class="navbar-mobile-item" active-class="bg-main-primary-650">
-										<heroicons-outline:home /><span class="navbar-mobile-item-name">Home</span>
+									<router-link to="/" class="navbar-mobile-item" active-class="bg-main-primary-650" @click="close()">
+										<heroicons-outline:home />
+										<span class="navbar-mobile-item-name"> Home </span>
 									</router-link>
-									<router-link to="/clans" class="navbar-mobile-item" active-class="bg-main-primary-650">
+
+									<router-link
+										to="/clans"
+										class="navbar-mobile-item"
+										active-class="bg-main-primary-650"
+										@click="close()"
+									>
 										<heroicons-outline:shield-check /><span class="navbar-mobile-item-name">Clans</span>
 									</router-link>
-									<router-link to="/league" class="navbar-mobile-item" active-class="bg-main-primary-650">
+
+									<router-link
+										to="/league"
+										class="navbar-mobile-item"
+										active-class="bg-main-primary-650"
+										@click="close()"
+									>
 										<heroicons-outline:globe /><span class="navbar-mobile-item-name">Leagues</span>
 									</router-link>
-									<router-link to="/docs" class="navbar-mobile-item" active-class="bg-main-primary-650">
+
+									<router-link
+										to="/docs"
+										class="navbar-mobile-item"
+										active-class="bg-main-primary-650"
+										@click="close()"
+									>
 										<heroicons-outline:document-text /><span class="navbar-mobile-item-name">Documentation</span>
 									</router-link>
 								</nav>
 							</div>
 						</div>
+
 						<div class="py-6 px-5 space-y-6">
 							<div>
 								<router-link
@@ -154,12 +179,13 @@
 										bg-main-primary-750
 										hover:bg-main-primary-800
 									"
+									@click="close()"
 									>Register
 								</router-link>
 								<p class="mt-6 text-center text-base font-medium text-gray-200">
 									Existing user?
 									{{ ' ' }}
-									<router-link to="/sign-in" class="text-main-primary-750 hover:text-main-primary-800"
+									<router-link to="/sign-in" class="text-main-primary-750 hover:text-main-primary-800" @click="close()"
 										>Signin</router-link
 									>
 								</p>
