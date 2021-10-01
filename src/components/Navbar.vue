@@ -5,7 +5,7 @@
 				<div class="flex justify-between items-center border-gray-100 py-2 md:justify-start">
 					<div class="flex justify-start lg:w-0 lg:flex-1">
 						<router-link to="/">
-							<img class="h-10" src="../assets/favicon.svg" alt="Logo" />
+							<img class="h-10" alt="Logo" />
 						</router-link>
 					</div>
 					<div class="-mr-2 -my-2 md:hidden">
