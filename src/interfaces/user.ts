@@ -15,9 +15,6 @@ export interface IUserProfile {
 }
 
 export interface IUserProfileUpdate {
-	email?: string;
-	full_name?: string;
-	password?: string;
-	is_active?: boolean;
-	is_superuser?: boolean;
+	current_password: string;
+	new_password: string;
 }
