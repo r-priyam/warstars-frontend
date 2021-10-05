@@ -12,6 +12,10 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"removeComments": true,
+		"experimentalDecorators": true,
+		"noImplicitAny": false,
+		"importHelpers": true,
+		"allowSyntheticDefaultImports": true,
 		"lib": ["ESNext", "DOM", "WebWorker"],
 		"plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
 		"paths": {

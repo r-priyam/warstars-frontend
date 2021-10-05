@@ -7,7 +7,41 @@
 				</section>
 				<div class="mt-3 border border-gray-200"></div>
 				<section class="mt-10">
-					<form class="flex flex-col" method="POST" action="/">
+					<form class="flex flex-col" @submit.prevent="submit">
+						<transition
+							enter="transition transform-gpu duration-300 ease-out"
+							enter-from="translate-x-12 opacity-0"
+							enter-to="translate-x-0 opacity-100"
+							leave="transition transform-gpu duration-300 ease-in"
+							leave-from="opacity-100"
+							leave-to="opacity-0"
+						>
+							<div
+								v-if="loginError"
+								class="
+									bg-main-fail-100
+									border border-main-fail-700
+									text-main-fail-600
+									px-4
+									py-3
+									rounded
+									relative
+									animate-pulse
+								"
+								role="alert"
+							>
+								<heroicons-solid:shield-exclamation class="h-5 w-5 mb-1 inline text-main-fail-550" />
+								<span class="font-bold text-main-fail-550">
+									Error!
+									<span class="block font-medium text-main-fail-500">Email or Password is wrong.</span>
+									<!-- <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
+										<button>
+											<heroicons-solid:x class="border border-main-fail-700 text-main-fail-600 h-5 w-5" />
+										</button>
+									</span> -->
+								</span>
+							</div>
+						</transition>
 						<div>
 							<label for="email" class="block text-lg font-semibold text-gray-50">Email</label>
 							<input
@@ -91,3 +125,23 @@
 		</div>
 	</div>
 </template>
+
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+import { readLoginError } from '~/store/main/getters';
+import { dispatchLogIn } from '~/store/main/actions';
+
+@Options({})
+export default class logIn extends Vue {
+	public async submit(event) {
+		event.preventDefault();
+		const email = event.target.elements.email?.value;
+		const password = event.target.elements.password?.value;
+		await dispatchLogIn(this.$store, { email: email, password: password });
+	}
+
+	public get loginError() {
+		return readLoginError(this.$store);
+	}
+}
+</script>
