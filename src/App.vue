@@ -5,7 +5,7 @@
 			<div class="bg-gray-200 dark:bg-main-primary-800">
 				<router-view />
 			</div>
-			<!-- <Footer /> -->
+			<Footer />
 		</div>
 	</div>
 </template>
