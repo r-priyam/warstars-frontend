@@ -1,11 +1,11 @@
 <template>
-	<div class="max-w-6xl mx-auto p-10 md:p-12 bg-gray-300 dark:bg-main-primary-750 shadow-2xl">
+	<div class="max-w-6xl mx-auto p-1 bg-gray-300 dark:bg-main-primary-750 shadow-2xl">
 		<div class="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
 			<div class="bg-gray-400 dark:bg-main-primary-700 max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
 				<section>
-					<h3 class="font-black text-3xl text-center text-main-primary-800">Login</h3>
+					<h3 class="font-black text-3xl text-center text-main-primary-850">Login</h3>
 				</section>
-				<div class="mt-3 border border-gray-200"></div>
+				<div class="mt-3 border-t-2 border-gray-200"></div>
 				<section class="mt-10">
 					<form class="flex flex-col" @submit.prevent="submit">
 						<transition

@@ -2,7 +2,7 @@
 	<div class="min-h-full grid grid-layout">
 		<Navbar />
 		<div id="container" class="grid grid-layout-container lg:custom-scroll">
-			<div class="bg-white dark:bg-[#1d1d1d]">
+			<div class="bg-gray-200 dark:bg-main-primary-800">
 				<router-view />
 			</div>
 			<!-- <Footer /> -->
