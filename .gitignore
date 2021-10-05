@@ -1,5 +1,12 @@
+# Packages
 node_modules
-.DS_Store
-dist
-dist-ssr
-*.local
+**/node_modules
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+logs
+*.log
+npm-debug.log*
