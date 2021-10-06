@@ -7,6 +7,7 @@ const defaultState: MainState = {
 	isLoggedIn: null,
 	token: '',
 	logInError: false,
+	processing: false,
 	userProfile: null,
 	dashboardMiniDrawer: false,
 	dashboardShowDrawer: true,

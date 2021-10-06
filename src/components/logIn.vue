@@ -23,6 +23,7 @@
 								text-main-fail-600
 								px-4
 								py-3
+								mb-3
 								rounded
 								relative
 								animate-pulse
@@ -32,7 +33,7 @@
 							<heroicons-solid:shield-exclamation class="h-5 w-5 mb-1 inline text-main-fail-550" />
 							<span class="font-bold text-main-fail-550">
 								Error!
-								<span class="block font-medium text-main-fail-500">Email or Password is wrong.</span>
+								<span class="font-medium text-main-fail-500">Email or Password is wrong.</span>
 								<!-- <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
 										<button>
 											<heroicons-solid:x class="border border-main-fail-700 text-main-fail-600 h-5 w-5" />
@@ -87,6 +88,7 @@
 								shadow-sm
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
 								sm:text-sm
+								select-none
 							"
 							placeholder="Password"
 						/>
@@ -99,10 +101,12 @@
 						>
 					</div>
 					<button
+						v-if="!loginProcess"
 						class="
 							bg-main-primary-700
 							hover:bg-main-primary-760
 							text-white
+							border border-transparent
 							font-bold
 							py-2
 							rounded
@@ -115,6 +119,44 @@
 					>
 						Login
 					</button>
+					<div v-if="loginProcess" class="flex justify-around">
+						<span class="inline-flex rounded-md shadow-sm">
+							<button
+								type="button"
+								class="
+									inline-flex
+									items-center
+									px-[10.74rem]
+									py-2
+									border border-transparent
+									font-bold
+									rounded-md
+									text-white
+									bg-main-primary-660
+									transition
+									ease-in-out
+									duration-150
+									cursor-not-allowed
+								"
+								disabled
+							>
+								<svg
+									class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+								>
+									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+									<path
+										class="opacity-75"
+										fill="currentColor"
+										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+									></path>
+								</svg>
+								Login
+							</button>
+						</span>
+					</div>
 					<div class="flex justify-center mt-12">
 						<p class="text-white">
 							Don't have an account?
@@ -130,8 +172,9 @@
 </template>
 
 <script lang="ts">
+import { hash } from 'bcryptjs';
 import { Options, Vue } from 'vue-class-component';
-import { readLoginError } from '~/store/main/getters';
+import { readLoginError, readProcessing } from '~/store/main/getters';
 import { dispatchLogIn } from '~/store/main/actions';
 
 @Options({})
@@ -139,8 +182,12 @@ export default class logIn extends Vue {
 	public async submit(event) {
 		event.preventDefault();
 		const email = event.target.elements.email?.value;
-		const password = event.target.elements.password?.value;
+		const password = await hash(event.target.elements.password?.value, 10);
 		await dispatchLogIn(this.$store, { email: email, password: password });
+	}
+
+	public get loginProcess() {
+		return readProcessing(this.$store);
 	}
 
 	public get loginError() {
