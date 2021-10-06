@@ -125,7 +125,6 @@
 					</div>
 				</form>
 			</section>
-			<!-- <BackToTop /> -->
 		</div>
 	</div>
 </template>
@@ -134,9 +133,8 @@
 import { Options, Vue } from 'vue-class-component';
 import { readLoginError } from '~/store/main/getters';
 import { dispatchLogIn } from '~/store/main/actions';
-import BackToTop from '~/components/BackToTop.vue';
 
-@Options({ components: { BackToTop } })
+@Options({})
 export default class logIn extends Vue {
 	public async submit(event) {
 		event.preventDefault();
