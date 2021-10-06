@@ -1,6 +1,6 @@
 <!-- <span>&copy; {{ new Date().getFullYear() }} LeagueStats.</span> -->
 <template>
-	<footer class="bg-main-primary-550">
+	<footer class="bg-main-primary-560 border-t-2 border-main-primary-400">
 		<div class="container px-2 py-4 mx-auto flex items-center sm:flex-row flex-col">
 			<a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 				<span class="ml-3 text-xl">WarStars</span>

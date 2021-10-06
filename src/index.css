@@ -5,7 +5,7 @@
 @layer base {
 	html,
 	body {
-		@apply bg-main-primary-550;
+		@apply bg-main-primary-560;
 	}
 
 	body {
@@ -54,7 +54,7 @@
 
 	.custom-scroll {
 		scrollbar-width: thin;
-		scrollbar-color: theme('colors.main.primary.500') #1d1d1d;
+		scrollbar-color: theme('colors.main.primary.460') #1d1d1d;
 	}
 
 	.custom-scroll::-webkit-scrollbar {
@@ -63,11 +63,11 @@
 	}
 
 	.custom-scroll::-webkit-scrollbar-thumb {
-		background: theme('colors.main.primary.500');
+		background: theme('colors.main.primary.460');
 	}
 
 	.custom-scroll::-webkit-scrollbar-thumb:hover {
-		background: theme('colors.main.primary.400');
+		background: theme('colors.main.primary.430');
 	}
 
 	.custom-scroll::-webkit-scrollbar-track {
@@ -84,7 +84,7 @@
 
 	.navbar-item {
 		@apply text-gray-200
-		hover:bg-main-primary-700 hover:text-white
+		hover:bg-main-primary-630 hover:text-white
 		rounded-md
 		py-3
 		px-4
@@ -97,7 +97,7 @@
 	}
 
 	.navbar-mobile-item {
-		@apply -m-3 p-3 flex items-center rounded-md text-gray-200 hover:text-white hover:bg-main-primary-700
+		@apply -m-3 p-3 flex items-center rounded-md text-gray-200 hover:text-white hover:bg-main-primary-630
 	}
 
 	.navbar-mobile-item-name {

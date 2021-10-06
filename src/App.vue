@@ -2,8 +2,10 @@
 	<div class="min-h-full grid grid-layout">
 		<Navbar />
 		<div id="container" class="grid grid-layout-container lg:custom-scroll">
-			<div class="bg-gray-200 dark:bg-main-primary-800">
-				<router-view />
+			<div class="bg-gray-200 dark:bg-main-primary-700">
+				<div class="min-h-full max-w-6xl mx-auto p-1 bg-gray-300 dark:bg-main-primary-660 shadow-2xl">
+					<router-view />
+				</div>
 			</div>
 			<Footer />
 		</div>
