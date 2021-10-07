@@ -162,7 +162,7 @@
 						<div class="py-6 px-5 space-y-6">
 							<div>
 								<router-link
-									to="/sign-up"
+									to="/register"
 									class="
 										w-full
 										flex
