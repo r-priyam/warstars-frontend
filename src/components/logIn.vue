@@ -176,7 +176,7 @@ import { hash } from 'bcryptjs';
 import { Options, Vue } from 'vue-class-component';
 import { dispatchLogIn } from '~/store/main/actions';
 import { readLoginError, readProcessing } from '~/store/main/getters';
-import { commitSetLogInError } from '~/store/main/mutations';
+import { commitSetLogInError, commitSetProcessing } from '~/store/main/mutations';
 
 @Options({})
 export default class logIn extends Vue {
@@ -195,7 +195,8 @@ export default class logIn extends Vue {
 		return readLoginError(this.$store);
 	}
 
-	public mounted() {
+	public beforeMount() {
+		commitSetProcessing(this.$store, false);
 		commitSetLogInError(this.$store, false);
 	}
 }

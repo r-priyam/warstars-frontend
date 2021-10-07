@@ -200,7 +200,7 @@ import { Options, Vue } from 'vue-class-component';
 import { IUserProfileCreate } from '~/interfaces/user';
 import { dispatchSignUp } from '~/store/user/actions';
 import { readSignUpError } from '~/store/user/getters';
-import { commitSetError } from '~/store/user/mutations';
+import { commitSetError, commitSetProcessing } from '~/store/user/mutations';
 
 @Options({})
 export default class logIn extends Vue {
@@ -238,6 +238,11 @@ export default class logIn extends Vue {
 
 	public get signUpError() {
 		return readSignUpError(this.$store);
+	}
+
+	public beforeMount() {
+		commitSetError(this.$store, { error: false, message: '' });
+		commitSetProcessing(this.$store, false);
 	}
 }
 </script>
