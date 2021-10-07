@@ -1,6 +1,6 @@
 <template>
 	<header class="bg-main-primary-560 border-b-2 border-main-primary-400">
-		<Popover class="sticky top-0 z-">
+		<Popover class="sticky top-0 z-40">
 			<div class="max-w-7xl mx-auto px-2 sm:px-6">
 				<div class="flex justify-between items-center border-gray-100 py-2 md:justify-start">
 					<div class="flex justify-start lg:w-0 lg:flex-1">
