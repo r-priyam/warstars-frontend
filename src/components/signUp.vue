@@ -196,6 +196,7 @@
 </template>
 
 <script lang="ts">
+import { hash } from 'bcryptjs';
 import { Options, Vue } from 'vue-class-component';
 import { IUserProfileCreate } from '~/interfaces/user';
 import { dispatchSignUp } from '~/store/user/actions';
@@ -225,10 +226,11 @@ export default class logIn extends Vue {
 		this.showPasswordError = false;
 		commitSetError(this.$store, { error: false, message: '' });
 		if (this.passwordValidate(event.target.elements.password?.value, event.target.elements._password?.value)) {
+			const password = await hash(event.target.elements.password?.value, 10);
 			const newUser: IUserProfileCreate = {
 				full_name: event.target.elements.name?.value,
 				email: event.target.elements.email?.value,
-				password: event.target.elements.password?.value,
+				password: password,
 			};
 			await dispatchSignUp(this.$store, newUser);
 		} else {

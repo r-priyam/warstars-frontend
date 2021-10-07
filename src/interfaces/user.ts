@@ -1,7 +1,7 @@
 export interface IUserProfileCreate {
 	full_name: string;
 	email: boolean;
-	password: number;
+	password: string;
 }
 
 export interface IUserProfile {
