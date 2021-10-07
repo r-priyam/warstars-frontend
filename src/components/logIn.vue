@@ -174,8 +174,8 @@
 <script lang="ts">
 import { hash } from 'bcryptjs';
 import { Options, Vue } from 'vue-class-component';
-import { readLoginError, readProcessing } from '~/store/main/getters';
 import { dispatchLogIn } from '~/store/main/actions';
+import { readLoginError, readProcessing } from '~/store/main/getters';
 import { commitSetLogInError } from '~/store/main/mutations';
 
 @Options({})

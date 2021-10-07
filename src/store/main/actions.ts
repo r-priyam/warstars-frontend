@@ -1,10 +1,10 @@
 import { getStoreAccessors } from 'typesafe-vuex';
-import { auth } from '~/api/authenticate';
 import { ActionContext } from 'vuex';
-import { State } from '../state';
-import { MainState } from './state';
-import { commitSetLogInError, commitSetToken, commitSetProcessing } from './mutations';
+import { auth } from '~/api/authenticate';
 import { getCookie } from '~/utils/cookie';
+import { State } from '../state';
+import { commitSetLogInError, commitSetProcessing, commitSetToken } from './mutations';
+import { MainState } from './state';
 
 type MainContext = ActionContext<MainState, State>;
 

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { apiUrl } from '~/env';
-import { authHeaders } from '~/utils/authHeader';
 import {
 	clanAdd,
 	clanAdded,
@@ -11,6 +10,7 @@ import {
 	playerRemove,
 	playerRemoved,
 } from '~/interfaces/userProfile';
+import { authHeaders } from '~/utils/authHeader';
 
 export const userProfile = {
 	async me(authToken: string) {

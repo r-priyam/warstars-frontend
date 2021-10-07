@@ -1,7 +1,7 @@
-import { IUserProfile } from '~/interfaces/user';
-import { MainState, AppNotification } from './state';
 import { getStoreAccessors } from 'typesafe-vuex';
+import { IUserProfile } from '~/interfaces/user';
 import { State } from '../state';
+import { AppNotification, MainState } from './state';
 
 export const mutations = {
 	setToken(state: MainState, payload: string) {
