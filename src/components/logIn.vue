@@ -7,42 +7,41 @@
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
 				<form class="flex flex-col" @submit.prevent="submit">
-					<transition
-						enter="transition transform-gpu duration-300 ease-out"
-						enter-from="translate-x-12 opacity-0"
-						enter-to="translate-x-0 opacity-100"
-						leave="transition transform-gpu duration-300 ease-in"
-						leave-from="opacity-100"
-						leave-to="opacity-0"
+					<div
+						v-if="loginError"
+						v-motion-roll-left
+						:initial="{ x: 400, opacity: 0 }"
+						:enter="{
+							x: 0,
+							opacity: 1,
+							transition: { delay: 200, type: 'spring', stiffness: 250, damping: 25, mass: 0.5 },
+						}"
+						:leave="{ x: 400, opacity: 0, transition: { type: 'spring', stiffness: 200, damping: 25, mass: 1 } }"
+						class="
+							relative
+							px-4
+							py-3
+							mb-3
+							border
+							rounded
+							bg-main-fail-100
+							border-main-fail-700
+							text-main-fail-600
+							animate-pulse
+						"
+						role="alert"
 					>
-						<div
-							v-if="loginError"
-							class="
-								relative
-								px-4
-								py-3
-								mb-3
-								border
-								rounded
-								bg-main-fail-100
-								border-main-fail-700
-								text-main-fail-600
-								animate-pulse
-							"
-							role="alert"
-						>
-							<heroicons-solid:shield-exclamation class="inline w-5 h-5 mb-1 text-main-fail-550" />
-							<span class="font-bold text-main-fail-550">
-								Error!
-								<span class="font-medium text-main-fail-500">Email or Password is wrong.</span>
-								<!-- <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
+						<heroicons-solid:shield-exclamation class="inline w-5 h-5 mb-1 text-main-fail-550" />
+						<span class="font-bold text-main-fail-550">
+							Error!
+							<span class="font-medium text-main-fail-500">Email or Password is wrong.</span>
+							<!-- <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
 										<button>
 											<heroicons-solid:x class="w-5 h-5 border border-main-fail-700 text-main-fail-600" />
 										</button>
 									</span> -->
-							</span>
-						</div>
-					</transition>
+						</span>
+					</div>
 					<div>
 						<label for="email" class="block text-lg font-semibold text-gray-50">Email</label>
 						<input
@@ -182,6 +181,7 @@ import { passwordToHex } from '~/utils/authHeader';
 export default class logIn extends Vue {
 	public async submit(event) {
 		event.preventDefault();
+		commitSetLogInError(this.$store, false);
 		const email = event.target.elements.email?.value;
 		const password = passwordToHex(event.target.elements.password?.value);
 		await dispatchLogIn(this.$store, { email: email, password: password });

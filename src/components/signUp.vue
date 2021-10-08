@@ -7,37 +7,36 @@
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
 				<form class="flex flex-col" @submit.prevent="submit">
-					<transition
-						enter="transition transform-gpu duration-300 ease-out"
-						enter-from="translate-x-12 opacity-0"
-						enter-to="translate-x-0 opacity-100"
-						leave="transition transform-gpu duration-300 ease-in"
-						leave-from="opacity-100"
-						leave-to="opacity-0"
+					<div
+						v-if="signUpError.error"
+						v-motion-roll-left
+						:initial="{ x: 400, opacity: 0 }"
+						:enter="{
+							x: 0,
+							opacity: 1,
+							transition: { delay: 200, type: 'spring', stiffness: 250, damping: 25, mass: 0.5 },
+						}"
+						:leave="{ x: 400, opacity: 0, transition: { type: 'spring', stiffness: 200, damping: 25, mass: 1 } }"
+						class="
+							relative
+							px-4
+							py-3
+							mb-4
+							border
+							rounded
+							bg-main-fail-100
+							border-main-fail-700
+							text-main-fail-600
+							animate-pulse
+						"
+						role="alert"
 					>
-						<div
-							v-if="signUpError.error"
-							class="
-								relative
-								px-4
-								py-3
-								mb-4
-								border
-								rounded
-								bg-main-fail-100
-								border-main-fail-700
-								text-main-fail-600
-								animate-pulse
-							"
-							role="alert"
-						>
-							<heroicons-solid:emoji-sad class="inline w-5 h-5 mb-1 text-main-fail-550" />
-							<span class="font-bold text-main-fail-550">
-								Error!
-								<span class="font-medium text-main-fail-500">{{ `${signUpError.message} Please try again.` }}</span>
-							</span>
-						</div>
-					</transition>
+						<heroicons-solid:emoji-sad class="inline w-5 h-5 mb-1 text-main-fail-550" />
+						<span class="font-bold text-main-fail-550">
+							Error!
+							<span class="font-medium text-main-fail-500">{{ `${signUpError.message} Please try again.` }}</span>
+						</span>
+					</div>
 					<div>
 						<label for="name" class="block text-lg font-semibold text-gray-50">Full Name</label>
 						<input
@@ -136,37 +135,36 @@
 							placeholder="Confirm Password"
 						/>
 					</div>
-					<transition
-						enter="transition transform-gpu duration-300 ease-out"
-						enter-from="translate-x-12 opacity-0"
-						enter-to="translate-x-0 opacity-100"
-						leave="transition transform-gpu duration-300 ease-in"
-						leave-from="opacity-100"
-						leave-to="opacity-0"
+					<div
+						v-if="showPasswordError"
+						v-motion-roll-left
+						:initial="{ x: 400, opacity: 0 }"
+						:enter="{
+							x: 0,
+							opacity: 1,
+							transition: { delay: 200, type: 'spring', stiffness: 250, damping: 25, mass: 0.5 },
+						}"
+						:leave="{ x: 400, opacity: 0, transition: { type: 'spring', stiffness: 200, damping: 25, mass: 1 } }"
+						class="
+							relative
+							px-4
+							py-3
+							mt-6
+							border
+							rounded
+							bg-main-fail-100
+							border-main-fail-700
+							text-main-fail-600
+							animate-pulse
+						"
+						role="alert"
 					>
-						<div
-							v-if="showPasswordError"
-							class="
-								relative
-								px-4
-								py-3
-								mt-6
-								border
-								rounded
-								bg-main-fail-100
-								border-main-fail-700
-								text-main-fail-600
-								animate-pulse
-							"
-							role="alert"
-						>
-							<heroicons-solid:lock-open class="inline w-5 h-5 mb-1 text-main-fail-550" />
-							<span class="font-bold text-main-fail-550">
-								Error
-								<span class="font-medium text-main-fail-500">{{ passwordError }}</span>
-							</span>
-						</div>
-					</transition>
+						<heroicons-solid:lock-open class="inline w-5 h-5 mb-1 text-main-fail-550" />
+						<span class="font-bold text-main-fail-550">
+							Error
+							<span class="font-medium text-main-fail-500">{{ passwordError }}</span>
+						</span>
+					</div>
 					<button
 						v-if="!signUpProcess"
 						class="
