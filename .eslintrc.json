@@ -6,5 +6,6 @@
 	},
 	"env": {
 		"jest": true
-	}
+	},
+	"ignorePatterns": "auto-imports.d.ts"
 }
