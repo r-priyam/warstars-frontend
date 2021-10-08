@@ -169,18 +169,18 @@
 </template>
 
 <script lang="ts">
-import { hash } from 'bcryptjs';
 import { Options, Vue } from 'vue-class-component';
 import { dispatchLogIn } from '~/store/main/actions';
 import { readLoginError, readProcessing } from '~/store/main/getters';
 import { commitSetLogInError, commitSetProcessing } from '~/store/main/mutations';
+import { passwordToHex } from '~/utils/authHeader';
 
 @Options({})
 export default class logIn extends Vue {
 	public async submit(event) {
 		event.preventDefault();
 		const email = event.target.elements.email?.value;
-		const password = await hash(event.target.elements.password?.value, 10);
+		const password = passwordToHex(event.target.elements.password?.value);
 		await dispatchLogIn(this.$store, { email: email, password: password });
 	}
 
