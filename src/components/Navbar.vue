@@ -1,123 +1,123 @@
 <template>
-	<header class="bg-main-primary-560 border-b-2 border-main-primary-400">
+	<header class="border-b-2 bg-main-primary-560 border-main-primary-400">
 		<Popover class="sticky top-0 z-40">
-			<div class="max-w-7xl mx-auto px-2 sm:px-6">
-				<div class="flex justify-between items-center border-gray-100 py-2 md:justify-start">
+			<div class="px-2 mx-auto max-w-7xl sm:px-6">
+				<div class="flex items-center justify-between py-2 border-gray-100 md:justify-start">
 					<div class="flex justify-start lg:w-0 lg:flex-1">
 						<router-link to="/">
 							<img class="h-10" alt="Logo" />
 						</router-link>
 					</div>
-					<div class="-mr-2 -my-2 md:hidden">
+					<div class="-my-2 -mr-2 md:hidden">
 						<button
 							class="
-								rounded-md
-								p-2
-								mr-2
 								inline-flex
 								items-center
 								justify-center
+								p-2
+								mr-2
 								text-gray-200
+								rounded-md
 								hover:text-gray-200 hover:bg-main-primary-630
 								focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-primary-600
 							"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
-							<heroicons-outline-sun v-if="!isDarkMode" class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
-							<heroicons-outline-moon v-else class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
+							<heroicons-outline-sun v-if="!isDarkMode" class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
+							<heroicons-outline-moon v-else class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
 						</button>
-						<PopoverButton class="navbar-open-menu text-gray-200 hover:text-gray-200 hover:bg-main-primary-630">
+						<PopoverButton class="text-gray-200 navbar-open-menu hover:text-gray-200 hover:bg-main-primary-630">
 							<span class="sr-only">Open menu</span>
-							<heroicons-outline-menu class="h-6 w-6" aria-hidden="true" />
+							<heroicons-outline-menu class="w-6 h-6" aria-hidden="true" />
 						</PopoverButton>
 					</div>
-					<PopoverGroup as="nav" class="hidden md:flex space-x-2">
+					<PopoverGroup as="nav" class="hidden space-x-2 md:flex">
 						<router-link to="/" class="navbar-item" active-class="bg-main-primary-600"
-							><heroicons-outline:home class="h-5 w-5 mr-1" /> <span>Home</span>
+							><heroicons-outline:home class="w-5 h-5 mr-1" /> <span>Home</span>
 						</router-link>
 						<router-link to="/clans" class="navbar-item" active-class="bg-main-primary-600"
-							><heroicons-outline:shield-check class="h-5 w-5 mr-1" /> <span>Clans</span>
+							><heroicons-outline:shield-check class="w-5 h-5 mr-1" /> <span>Clans</span>
 						</router-link>
 						<router-link to="/leagues" class="navbar-item" active-class="bg-main-primary-600"
-							><heroicons-outline:globe class="h-5 w-5 mr-1" /><span>Leagues</span>
+							><heroicons-outline:globe class="w-5 h-5 mr-1" /><span>Leagues</span>
 						</router-link>
 						<router-link to="/docs" class="navbar-item" active-class="bg-main-primary-600"
-							><heroicons-outline:document-text class="h-5 w-5 mr-1" /><span>Docs</span>
+							><heroicons-outline:document-text class="w-5 h-5 mr-1" /><span>Docs</span>
 						</router-link>
 					</PopoverGroup>
-					<div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+					<div class="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
 						<button
 							class="
-								rounded-md
-								py-3
-								px-4
-								mr-2
 								inline-flex
 								items-center
 								justify-center
+								px-4
+								py-3
+								mr-2
 								text-gray-200
+								rounded-md
 								hover:text-gray-200 hover:bg-main-primary-630
 								focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-primary-630
 							"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
-							<heroicons-outline-sun v-if="!isDarkMode" class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
-							<heroicons-outline-moon v-else class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
+							<heroicons-outline-sun v-if="!isDarkMode" class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
+							<heroicons-outline-moon v-else class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
 						</button>
 						<router-link
 							to="/register"
-							class="navbar-item bg-main-primary-600 hover:bg-main-primary-630 mr-2"
+							class="mr-2 navbar-item bg-main-primary-600 hover:bg-main-primary-630"
 							active-class="bg-main-primary-600"
-							><heroicons-outline:pencil-alt class="h-5 w-5 mr-1" /><span>Register</span>
+							><heroicons-outline:pencil-alt class="w-5 h-5 mr-1" /><span>Register</span>
 						</router-link>
 						<router-link
 							to="/sign-in"
 							class="navbar-item bg-main-primary-730 hover:bg-main-primary-700"
 							active-class="bg-main-primary-600"
-							><heroicons-solid:logout class="h-5 w-5 mr-1" /><span>Login</span>
+							><heroicons-solid:logout class="w-5 h-5 mr-1" /><span>Login</span>
 						</router-link>
 					</div>
 				</div>
 			</div>
 
 			<transition
-				enter-active-class="transition transform-gpu duration-300 ease-out"
+				enter-active-class="transition duration-300 ease-out transform-gpu"
 				enter-from-class="translate-x-12 opacity-0"
 				enter-to-class="translate-x-0 opacity-100"
 				leave-active-class="duration-200 ease-in"
-				leave-from-class="opacity-100 scale-100"
-				leave-to-class="opacity-0 scale-95"
+				leave-from-class="scale-100 opacity-100"
+				leave-to-class="scale-95 opacity-0"
 			>
 				<PopoverPanel
 					v-slot="{ close }"
 					focus
-					class="absolute inset-x-0 md:hidden origin-top-right top-0 transform transition z-20"
+					class="absolute inset-x-0 top-0 z-20 transition origin-top-right transform md:hidden"
 				>
 					<div
-						class="bg-main-primary-560 divide-gray-200 divide-y-2 ring-2 ring-main-primary-460 rounded-lg shadow-2xl"
+						class="divide-y-2 divide-gray-200 rounded-lg shadow-2xl bg-main-primary-560 ring-2 ring-main-primary-460"
 					>
 						<div class="px-5 pt-5 pb-6">
 							<div class="flex items-center justify-between">
 								<div>
-									<!-- <img class="h-12 w-auto" src="../assets/favicon.svg" alt="LeagueStats" /> -->
+									<!-- <img class="w-auto h-12" src="../assets/favicon.svg" alt="LeagueStats" /> -->
 								</div>
 								<div class="-mr-2">
 									<PopoverButton
 										class="
-											rounded-md
-											p-2
 											inline-flex
 											items-center
 											justify-center
+											p-2
 											text-gray-200
+											rounded-md
 											hover:text-gray-200 hover:bg-main-primary-630
 											focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
 										"
 									>
 										<span class="sr-only">Close menu</span>
-										<heroicons-outline:x class="h-6 w-6" aria-hidden="true" />
+										<heroicons-outline:x class="w-6 h-6" aria-hidden="true" />
 									</PopoverButton>
 								</div>
 							</div>
@@ -159,30 +159,30 @@
 							</div>
 						</div>
 
-						<div class="py-6 px-5 space-y-6">
+						<div class="px-5 py-6 space-y-6">
 							<div>
 								<router-link
 									to="/register"
 									class="
-										w-full
 										flex
 										items-center
 										justify-center
+										w-full
 										px-4
 										py-2
-										border border-transparent
-										rounded-md
-										shadow-sm
 										text-base
 										font-medium
 										text-gray-200
+										border border-transparent
+										rounded-md
+										shadow-sm
 										bg-main-primary-700
 										hover:bg-main-primary-760
 									"
 									@click="close()"
 									>Register
 								</router-link>
-								<p class="mt-6 text-center text-base font-medium text-gray-200">
+								<p class="mt-6 text-base font-medium text-center text-gray-200">
 									Existing user?
 									{{ ' ' }}
 									<router-link to="/sign-in" class="text-main-primary-730 hover:text-main-primary-800" @click="close()"

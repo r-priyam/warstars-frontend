@@ -3,19 +3,18 @@
 		<div class="px-6 lg:px-8">
 			<button
 				class="
-					bg-main-primary-630
-					hover:bg-main-primary-660
-					text-gray-200
-					hover:text-white
-					rounded-md
 					p-2
 					leading-3
+					text-gray-200
+					rounded-md
+					bg-main-primary-630
+					hover:bg-main-primary-660 hover:text-white
 					focus:outline-none
 					focus-visible:ring-1 focus-visible:ring-gray-200
 				"
 				@click="scrollTo()"
 			>
-				<heroicons-outline-arrow-narrow-up class="h-6 w-6" />
+				<heroicons-outline-arrow-narrow-up class="w-6 h-6" />
 			</button>
 		</div>
 	</div>
