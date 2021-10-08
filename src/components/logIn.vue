@@ -1,8 +1,8 @@
 <template>
-	<div class="pt-12 md:pt-20 pb-6 px-2 md:px-0">
-		<div class="bg-gray-400 dark:bg-main-primary-600 max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-xl">
+	<div class="px-2 pt-12 pb-6 md:pt-20 md:px-0">
+		<div class="max-w-lg p-8 mx-auto my-10 bg-gray-400 rounded-lg shadow-xl dark:bg-main-primary-600 md:p-12">
 			<section>
-				<h3 class="font-black text-3xl text-center text-main-primary-760">Login</h3>
+				<h3 class="text-3xl font-black text-center text-main-primary-760">Login</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
@@ -18,25 +18,26 @@
 						<div
 							v-if="loginError"
 							class="
-								bg-main-fail-100
-								border border-main-fail-700
-								text-main-fail-600
+								relative
 								px-4
 								py-3
 								mb-3
+								border
 								rounded
-								relative
+								bg-main-fail-100
+								border-main-fail-700
+								text-main-fail-600
 								animate-pulse
 							"
 							role="alert"
 						>
-							<heroicons-solid:shield-exclamation class="h-5 w-5 mb-1 inline text-main-fail-550" />
+							<heroicons-solid:shield-exclamation class="inline w-5 h-5 mb-1 text-main-fail-550" />
 							<span class="font-bold text-main-fail-550">
 								Error!
 								<span class="font-medium text-main-fail-500">Email or Password is wrong.</span>
 								<!-- <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
 										<button>
-											<heroicons-solid:x class="border border-main-fail-700 text-main-fail-600 h-5 w-5" />
+											<heroicons-solid:x class="w-5 h-5 border border-main-fail-700 text-main-fail-600" />
 										</button>
 									</span> -->
 							</span>
@@ -51,16 +52,16 @@
 							autocomplete="email"
 							required="true"
 							class="
-								appearance-none
 								w-full
 								px-3
 								py-2
 								mt-2
-								border border-gray-300
-								placeholder-gray-500
 								text-gray-900
+								placeholder-gray-500
+								border border-gray-300
 								rounded-lg
 								shadow-sm
+								appearance-none
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
 								sm:text-sm
 							"
@@ -68,7 +69,7 @@
 						/>
 					</div>
 					<div>
-						<label for="password" class="block text-lg mt-6 font-semibold text-gray-50">Password</label>
+						<label for="password" class="block mt-6 text-lg font-semibold text-gray-50">Password</label>
 						<input
 							id="password"
 							name="password"
@@ -81,14 +82,14 @@
 								px-3
 								py-2
 								mt-2
-								border border-gray-300
-								placeholder-gray-500
 								text-gray-900
+								placeholder-gray-500
+								border border-gray-300
 								rounded-lg
 								shadow-sm
+								select-none
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
 								sm:text-sm
-								select-none
 							"
 							placeholder="Password"
 						/>
@@ -103,64 +104,60 @@
 					<button
 						v-if="!loginProcess"
 						class="
-							bg-main-primary-700
-							hover:bg-main-primary-760
-							text-white
-							border border-transparent
-							font-bold
 							py-2
-							rounded
-							shadow-lg
-							hover:shadow-xl
+							font-bold
+							text-white
 							transition
 							duration-200
+							border border-transparent
+							rounded
+							shadow-md
+							bg-main-primary-700
+							hover:bg-main-primary-760 hover:shadow-xl
 						"
 						type="submit"
 					>
 						Login
 					</button>
-					<div v-if="loginProcess" class="flex justify-around">
-						<span class="inline-flex rounded-md shadow-sm">
-							<button
-								type="button"
-								class="
-									inline-flex
-									items-center
-									px-[10.74rem]
-									py-2
-									border border-transparent
-									font-bold
-									rounded-md
-									text-white
-									bg-main-primary-660
-									transition
-									ease-in-out
-									duration-150
-									cursor-not-allowed
-								"
-								disabled
-							>
-								<svg
-									class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-								>
-									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-									<path
-										class="opacity-75"
-										fill="currentColor"
-										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-									></path>
-								</svg>
-								Login
-							</button>
-						</span>
-					</div>
+					<button
+						v-if="loginProcess"
+						type="button"
+						class="
+							inline-flex
+							items-center
+							justify-center
+							py-2
+							font-bold
+							text-center text-white
+							transition
+							duration-150
+							ease-in-out
+							border border-transparent
+							rounded-md
+							cursor-not-allowed
+							bg-main-primary-660
+						"
+						disabled
+					>
+						<svg
+							class="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+						>
+							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+							<path
+								class="opacity-75"
+								fill="currentColor"
+								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+							></path>
+						</svg>
+						Login
+					</button>
 					<div class="flex justify-center mt-12">
 						<p class="text-white">
 							Don't have an account?
-							<a href="#" class="text-main-primary-800 font-bold hover:underline hover:text-main-primary-830"
+							<a href="#" class="font-bold text-main-primary-800 hover:underline hover:text-main-primary-830"
 								>Sign up</a
 							>
 						</p>
