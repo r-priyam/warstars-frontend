@@ -26,6 +26,7 @@ export const actions = {
 				error: true,
 				message: error.response ? error.response.data.detail : 'Something went wrong!',
 			});
+			commitSetProcessing(context, false);
 		}
 	},
 

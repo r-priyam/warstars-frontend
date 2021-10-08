@@ -1,8 +1,8 @@
 <template>
-	<div class="pt-12 md:pt-20 pb-6 px-2 md:px-0">
-		<div class="bg-gray-400 dark:bg-main-primary-600 max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-xl">
+	<div class="px-2 pt-12 pb-6 md:pt-20 md:px-0">
+		<div class="max-w-lg p-8 mx-auto my-10 bg-gray-400 rounded-lg shadow-xl dark:bg-main-primary-600 md:p-12">
 			<section>
-				<h3 class="font-black text-3xl text-center text-main-primary-760">Register</h3>
+				<h3 class="text-3xl font-black text-center text-main-primary-760">Register</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
@@ -18,19 +18,20 @@
 						<div
 							v-if="signUpError.error"
 							class="
-								bg-main-fail-100
-								border border-main-fail-700
-								text-main-fail-600
-								px-4
-								mb-4
-								py-3
-								rounded
 								relative
+								px-4
+								py-3
+								mb-4
+								border
+								rounded
+								bg-main-fail-100
+								border-main-fail-700
+								text-main-fail-600
 								animate-pulse
 							"
 							role="alert"
 						>
-							<heroicons-solid:emoji-sad class="h-5 w-5 mb-1 inline text-main-fail-550" />
+							<heroicons-solid:emoji-sad class="inline w-5 h-5 mb-1 text-main-fail-550" />
 							<span class="font-bold text-main-fail-550">
 								Error!
 								<span class="font-medium text-main-fail-500">{{ `${signUpError.message} Please try again.` }}</span>
@@ -45,16 +46,16 @@
 							type="text"
 							required="true"
 							class="
-								appearance-none
 								w-full
 								px-3
 								py-2
 								mt-2
-								border border-gray-300
-								placeholder-gray-500
 								text-gray-900
+								placeholder-gray-500
+								border border-gray-300
 								rounded-lg
 								shadow-sm
+								appearance-none
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
 								sm:text-sm
 							"
@@ -69,16 +70,16 @@
 							type="text"
 							required="true"
 							class="
-								appearance-none
 								w-full
 								px-3
 								py-2
 								mt-2
-								border border-gray-300
-								placeholder-gray-500
 								text-gray-900
+								placeholder-gray-500
+								border border-gray-300
 								rounded-lg
 								shadow-sm
+								appearance-none
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
 								sm:text-sm
 							"
@@ -86,7 +87,7 @@
 						/>
 					</div>
 					<div>
-						<label for="password" class="block text-lg mt-4 font-semibold text-gray-50">Password</label>
+						<label for="password" class="block mt-4 text-lg font-semibold text-gray-50">Password</label>
 						<input
 							id="password"
 							name="password"
@@ -99,9 +100,9 @@
 								px-3
 								py-2
 								mt-2
-								border border-gray-300
-								placeholder-gray-500
 								text-gray-900
+								placeholder-gray-500
+								border border-gray-300
 								rounded-lg
 								shadow-sm
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
@@ -111,7 +112,7 @@
 						/>
 					</div>
 					<div>
-						<label for="_password" class="block text-lg mt-4 font-semibold text-gray-50">Confirm Password</label>
+						<label for="_password" class="block mt-4 text-lg font-semibold text-gray-50">Confirm Password</label>
 						<input
 							id="_password"
 							name="_password"
@@ -124,9 +125,9 @@
 								px-3
 								py-2
 								mt-2
-								border border-gray-300
-								placeholder-gray-500
 								text-gray-900
+								placeholder-gray-500
+								border border-gray-300
 								rounded-lg
 								shadow-sm
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
@@ -146,19 +147,20 @@
 						<div
 							v-if="showPasswordError"
 							class="
-								bg-main-fail-100
-								border border-main-fail-700
-								text-main-fail-600
+								relative
 								px-4
 								py-3
 								mt-6
+								border
 								rounded
-								relative
+								bg-main-fail-100
+								border-main-fail-700
+								text-main-fail-600
 								animate-pulse
 							"
 							role="alert"
 						>
-							<heroicons-solid:lock-open class="h-5 w-5 mb-1 inline text-main-fail-550" />
+							<heroicons-solid:lock-open class="inline w-5 h-5 mb-1 text-main-fail-550" />
 							<span class="font-bold text-main-fail-550">
 								Error
 								<span class="font-medium text-main-fail-500">{{ passwordError }}</span>
@@ -166,27 +168,64 @@
 						</div>
 					</transition>
 					<button
+						v-if="!signUpProcess"
 						class="
-							bg-main-primary-700
-							hover:bg-main-primary-760
-							text-gray-200
-							font-bold
 							py-2
 							mt-6
-							rounded
-							shadow-lg
-							hover:shadow-xl
+							font-bold
+							text-white
 							transition
 							duration-200
+							border border-transparent
+							rounded
+							shadow-md
+							bg-main-primary-700
+							hover:bg-main-primary-760 hover:shadow-xl
 						"
 						type="submit"
 					>
 						Register
 					</button>
+					<button
+						v-if="signUpProcess"
+						type="button"
+						class="
+							inline-flex
+							items-center
+							justify-center
+							py-2
+							mt-6
+							font-bold
+							text-center text-white
+							transition
+							duration-150
+							ease-in-out
+							border border-transparent
+							rounded-md
+							cursor-not-allowed
+							bg-main-primary-660
+						"
+						disabled
+					>
+						<svg
+							class="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+						>
+							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+							<path
+								class="opacity-75"
+								fill="currentColor"
+								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+							></path>
+						</svg>
+						Register
+					</button>
 					<div class="flex justify-center mt-8">
 						<p class="text-white">
 							Already have an account?
-							<a href="#" class="text-main-primary-800 font-bold hover:underline hover:text-main-primary-830">Login</a>
+							<a href="#" class="font-bold text-main-primary-800 hover:underline hover:text-main-primary-830">Login</a>
 						</p>
 					</div>
 				</form>
@@ -200,7 +239,7 @@ import { hash } from 'bcryptjs';
 import { Options, Vue } from 'vue-class-component';
 import { IUserProfileCreate } from '~/interfaces/user';
 import { dispatchSignUp } from '~/store/user/actions';
-import { readSignUpError } from '~/store/user/getters';
+import { readSignUpError, readUserProcessing } from '~/store/user/getters';
 import { commitSetError, commitSetProcessing } from '~/store/user/mutations';
 
 @Options({})
@@ -236,6 +275,10 @@ export default class logIn extends Vue {
 		} else {
 			this.showPasswordError = !this.showPasswordError;
 		}
+	}
+
+	public get signUpProcess() {
+		return readUserProcessing(this.$store);
 	}
 
 	public get signUpError() {
