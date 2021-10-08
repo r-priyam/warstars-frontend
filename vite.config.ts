@@ -1,9 +1,10 @@
 import vue from '@vitejs/plugin-vue';
-import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import ViteComponents from 'vite-plugin-components';
-import Icons from 'unplugin-icons/vite';
+import AutoImport from 'unplugin-auto-import/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
+import { defineConfig } from 'vite';
+import ViteComponents from 'vite-plugin-components';
 
 export default defineConfig({
 	resolve: {
@@ -13,6 +14,10 @@ export default defineConfig({
 	},
 	plugins: [
 		vue(),
+		AutoImport({
+			dts: 'src/auto-imports.d.ts',
+			imports: ['vue', '@vueuse/core'],
+		}),
 		ViteComponents({
 			customComponentResolvers: [
 				IconsResolver({
