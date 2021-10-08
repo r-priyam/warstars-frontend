@@ -15,7 +15,7 @@
 		"@tailwindcss/line-clamp": "0.2.2",
 		"@tailwindcss/typography": "0.4.1",
 		"@vueuse/core": "6.5.3",
-		"@vueuse/motion": "^2.0.0-beta.4",
+		"@vueuse/motion": "2.0.0-beta.4",
 		"axios": "0.22.0",
 		"typesafe-vuex": "3.2.2",
 		"vue": "3.2.19",
