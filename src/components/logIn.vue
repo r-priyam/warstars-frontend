@@ -157,9 +157,12 @@
 					<div class="flex justify-center mt-12">
 						<p class="text-white">
 							Don't have an account?
-							<a href="#" class="font-bold text-main-primary-800 hover:underline hover:text-main-primary-830"
-								>Sign up</a
+							<router-link
+								to="/register"
+								class="font-bold text-main-primary-800 hover:underline hover:text-main-primary-830"
 							>
+								Register
+							</router-link>
 						</p>
 					</div>
 				</form>
