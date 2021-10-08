@@ -1,9 +1,21 @@
 <template>
-	<div class="min-h-full grid grid-layout">
+	<div class="grid min-h-full grid-layout">
 		<Navbar />
 		<div id="container" class="grid grid-layout-container lg:custom-scroll">
-			<div class="bg-gray-200 dark:bg-main-primary-700">
-				<div class="min-h-full max-w-6xl mx-auto p-1 bg-gray-300 dark:bg-main-primary-660 shadow-2xl">
+			<div class="transition-colors duration-1000 bg-gray-700 dark:bg-main-primary-700">
+				<div
+					class="
+						max-w-6xl
+						min-h-full
+						p-1
+						mx-auto
+						transition-colors
+						duration-1000
+						bg-gray-500
+						shadow-2xl
+						dark:bg-main-primary-660
+					"
+				>
 					<router-view />
 				</div>
 			</div>
