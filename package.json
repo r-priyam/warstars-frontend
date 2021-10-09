@@ -19,7 +19,7 @@
 		"axios": "0.22.0",
 		"clashofclans.js": "1.5.4",
 		"typesafe-vuex": "3.2.2",
-		"vue": "3.2.19",
+		"vue": "3.2.20",
 		"vue-router": "4.0.11",
 		"vuex": "4.0.2"
 	},
@@ -29,7 +29,7 @@
 		"@typescript-eslint/eslint-plugin": "4.33.0",
 		"@typescript-eslint/parser": "4.33.0",
 		"@vitejs/plugin-vue": "1.9.3",
-		"@vue/compiler-sfc": "3.2.19",
+		"@vue/compiler-sfc": "3.2.20",
 		"@vue/component-compiler-utils": "3.2.2",
 		"autoprefixer": "10.3.7",
 		"eslint": "7.32.0",
