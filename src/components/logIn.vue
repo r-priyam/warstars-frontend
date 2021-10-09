@@ -22,7 +22,7 @@
 			<section class="mt-10">
 				<form class="flex flex-col" @submit.prevent="submit">
 					<div
-						v-if="loginError"
+						v-if="loginError()"
 						v-motion-roll-left
 						:initial="{ x: 400, opacity: 0 }"
 						:enter="{
@@ -49,11 +49,6 @@
 						<span class="font-bold text-main-fail-550">
 							Error!
 							<span class="font-medium text-main-fail-500">Email or Password is wrong.</span>
-							<!-- <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
-										<button>
-											<heroicons-solid:x class="w-5 h-5 border border-main-fail-700 text-main-fail-600" />
-										</button>
-									</span> -->
 						</span>
 					</div>
 					<div>
@@ -115,7 +110,7 @@
 						>
 					</div>
 					<button
-						v-if="!loginProcess"
+						v-if="!loginProcess()"
 						class="
 							py-2
 							font-bold
@@ -133,7 +128,7 @@
 						Login
 					</button>
 					<button
-						v-if="loginProcess"
+						v-if="loginProcess()"
 						type="button"
 						class="
 							inline-flex
@@ -185,33 +180,45 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { useStore } from 'vuex';
 import { dispatchLogIn } from '~/store/main/actions';
 import { readLoginError, readProcessing } from '~/store/main/getters';
 import { commitSetLogInError, commitSetProcessing } from '~/store/main/mutations';
 import { passwordToHex } from '~/utils/authHeader';
 
-@Options({})
-export default class logIn extends Vue {
-	public async submit(event) {
-		event.preventDefault();
-		commitSetLogInError(this.$store, false);
-		const email = event.target.elements.email?.value;
-		const password = passwordToHex(event.target.elements.password?.value);
-		await dispatchLogIn(this.$store, { email: email, password: password });
-	}
+export default {
+	setup() {
+		const store = useStore();
 
-	public get loginProcess() {
-		return readProcessing(this.$store);
-	}
+		onBeforeMount(() => {
+			// some users can be naughty, so well, yea!
+			commitSetProcessing(store, false);
+			commitSetLogInError(store, false);
+		});
 
-	public get loginError() {
-		return readLoginError(this.$store);
-	}
+		const logIn = {
+			async submit(event) {
+				event.preventDefault();
+				commitSetLogInError(store, false);
+				const email = event.target.elements.email?.value;
+				const password = passwordToHex(event.target.elements.password?.value);
+				await dispatchLogIn(store, { email: email, password: password });
+			},
 
-	public beforeMount() {
-		commitSetProcessing(this.$store, false);
-		commitSetLogInError(this.$store, false);
-	}
-}
+			loginProcess() {
+				return readProcessing(store);
+			},
+
+			loginError() {
+				return readLoginError(store);
+			},
+		};
+
+		return {
+			submit: logIn.submit,
+			loginProcess: logIn.loginProcess,
+			loginError: logIn.loginError,
+		};
+	},
+};
 </script>

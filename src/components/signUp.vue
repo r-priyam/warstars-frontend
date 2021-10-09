@@ -8,7 +8,7 @@
 			<section class="mt-10">
 				<form class="flex flex-col" @submit.prevent="submit">
 					<div
-						v-if="signUpError.error"
+						v-if="signUpError().error"
 						v-motion-roll-left
 						:initial="{ x: 400, opacity: 0 }"
 						:enter="{
@@ -34,7 +34,7 @@
 						<heroicons-solid:emoji-sad class="inline w-5 h-5 mb-1 text-main-fail-550" />
 						<span class="font-bold text-main-fail-550">
 							Error!
-							<span class="font-medium text-main-fail-500">{{ `${signUpError.message} Please try again.` }}</span>
+							<span class="font-medium text-main-fail-500">{{ `${signUpError().message} Please try again.` }}</span>
 						</span>
 					</div>
 					<div>
@@ -166,7 +166,7 @@
 						</span>
 					</div>
 					<button
-						v-if="!signUpProcess"
+						v-if="!signUpProcess()"
 						class="
 							py-2
 							mt-6
@@ -185,7 +185,7 @@
 						Register
 					</button>
 					<button
-						v-if="signUpProcess"
+						v-if="signUpProcess()"
 						type="button"
 						class="
 							inline-flex
@@ -233,58 +233,70 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { useStore } from 'vuex';
 import { IUserProfileCreate } from '~/interfaces/user';
 import { dispatchSignUp } from '~/store/user/actions';
 import { readSignUpError, readUserProcessing } from '~/store/user/getters';
 import { commitSetError, commitSetProcessing } from '~/store/user/mutations';
 import { passwordToHex } from '~/utils/authHeader';
 
-@Options({})
-export default class logIn extends Vue {
-	public showPasswordError = false;
-	public passwordError = '';
+export default {
+	setup() {
+		const store = useStore();
+		const showPasswordError = ref(false);
+		const passwordError = ref('');
 
-	public passwordValidate(password: string, confirmedPassword: string) {
-		const validPassword = RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
-		if (!validPassword.test(password)) {
-			this.passwordError =
-				'Password must contain a lowercase letter, a capital letter, a number and minimum 6 characters.';
-			return false;
-		} else if (password !== confirmedPassword) {
-			this.passwordError = 'Password and Confirm password differs.';
-			return false;
+		onBeforeMount(() => {
+			commitSetError(store, { error: false, message: '' });
+			commitSetProcessing(store, false);
+		});
+
+		function passwordValidate(password: string, confirmedPassword: string) {
+			const validPassword = RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
+			if (!validPassword.test(password)) {
+				passwordError.value =
+					'Password must contain a lowercase letter, a capital letter, a number and minimum 6 characters.';
+				return false;
+			} else if (password !== confirmedPassword) {
+				passwordError.value = 'Password and Confirm password differs.';
+				return false;
+			}
+			return true;
 		}
-		return true;
-	}
 
-	public async submit(event) {
-		event.preventDefault();
-		this.showPasswordError = false;
-		commitSetError(this.$store, { error: false, message: '' });
-		if (this.passwordValidate(event.target.elements.password?.value, event.target.elements._password?.value)) {
-			const newUser: IUserProfileCreate = {
-				full_name: event.target.elements.name?.value,
-				email: event.target.elements.email?.value,
-				password: passwordToHex(event.target.elements.password?.value),
-			};
-			await dispatchSignUp(this.$store, newUser);
-		} else {
-			this.showPasswordError = !this.showPasswordError;
-		}
-	}
+		const register = {
+			async submit(event) {
+				event.preventDefault();
+				showPasswordError.value = false;
+				commitSetError(store, { error: false, message: '' });
+				if (passwordValidate(event.target.elements.password?.value, event.target.elements._password?.value)) {
+					const newUser: IUserProfileCreate = {
+						full_name: event.target.elements.name?.value,
+						email: event.target.elements.email?.value,
+						password: passwordToHex(event.target.elements.password?.value),
+					};
+					await dispatchSignUp(store, newUser);
+				} else {
+					showPasswordError.value = !showPasswordError.value;
+				}
+			},
 
-	public get signUpProcess() {
-		return readUserProcessing(this.$store);
-	}
+			signUpProcess() {
+				return readUserProcessing(store);
+			},
 
-	public get signUpError() {
-		return readSignUpError(this.$store);
-	}
+			signUpError() {
+				return readSignUpError(store);
+			},
+		};
 
-	public beforeMount() {
-		commitSetError(this.$store, { error: false, message: '' });
-		commitSetProcessing(this.$store, false);
-	}
-}
+		return {
+			passwordError,
+			showPasswordError,
+			submit: register.submit,
+			signUpProcess: register.signUpProcess,
+			signUpError: register.signUpError,
+		};
+	},
+};
 </script>
