@@ -76,6 +76,9 @@
 								dark:hover:bg-main-dark-560
 								hover:text-gray-200
 								focus:outline-none
+								transition
+								duration-500
+								ease-in-out
 							"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
