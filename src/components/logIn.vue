@@ -8,15 +8,15 @@
 				my-10
 				transition-colors
 				duration-1000
-				bg-gray-400
+				bg-main-light-530
 				rounded-lg
 				shadow-xl
-				dark:bg-main-primary-600
+				dark:bg-main-dark-500
 				md:p-12
 			"
 		>
 			<section>
-				<h3 class="text-3xl font-black text-center text-main-primary-760">Login</h3>
+				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">Login</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
@@ -52,7 +52,7 @@
 						</span>
 					</div>
 					<div>
-						<label for="email" class="block text-lg font-semibold text-gray-50">Email</label>
+						<label for="email" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Email</label>
 						<input
 							id="email-address"
 							name="email"
@@ -77,7 +77,7 @@
 						/>
 					</div>
 					<div>
-						<label for="password" class="block mt-6 text-lg font-semibold text-gray-50">Password</label>
+						<label for="password" class="block mt-6 text-lg font-bold text-gray-800 dark:text-gray-100">Password</label>
 						<input
 							id="password"
 							name="password"
@@ -105,7 +105,16 @@
 					<div class="flex justify-end">
 						<a
 							href="#"
-							class="text-sm font-medium mt-1.5 text-main-primary-760 hover:text-main-primary-800 mb-6 hover:underline"
+							class="
+								text-sm
+								mt-1.5
+								font-bold
+								text-main-textDark-600
+								dark:text-main-textLight-600 dark:hover:text-main-textDark-600
+								hover:text-main-textLight-600
+								mb-6
+								hover:underline
+							"
 							>Forgot password?</a
 						>
 					</div>
@@ -120,8 +129,10 @@
 							border border-transparent
 							rounded
 							shadow-md
-							bg-main-primary-700
-							hover:bg-main-primary-760 hover:shadow-xl
+							bg-main-textDark-560
+							hover:bg-main-textLight-560
+							dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+							hover:shadow-xl
 						"
 						type="submit"
 					>
@@ -143,7 +154,8 @@
 							border border-transparent
 							rounded-md
 							cursor-not-allowed
-							bg-main-primary-660
+							bg-main-textDark-500
+							dark:bg-main-textLight-500
 						"
 						disabled
 					>
@@ -163,11 +175,16 @@
 						Login
 					</button>
 					<div class="flex justify-center mt-12">
-						<p class="text-white">
+						<p class="font-semibold text-gray-800 dark:text-gray-100">
 							Don't have an account?
 							<router-link
 								to="/register"
-								class="font-bold text-main-primary-800 hover:underline hover:text-main-primary-830"
+								class="
+									font-bold
+									text-main-textDark-600
+									dark:text-main-textLight-600 dark:hover:text-main-textDark-600
+									hover:text-main-textLight-600
+								"
 							>
 								Register
 							</router-link>

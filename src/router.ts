@@ -5,7 +5,7 @@ import Home from '~/pages/Index.vue';
 
 const routes = [
 	{ path: '/', component: Home },
-	{ path: '/sign-in', component: SignIn, meta: { requiresAuth: true } },
+	{ path: '/sign-in', component: SignIn },
 	{ path: '/register', component: Register },
 ];
 

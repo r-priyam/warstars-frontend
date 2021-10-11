@@ -2,89 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	html,
-	body {
-		@apply bg-main-primary-560;
-	}
-
-	body {
-		overscroll-behavior-y: none;
-		@apply min-h-screen min-w-full fixed;
-	}
-
-	#container {
-		overscroll-behavior-y: none;
-		@apply overflow-auto h-[calc(100vh-64px)];
-	}
-
-	img {
-		@apply inline-block !m-0;
-	}
-}
-
 @layer components {
 	.navbar-open-menu {
 		@apply focus:outline-none hover:text-gray-400 inline-flex items-center justify-center p-2 rounded-md text-gray-300;
 	}
-	.noprose {
-		@apply !m-0;
-	}
-
-	.noprose p {
-		@apply !m-0;
-	}
-
-	.noprose > div.info,
-	.noprose > div.warn {
-		@apply !mt-4;
-	}
-
-	.noprose li {
-		@apply !m-0;
-	}
-
-	.no-list li {
-		padding-left: 0.25rem !important;
-	}
-
-	.no-list li::before {
-		content: none !important;
-	}
-
-	.custom-scroll {
-		scrollbar-width: thin;
-		scrollbar-color: theme('colors.main.primary.460') #1d1d1d;
-	}
-
-	.custom-scroll::-webkit-scrollbar {
-		height: 8px; /* Manually measured based on the original thin scrollbar on Firefox */
-		width: 8px; /* Manually measured based on the original thin scrollbar on Firefox */
-	}
-
-	.custom-scroll::-webkit-scrollbar-thumb {
-		background: theme('colors.main.primary.460');
-	}
-
-	.custom-scroll::-webkit-scrollbar-thumb:hover {
-		background: theme('colors.main.primary.430');
-	}
-
-	.custom-scroll::-webkit-scrollbar-track {
-		background: rgba(0, 0, 0, 0.07);
-	}
-
-	#container.custom-scroll::-webkit-scrollbar-track {
-		background: #ffffff;
-	}
-
-	.dark #container.custom-scroll::-webkit-scrollbar-track {
-		background: #1d1d1d;
-	}
 
 	.navbar-item {
-		@apply text-gray-200
-		hover:bg-main-primary-630 hover:text-white
+		@apply text-main-textDark-600 dark:text-main-textLight-530
+		hover:bg-main-light-560
+		dark:hover:bg-main-dark-560
 		rounded-md
 		py-3
 		px-4
@@ -97,32 +23,12 @@
 	}
 
 	.navbar-mobile-item {
-		@apply -m-3 p-3 flex items-center rounded-md text-gray-200 hover:text-white hover:bg-main-primary-630
+		@apply -m-3 p-3 flex items-center rounded-md text-main-textDark-600 dark:text-main-textLight-530
+		hover:bg-main-light-560
+		dark:hover:bg-main-dark-560;
 	}
 
 	.navbar-mobile-item-name {
-		@apply ml-3 text-base font-medium text-gray-200
+		@apply ml-3 text-base font-medium text-main-textDark-600 dark:text-main-textLight-530;
 	}
-}
-
-@layer utilities {
-	.break-words-legacy {
-		word-break: break-word;
-	}
-
-	.scroll-to {
-		scroll-margin-top: theme('spacing.16');
-	}
-}
-
-.info {
-	@apply dark:text-gray-200 p-2 border-l-4 border-main-green-500 mt-4;
-	/* prettier-ignore */
-	background: theme('colors.main.green.400')50;
-}
-
-.warn {
-	@apply dark:text-gray-200 p-2 border-l-4 border-main-fail-500 mt-4;
-	/* prettier-ignore */
-	background: theme('colors.main.fail.400')50;
 }

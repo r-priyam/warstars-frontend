@@ -7,7 +7,8 @@
 					leading-3
 					text-gray-200
 					rounded-md
-					bg-main-primary-630
+					bg-main-light-630
+					dark:bg-main-dark-630
 					hover:bg-main-primary-660 hover:text-white
 					focus:outline-none
 					focus-visible:ring-1 focus-visible:ring-gray-200

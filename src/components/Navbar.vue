@@ -1,5 +1,5 @@
 <template>
-	<header class="border-b-2 bg-main-primary-560 border-main-primary-400">
+	<header class="bg-main-light-500 dark:bg-main-dark-500 transition-colors duration-1000">
 		<Popover class="sticky top-0 z-40">
 			<div class="px-2 mx-auto max-w-7xl sm:px-6">
 				<div class="flex items-center justify-between py-2 border-gray-100 md:justify-start">
@@ -16,33 +16,49 @@
 								justify-center
 								p-2
 								mr-2
-								text-gray-200
 								rounded-md
-								hover:text-gray-200 hover:bg-main-primary-630
-								focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-primary-600
+								hover:bg-main-light-560
+								dark:hover:bg-main-dark-560
+								focus:outline-none
 							"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
-							<heroicons-outline-sun v-if="!isDarkMode" class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
-							<heroicons-outline-moon v-else class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
+							<heroicons-outline-sun
+								v-if="!isDarkMode"
+								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								aria-hidden="true"
+							/>
+							<heroicons-outline-moon
+								v-else
+								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								aria-hidden="true"
+							/>
 						</button>
-						<PopoverButton class="text-gray-200 navbar-open-menu hover:text-gray-200 hover:bg-main-primary-630">
+						<PopoverButton
+							class="
+								navbar-open-menu
+								text-gray-800
+								dark:text-gray-100
+								hover:bg-main-light-560
+								dark:hover:bg-main-dark-560
+							"
+						>
 							<span class="sr-only">Open menu</span>
-							<heroicons-outline-menu class="w-6 h-6" aria-hidden="true" />
+							<heroicons-outline-menu class="w-6 h-6 text-gray-800 dark:text-gray-100" aria-hidden="true" />
 						</PopoverButton>
 					</div>
 					<PopoverGroup as="nav" class="hidden space-x-2 md:flex">
-						<router-link to="/" class="navbar-item" active-class="bg-main-primary-600"
+						<router-link to="/" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-outline:home class="w-5 h-5 mr-1" /> <span>Home</span>
 						</router-link>
-						<router-link to="/clans" class="navbar-item" active-class="bg-main-primary-600"
+						<router-link to="/clans" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-outline:shield-check class="w-5 h-5 mr-1" /> <span>Clans</span>
 						</router-link>
-						<router-link to="/leagues" class="navbar-item" active-class="bg-main-primary-600"
+						<router-link to="/leagues" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-outline:globe class="w-5 h-5 mr-1" /><span>Leagues</span>
 						</router-link>
-						<router-link to="/docs" class="navbar-item" active-class="bg-main-primary-600"
+						<router-link to="/docs" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-outline:document-text class="w-5 h-5 mr-1" /><span>Docs</span>
 						</router-link>
 					</PopoverGroup>
@@ -55,27 +71,33 @@
 								px-4
 								py-3
 								mr-2
-								text-gray-200
 								rounded-md
-								hover:text-gray-200 hover:bg-main-primary-630
-								focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:bg-main-primary-630
+								hover:bg-main-light-560
+								dark:hover:bg-main-dark-560
+								hover:text-gray-200
+								focus:outline-none
 							"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
-							<heroicons-outline-sun v-if="!isDarkMode" class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
-							<heroicons-outline-moon v-else class="w-6 h-6 text-gray-200 fill-current" aria-hidden="true" />
+							<heroicons-outline-sun
+								v-if="!isDarkMode"
+								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								aria-hidden="true"
+							/>
+							<heroicons-outline-moon
+								v-else
+								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								aria-hidden="true"
+							/>
 						</button>
-						<router-link
-							to="/register"
-							class="mr-2 navbar-item bg-main-primary-600 hover:bg-main-primary-630"
-							active-class="bg-main-primary-600"
+						<router-link to="/register" class="mr-2 navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-outline:pencil-alt class="w-5 h-5 mr-1" /><span>Register</span>
 						</router-link>
 						<router-link
 							to="/sign-in"
-							class="navbar-item bg-main-primary-730 hover:bg-main-primary-700"
-							active-class="bg-main-primary-600"
+							class="navbar-item bg-main-light-660 dark:bg-main-dark-660"
+							active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-solid:logout class="w-5 h-5 mr-1" /><span>Login</span>
 						</router-link>
 					</div>
@@ -95,9 +117,7 @@
 					focus
 					class="absolute inset-x-0 top-0 z-20 transition origin-top-right transform md:hidden"
 				>
-					<div
-						class="divide-y-2 divide-gray-200 rounded-lg shadow-2xl bg-main-primary-560 ring-2 ring-main-primary-460"
-					>
+					<div class="divide-y-2 divide-gray-200 rounded-lg shadow-2xl bg-main-light-500 dark:bg-main-dark-500">
 						<div class="px-5 pt-5 pb-6">
 							<div class="flex items-center justify-between">
 								<div>
@@ -110,21 +130,26 @@
 											items-center
 											justify-center
 											p-2
-											text-gray-200
 											rounded-md
-											hover:text-gray-200 hover:bg-main-primary-630
-											focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
+											focus:outline-none
+											hover:bg-main-light-560
+											dark:hover:bg-main-dark-560
 										"
 									>
 										<span class="sr-only">Close menu</span>
-										<heroicons-outline:x class="w-6 h-6" aria-hidden="true" />
+										<heroicons-outline:x class="w-6 h-6 text-gray-800 dark:text-gray-100" aria-hidden="true" />
 									</PopoverButton>
 								</div>
 							</div>
 
 							<div class="mt-6">
 								<nav class="grid gap-y-8">
-									<router-link to="/" class="navbar-mobile-item" active-class="bg-main-primary-600" @click="close()">
+									<router-link
+										to="/"
+										class="navbar-mobile-item"
+										active-class="bg-main-light-600 dark:bg-main-dark-600"
+										@click="close()"
+									>
 										<heroicons-outline:home />
 										<span class="navbar-mobile-item-name"> Home </span>
 									</router-link>
@@ -132,7 +157,7 @@
 									<router-link
 										to="/clans"
 										class="navbar-mobile-item"
-										active-class="bg-main-primary-600"
+										active-class="bg-main-light-600 dark:bg-main-dark-600"
 										@click="close()"
 									>
 										<heroicons-outline:shield-check /><span class="navbar-mobile-item-name">Clans</span>
@@ -141,7 +166,7 @@
 									<router-link
 										to="/league"
 										class="navbar-mobile-item"
-										active-class="bg-main-primary-600"
+										active-class="bg-main-light-600 dark:bg-main-dark-600"
 										@click="close()"
 									>
 										<heroicons-outline:globe /><span class="navbar-mobile-item-name">Leagues</span>
@@ -150,7 +175,7 @@
 									<router-link
 										to="/docs"
 										class="navbar-mobile-item"
-										active-class="bg-main-primary-600"
+										active-class="bg-main-light-600 dark:bg-main-dark-600"
 										@click="close()"
 									>
 										<heroicons-outline:document-text /><span class="navbar-mobile-item-name">Documentation</span>
@@ -176,16 +201,25 @@
 										border border-transparent
 										rounded-md
 										shadow-sm
-										bg-main-primary-700
-										hover:bg-main-primary-760
+										bg-main-textDark-560
+										hover:bg-main-textLight-560
+										dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
 									"
 									@click="close()"
 									>Register
 								</router-link>
-								<p class="mt-6 text-base font-medium text-center text-gray-200">
+								<p class="mt-6 text-base text-center font-medium text-gray-800 dark:text-gray-100">
 									Existing user?
 									{{ ' ' }}
-									<router-link to="/sign-in" class="text-main-primary-730 hover:text-main-primary-800" @click="close()"
+									<router-link
+										to="/sign-in"
+										class="
+											font-bold
+											text-main-textDark-600
+											dark:text-main-textLight-600 dark:hover:text-main-textDark-600
+											hover:text-main-textLight-600
+										"
+										@click="close()"
 										>Signin</router-link
 									>
 								</p>

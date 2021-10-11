@@ -1,8 +1,8 @@
 <template>
 	<div class="px-2 pt-12 pb-6 md:pt-20 md:px-0 transition-colors duration-1000">
-		<div class="max-w-lg p-8 mx-auto my-10 bg-gray-400 rounded-lg shadow-xl dark:bg-main-primary-600 md:p-12">
+		<div class="max-w-lg p-8 mx-auto my-10 bg-main-light-530 rounded-lg shadow-xl dark:bg-main-dark-500 md:p-12">
 			<section>
-				<h3 class="text-3xl font-black text-center text-main-primary-760">Register</h3>
+				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">Register</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
@@ -38,7 +38,7 @@
 						</span>
 					</div>
 					<div>
-						<label for="name" class="block text-lg font-semibold text-gray-50">Full Name</label>
+						<label for="name" class="block text-lg font-semibold text-gray-800 dark:text-gray-100">Full Name</label>
 						<input
 							id="name"
 							name="name"
@@ -62,7 +62,7 @@
 						/>
 					</div>
 					<div>
-						<label for="email" class="block mt-4 text-lg font-semibold text-gray-50">Email</label>
+						<label for="email" class="block mt-4 text-lg font-semibold text-gray-800 dark:text-gray-100">Email</label>
 						<input
 							id="email-address"
 							name="email"
@@ -86,7 +86,9 @@
 						/>
 					</div>
 					<div>
-						<label for="password" class="block mt-4 text-lg font-semibold text-gray-50">Password</label>
+						<label for="password" class="block mt-4 text-lg font-semibold text-gray-800 dark:text-gray-100"
+							>Password</label
+						>
 						<input
 							id="password"
 							name="password"
@@ -111,7 +113,9 @@
 						/>
 					</div>
 					<div>
-						<label for="_password" class="block mt-4 text-lg font-semibold text-gray-50">Confirm Password</label>
+						<label for="_password" class="block mt-4 text-lg font-semibold text-gray-800 dark:text-gray-100"
+							>Confirm Password</label
+						>
 						<input
 							id="_password"
 							name="_password"
@@ -177,8 +181,10 @@
 							border border-transparent
 							rounded
 							shadow-md
-							bg-main-primary-700
-							hover:bg-main-primary-760 hover:shadow-xl
+							bg-main-textDark-560
+							hover:bg-main-textLight-560
+							dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+							hover:shadow-xl
 						"
 						type="submit"
 					>
@@ -201,7 +207,8 @@
 							border border-transparent
 							rounded-md
 							cursor-not-allowed
-							bg-main-primary-660
+							bg-main-textDark-500
+							dark:bg-main-textLight-500
 						"
 						disabled
 					>
@@ -221,9 +228,18 @@
 						Register
 					</button>
 					<div class="flex justify-center mt-8">
-						<p class="text-white">
+						<p class="font-semibold text-gray-800 dark:text-gray-100">
 							Already have an account?
-							<a href="#" class="font-bold text-main-primary-800 hover:underline hover:text-main-primary-830">Login</a>
+							<a
+								href="#"
+								class="
+									font-bold
+									text-main-textDark-600
+									dark:text-main-textLight-600 dark:hover:text-main-textDark-600
+									hover:text-main-textLight-600
+								"
+								>Login</a
+							>
 						</p>
 					</div>
 				</form>
