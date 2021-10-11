@@ -2,19 +2,8 @@
 	<div class="grid min-h-[calc(100vh-68px)] grid-layout">
 		<Navbar />
 		<div id="container" class="grid grid-layout-container lg:custom-scroll">
-			<div class="transition-colors duration-1000 bg-main-light-600 dark:bg-main-dark-630">
-				<div
-					class="
-						max-w-6xl
-						min-h-full
-						p-1
-						mx-auto
-						transition-colors
-						duration-1000
-						bg-main-light-560
-						dark:bg-main-dark-560
-					"
-				>
+			<div class="bg-main-light-600 dark:bg-main-dark-630">
+				<div class="max-w-6xl min-h-full p-1 mx-auto bg-main-light-560 dark:bg-main-dark-560">
 					<router-view />
 				</div>
 				<Footer />

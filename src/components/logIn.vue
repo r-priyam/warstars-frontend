@@ -1,20 +1,6 @@
 <template>
 	<div class="px-2 pt-12 pb-6 md:pt-20 md:px-0">
-		<div
-			class="
-				max-w-lg
-				p-8
-				mx-auto
-				my-10
-				transition-colors
-				duration-1000
-				bg-main-light-530
-				rounded-lg
-				shadow-xl
-				dark:bg-main-dark-500
-				md:p-12
-			"
-		>
+		<div class="max-w-lg p-8 mx-auto my-10 bg-main-light-530 rounded-lg shadow-xl dark:bg-main-dark-500 md:p-12">
 			<section>
 				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">Login</h3>
 			</section>
