@@ -5,8 +5,9 @@ import Home from '~/pages/Index.vue';
 
 const routes = [
 	{ path: '/', component: Home },
-	{ path: '/sign-in', component: SignIn },
+	{ path: '/sign-in', component: SignIn, meta: { requiresAuth: true } },
 	{ path: '/register', component: Register },
+	{ path: '/:pathMatch(.*)*', component: Home },
 ];
 
 const router = createRouter({
