@@ -204,7 +204,7 @@ export default {
 				event.preventDefault();
 				commitSetLogInError(store, false);
 				const email = event.target.elements.email?.value;
-				const password = passwordToHex(event.target.elements.password?.value);
+				const password = passwordToHex(String(event.target.elements.password?.value));
 				await dispatchLogIn(store, { email: email, password: password });
 			},
 

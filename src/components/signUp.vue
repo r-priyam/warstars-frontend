@@ -285,11 +285,16 @@ export default {
 				event.preventDefault();
 				showPasswordError.value = false;
 				commitSetError(store, { error: false, message: '' });
-				if (passwordValidate(event.target.elements.password?.value, event.target.elements._password?.value)) {
+				if (
+					passwordValidate(
+						String(event.target.elements.password?.value),
+						String(event.target.elements._password?.value),
+					)
+				) {
 					const newUser: IUserProfileCreate = {
 						full_name: event.target.elements.name?.value,
 						email: event.target.elements.email?.value,
-						password: passwordToHex(event.target.elements.password?.value),
+						password: passwordToHex(String(event.target.elements.password?.value)),
 					};
 					await dispatchSignUp(store, newUser);
 				} else {

@@ -15,7 +15,7 @@ export const actions = {
 			commitSetProcessing(context, true);
 			const response = await auth.logIn(payload.email, payload.password);
 			if (response.status === 200) {
-				const token = getCookie('_auth_token');
+				const token: string = getCookie('_auth_token');
 				commitSetToken(context, token);
 				commitSetLoggedIn(context, true);
 			}
