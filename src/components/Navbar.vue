@@ -133,8 +133,7 @@
 						md:hidden
 						left-1/2
 						-translate-x-1/2
-						lg:max-w-lg
-						max-w-md
+						max-w-screen
 						rounded-md
 						sm:px-0
 					"
