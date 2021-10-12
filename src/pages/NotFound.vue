@@ -2,8 +2,8 @@
 	<div class="px-2 pt-12 pb-6 md:pt-20 md:px-0">
 		<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
 			<div class="max-w-md">
-				<h3 class="mb-6 font-black text-center text-9xl text-main-fail-650">404</h3>
-				<p class="text-5xl font-extrabold text-center text-main-fail-600">Oops!</p>
+				<h3 class="mb-6 font-black text-center text-9xl text-main-fail-650 dark:text-main-fail-400">404</h3>
+				<p class="text-5xl font-extrabold text-center text-main-fail-600 dark:text-main-fail-400">Oops!</p>
 				<p class="mt-6 text-xl font-bold text-main-textDark-500 dark:text-main-textLight-500">
 					The page you requested doesn't exist.
 				</p>
