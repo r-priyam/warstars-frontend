@@ -26,12 +26,12 @@
 						>
 							<heroicons-outline-sun
 								v-if="!isDarkMode"
-								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
 								aria-hidden="true"
 							/>
 							<heroicons-outline-moon
 								v-else
-								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
 								aria-hidden="true"
 							/>
 						</button>
@@ -45,7 +45,10 @@
 							"
 						>
 							<span class="sr-only">Open menu</span>
-							<heroicons-outline-menu class="w-6 h-6 text-gray-800 dark:text-gray-100" aria-hidden="true" />
+							<heroicons-outline-menu
+								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
+								aria-hidden="true"
+							/>
 						</PopoverButton>
 					</div>
 					<PopoverGroup as="nav" class="hidden space-x-2 md:flex">
@@ -85,12 +88,12 @@
 						>
 							<heroicons-outline-sun
 								v-if="!isDarkMode"
-								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
 								aria-hidden="true"
 							/>
 							<heroicons-outline-moon
 								v-else
-								class="w-6 h-6 text-gray-800 dark:text-gray-100 fill-current"
+								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
 								aria-hidden="true"
 							/>
 						</button>
@@ -108,17 +111,33 @@
 			</div>
 
 			<transition
-				enter-active-class="transition duration-300 ease-out transform-gpu"
-				enter-from-class="translate-x-12 opacity-0"
-				enter-to-class="translate-x-0 opacity-100"
-				leave-active-class="duration-200 ease-in"
+				enter-active-class="duration-200 ease-out"
+				enter-from-class="scale-95 opacity-0"
+				enter-to-class="scale-100 opacity-100"
+				leave-active-class="duration-100 ease-in"
 				leave-from-class="scale-100 opacity-100"
 				leave-to-class="scale-95 opacity-0"
 			>
 				<PopoverPanel
 					v-slot="{ close }"
 					focus
-					class="absolute inset-x-0 top-0 z-20 transition origin-top-right transform md:hidden"
+					class="
+						absolute
+						inset-x-0
+						top-0
+						w-screen
+						z-20
+						transition
+						origin-top-right
+						transform
+						md:hidden
+						left-1/2
+						-translate-x-1/2
+						lg:max-w-lg
+						max-w-md
+						rounded-md
+						sm:px-0
+					"
 				>
 					<div class="divide-y-2 divide-gray-200 rounded-lg shadow-2xl bg-main-light-500 dark:bg-main-dark-500">
 						<div class="px-5 pt-5 pb-6">
@@ -140,7 +159,10 @@
 										"
 									>
 										<span class="sr-only">Close menu</span>
-										<heroicons-outline:x class="w-6 h-6 text-gray-800 dark:text-gray-100" aria-hidden="true" />
+										<heroicons-outline:x
+											class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
+											aria-hidden="true"
+										/>
 									</PopoverButton>
 								</div>
 							</div>
@@ -223,7 +245,7 @@
 											hover:text-main-textLight-600
 										"
 										@click="close()"
-										>Signin</router-link
+										>Login</router-link
 									>
 								</p>
 								<br />
