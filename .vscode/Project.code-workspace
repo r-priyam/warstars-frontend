@@ -12,6 +12,8 @@
 		"files.associations": {
 			"*.css": "postcss"
 		},
-		"headwind.runOnSave": false
+		"headwind.runOnSave": false,
+		"files.autoSave": "afterDelay",
+		"editor.fontFamily": "Menlo, Consolas, 'Courier New', monospace"
 	}
 }

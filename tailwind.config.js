@@ -1,10 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
 	mode: 'jit',
 	purge: ['./index.html', './src/**/*.{vue,js}'],
 	darkMode: 'class',
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+			},
 			colors: {
 				main: {
 					600: '#1574d3',
