@@ -30,7 +30,7 @@ specifiers:
   typesafe-vuex: 3.2.2
   typescript: 4.4.4
   unplugin-auto-import: 0.4.12
-  unplugin-icons: 0.12.14
+  unplugin-icons: 0.12.15
   vite: 2.6.7
   vite-plugin-components: 0.13.3
   vite-plugin-pages: 0.18.1
@@ -77,7 +77,7 @@ devDependencies:
   tailwindcss: 2.2.16_96f83969316717847b3edf58a3f353f3
   typescript: 4.4.4
   unplugin-auto-import: 0.4.12_@vueuse+core@6.5.3+vite@2.6.7
-  unplugin-icons: 0.12.14_516660dd98e96ac5abe543c1e0bf3d94
+  unplugin-icons: 0.12.15_516660dd98e96ac5abe543c1e0bf3d94
   vite: 2.6.7
   vite-plugin-components: 0.13.3_vite@2.6.7
   vite-plugin-pages: 0.18.1_e14ef356e1d12d404481b7eb2ba1650f
@@ -3469,8 +3469,8 @@ packages:
       mlly: 0.2.6
     dev: true
 
-  /local-pkg/0.3.0:
-    resolution: {integrity: sha512-JapWObmC38atpkIh2Y8M3223TP+GsdtR4s28Kut7Q98PT6MX7VwvAwPs2/rxpwi+hbDiHM4+dIvRCU67k+qHag==}
+  /local-pkg/0.4.0:
+    resolution: {integrity: sha512-2XBWjO/v63JeR1HPzLJxdTVRQDB84Av2p2KtBA5ahvpyLUPubcAU6iXlAJrONcY7aSqgJhXxElAnKtnYsRolPQ==}
     engines: {node: '>=14'}
     dependencies:
       mlly: 0.2.6
@@ -4556,8 +4556,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-icons/0.12.14_516660dd98e96ac5abe543c1e0bf3d94:
-    resolution: {integrity: sha512-RluQyQa7b0qMlkKa6HPD27K/Vd6u+gjIZvqfM8gcU6eIfWKhDOZvukpUpHUqPtzpy+ANUJzlfAL59h+5CCeaBA==}
+  /unplugin-icons/0.12.15_516660dd98e96ac5abe543c1e0bf3d94:
+    resolution: {integrity: sha512-irLvZ09zfhBczb4D6ZJgns4rgYwxkJjdrFi62Iql7iFIrJsP6FmrrRJ0C+iWWo1XHSF+tFWugoL7Wye9yVy+dA==}
     peerDependencies:
       '@svgr/core': ^5.5.0
       '@vue/compiler-sfc': ^3.0.2
@@ -4579,7 +4579,7 @@ packages:
       '@vue/compiler-sfc': 3.2.20
       debug: 4.3.2
       kolorist: 1.5.0
-      local-pkg: 0.3.0
+      local-pkg: 0.4.0
       unplugin: 0.2.16_vite@2.6.7
       vue-template-compiler: 2.6.14
     transitivePeerDependencies:
