@@ -3,7 +3,7 @@
 		<Navbar />
 		<div id="container" class="grid grid-layout-container lg:custom-scroll">
 			<div class="bg-main-light-600 dark:bg-main-dark-630">
-				<div class="max-w-6xl min-h-full p-1 mx-auto bg-main-light-560 dark:bg-main-dark-560">
+				<div class="max-w-6xl min-h-full mx-auto bg-main-light-560 dark:bg-main-dark-560">
 					<router-view />
 				</div>
 				<Footer />
