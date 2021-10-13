@@ -1,5 +1,5 @@
 <template>
-	<header class="bg-main-light-500 dark:bg-main-dark-500">
+	<header class="sticky top-0 bg-main-light-500 dark:bg-main-dark-500">
 		<Popover class="sticky top-0 z-40">
 			<div class="px-2 mx-auto max-w-7xl sm:px-6">
 				<div class="flex items-center justify-between py-2 border-gray-100 md:justify-start">
