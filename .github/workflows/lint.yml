@@ -13,13 +13,13 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install NPM
+      - name: Install PNPM
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.0.2
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Run ESLint
         run: pnpm run lint
@@ -36,13 +36,13 @@ jobs:
         with:
           node-version: 16
           
-      - name: Install NPM
+      - name: Install PNPM
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.0.2
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Run site build
         run: pnpm run build
