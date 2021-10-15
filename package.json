@@ -24,7 +24,7 @@
 		"vuex": "4.0.2"
 	},
 	"devDependencies": {
-		"@iconify/json": "1.1.413",
+		"@iconify/json": "1.1.415",
 		"@types/node": "16.9.6",
 		"@typescript-eslint/eslint-plugin": "5.0.0",
 		"@typescript-eslint/parser": "5.0.0",
