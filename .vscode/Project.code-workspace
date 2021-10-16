@@ -14,6 +14,7 @@
 		},
 		"headwind.runOnSave": false,
 		"files.autoSave": "afterDelay",
-		"editor.fontFamily": "Menlo, Consolas, 'Courier New', monospace"
+		"editor.fontFamily": "Menlo, Consolas, 'Courier New', monospace",
+		"python.envFile": "${workspaceFolder}/.venv"
 	}
 }
