@@ -27,7 +27,7 @@
 		"@iconify/json": "1.1.417",
 		"@types/node": "16.9.6",
 		"@typescript-eslint/eslint-plugin": "5.0.0",
-		"@typescript-eslint/parser": "5.0.0",
+		"@typescript-eslint/parser": "5.1.0",
 		"@vitejs/plugin-vue": "1.9.3",
 		"@vue/compiler-sfc": "3.2.20",
 		"@vue/component-compiler-utils": "3.2.2",
