@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@headlessui/vue': 1.4.1
-  '@iconify/json': 1.1.418
+  '@iconify/json': 1.1.419
   '@tailwindcss/aspect-ratio': 0.3.0
   '@tailwindcss/forms': 0.3.4
   '@tailwindcss/line-clamp': 0.2.2
@@ -58,7 +58,7 @@ dependencies:
   vuex: 4.0.2_vue@3.2.20
 
 devDependencies:
-  '@iconify/json': 1.1.418
+  '@iconify/json': 1.1.419
   '@types/node': 16.9.6
   '@typescript-eslint/eslint-plugin': 5.1.0_273a00ec265649c49755eee7222c1c12
   '@typescript-eslint/parser': 5.1.0_eslint@8.1.0+typescript@4.4.4
@@ -1271,8 +1271,8 @@ packages:
     resolution: {integrity: sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==}
     dev: true
 
-  /@iconify/json/1.1.418:
-    resolution: {integrity: sha512-cmgTpsPhWu0PkA/O3YEe2LHAWTiT3u5xfAnPt050JAbYCpTin7IDxBmTM3o5JzIf8Q7vuNd+vJDnYvZ86gCBzA==}
+  /@iconify/json/1.1.419:
+    resolution: {integrity: sha512-1WQrbKNxuEg8NwyWO7xh7IbMacizCHvrrRSOVzllj69vpiOY4vSW+iI0INvj40SyJ16GdMDCeTdmQr28mlqhog==}
     dev: true
 
   /@iconify/types/1.0.10:
