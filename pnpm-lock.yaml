@@ -17,7 +17,7 @@ specifiers:
   '@vueuse/motion': 2.0.0-beta.4
   autoprefixer: 10.4.0
   axios: 0.24.0
-  clashofclans.js: 1.5.4
+  clashofclans.js: 1.5.5
   eslint: 8.1.0
   eslint-config-marine: 9.0.6
   eslint-config-prettier: 8.3.0
@@ -51,7 +51,7 @@ dependencies:
   '@vueuse/core': 6.7.4_vue@3.2.20
   '@vueuse/motion': 2.0.0-beta.4_vue@3.2.20
   axios: 0.24.0
-  clashofclans.js: 1.5.4
+  clashofclans.js: 1.5.5
   typesafe-vuex: 3.2.2_vuex@4.0.2
   vue: 3.2.20
   vue-router: 4.0.12_vue@3.2.20
@@ -2068,8 +2068,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /clashofclans.js/1.5.4:
-    resolution: {integrity: sha512-+u623/oIxu/kBkfrC6L9Cx7DvaT2ivM+mJpM4CoS+w+DMyaH9/oegBSe1efDSZfucrIfwPhgFnzkHoYV4zF/4Q==}
+  /clashofclans.js/1.5.5:
+    resolution: {integrity: sha512-HKTTjQsLjYbYDgiouPUmuknTrAt9Pikn+V6XRQ8kG3R9BRpEy67a72jPJs04mcMHcNF02WqXtIxp5dptHDx4lw==}
     engines: {node: '>=14.x'}
     dependencies:
       node-fetch: 2.6.5
