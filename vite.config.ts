@@ -29,8 +29,9 @@ export default defineConfig({
 	],
 	server: {
 		host: true,
-		open: false,
+		open: true,
 		port: 3333,
 		strictPort: true,
 	},
+	clearScreen: false,
 });
