@@ -4,7 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
-import ViteComponents from 'vite-plugin-components';
+import Components from 'unplugin-vue-components/vite';
 
 export default defineConfig({
 	resolve: {
@@ -18,8 +18,8 @@ export default defineConfig({
 			dts: 'src/auto-imports.d.ts',
 			imports: ['vue', '@vueuse/core'],
 		}),
-		ViteComponents({
-			customComponentResolvers: [
+		Components({
+			resolvers: [
 				IconsResolver({
 					componentPrefix: '',
 				}),
