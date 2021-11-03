@@ -24,16 +24,26 @@
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
-							<heroicons-outline-sun
-								v-if="!isDarkMode"
-								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
-								aria-hidden="true"
-							/>
-							<heroicons-outline-moon
-								v-else
-								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
-								aria-hidden="true"
-							/>
+							<transition
+								enter-active-class="transition transform duration-[0.15s] ease-linear"
+								leave-active-class="transition transform duration-[0.15s] ease-linear"
+								enter-from-class="tranform -translate-y-full"
+								enter-to-class="transform translate-y-0"
+								leave-from-class="transform translate-y-0"
+								leave-to-class="transform translate-y-full"
+								mode="out-in"
+							>
+								<heroicons-outline-sun
+									v-if="!isDarkMode"
+									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									aria-hidden="true"
+								/>
+								<heroicons-outline-moon
+									v-else
+									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									aria-hidden="true"
+								/>
+							</transition>
 						</button>
 						<PopoverButton
 							class="
@@ -86,16 +96,26 @@
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
-							<heroicons-outline-sun
-								v-if="!isDarkMode"
-								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
-								aria-hidden="true"
-							/>
-							<heroicons-outline-moon
-								v-else
-								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
-								aria-hidden="true"
-							/>
+							<transition
+								enter-active-class="transition transform duration-[0.15s] ease-linear"
+								leave-active-class="transition transform duration-[0.15s] ease-linear"
+								enter-from-class="tranform -translate-y-full"
+								enter-to-class="transform translate-y-0"
+								leave-from-class="transform translate-y-0"
+								leave-to-class="transform translate-y-full"
+								mode="out-in"
+							>
+								<heroicons-outline-sun
+									v-if="!isDarkMode"
+									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									aria-hidden="true"
+								/>
+								<heroicons-outline-moon
+									v-else
+									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									aria-hidden="true"
+								/>
+							</transition>
 						</button>
 						<router-link to="/register" class="mr-2 navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
 							><heroicons-outline:pencil-alt class="w-5 h-5 mr-1" /><span>Register</span>
