@@ -30,7 +30,7 @@ specifiers:
   typesafe-vuex: 3.2.2
   typescript: 4.4.4
   unplugin-auto-import: 0.4.13
-  unplugin-icons: 0.12.17
+  unplugin-icons: 0.12.18
   vite: 2.6.13
   vite-plugin-components: 0.13.3
   vite-plugin-pages: 0.18.2
@@ -77,7 +77,7 @@ devDependencies:
   tailwindcss: 2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
   typescript: 4.4.4
   unplugin-auto-import: 0.4.13_@vueuse+core@6.7.4+vite@2.6.13
-  unplugin-icons: 0.12.17_eacdef8942d64dcaa1840eb45e030f72
+  unplugin-icons: 0.12.18_eacdef8942d64dcaa1840eb45e030f72
   vite: 2.6.13
   vite-plugin-components: 0.13.3_vite@2.6.13
   vite-plugin-pages: 0.18.2_8d243728697ba143b290806bcef1890d
@@ -4543,8 +4543,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-icons/0.12.17_eacdef8942d64dcaa1840eb45e030f72:
-    resolution: {integrity: sha512-y6KNKlwcLXlbfpZY48lO0blsH/uwHbvxD2sgCaw1AhgFk9Bjw7hA1kQxhUWPAIRySeobve2YP7HGKLHoIctXPA==}
+  /unplugin-icons/0.12.18_eacdef8942d64dcaa1840eb45e030f72:
+    resolution: {integrity: sha512-o2nc6AGGk4StTx5xMTndVBylszRg/hJvHMO1eEFfrfw9yh+eedre2S4F8EHltn3FjADL2a17GpXcvCAwmONgXA==}
     peerDependencies:
       '@svgr/core': ^5.5.0
       '@vue/compiler-sfc': ^3.0.2
