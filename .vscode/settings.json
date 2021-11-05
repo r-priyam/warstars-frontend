@@ -8,5 +8,6 @@
 	"files.associations": {
 		"*.css": "postcss"
 	},
-	"editor.fontFamily": "Menlo Regular, Seoge UI, Consolas, 'Courier New', monospace"
+	"editor.fontFamily": "Menlo Regular, Seoge UI, Consolas, 'Courier New', monospace",
+	"python.envFile": "${workspaceFolder}/.venv"
 }
