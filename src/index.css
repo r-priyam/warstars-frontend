@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-	html, div, header, footer {
+	html,
+	div,
+	header,
+	footer {
 		@apply transition-colors duration-1000;
 	}
 }
@@ -37,4 +40,18 @@
 	.navbar-mobile-item-name {
 		@apply ml-3 text-base font-medium text-main-textDark-600 dark:text-main-textLight-530;
 	}
+}
+
+#nprogress {
+	pointer-events: none;
+}
+
+#nprogress .bar {
+	background: #2e78a9;
+	position: fixed;
+	z-index: 1031;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
 }
