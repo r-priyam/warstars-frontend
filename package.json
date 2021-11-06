@@ -34,7 +34,7 @@
 		"@vue/compiler-sfc": "3.2.21",
 		"@vue/component-compiler-utils": "3.3.0",
 		"autoprefixer": "10.4.0",
-		"eslint": "8.1.0",
+		"eslint": "8.2.0",
 		"eslint-config-marine": "9.0.6",
 		"eslint-config-prettier": "8.3.0",
 		"eslint-plugin-prettier": "4.0.0",
