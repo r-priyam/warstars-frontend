@@ -117,14 +117,11 @@
 								/>
 							</transition>
 						</button>
-						<router-link to="/register" class="mr-2 navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><heroicons-outline:pencil-alt class="w-5 h-5 mr-1" /><span>Register</span>
-						</router-link>
 						<router-link
-							to="/sign-in"
+							to="/login"
 							class="navbar-item bg-main-light-660 dark:bg-main-dark-660"
 							active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><heroicons-solid:logout class="w-5 h-5 mr-1" /><span>Login</span>
+							><mdi:discord class="w-5 h-5 mr-1" /><span>Login</span>
 						</router-link>
 					</div>
 				</div>
@@ -231,7 +228,7 @@
 						<div class="px-5 py-6 space-y-6">
 							<div>
 								<router-link
-									to="/register"
+									to="/login"
 									class="
 										flex
 										items-center
@@ -250,25 +247,8 @@
 										dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
 									"
 									@click="close()"
-									>Register
+									><mdi:discord class="w-5 h-5 mr-1" />Login with Discord
 								</router-link>
-								<p class="mt-6 text-base text-center font-medium text-gray-800 dark:text-gray-100">
-									Existing user?
-									{{ ' ' }}
-									<router-link
-										to="/sign-in"
-										class="
-											font-bold
-											text-main-textDark-600
-											dark:text-main-textLight-600 dark:hover:text-main-textDark-600
-											hover:text-main-textLight-600
-										"
-										@click="close()"
-										>Login</router-link
-									>
-								</p>
-								<br />
-								<div class="text-center"></div>
 							</div>
 						</div>
 					</div>
