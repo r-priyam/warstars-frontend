@@ -47,11 +47,15 @@
 }
 
 #nprogress .bar {
-	background: #2e78a9;
+	background: #0f4c75;
 	position: fixed;
 	z-index: 1031;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 2px;
+}
+
+.dark #nprogress .bar {
+	background: #2e78a9;
 }
