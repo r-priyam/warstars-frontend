@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	html,
-	div,
-	header,
-	footer {
-		@apply transition-colors duration-1000;
-	}
-}
-
 @layer components {
 	.navbar-open-menu {
 		@apply focus:outline-none hover:text-gray-400 inline-flex items-center justify-center p-2 rounded-md text-gray-300;

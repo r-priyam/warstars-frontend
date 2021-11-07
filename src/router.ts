@@ -3,6 +3,7 @@ import NProgress from 'nprogress';
 
 const routes: RouteRecordRaw[] = [
 	{ path: '/', component: () => import('~/pages/HomePage.vue') },
+	{ path: '/dashboard', component: () => import('~/pages/DashBoard.vue') },
 	{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
 ];
 
