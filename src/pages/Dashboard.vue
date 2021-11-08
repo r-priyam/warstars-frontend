@@ -52,8 +52,8 @@
 							overflow-y-auto
 							border-r
 							shadow-inner
-							bg-main-light-600
-							dark:bg-main-dark-630
+							bg-main-light-560
+							dark:bg-main-dark-560
 						"
 					>
 						<DashboardSidebar />
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 
-			<div class="flex-1 bg-white focus:outline-none">
+			<div class="flex-1 bg-main-light-560 dark:bg-main-dark-560 focus:outline-none">
 				<div class="relative flex flex-shrink-0 h-16 border-gray-200 z-1 lg:border-none lg:hidden">
 					<button
 						class="
