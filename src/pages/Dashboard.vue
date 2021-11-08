@@ -31,7 +31,7 @@
 							"
 						>
 							<div ref="sidebarElement" class="pt-5 pb-4 overflow-hidden overflow-y-auto">
-								<DashboardSidebar />
+								<DashboardSidebar @close-sidebar="handleSidebarEvent" />
 							</div>
 						</div>
 					</TransitionChild>
@@ -99,8 +99,6 @@
 import DashboardSidebar from '~/components/SideBar.vue';
 import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
-export const sidebarOpen = ref(false);
-
 export default defineComponent({
 	name: 'AppDashboard',
 	components: {
@@ -111,10 +109,13 @@ export default defineComponent({
 	},
 	setup() {
 		const sidebarElement = ref(null);
+		const sidebarOpen = ref(false);
+		const handleSidebarEvent = (event: boolean) => (sidebarOpen.value = event);
 		onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
 		return {
 			sidebarOpen,
 			sidebarElement,
+			handleSidebarEvent,
 		};
 	},
 });

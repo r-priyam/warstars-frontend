@@ -62,17 +62,21 @@
 						</PopoverButton>
 					</div>
 					<PopoverGroup as="nav" class="hidden space-x-2 md:flex">
-						<router-link to="/" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><heroicons-outline:home class="w-5 h-5 mr-1" /> <span>Home</span>
+						<router-link to="/" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
+							<heroicons-outline:home class="w-5 h-5 mr-1" />
+							<span>Home</span>
 						</router-link>
-						<router-link to="/clans" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><heroicons-outline:shield-check class="w-5 h-5 mr-1" /> <span>Clans</span>
+						<router-link to="/clans" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
+							<heroicons-outline:shield-check class="w-5 h-5 mr-1" />
+							<span>Clans</span>
 						</router-link>
-						<router-link to="/leagues" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><heroicons-outline:globe class="w-5 h-5 mr-1" /><span>Leagues</span>
+						<router-link to="/leagues" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
+							<heroicons-outline:globe class="w-5 h-5 mr-1" />
+							<span>Leagues</span>
 						</router-link>
-						<router-link to="/docs" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><heroicons-outline:document-text class="w-5 h-5 mr-1" /><span>Docs</span>
+						<router-link to="/docs" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
+							<heroicons-outline:document-text class="w-5 h-5 mr-1" />
+							<span>Docs</span>
 						</router-link>
 					</PopoverGroup>
 					<div class="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
@@ -121,7 +125,9 @@
 							to="/login"
 							class="navbar-item bg-main-light-660 dark:bg-main-dark-660"
 							active-class="bg-main-light-600 dark:bg-main-dark-600"
-							><mdi:discord class="w-5 h-5 mr-1" /><span>Login</span>
+						>
+							<mdi:discord class="w-5 h-5 mr-1" />
+							<span>Login</span>
 						</router-link>
 					</div>
 				</div>
@@ -192,7 +198,7 @@
 										@click="close()"
 									>
 										<heroicons-outline:home />
-										<span class="navbar-mobile-item-name"> Home </span>
+										<span class="navbar-mobile-item-name">Home</span>
 									</router-link>
 
 									<router-link
@@ -201,7 +207,8 @@
 										active-class="bg-main-light-600 dark:bg-main-dark-600"
 										@click="close()"
 									>
-										<heroicons-outline:shield-check /><span class="navbar-mobile-item-name">Clans</span>
+										<heroicons-outline:shield-check />
+										<span class="navbar-mobile-item-name">Clans</span>
 									</router-link>
 
 									<router-link
@@ -210,7 +217,8 @@
 										active-class="bg-main-light-600 dark:bg-main-dark-600"
 										@click="close()"
 									>
-										<heroicons-outline:globe /><span class="navbar-mobile-item-name">Leagues</span>
+										<heroicons-outline:globe />
+										<span class="navbar-mobile-item-name">Leagues</span>
 									</router-link>
 
 									<router-link
@@ -219,7 +227,8 @@
 										active-class="bg-main-light-600 dark:bg-main-dark-600"
 										@click="close()"
 									>
-										<heroicons-outline:document-text /><span class="navbar-mobile-item-name">Documentation</span>
+										<heroicons-outline:document-text />
+										<span class="navbar-mobile-item-name">Documentation</span>
 									</router-link>
 								</nav>
 							</div>
@@ -247,7 +256,8 @@
 										dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
 									"
 									@click="close()"
-									><mdi:discord class="w-5 h-5 mr-1" />Login with Discord
+								>
+									<mdi:discord class="w-5 h-5 mr-1" />Login with Discord
 								</router-link>
 							</div>
 						</div>
