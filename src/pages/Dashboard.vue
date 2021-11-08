@@ -62,19 +62,27 @@
 			</div>
 
 			<div class="flex-1 bg-main-light-560 dark:bg-main-dark-560 focus:outline-none">
-				<div class="relative flex flex-shrink-0 h-16 border-gray-200 z-1 lg:border-none lg:hidden">
+				<div class="relative flex flex-shrink-0 z-1 lg:hidden">
 					<button
 						class="
-							px-4
-							text-gray-400
-							bg-white
-							border-b border-r border-gray-200
-							focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-200
+							inline-flex
+							items-center
+							p-2
+							text-base
+							font-semibold
+							rounded-br-md
+							bg-main-light-630
+							dark:bg-main-dark-660
+							hover:bg-main-light-660
+							dark:hover:bg-main-dark-600
 						"
 						@click="sidebarOpen = true"
 					>
 						<span class="sr-only">Open sidebar</span>
-						<heroicons-outline:menu-alt-1 class="w-6 h-6" aria-hidden="true" />
+						<heroicons-outline:menu-alt-1
+							class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
+							aria-hidden="true"
+						/>
 					</button>
 				</div>
 				<main class="relative z-0 flex-1 min-h-full pb-8">
