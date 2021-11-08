@@ -2,8 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress';
 
 const routes: RouteRecordRaw[] = [
-	{ path: '/', component: () => import('~/pages/HomePage.vue') },
-	{ path: '/dashboard', component: () => import('~/pages/DashBoard.vue') },
+	{ path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
+	{ path: '/dashboard', name: 'Dashboard', component: () => import('~/pages/Dashboard.vue') },
 	{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
 ];
 

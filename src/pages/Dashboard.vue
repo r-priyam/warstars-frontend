@@ -93,7 +93,8 @@ import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
 export const sideBarOpen = ref(false);
 
-export default {
+export default defineComponent({
+	name: 'AppDashboard',
 	components: {
 		Dialog,
 		TransitionChild,
@@ -105,5 +106,5 @@ export default {
 			sideBarOpen,
 		};
 	},
-};
+});
 </script>

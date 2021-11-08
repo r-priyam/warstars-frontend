@@ -69,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import { sideBarOpen } from '~/pages/DashBoard.vue'; // @ts-ignore
+import { sideBarOpen } from '~/pages/Dashboard.vue'; // @ts-ignore
 import LinkPlayer from '~icons/mdi/account-plus'; // @ts-ignore
 import LinkedPlayers from '~icons/mdi/account-check'; // @ts-ignore
 import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-ignore
