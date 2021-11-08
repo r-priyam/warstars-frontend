@@ -11,17 +11,6 @@
 				>
 					<TransitionChild
 						as="template"
-						enter="transition-opacity ease-linear duration-300"
-						enter-from="opacity-0"
-						enter-to="opacity-100"
-						leave="transition-opacity ease-linear duration-300"
-						leave-from="opacity-100"
-						leave-to="opacity-0"
-					>
-						<DialogOverlay class="fixed inset-0 bg-gray-600 bg-opacity-25" />
-					</TransitionChild>
-					<TransitionChild
-						as="template"
 						enter="transition ease-in-out duration-300 transform"
 						enter-from="-translate-x-full"
 						enter-to="translate-x-0"
@@ -35,10 +24,10 @@
 								flex flex-col flex-1
 								w-full
 								max-w-xs
-								bg-main-light-600
-								dark:bg-main-dark-630
 								border-r
 								shadow-inner
+								bg-main-light-600
+								dark:bg-main-dark-630
 							"
 						>
 							<div class="pt-5 pb-4 overflow-hidden overflow-y-auto">
@@ -53,7 +42,7 @@
 			</TransitionRoot>
 
 			<!-- Static sidebar for desktop -->
-			<div class="hidden lg:flex lg:flex-shrink-0">
+			<div class="hidden max-h-screen lg:flex lg:flex-shrink-0">
 				<div class="flex flex-col w-64">
 					<div
 						class="
@@ -61,10 +50,10 @@
 							pt-5
 							pb-4
 							overflow-y-auto
-							bg-main-light-600
-							dark:bg-main-dark-630
 							border-r
 							shadow-inner
+							bg-main-light-600
+							dark:bg-main-dark-630
 						"
 					>
 						<DashboardSidebar />
@@ -100,14 +89,13 @@
 
 <script lang="ts">
 import DashboardSidebar from '~/components/SideBar.vue';
-import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue';
+import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
 export const sideBarOpen = ref(false);
 
 export default {
 	components: {
 		Dialog,
-		DialogOverlay,
 		TransitionChild,
 		TransitionRoot,
 		DashboardSidebar,

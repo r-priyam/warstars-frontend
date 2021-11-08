@@ -64,46 +64,6 @@
 					</router-link>
 				</div>
 			</div>
-
-			<div v-for="(nav, index) in leagueNavigation" :key="index" :class="[index === 0 ? '' : 'pt-3 mt-3']">
-				<div>
-					<span
-						v-if="nav.title"
-						class="text-xs font-extrabold uppercase text-main-textDark-700 dark:text-main-textLight-430"
-						>{{ nav.title }}</span
-					>
-					<div>
-						<span
-							v-for="item in nav.items"
-							:key="item.name"
-							class="
-								flex
-								items-center
-								px-2
-								py-2
-								text-sm
-								font-semibold
-								leading-6
-								rounded-md
-								text-main-textDark-600
-								dark:text-main-textLight-530
-								group
-							"
-						>
-							<component
-								:is="item.icon"
-								:class="[
-									$route.path === item.href ? 'text-primary' : 'text-secondary-dark',
-									'flex-shrink-0 w-6 h-6 mr-2',
-								]"
-								aria-hidden="true"
-							/>
-							{{ item.name }}
-							<div class="flex flex-row"><br />Test</div>
-						</span>
-					</div>
-				</div>
-			</div>
 		</nav>
 	</div>
 </template>
@@ -116,80 +76,80 @@ import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-ignore
 import LinkedClans from '~icons/mdi/account-multiple-check'; // @ts-ignore
 import LeagueQuetions from '~icons/mdi/chat-question'; // @ts-ignore
 import LeagueFaqs from '~icons/bi/question-diamond-fill'; // @ts-ignore
-import LeagueRegister from '~icons/heroicons-solid/pencil-alt';
-const navigation = [
-	{
-		title: 'Player',
-		items: [
-			{ name: 'Link Player', href: '/dashboard/fieldtest', icon: LinkPlayer },
-			{ name: 'Linked Players', href: '/dashboard/example', icon: LinkedPlayers },
-		],
-	},
-	{
-		title: 'Clan',
-		items: [
-			{ name: 'Link Clan', href: '/status', icon: LinkClan },
-			{ name: 'Linked Clans', href: '/support', icon: LinkedClans },
-		],
-	},
-	{
-		title: 'League Registration',
-		items: [
-			{ name: "What's This?", href: '/dashboard/guild', icon: LeagueQuetions },
-			{ name: "FAQ's", href: '/dashboard/settings', icon: LeagueFaqs },
-			{ name: 'Register', href: '/dashboard/guild', icon: LeagueRegister },
-		],
-	},
-];
+import LeagueRegister from '~icons/heroicons-solid/pencil-alt'; // @ts-ignore
+import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-ignore
+import LeagueDivisions from '~icons/heroicons-solid/globe'; // @ts-ignore
+import EditLeague from '~icons/mdi/shield-edit'; // @ts-ignore
+import EditDivision from '~icons/mdi/shield-edit-outline'; // @ts-ignore
+import HeadAdmin from '~icons/eos-icons/admin'; // @ts-ignore
+import DivisionAdmin from '~icons/eos-icons/admin-outlined'; // @ts-ignore
+import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-ignore
+import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-ignore
+import SeasonClans from '~icons/mdi/account-group'; // @ts-ignore
+import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-ignore
+import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-ignore
+import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard'; // @ts-ignore
 
-const leagueNavigation = [
-	{
-		title: 'League',
-		items: [
-			{
-				name: 'Core',
-				href: '/dashboard/example',
-				icon: LinkedPlayers,
-				items: [
-					{ name: 'Info', href: '/', icon: LinkPlayer },
-					{ name: 'Divisons', href: '/', icon: LinkPlayer },
-					{ name: 'Edit League', href: '/', icon: LinkPlayer },
-					{ name: 'Edit Division', href: '/', icon: LinkPlayer },
-				],
-			},
-			{
-				name: 'Admin',
-				href: '/dashboard/fieldtest',
-				icon: LinkPlayer,
-				items: [
-					{ name: 'Head Admins', href: '/', icon: LinkPlayer },
-					{ name: 'Division Admins', href: '/', icon: LinkPlayer },
-				],
-			},
-			// { name: 'Clans', href: '/dashboard/example', icon: LinkedPlayers, items: [] },
-			{
-				name: 'Season',
-				href: '/',
-				icon: LinkedPlayers,
-				items: [
-					{ name: 'Core', href: '/', icon: LinkPlayer },
-					{ name: 'Info', href: '/', icon: LinkPlayer },
-					{ name: 'Clans', href: '/', icon: LinkPlayer },
-					{ name: 'Matches', href: '/', icon: LinkPlayer },
-					{ name: 'Results', href: '/', icon: LinkPlayer },
-					{ name: 'Leaderboard', href: '/', icon: LinkPlayer },
-				],
-			},
-		],
-	},
-];
-export default {
+export default defineComponent({
 	setup() {
+		const navigation = [
+			{
+				title: 'Player',
+				items: [
+					{ name: 'Link Player', href: '/', icon: LinkPlayer },
+					{ name: 'Linked Players', href: '/', icon: LinkedPlayers },
+				],
+			},
+			{
+				title: 'Clan',
+				items: [
+					{ name: 'Link Clan', href: '/', icon: LinkClan },
+					{ name: 'Linked Clans', href: '/', icon: LinkedClans },
+				],
+			},
+			{
+				title: 'League Registration',
+				items: [
+					{ name: "What's This?", href: '/', icon: LeagueQuetions },
+					{ name: "FAQ's", href: '/', icon: LeagueFaqs },
+					{ name: 'Register', href: '/', icon: LeagueRegister },
+				],
+			},
+			{
+				title: 'League Core',
+				href: '/',
+				items: [
+					{ name: 'Info', href: '/', icon: LeagueInfo },
+					{ name: 'Divisons', href: '/', icon: LeagueDivisions },
+					{ name: 'Edit League', href: '/', icon: EditLeague },
+					{ name: 'Edit Division', href: '/', icon: EditDivision },
+				],
+			},
+			{
+				title: 'League Admin',
+				href: '/',
+				items: [
+					{ name: 'Head Admins', href: '/', icon: HeadAdmin },
+					{ name: 'Division Admins', href: '/', icon: DivisionAdmin },
+				],
+			},
+			{
+				title: 'League Season',
+				href: '/',
+				items: [
+					{ name: 'Core', href: '/', icon: SeasonCore },
+					{ name: 'Info', href: '/', icon: SeasonInfo },
+					{ name: 'Clans', href: '/', icon: SeasonClans },
+					{ name: 'Matches', href: '/', icon: SeasonMatches },
+					{ name: 'Results', href: '/', icon: SeasonResult },
+					{ name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },
+				],
+			},
+		];
 		return {
 			navigation,
-			leagueNavigation,
 			sideBarOpen,
 		};
 	},
-};
+});
 </script>
