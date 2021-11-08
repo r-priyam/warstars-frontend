@@ -68,7 +68,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 // @ts-ignore
 import LinkPlayer from '~icons/mdi/account-plus'; // @ts-ignore
 import LinkedPlayers from '~icons/mdi/account-check'; // @ts-ignore
@@ -90,66 +90,59 @@ import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-ignore
 import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-ignore
 import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard'; // @ts-ignore
 
-export default defineComponent({
-	emits: ['closeSidebar'],
-	setup() {
-		const navigation = [
-			{
-				title: 'Player',
-				items: [
-					{ name: 'Link Player', href: '/', icon: LinkPlayer },
-					{ name: 'Linked Players', href: '/', icon: LinkedPlayers },
-				],
-			},
-			{
-				title: 'Clan',
-				items: [
-					{ name: 'Link Clan', href: '/', icon: LinkClan },
-					{ name: 'Linked Clans', href: '/', icon: LinkedClans },
-				],
-			},
-			{
-				title: 'League Registration',
-				items: [
-					{ name: "What's This?", href: '/', icon: LeagueQuetions },
-					{ name: "FAQ's", href: '/', icon: LeagueFaqs },
-					{ name: 'Register', href: '/', icon: LeagueRegister },
-				],
-			},
-			{
-				title: 'League Core',
-				href: '/',
-				items: [
-					{ name: 'Info', href: '/', icon: LeagueInfo },
-					{ name: 'Divisons', href: '/', icon: LeagueDivisions },
-					{ name: 'Edit League', href: '/', icon: EditLeague },
-					{ name: 'Edit Division', href: '/', icon: EditDivision },
-				],
-			},
-			{
-				title: 'League Admin',
-				href: '/',
-				items: [
-					{ name: 'Head Admins', href: '/', icon: HeadAdmin },
-					{ name: 'Division Admins', href: '/', icon: DivisionAdmin },
-				],
-			},
-			{
-				title: 'League Season',
-				href: '/',
-				items: [
-					{ name: 'Core', href: '/', icon: SeasonCore },
-					{ name: 'Info', href: '/', icon: SeasonInfo },
-					{ name: 'Clans', href: '/', icon: SeasonClans },
-					{ name: 'Matches', href: '/', icon: SeasonMatches },
-					{ name: 'Results', href: '/', icon: SeasonResult },
-					{ name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },
-				],
-			},
-		];
-		return {
-			navigation,
-		};
+defineEmits(['closeSidebar']);
+const navigation = [
+	{
+		title: 'Player',
+		items: [
+			{ name: 'Link Player', href: '/', icon: LinkPlayer },
+			{ name: 'Linked Players', href: '/', icon: LinkedPlayers },
+		],
 	},
-});
+	{
+		title: 'Clan',
+		items: [
+			{ name: 'Link Clan', href: '/', icon: LinkClan },
+			{ name: 'Linked Clans', href: '/', icon: LinkedClans },
+		],
+	},
+	{
+		title: 'League Registration',
+		items: [
+			{ name: "What's This?", href: '/', icon: LeagueQuetions },
+			{ name: "FAQ's", href: '/', icon: LeagueFaqs },
+			{ name: 'Register', href: '/', icon: LeagueRegister },
+		],
+	},
+	{
+		title: 'League Core',
+		href: '/',
+		items: [
+			{ name: 'Info', href: '/', icon: LeagueInfo },
+			{ name: 'Divisons', href: '/', icon: LeagueDivisions },
+			{ name: 'Edit League', href: '/', icon: EditLeague },
+			{ name: 'Edit Division', href: '/', icon: EditDivision },
+		],
+	},
+	{
+		title: 'League Admin',
+		href: '/',
+		items: [
+			{ name: 'Head Admins', href: '/', icon: HeadAdmin },
+			{ name: 'Division Admins', href: '/', icon: DivisionAdmin },
+		],
+	},
+	{
+		title: 'League Season',
+		href: '/',
+		items: [
+			{ name: 'Core', href: '/', icon: SeasonCore },
+			{ name: 'Info', href: '/', icon: SeasonInfo },
+			{ name: 'Clans', href: '/', icon: SeasonClans },
+			{ name: 'Matches', href: '/', icon: SeasonMatches },
+			{ name: 'Results', href: '/', icon: SeasonResult },
+			{ name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },
+		],
+	},
+];
 </script>
