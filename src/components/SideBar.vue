@@ -26,7 +26,7 @@
 					dark:hover:bg-main-dark-560
 					lg:hidden
 				"
-				@click="sideBarOpen = false"
+				@click="sidebarOpen = false"
 			>
 				<span class="sr-only">Close menu</span>
 				<heroicons-outline:x class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
@@ -69,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import { sideBarOpen } from '~/pages/Dashboard.vue'; // @ts-ignore
+import { sidebarOpen } from '~/pages/Dashboard.vue'; // @ts-ignore
 import LinkPlayer from '~icons/mdi/account-plus'; // @ts-ignore
 import LinkedPlayers from '~icons/mdi/account-check'; // @ts-ignore
 import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-ignore
@@ -148,7 +148,7 @@ export default defineComponent({
 		];
 		return {
 			navigation,
-			sideBarOpen,
+			sidebarOpen,
 		};
 	},
 });

@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<div class="flex min-h-screen overflow-hidden bg-main-light-600 dark:bg-main-dark-630">
-			<TransitionRoot as="template" :show="sideBarOpen">
+			<TransitionRoot as="template" :show="sidebarOpen">
 				<Dialog
 					as="div"
 					static
 					class="fixed inset-0 z-50 flex lg:hidden"
-					:open="sideBarOpen"
-					@close="sideBarOpen = false"
+					:open="sidebarOpen"
+					@close="sidebarOpen = false"
 				>
 					<TransitionChild
 						as="template"
@@ -30,7 +30,7 @@
 								dark:bg-main-dark-630
 							"
 						>
-							<div class="pt-5 pb-4 overflow-hidden overflow-y-auto">
+							<div ref="sidebarElement" class="pt-5 pb-4 overflow-hidden overflow-y-auto">
 								<DashboardSidebar />
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 							border-b border-r border-gray-200
 							focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-200
 						"
-						@click="sideBarOpen = true"
+						@click="sidebarOpen = true"
 					>
 						<span class="sr-only">Open sidebar</span>
 						<heroicons-outline:menu-alt-1 class="w-6 h-6" aria-hidden="true" />
@@ -91,7 +91,7 @@
 import DashboardSidebar from '~/components/SideBar.vue';
 import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
-export const sideBarOpen = ref(false);
+export const sidebarOpen = ref(false);
 
 export default defineComponent({
 	name: 'AppDashboard',
@@ -102,8 +102,11 @@ export default defineComponent({
 		DashboardSidebar,
 	},
 	setup() {
+		const sidebarElement = ref(null);
+		onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
 		return {
-			sideBarOpen,
+			sidebarOpen,
+			sidebarElement,
 		};
 	},
 });
