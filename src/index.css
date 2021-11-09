@@ -9,8 +9,8 @@
 
 	.navbar-item {
 		@apply text-main-textDark-600 dark:text-main-textLight-530
-		hover:bg-main-light-560
-		dark:hover:bg-main-dark-560
+		hover:text-main-textDark-500
+		dark:hover:text-main-textLight-500
 		rounded-md
 		py-3
 		px-4

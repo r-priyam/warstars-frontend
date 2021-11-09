@@ -1,11 +1,12 @@
 <template>
-	<header class="sticky top-0 bg-main-light-500 dark:bg-main-dark-500 z-40">
+	<header class="sticky top-0 z-40 bg-main-light-500 dark:bg-main-dark-500">
 		<Popover class="sticky top-0">
 			<div class="px-2 mx-auto max-w-7xl sm:px-6">
-				<div class="flex items-center justify-between py-2 border-gray-100 md:justify-start">
-					<div class="flex justify-start lg:w-0 lg:flex-1">
+				<div class="flex items-center justify-between py-3.5 md:py-2 border-gray-100 md:justify-start">
+					<div class="flex justify-start lg:w-0 lg:flex-1 text-3xl font-bold">
 						<router-link to="/">
-							<img class="h-10" alt="Logo" />
+							<span class="text-3xl text-main-dark-500 dark:text-white">War</span>
+							<span class="text-main-textDark-600 dark:text-main-textLight-530">Stars</span>
 						</router-link>
 					</div>
 					<div class="-my-2 -mr-2 md:hidden">
@@ -27,7 +28,7 @@
 							<transition
 								enter-active-class="transition transform duration-[0.15s] ease-linear"
 								leave-active-class="transition transform duration-[0.15s] ease-linear"
-								enter-from-class="tranform -translate-y-full"
+								enter-from-class="-translate-y-full tranform"
 								enter-to-class="transform translate-y-0"
 								leave-from-class="transform translate-y-0"
 								leave-to-class="transform translate-y-full"
@@ -35,20 +36,20 @@
 							>
 								<heroicons-outline-sun
 									v-if="!isDarkMode"
-									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 								<heroicons-outline-moon
 									v-else
-									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 							</transition>
 						</button>
 						<PopoverButton
 							class="
-								navbar-open-menu
 								text-gray-800
+								navbar-open-menu
 								dark:text-gray-100
 								hover:bg-main-light-560
 								dark:hover:bg-main-dark-560
@@ -62,20 +63,20 @@
 						</PopoverButton>
 					</div>
 					<PopoverGroup as="nav" class="hidden space-x-2 md:flex">
-						<router-link to="/" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
-							<heroicons-outline:home class="w-5 h-5 mr-1" />
+						<router-link to="/" class="navbar-item">
+							<heroicons-outline:home class="w-5 h-5 mr-1" aria-hidden="true" />
 							<span>Home</span>
 						</router-link>
-						<router-link to="/clans" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
-							<heroicons-outline:shield-check class="w-5 h-5 mr-1" />
+						<router-link to="/clans" class="navbar-item">
+							<heroicons-outline:shield-check class="w-5 h-5 mr-1" aria-hidden="true" />
 							<span>Clans</span>
 						</router-link>
-						<router-link to="/leagues" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
-							<heroicons-outline:globe class="w-5 h-5 mr-1" />
+						<router-link to="/leagues" class="navbar-item">
+							<heroicons-outline:globe class="w-5 h-5 mr-1" aria-hidden="true" />
 							<span>Leagues</span>
 						</router-link>
-						<router-link to="/docs" class="navbar-item" active-class="bg-main-light-600 dark:bg-main-dark-600">
-							<heroicons-outline:document-text class="w-5 h-5 mr-1" />
+						<router-link to="/docs" class="navbar-item">
+							<heroicons-outline:document-text class="w-5 h-5 mr-1" aria-hidden="true" />
 							<span>Docs</span>
 						</router-link>
 					</PopoverGroup>
@@ -88,14 +89,14 @@
 								px-4
 								py-3
 								mr-2
+								transition
+								duration-500
+								ease-in-out
 								rounded-md
 								hover:bg-main-light-560
 								dark:hover:bg-main-dark-560
 								hover:text-gray-200
 								focus:outline-none
-								transition
-								duration-500
-								ease-in-out
 							"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
@@ -103,7 +104,7 @@
 							<transition
 								enter-active-class="transition transform duration-[0.15s] ease-linear"
 								leave-active-class="transition transform duration-[0.15s] ease-linear"
-								enter-from-class="tranform -translate-y-full"
+								enter-from-class="-translate-y-full tranform"
 								enter-to-class="transform translate-y-0"
 								leave-from-class="transform translate-y-0"
 								leave-to-class="transform translate-y-full"
@@ -111,20 +112,35 @@
 							>
 								<heroicons-outline-sun
 									v-if="!isDarkMode"
-									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 								<heroicons-outline-moon
 									v-else
-									class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530 fill-current"
+									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 							</transition>
 						</button>
 						<router-link
 							to="/login"
-							class="navbar-item bg-main-light-660 dark:bg-main-dark-660"
-							active-class="bg-main-light-600 dark:bg-main-dark-600"
+							class="
+								inline-flex
+								items-center
+								px-6
+								py-3
+								text-base
+								font-semibold
+								rounded-md
+								text-main-textDark-600
+								dark:text-main-textLight-530
+								focus:outline-none
+								focus-visible:ring-1 focus-visible:ring-white
+								bg-main-light-560
+								dark:bg-main-dark-560
+								hover:bg-main-light-660
+								dark:hover:bg-main-dark-660
+							"
 						>
 							<mdi:discord class="w-5 h-5 mr-1" />
 							<span>Login</span>
@@ -148,16 +164,16 @@
 						absolute
 						inset-x-0
 						top-0
-						w-screen
 						z-20
+						w-screen
 						transition
 						origin-top-right
 						transform
+						-translate-x-1/2
+						rounded-md
 						md:hidden
 						left-1/2
-						-translate-x-1/2
 						max-w-screen
-						rounded-md
 						sm:px-0
 					"
 				>
