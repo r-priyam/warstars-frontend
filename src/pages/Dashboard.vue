@@ -5,7 +5,7 @@
 				<Dialog
 					as="div"
 					static
-					class="fixed inset-0 z-50 flex lg:hidden"
+					class="fixed top-16 right-0 bottom-0 left-0 z-50 flex lg:hidden"
 					:open="sidebarOpen"
 					@close="sidebarOpen = false"
 				>
