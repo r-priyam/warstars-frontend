@@ -69,6 +69,7 @@
 								items-center
 								justify-center
 								p-2
+								mr-2
 								rounded-md
 								hover:bg-main-light-560
 								dark:hover:bg-main-dark-560
@@ -180,6 +181,7 @@
 								items-center
 								px-6
 								py-3
+								ml-2
 								text-base
 								font-semibold
 								rounded-md
@@ -201,13 +203,13 @@
 							<div>
 								<MenuButton class="flex text-sm rounded-full">
 									<span class="sr-only">Open user menu</span>
-									<img class="w-12 h-12 rounded-full" :src="user.avatarUrl" />
+									<img class="rounded-full w-9 h-9" :src="user.avatarUrl" />
 									<heroicons-solid:chevron-down
 										class="
 											w-5
 											h-5
 											ml-1
-											mt-3.5
+											mt-2.5
 											text-main-textDark-600
 											dark:text-main-textLight-530
 											hover:text-violet-100
