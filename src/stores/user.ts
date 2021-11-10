@@ -21,7 +21,7 @@ export const userStore = defineStore({
 		setTokenData(token: string) {
 			this.authToken = token;
 			this.loggedIn = true;
-			var payload: IUserProfile = jwt_decode(token);
+			const payload: IUserProfile = jwt_decode(token);
 			this.id = `'${new RegExp('[0-9]{15,19}', 'gm').exec(payload.discord_data)}'`;
 			this.userData = JSON.parse(payload.discord_data.replace(/'/g, '"'));
 			this.leagues = payload.leagues;
@@ -31,10 +31,10 @@ export const userStore = defineStore({
 			);
 		},
 
-		logOut() {
+		async logOut() {
 			deleteCookie('_auth_token');
 			this.loggedIn = false;
-			router.push({ name: 'Home' });
+			await router.push({ name: 'Home' });
 		},
 	},
 });

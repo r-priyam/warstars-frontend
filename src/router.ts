@@ -18,9 +18,9 @@ router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
 	const authenticated = await getCookie('_auth_token');
-	if (typeof authenticated !== 'undefined') user.setTokenData(authenticated);
+	if (typeof authenticated !== 'undefined') user.setTokenData(String(authenticated));
 	if (to.name !== 'Dashboard') return true;
-	if (typeof authenticated === 'undefined') router.push({ name: 'Home' });
+	if (typeof authenticated === 'undefined') await router.push({ name: 'Home' });
 });
 
 router.afterEach(() => {
