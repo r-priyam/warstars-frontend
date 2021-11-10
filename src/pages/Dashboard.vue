@@ -95,28 +95,12 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import DashboardSidebar from '~/components/SideBar.vue';
 import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
-export default defineComponent({
-	name: 'AppDashboard',
-	components: {
-		Dialog,
-		TransitionChild,
-		TransitionRoot,
-		DashboardSidebar,
-	},
-	setup() {
-		const sidebarElement = ref(null);
-		const sidebarOpen = ref(false);
-		const handleSidebarEvent = (event: boolean) => (sidebarOpen.value = event);
-		onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
-		return {
-			sidebarOpen,
-			sidebarElement,
-			handleSidebarEvent,
-		};
-	},
-});
+const sidebarElement = ref(null);
+const sidebarOpen = ref(false);
+const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen.value = eventPayload);
+onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
 </script>
