@@ -194,7 +194,7 @@
 								hover:bg-main-light-660
 								dark:hover:bg-main-dark-660
 							"
-							:href="'http://localhost:8000/api/v1/discord/authorize/login'"
+							:href="`${apiUrl}/api/v1/discord/authorize/login`"
 						>
 							<mdi:discord class="w-5 h-5 mr-1" />
 							<span>Login</span>
@@ -356,7 +356,7 @@
 							<div>
 								<a
 									v-if="!user.loggedIn"
-									:href="'http://localhost:8000/api/v1/discord/authorize/login'"
+									:href="`${apiUrl}/api/v1/discord/authorize/login`"
 									class="
 										flex
 										items-center
@@ -399,6 +399,7 @@ import {
 	MenuItem,
 } from '@headlessui/vue';
 import { userStore } from '~/stores/user';
+import { apiUrl } from '~/env';
 import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
 
 const user = userStore();
