@@ -1,13 +1,10 @@
 <template>
 	<div>
 		<div class="flex items-center flex-shrink-0 px-4">
-			<img
-				class="w-12 h-12 rounded-lg"
-				src="https://cdn.discordapp.com/avatars/554882868091027456/f23bfea38c3d262beb31059c70dc3295.png?size=1024"
-			/>
+			<img class="w-12 h-12 rounded-lg" :src="user.avatarUrl" />
 			<div class="pl-2 overflow-hidden text-base">
 				<h3 class="font-black leading-tight truncate text-main-textDark-600 dark:text-main-textLight-530">
-					CAPT. BARBOSSA
+					{{ user.userData.user_name }}
 				</h3>
 			</div>
 			<div
@@ -17,7 +14,7 @@
 					justify-end
 					p-2
 					mb-8
-					ml-12
+					ml-auto
 					rounded-md
 					focus:outline-none
 					bg-main-light-630
@@ -81,16 +78,21 @@ import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-ignor
 import LeagueDivisions from '~icons/heroicons-solid/globe'; // @ts-ignore
 import EditLeague from '~icons/mdi/shield-edit'; // @ts-ignore
 import EditDivision from '~icons/mdi/shield-edit-outline'; // @ts-ignore
-import HeadAdmin from '~icons/eos-icons/admin'; // @ts-ignore
-import DivisionAdmin from '~icons/eos-icons/admin-outlined'; // @ts-ignore
+import HeadAdmin from '~icons/ri/shield-user-fill'; // @ts-ignore
+import DivisionAdmin from '~icons/ri/shield-user-line'; // @ts-ignore
+import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-ignore
+import ManageDivisionAdmin from '~icons/ri/user-settings-line'; // @ts-ignore
+import HitRates from '~icons/mdi/fire'; // @ts-ignore
 import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-ignore
 import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-ignore
 import SeasonClans from '~icons/mdi/account-group'; // @ts-ignore
 import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-ignore
 import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-ignore
 import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard'; // @ts-ignore
+import { userStore } from '~/stores/user';
 
 defineEmits(['closeSidebar']);
+const user = userStore();
 const navigation = [
 	{
 		title: 'Player',
@@ -130,6 +132,8 @@ const navigation = [
 		items: [
 			{ name: 'Head Admins', href: '/', icon: HeadAdmin },
 			{ name: 'Division Admins', href: '/', icon: DivisionAdmin },
+			{ name: 'Manage Head Admins', href: '/', icon: ManageHeadAdmin },
+			{ name: 'Manage Division Admins', href: '/', icon: ManageDivisionAdmin },
 		],
 	},
 	{
@@ -142,6 +146,7 @@ const navigation = [
 			{ name: 'Matches', href: '/', icon: SeasonMatches },
 			{ name: 'Results', href: '/', icon: SeasonResult },
 			{ name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },
+			{ name: 'Hit Rates', href: '/', icon: HitRates },
 		],
 	},
 ];

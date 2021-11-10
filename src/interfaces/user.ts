@@ -1,18 +1,5 @@
-export interface IUserProfileCreate {
-	full_name: string;
-	email: string;
-	password: string;
-}
-
 export interface IUserProfile {
-	full_name: string;
-	email: boolean;
-	is_active: boolean;
-	country: string;
-	password: number;
-}
-
-export interface IUserProfileUpdate {
-	current_password: string;
-	new_password: string;
+	discord_data: string;
+	expires_on: string;
+	leagues: string;
 }

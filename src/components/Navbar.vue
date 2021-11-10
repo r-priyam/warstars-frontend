@@ -3,20 +3,72 @@
 		<Popover class="sticky top-0">
 			<div class="px-2 mx-auto max-w-7xl sm:px-6">
 				<div class="flex items-center justify-between py-3.5 md:py-2 border-gray-100 md:justify-start">
-					<div class="flex justify-start lg:w-0 lg:flex-1 text-3xl font-bold">
+					<div class="flex justify-start text-3xl font-bold lg:w-0 lg:flex-1">
 						<router-link to="/">
 							<span class="text-3xl text-main-dark-500 dark:text-white">War</span>
 							<span class="text-main-textDark-600 dark:text-main-textLight-530">Stars</span>
 						</router-link>
 					</div>
 					<div class="-my-2 -mr-2 md:hidden">
+						<Menu v-if="user.loggedIn" as="div" class="inline-flex items-center justify-center p-2">
+							<div>
+								<MenuButton class="flex text-sm rounded-full">
+									<img class="w-6 h-6 rounded-full" :src="user.avatarUrl" />
+								</MenuButton>
+							</div>
+							<transition
+								enter-active-class="transition duration-100 ease-out"
+								enter-from-class="transform scale-95 opacity-0"
+								enter-to-class="transform scale-100 opacity-100"
+								leave-active-class="transition duration-75 ease-in"
+								leave-from-class="transform scale-100 opacity-100"
+								leave-to-class="transform scale-95 opacity-0"
+							>
+								<MenuItems
+									class="
+										absolute
+										w-48
+										py-1
+										mt-32
+										origin-top-right
+										rounded-md
+										shadow-lg
+										bg-main-light-500
+										dark:bg-main-dark-500
+										ring-1 ring-black ring-opacity-5
+										focus:outline-none
+									"
+								>
+									<MenuItem v-slot="{ active }">
+										<router-link
+											to="/dashboard"
+											:class="[
+												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
+												'group flex rounded-md items-center px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+											]"
+											><ic:sharp-dashboard class="mr-1" />Dashboard</router-link
+										>
+									</MenuItem>
+									<MenuItem v-slot="{ active }">
+										<button
+											:class="[
+												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
+												'group flex rounded-md items-center px-4 py-2 text-sm w-full font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+											]"
+											@click="user.logOut()"
+										>
+											<bx:bx-log-out class="mr-1" />Log out
+										</button>
+									</MenuItem>
+								</MenuItems>
+							</transition>
+						</Menu>
 						<button
 							class="
 								inline-flex
 								items-center
 								justify-center
 								p-2
-								mr-2
 								rounded-md
 								hover:bg-main-light-560
 								dark:hover:bg-main-dark-560
@@ -88,7 +140,6 @@
 								justify-center
 								px-4
 								py-3
-								mr-2
 								transition
 								duration-500
 								ease-in-out
@@ -122,8 +173,8 @@
 								/>
 							</transition>
 						</button>
-						<router-link
-							to="/login"
+						<a
+							v-if="!user.loggedIn"
 							class="
 								inline-flex
 								items-center
@@ -141,10 +192,79 @@
 								hover:bg-main-light-660
 								dark:hover:bg-main-dark-660
 							"
+							:href="'http://localhost:8000/api/v1/discord/authorize/login'"
 						>
 							<mdi:discord class="w-5 h-5 mr-1" />
 							<span>Login</span>
-						</router-link>
+						</a>
+						<Menu v-if="user.loggedIn" as="div" class="relative ml-3">
+							<div>
+								<MenuButton class="flex text-sm rounded-full">
+									<span class="sr-only">Open user menu</span>
+									<img class="w-12 h-12 rounded-full" :src="user.avatarUrl" />
+									<heroicons-solid:chevron-down
+										class="
+											w-5
+											h-5
+											ml-1
+											mt-3.5
+											text-main-textDark-600
+											dark:text-main-textLight-530
+											hover:text-violet-100
+										"
+										aria-hidden="true"
+									/>
+								</MenuButton>
+							</div>
+							<transition
+								enter-active-class="transition duration-100 ease-out"
+								enter-from-class="transform scale-95 opacity-0"
+								enter-to-class="transform scale-100 opacity-100"
+								leave-active-class="transition duration-75 ease-in"
+								leave-from-class="transform scale-100 opacity-100"
+								leave-to-class="transform scale-95 opacity-0"
+							>
+								<MenuItems
+									class="
+										absolute
+										right-0
+										w-48
+										py-1
+										mt-2
+										origin-top-right
+										rounded-md
+										shadow-lg
+										bg-main-light-500
+										dark:bg-main-dark-500
+										ring-1 ring-black ring-opacity-5
+										focus:outline-none
+									"
+								>
+									<MenuItem v-slot="{ active }">
+										<a
+											href="#"
+											:class="[
+												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
+												'group flex rounded-md items-center px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+											]"
+											><ic:sharp-dashboard class="mr-1" />Dashboard</a
+										>
+									</MenuItem>
+									<MenuItem v-slot="{ active }">
+										<button
+											href="#"
+											:class="[
+												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
+												'group flex rounded-md items-center px-4 py-2 w-full text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+											]"
+											@click="user.logOut()"
+										>
+											<bx:bx-log-out class="mr-1" />Log out
+										</button>
+									</MenuItem>
+								</MenuItems>
+							</transition>
+						</Menu>
 					</div>
 				</div>
 			</div>
@@ -207,42 +327,22 @@
 
 							<div class="mt-6">
 								<nav class="grid gap-y-8">
-									<router-link
-										to="/"
-										class="navbar-mobile-item"
-										active-class="bg-main-light-600 dark:bg-main-dark-600"
-										@click="close()"
-									>
+									<router-link to="/" class="navbar-mobile-item" @click="close()">
 										<heroicons-outline:home />
 										<span class="navbar-mobile-item-name">Home</span>
 									</router-link>
 
-									<router-link
-										to="/clans"
-										class="navbar-mobile-item"
-										active-class="bg-main-light-600 dark:bg-main-dark-600"
-										@click="close()"
-									>
+									<router-link to="/clans" class="navbar-mobile-item" @click="close()">
 										<heroicons-outline:shield-check />
 										<span class="navbar-mobile-item-name">Clans</span>
 									</router-link>
 
-									<router-link
-										to="/league"
-										class="navbar-mobile-item"
-										active-class="bg-main-light-600 dark:bg-main-dark-600"
-										@click="close()"
-									>
+									<router-link to="/league" class="navbar-mobile-item" @click="close()">
 										<heroicons-outline:globe />
 										<span class="navbar-mobile-item-name">Leagues</span>
 									</router-link>
 
-									<router-link
-										to="/docs"
-										class="navbar-mobile-item"
-										active-class="bg-main-light-600 dark:bg-main-dark-600"
-										@click="close()"
-									>
+									<router-link to="/docs" class="navbar-mobile-item" @click="close()">
 										<heroicons-outline:document-text />
 										<span class="navbar-mobile-item-name">Documentation</span>
 									</router-link>
@@ -252,8 +352,9 @@
 
 						<div class="px-5 py-6 space-y-6">
 							<div>
-								<router-link
-									to="/login"
+								<a
+									v-if="!user.loggedIn"
+									:href="'http://localhost:8000/api/v1/discord/authorize/login'"
 									class="
 										flex
 										items-center
@@ -274,7 +375,7 @@
 									@click="close()"
 								>
 									<mdi:discord class="w-5 h-5 mr-1" />Login with Discord
-								</router-link>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -285,6 +386,18 @@
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue';
+import {
+	Popover,
+	PopoverButton,
+	PopoverGroup,
+	PopoverPanel,
+	Menu,
+	MenuButton,
+	MenuItems,
+	MenuItem,
+} from '@headlessui/vue';
+import { userStore } from '~/stores/user';
 import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
+
+const user = userStore();
 </script>

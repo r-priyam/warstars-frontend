@@ -1,4 +1,6 @@
+import { userStore } from './stores/user';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { getCookie } from '~/utils/cookie';
 import NProgress from 'nprogress';
 
 const routes: RouteRecordRaw[] = [
@@ -12,8 +14,13 @@ const router = createRouter({
 	routes,
 });
 
-router.beforeEach(() => {
+router.beforeEach(async (to) => {
 	NProgress.start();
+	const user = userStore();
+	const authenticated = await getCookie('_auth_token');
+	if (typeof authenticated !== 'undefined') user.setTokenData(authenticated);
+	if (to.name !== 'Dashboard') return true;
+	if (typeof authenticated === 'undefined') router.push({ name: 'Home' });
 });
 
 router.afterEach(() => {

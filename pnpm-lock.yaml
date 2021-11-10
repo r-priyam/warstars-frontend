@@ -24,6 +24,7 @@ specifiers:
   eslint-config-prettier: 8.3.0
   eslint-plugin-prettier: 4.0.0
   eslint-plugin-vue: 8.0.3
+  jwt-decode: 3.1.2
   nprogress: 0.2.0
   pinia: 2.0.2
   postcss: 8.3.11
@@ -53,6 +54,7 @@ dependencies:
   '@vueuse/motion': 2.0.0-beta.4_vue@3.2.21
   axios: 0.24.0
   clashofclans.js: 1.5.5
+  jwt-decode: 3.1.2
   nprogress: 0.2.0
   pinia: 2.0.2_typescript@4.4.4+vue@3.2.21
   vue: 3.2.21
@@ -3431,6 +3433,10 @@ packages:
       is-promise: 2.2.2
       promise: 7.3.1
     dev: true
+
+  /jwt-decode/3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
+    dev: false
 
   /kolorist/1.5.0:
     resolution: {integrity: sha512-pPobydIHK884YBtkS/tWSZXpSAEpcMbilyun3KL37ot935qL2HNKm/tI45i/Rd+MxdIWEhm7/LmUQzWZYK+Qhg==}
