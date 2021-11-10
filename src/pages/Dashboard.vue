@@ -3,7 +3,6 @@
 		<div class="flex min-h-screen overflow-hidden bg-main-light-600 dark:bg-main-dark-630">
 			<TransitionRoot as="template" :show="sidebarOpen">
 				<Dialog
-					as="div"
 					static
 					class="fixed top-16 right-0 bottom-0 left-0 z-50 flex lg:hidden"
 					:open="sidebarOpen"
