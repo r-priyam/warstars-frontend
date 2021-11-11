@@ -1,7 +1,7 @@
 <template>
 	<div class="grid min-h-[calc(100vh-68px)] grid-layout">
 		<Navbar />
-		<div id="container" class="grid grid-layout-container lg:custom-scroll">
+		<div id="container" class="grid grid-layout-container">
 			<div class="bg-main-light-600 dark:bg-main-dark-630">
 				<div
 					v-if="!router.currentRoute.value.path.includes('/dashboard')"
@@ -15,7 +15,7 @@
 				>
 					<router-view />
 				</div>
-				<Footer />
+				<Footer v-if="!router.currentRoute.value.path.includes('/dashboard')" />
 			</div>
 		</div>
 	</div>
