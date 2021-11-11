@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="fixed flex flex-shrink-0 z-20 lg:hidden">
+		<div class="fixed z-20 flex flex-shrink-0 lg:hidden">
 			<button
 				class="
 					inline-flex
@@ -23,20 +23,21 @@
 				/>
 			</button>
 		</div>
-		<div class="flex sidebar-height overflow-hidden scrolling-touch bg-main-light-600 dark:bg-main-dark-630">
+		<div class="flex overflow-hidden scrolling-touch sidebar-height bg-main-light-600 dark:bg-main-dark-630">
 			<!-- Static sidebar for desktop -->
 			<div class="hidden lg:flex lg:flex-shrink-0">
 				<div
 					class="
 						relative
 						flex flex-col flex-grow
+						w-64
 						pt-5
 						pb-4
-						w-64
 						overflow-y-auto
 						border-r
 						shadow-inner
 						bg-main-light-560
+						custom-scroll
 						dark:bg-main-dark-560
 					"
 				>
@@ -47,7 +48,7 @@
 			<TransitionRoot as="template" :show="sidebarOpen">
 				<Dialog
 					static
-					class="fixed top-16 right-0 bottom-0 left-0 z-50 flex lg:hidden"
+					class="fixed bottom-0 left-0 right-0 z-50 flex top-16 lg:hidden"
 					:open="sidebarOpen"
 					@close="sidebarOpen = false"
 				>
@@ -83,8 +84,8 @@
 				</Dialog>
 			</TransitionRoot>
 
-			<div class="flex-1 bg-main-light-560 dark:bg-main-dark-560 focus:outline-none">
-				<main class="relative z-0 flex-1 min-h-full pb-8">
+			<div class="flex-1 overflow-y-auto bg-main-light-560 dark:bg-main-dark-560 focus:outline-none custom-scroll">
+				<main class="relative z-0 flex-1 pb-8">
 					<div class="mt-10">
 						<router-view />
 					</div>
@@ -107,5 +108,34 @@ onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
 <style>
 .sidebar-height {
 	height: calc(100vh - 3.99rem);
+}
+.custom-scroll {
+	scrollbar-width: thin;
+	scrollbar-color: theme('colors.main.textDark.460') #1d1d1d;
+}
+
+.custom-scroll::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+	background: theme('colors.main.textDark.460');
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+	background: theme('colors.main.textDark.430');
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.07);
+}
+
+#container.custom-scroll::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+.dark #container.custom-scroll::-webkit-scrollbar-track {
+	background: #1d1d1d;
 }
 </style>
