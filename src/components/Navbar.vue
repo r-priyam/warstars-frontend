@@ -243,18 +243,17 @@
 									"
 								>
 									<MenuItem v-slot="{ active }">
-										<a
-											href="#"
+										<router-link
+											to="/dashboard"
 											:class="[
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
 												'group flex rounded-md items-center px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
-											><ic:sharp-dashboard class="mr-1" />Dashboard</a
+											><ic:sharp-dashboard class="mr-1" />Dashboard</router-link
 										>
 									</MenuItem>
 									<MenuItem v-slot="{ active }">
 										<button
-											href="#"
 											:class="[
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
 												'group flex rounded-md items-center px-4 py-2 w-full text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
