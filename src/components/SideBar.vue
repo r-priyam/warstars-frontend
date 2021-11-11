@@ -97,7 +97,7 @@ const navigation = [
 	{
 		title: 'Player',
 		items: [
-			{ name: 'Link Player', href: '/', icon: LinkPlayer },
+			{ name: 'Link Player', href: '/dashboard/player-link', icon: LinkPlayer },
 			{ name: 'Linked Players', href: '/', icon: LinkedPlayers },
 		],
 	},

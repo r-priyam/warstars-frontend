@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="flex min-h-screen overflow-hidden bg-main-light-600 dark:bg-main-dark-630">
+		<div class="flex min-h-screen overflow-hidden scrolling-touch bg-main-light-600 dark:bg-main-dark-630">
 			<TransitionRoot as="template" :show="sidebarOpen">
 				<Dialog
 					static
@@ -41,7 +41,7 @@
 			</TransitionRoot>
 
 			<!-- Static sidebar for desktop -->
-			<div class="hidden max-h-screen lg:flex lg:flex-shrink-0">
+			<div class="hidden h-screen lg:flex lg:flex-shrink-0">
 				<div class="flex flex-col w-64">
 					<div
 						class="

@@ -5,7 +5,12 @@ import NProgress from 'nprogress';
 
 const routes: RouteRecordRaw[] = [
 	{ path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
-	{ path: '/dashboard', name: 'Dashboard', component: () => import('~/pages/Dashboard.vue') },
+	{
+		path: '/dashboard',
+		name: 'Dashboard',
+		component: () => import('~/pages/Dashboard.vue'),
+		children: [{ path: 'player-link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') }],
+	},
 	{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
 ];
 
