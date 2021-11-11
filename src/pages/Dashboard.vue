@@ -23,9 +23,9 @@
 				/>
 			</button>
 		</div>
-		<div class="flex min-h-screen overflow-hidden scrolling-touch bg-main-light-600 dark:bg-main-dark-630">
+		<div class="flex sidebar-height overflow-hidden scrolling-touch bg-main-light-600 dark:bg-main-dark-630">
 			<!-- Static sidebar for desktop -->
-			<div class="hidden h-screen lg:flex lg:flex-shrink-0">
+			<div class="hidden lg:flex lg:flex-shrink-0">
 				<div
 					class="
 						relative
@@ -85,7 +85,7 @@
 
 			<div class="flex-1 bg-main-light-560 dark:bg-main-dark-560 focus:outline-none">
 				<main class="relative z-0 flex-1 min-h-full pb-8">
-					<div class="mt-8">
+					<div class="mt-10">
 						<router-view />
 					</div>
 				</main>
@@ -103,3 +103,9 @@ const sidebarOpen = ref(false);
 const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen.value = eventPayload);
 onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
 </script>
+
+<style>
+.sidebar-height {
+	height: calc(100vh - 3.99rem);
+}
+</style>
