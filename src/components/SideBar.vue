@@ -42,12 +42,22 @@
 						v-for="item in nav.items"
 						:key="item.name"
 						:to="item.href"
-						:class="[
-							$route.path === item.href
-								? 'text-main-textDark-700 dark:text-main-textLight-630'
-								: 'text-main-textDark-600 dark:text-main-textLight-530',
-							'hover:bg-main-light-560 dark:hover:bg-main-dark-600 group flex items-center px-2 py-2 text-sm leading-6 font-semibold rounded-md',
-						]"
+						class="
+							text-main-textDark-600
+							dark:text-main-textLight-530
+							hover:bg-main-light-560
+							dark:hover:bg-main-dark-600
+							group
+							flex
+							items-center
+							px-2
+							py-2
+							text-sm
+							leading-6
+							font-semibold
+							rounded-md
+						"
+						active-class="bg-main-light-600 dark:bg-main-dark-600"
 						@click="$emit('closeSidebar', false)"
 					>
 						<component
