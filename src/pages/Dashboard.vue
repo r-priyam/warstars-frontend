@@ -36,7 +36,7 @@
 						overflow-y-auto
 						border-r
 						shadow-inner
-						bg-main-light-560
+						bg-main-light-600
 						custom-scroll
 						dark:bg-main-dark-560
 					"

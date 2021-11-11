@@ -46,7 +46,7 @@
 							$route.path === item.href
 								? 'text-main-textDark-700 dark:text-main-textLight-630'
 								: 'text-main-textDark-600 dark:text-main-textLight-530',
-							'hover:bg-main-light-560 dark:hover:bg-main-dark-560 group flex items-center px-2 py-2 text-sm leading-6 font-semibold rounded-md',
+							'hover:bg-main-light-560 dark:hover:bg-main-dark-600 group flex items-center px-2 py-2 text-sm leading-6 font-semibold rounded-md',
 						]"
 						@click="$emit('closeSidebar', false)"
 					>
