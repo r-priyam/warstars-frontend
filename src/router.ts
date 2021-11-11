@@ -24,7 +24,7 @@ router.beforeEach(async (to) => {
 	const user = userStore();
 	const authenticated = await getCookie('_auth_token');
 	if (typeof authenticated !== 'undefined') user.setTokenData(String(authenticated));
-	if (to.name !== 'Dashboard') return true;
+	if (!to.fullPath.includes('/dashboard')) return true;
 	if (typeof authenticated === 'undefined') await router.push({ name: 'Home' });
 });
 
