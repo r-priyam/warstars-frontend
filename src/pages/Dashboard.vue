@@ -1,6 +1,49 @@
 <template>
 	<div>
+		<div class="fixed flex flex-shrink-0 z-20 lg:hidden">
+			<button
+				class="
+					inline-flex
+					items-center
+					p-2
+					text-base
+					font-semibold
+					rounded-br-md
+					bg-main-light-630
+					dark:bg-main-dark-660
+					hover:bg-main-light-660
+					dark:hover:bg-main-dark-600
+				"
+				@click="sidebarOpen = true"
+			>
+				<span class="sr-only">Open sidebar</span>
+				<heroicons-outline:menu-alt-1
+					class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
+					aria-hidden="true"
+				/>
+			</button>
+		</div>
 		<div class="flex min-h-screen overflow-hidden scrolling-touch bg-main-light-600 dark:bg-main-dark-630">
+			<!-- Static sidebar for desktop -->
+			<div class="hidden h-screen lg:flex lg:flex-shrink-0">
+				<div
+					class="
+						relative
+						flex flex-col flex-grow
+						pt-5
+						pb-4
+						w-64
+						overflow-y-auto
+						border-r
+						shadow-inner
+						bg-main-light-560
+						dark:bg-main-dark-560
+					"
+				>
+					<DashboardSidebar />
+				</div>
+			</div>
+			<!-- Sidebar for mobile -->
 			<TransitionRoot as="template" :show="sidebarOpen">
 				<Dialog
 					static
@@ -40,50 +83,7 @@
 				</Dialog>
 			</TransitionRoot>
 
-			<!-- Static sidebar for desktop -->
-			<div class="hidden h-screen lg:flex lg:flex-shrink-0">
-				<div class="flex flex-col w-64">
-					<div
-						class="
-							flex flex-col flex-grow
-							pt-5
-							pb-4
-							overflow-y-auto
-							border-r
-							shadow-inner
-							bg-main-light-560
-							dark:bg-main-dark-560
-						"
-					>
-						<DashboardSidebar />
-					</div>
-				</div>
-			</div>
-
 			<div class="flex-1 bg-main-light-560 dark:bg-main-dark-560 focus:outline-none">
-				<div class="relative flex flex-shrink-0 z-1 lg:hidden">
-					<button
-						class="
-							inline-flex
-							items-center
-							p-2
-							text-base
-							font-semibold
-							rounded-br-md
-							bg-main-light-630
-							dark:bg-main-dark-660
-							hover:bg-main-light-660
-							dark:hover:bg-main-dark-600
-						"
-						@click="sidebarOpen = true"
-					>
-						<span class="sr-only">Open sidebar</span>
-						<heroicons-outline:menu-alt-1
-							class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
-							aria-hidden="true"
-						/>
-					</button>
-				</div>
 				<main class="relative z-0 flex-1 min-h-full pb-8">
 					<div class="mt-8">
 						<router-view />
