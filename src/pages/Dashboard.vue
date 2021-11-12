@@ -73,7 +73,7 @@
 								dark:bg-main-dark-630
 							"
 						>
-							<div ref="sidebarElement" class="pt-5 pb-4 overflow-hidden overflow-y-auto">
+							<div ref="sidebarElement" class="pt-5 pb-4 overflow-hidden overflow-y-auto custom-scroll">
 								<DashboardSidebar @close-sidebar="handleSidebarEvent" />
 							</div>
 						</div>

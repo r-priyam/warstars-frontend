@@ -1,7 +1,7 @@
-import { userStore } from './stores/user';
+import NProgress from 'nprogress';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { getCookie } from '~/utils/cookie';
-import NProgress from 'nprogress';
+import { userStore } from './stores/user';
 
 const routes: RouteRecordRaw[] = [
 	{ path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
