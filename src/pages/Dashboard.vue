@@ -1,4 +1,47 @@
 <template>
+	<div class="fixed top-10 right-0 bottom-0 left-0 z-20 flex px-0 py-6 pointer-events-none p-6 items-start justify-end">
+		<div class="max-w-sm w-full">
+			<transition-group
+				:enter-active-class="
+					notification.notifications.length > 1
+						? 'transform ease-out duration-300 transition delay-300'
+						: 'transform ease-out duration-300 transition'
+				"
+				enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-4"
+				enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
+				leave-active-class="transition ease-in duration-500"
+				leave-from-class="opacity-100"
+				leave-to-class="opacity-0"
+				move-class="transition duration-500"
+			>
+				<div
+					v-for="noti in notification.notifications"
+					:key="noti.id"
+					class="
+						flex
+						max-w-sm
+						w-full
+						mx-auto
+						bg-main-light-500
+						dark:bg-main-dark-500
+						shadow-md
+						rounded-lg
+						overflow-hidden
+						mt-4
+					"
+				>
+					<div class="-mx-3 py-2 px-4">
+						<div class="mx-3">
+							<span :class="`text-${notification.notificationColor(noti.title)}-500 font-semibold`">
+								{{ noti.title }}
+							</span>
+							<p class="text-gray-800 dark:text-gray-100 text-sm">{{ noti.text }}</p>
+						</div>
+					</div>
+				</div>
+			</transition-group>
+		</div>
+	</div>
 	<div>
 		<div class="fixed z-20 flex flex-shrink-0 lg:hidden">
 			<button
@@ -98,6 +141,8 @@
 <script setup lang="ts">
 import DashboardSidebar from '~/components/SideBar.vue';
 import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
+import { notifications } from '~/stores/notifications';
+const notification = notifications();
 
 const sidebarElement = ref(null);
 const sidebarOpen = ref(false);

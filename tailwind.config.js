@@ -141,7 +141,7 @@ module.exports = {
 						850: '#053c4d',
 						900: '#042f3b',
 					},
-					green: {
+					success: {
 						100: '#cef6bf',
 						150: '#bdeeaa',
 						200: '#ace597',
