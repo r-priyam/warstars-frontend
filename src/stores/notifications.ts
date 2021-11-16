@@ -1,9 +1,9 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 
-export interface TNotification {
-	id: number;
+interface TNotification {
+	id?: number;
 	title: string;
-	text: string;
+	text?: string;
 }
 
 interface TNotifications {
@@ -15,21 +15,16 @@ export const notifications = defineStore({
 	id: 'notifications',
 	state: (): TNotifications => ({ notificationId: 0, notifications: [] }),
 	actions: {
-		incrementId() {
+		notify(notification: TNotification, timeout?: number) {
 			this.notificationId++;
-		},
-
-		notify(notification: TNotification, timeout: number) {
-			this.incrementId();
+			notification.text = notification.text ?? 'Something went wrong! Please try again.';
 			this.notifications.push(notification);
-			setTimeout(() => {
-				this.removeNotification(notification.id);
-			}, timeout || 4000);
+			setTimeout(() => this.removeNotification(notification.id ?? this.notificationId), timeout ?? 4000);
 		},
 
 		removeNotification(id: number) {
 			this.notifications.splice(
-				this.notifications.findIndex((n: TNotification) => n.id === id),
+				this.notifications.findIndex((noti: TNotification) => noti.id === id),
 				1,
 			);
 		},
