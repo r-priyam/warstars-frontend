@@ -19,13 +19,6 @@ export const notifications = defineStore({
 			this.notificationId++;
 		},
 
-		notificationColor(type: string): string {
-			if (type === 'Info') return 'blue';
-			else if (type === 'Success') return 'green';
-			else if (type === 'Warning') return 'yellow';
-			return 'red';
-		},
-
 		notify(notification: TNotification, timeout: number) {
 			this.incrementId();
 			this.notifications.push(notification);
@@ -36,7 +29,7 @@ export const notifications = defineStore({
 
 		removeNotification(id: number) {
 			this.notifications.splice(
-				this.notifications.findIndex((n) => n.id === id),
+				this.notifications.findIndex((n: TNotification) => n.id === id),
 				1,
 			);
 		},

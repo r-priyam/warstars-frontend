@@ -32,7 +32,7 @@
 				>
 					<div class="-mx-3 py-2 px-4">
 						<div class="mx-3">
-							<span :class="`text-${notification.notificationColor(noti.title)}-500 font-semibold`">
+							<span :class="`text-${notificationColor(noti.title)}-500 font-semibold`">
 								{{ noti.title }}
 							</span>
 							<p class="text-gray-800 dark:text-gray-100 text-sm">{{ noti.text }}</p>
@@ -148,6 +148,19 @@ const sidebarElement = ref(null);
 const sidebarOpen = ref(false);
 const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen.value = eventPayload);
 onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
+
+const notificationColor = (type: string) => {
+	switch (type) {
+		case 'Info':
+			return 'blue';
+		case 'Warning':
+			return 'yellow';
+		case 'Error':
+			return 'red';
+		case 'Success':
+			return 'green';
+	}
+};
 </script>
 
 <style>
