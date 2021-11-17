@@ -110,7 +110,7 @@
 import { userPlayer as userPlayerOpeartions } from '~/stores/userplayer';
 import LoadingSpinner from '~/components/Spinner.vue';
 import { getCookie } from '~/utils/cookie';
-import NoLink from '~/utils/NoLink.vue';
+import NoLink from '~/pages/dashboard/utils/NoLink.vue';
 
 const userPlayer = userPlayerOpeartions();
 async function getPlayers() {
