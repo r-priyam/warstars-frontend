@@ -17,9 +17,10 @@ export const notifications = defineStore({
 	actions: {
 		notify(notification: TNotification, timeout?: number) {
 			this.notificationId++;
+			notification.id = notification.id ?? this.notificationId;
 			notification.text = notification.text ?? 'Something went wrong! Please try again.';
 			this.notifications.push(notification);
-			setTimeout(() => this.removeNotification(notification.id ?? this.notificationId), timeout ?? 4000);
+			setTimeout(() => this.removeNotification(notification.id!), timeout ?? 4000);
 		},
 
 		removeNotification(id: number) {
