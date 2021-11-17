@@ -6,7 +6,7 @@
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
-				<form class="flex flex-col">
+				<form class="flex flex-col" @submit.prevent="linkPlayer">
 					<div>
 						<label for="playerTag" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Player Tag</label>
 						<input
@@ -33,12 +33,12 @@
 						/>
 					</div>
 					<div>
-						<label for="password" class="block mt-6 text-lg font-bold text-gray-800 dark:text-gray-100"
-							>Fame API Token</label
+						<label for="apiToken" class="block mt-6 text-lg font-bold text-gray-800 dark:text-gray-100"
+							>Game API Token</label
 						>
 						<input
-							id="password"
-							name="password"
+							id="apiToken"
+							name="apiToken"
 							type="text"
 							autocomplete="off"
 							required="true"
@@ -61,6 +61,7 @@
 						/>
 					</div>
 					<button
+						v-if="!userPlayer.processing"
 						class="
 							py-2
 							font-bold
@@ -80,9 +81,8 @@
 					>
 						Proceed
 					</button>
-					<!-- <button
-						v-if="loginProcess()"
-						type="button"
+					<button
+						v-if="userPlayer.processing"
 						class="
 							inline-flex
 							items-center
@@ -90,14 +90,12 @@
 							py-2
 							font-bold
 							text-center text-white
-							transition
-							duration-150
-							ease-in-out
+							mt-10
 							border border-transparent
-							rounded-md
+							rounded
 							cursor-not-allowed
-							bg-main-textDark-500
-							dark:bg-main-textLight-500
+							bg-main-textLight-560
+							dark:bg-main-textDark-560
 						"
 						disabled
 					>
@@ -114,10 +112,23 @@
 								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 							></path>
 						</svg>
-						Login
-					</button> -->
+						Processing
+					</button>
 				</form>
 			</section>
 		</div>
 	</div>
 </template>
+
+<script setup lang="ts">
+import { userPlayer as userPlayerOperations } from '~/stores/userplayer';
+import { getCookie } from '~/utils/cookie';
+const userPlayer = userPlayerOperations();
+
+async function linkPlayer(event) {
+	event.preventDefault();
+	const playerTag = String(event.target.elements.playerTag?.value);
+	const apiToken = String(event.target.elements.apiToken?.value);
+	await userPlayer.linkPlayer(playerTag, apiToken, String(getCookie('_auth_token')));
+}
+</script>
