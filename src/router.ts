@@ -9,7 +9,11 @@ const routes: RouteRecordRaw[] = [
 		path: '/dashboard',
 		name: 'Dashboard',
 		component: () => import('~/pages/Dashboard.vue'),
-		children: [{ path: 'player-link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') }],
+		children: [
+			{ path: 'player-link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
+			{ path: 'players-linked', component: () => import('~/pages/dashboard/player/LinkedPlayers.vue') },
+			{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
+		],
 	},
 	{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
 ];
