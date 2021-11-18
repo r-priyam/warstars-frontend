@@ -6,13 +6,12 @@
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
-				<form class="flex flex-col" @submit.prevent="linkPlayer">
+				<form id="player-link" class="flex flex-col" @submit.prevent="linkPlayer">
 					<div>
 						<label for="playerTag" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Player Tag</label>
 						<input
-							id="playerTag"
-							name="playerTag"
-							type="playerTag"
+							name="player-tag"
+							type="text"
 							autocomplete="off"
 							required="true"
 							class="
@@ -37,8 +36,7 @@
 							>Game API Token</label
 						>
 						<input
-							id="apiToken"
-							name="apiToken"
+							name="api-token"
 							type="text"
 							autocomplete="off"
 							required="true"
@@ -125,10 +123,11 @@ import { userPlayer as userPlayerOperations } from '~/stores/userplayer';
 import { getCookie } from '~/utils/cookie';
 const userPlayer = userPlayerOperations();
 
-async function linkPlayer(event) {
-	event.preventDefault();
-	const playerTag = String(event.target.elements.playerTag?.value);
-	const apiToken = String(event.target.elements.apiToken?.value);
+async function linkPlayer() {
+	const form: HTMLFormElement | null = document.querySelector('#player-link');
+	const formData = new FormData(form!);
+	const playerTag = formData.get('player-tag') as string;
+	const apiToken = formData.get('api-token') as string;
 	await userPlayer.linkPlayer(playerTag, apiToken, String(getCookie('_auth_token')));
 }
 </script>
