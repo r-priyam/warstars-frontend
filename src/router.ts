@@ -4,18 +4,22 @@ import { getCookie } from '~/utils/cookie';
 import { userStore } from './stores/user';
 
 const routes: RouteRecordRaw[] = [
-	{ path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
+	{ path: '/', component: () => import('~/pages/HomePage.vue') },
 	{
 		path: '/dashboard',
 		name: 'Dashboard',
 		component: () => import('~/pages/Dashboard.vue'),
 		children: [
-			{ path: 'player-link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
-			{ path: 'players-linked', component: () => import('~/pages/dashboard/player/LinkedPlayers.vue') },
-			{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
+			{ path: 'player-link', name: 'PlayerLink', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
+			{
+				path: 'players-linked',
+				name: 'PlayersLinked',
+				component: () => import('~/pages/dashboard/player/LinkedPlayers.vue'),
+			},
+			{ path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('~/pages/NotFound.vue') },
 		],
 	},
-	{ path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
+	{ path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('~/pages/NotFound.vue') },
 ];
 
 const router = createRouter({
@@ -32,8 +36,10 @@ router.beforeEach(async (to) => {
 	if (typeof authenticated === 'undefined') await router.push({ name: 'Home' });
 });
 
-router.afterEach(() => {
+router.afterEach((to) => {
 	NProgress.done();
+	if (!to.name) document.title = 'WarStars';
+	if (to.name) document.title = `WarStars - ${String(to.name)}`;
 });
 
 export default router;
