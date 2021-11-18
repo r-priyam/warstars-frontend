@@ -5,6 +5,12 @@ interface discordUserData {
 	email: string;
 }
 
+export interface UserProfileProperties {
+	discord_data: string;
+	expires_on: string;
+	leagues: string;
+}
+
 export interface UserStateProperties {
 	authToken: string;
 	userData: discordUserData;

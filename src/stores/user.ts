@@ -1,8 +1,7 @@
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { IUserProfile } from '~/interfaces/user';
 import router from '~/router';
-import { UserStateProperties } from '~/types/user';
+import { UserProfileProperties, UserStateProperties } from '~/types/user';
 import { deleteCookie } from '~/utils/cookie';
 
 export const userStore = defineStore({
@@ -19,7 +18,7 @@ export const userStore = defineStore({
 		setTokenData(token: string) {
 			this.authToken = token;
 			this.loggedIn = true;
-			const payload: IUserProfile = jwt_decode(token);
+			const payload: UserProfileProperties = jwt_decode(token);
 			this.userData = JSON.parse(payload.discord_data.replace(/'/g, '"'));
 			this.leagues = payload.leagues;
 			this.avatarUrl = `https://cdn.discordapp.com/avatars/${BigInt(this.userData.discord_id)}/${
