@@ -32,7 +32,7 @@
 				>
 					<div class="-mx-3 py-2 px-4">
 						<div class="mx-3">
-							<span :class="`text-${notificationColor(noti.title)}-500 font-semibold`">
+							<span :class="`${notificationColor(noti.title)} font-semibold`">
 								{{ noti.title }}
 							</span>
 							<p class="text-gray-800 dark:text-gray-100 text-sm">{{ noti.text }}</p>
@@ -149,16 +149,17 @@ const sidebarOpen = ref(false);
 const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen.value = eventPayload);
 onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
 
+// Just pass the whole class as it's causing some problem in rendering
 const notificationColor = (type: string) => {
 	switch (type) {
 		case 'Info':
-			return 'blue';
+			return 'text-blue-500';
 		case 'Warning':
-			return 'yellow';
+			return 'text-yellow-500';
 		case 'Error':
-			return 'red';
+			return 'text-red-500';
 		case 'Success':
-			return 'green';
+			return 'text-green-500';
 	}
 };
 </script>

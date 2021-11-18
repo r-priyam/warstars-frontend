@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<LoadingSpinner v-if="userPlayer.processing" />
-		<NoLink v-if="!userPlayer.playerData.length" name="Player" />
+		<NoLink v-if="!userPlayer.processing && !userPlayer.playerData.length" name="Player" />
 		<div
 			v-if="!userPlayer.processing && userPlayer.playerData.length"
 			class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500"

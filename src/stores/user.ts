@@ -1,34 +1,30 @@
-import router from '~/router';
 import jwt_decode from 'jwt-decode';
-import { deleteCookie } from '~/utils/cookie';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { IUserProfile } from '~/interfaces/user';
-import { defineStore, acceptHMRUpdate } from 'pinia';
-import { UserStateProperties } from './interfaces/user.i';
+import router from '~/router';
+import { UserStateProperties } from '~/types/user';
+import { deleteCookie } from '~/utils/cookie';
 
 export const userStore = defineStore({
 	id: 'user',
-	state: () =>
-		({
-			authToken: '',
-			userData: {},
-			leagues: {},
-			id: '',
-			avatarUrl: '',
-			permissions: '',
-			loggedIn: false,
-		} as UserStateProperties),
+	state: (): UserStateProperties => ({
+		authToken: '',
+		userData: { user_name: '', discord_id: '', avatar_id: '', email: '' },
+		leagues: {},
+		avatarUrl: '',
+		permissions: '',
+		loggedIn: false,
+	}),
 	actions: {
 		setTokenData(token: string) {
 			this.authToken = token;
 			this.loggedIn = true;
 			const payload: IUserProfile = jwt_decode(token);
-			this.id = `'${new RegExp('[0-9]{15,19}', 'gm').exec(payload.discord_data)}'`;
 			this.userData = JSON.parse(payload.discord_data.replace(/'/g, '"'));
 			this.leagues = payload.leagues;
-			this.avatarUrl = `https://cdn.discordapp.com/avatars/${this.id}/${this.userData.avatar_id}.png?size=1024`.replace(
-				/["']/g,
-				'',
-			);
+			this.avatarUrl = `https://cdn.discordapp.com/avatars/${BigInt(this.userData.discord_id)}/${
+				this.userData.avatar_id
+			}.png?size=1024`;
 		},
 
 		async logOut() {

@@ -8,8 +8,7 @@ interface discordUserData {
 export interface UserStateProperties {
 	authToken: string;
 	userData: discordUserData;
-	leagues: {};
-	id: string;
+	leagues: any;
 	avatarUrl: string;
 	permissions: string;
 	loggedIn: boolean | false;
