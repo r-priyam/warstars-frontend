@@ -1,6 +1,7 @@
 {
-	"name": "leaguestats",
+	"name": "war-stars",
 	"version": "0.0.0",
+	"private": true,
 	"scripts": {
 		"build": "vue-tsc --noEmit && vite build",
 		"dev": "vite",
