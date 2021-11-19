@@ -1,4 +1,4 @@
-export interface TPlayeData {
+export interface TPlayerData {
 	name: string;
 	tag: string;
 	trophies: number;
@@ -10,7 +10,9 @@ export interface TPlayeData {
 
 export interface TUserPlayer {
 	playerData: TPlayeData[] | [];
-	processing: boolean;
+	playersDataProcessing: boolean;
+	linkPlayerProcessing: boolean;
+	removePlayerProcessing: boolean;
 }
 
 export interface TUserPlayerLink {

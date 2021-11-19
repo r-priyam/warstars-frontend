@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<PopUp process-name="Clan" :name="name" :tag="tag" :open="openPopUp" @handle-pop-up="handlePopUpOpen" />
 		<LoadingSpinner v-if="userClan.clansDataProcessing" />
 		<NoLink v-if="!userClan.clansDataProcessing && !userClan.clanData.length" name="Clan" />
 		<div
@@ -40,8 +41,8 @@
 						</div>
 						<div class="w-full h-32">
 							<div class="absolute top-auto inline-flex items-end justify-end ml-auto right-2" aria-hidden="true">
-								<div v-for="(labelUrl, name) in clan.labels" :key="labelUrl" class="w-8 h-8 mr-2">
-									<img :src="labelUrl" :alt="name" :title="name" class="w-8 h-8" />
+								<div v-for="(labelUrl, labelName) in clan.labels" :key="labelUrl" class="w-8 h-8 mr-2">
+									<img :src="labelUrl" :alt="labelName" :title="labelName" class="w-8 h-8" />
 								</div>
 							</div>
 							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-20 ml-auto right-2">
@@ -86,6 +87,15 @@
 								<span class="text-sm font-bold text-main-textDark-530 dark:text-main-textLight-530">
 									({{ clan.tag }})
 								</span>
+								<button
+									@click="
+										name = clan.name;
+										tag = clan.tag;
+										openPopUp = true;
+									"
+								>
+									<heroicons-solid:trash class="inline-flex h-6 w-6 mt-0.5 -ml-1 p-1 text-red-500" aria-hidden="true" />
+								</button>
 							</p>
 							<p class="text-sm font-semibold text-red-500 lg:text-base mt-4">
 								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
@@ -114,12 +124,17 @@
 <script setup lang="ts">
 import { userClan as userClanOpeartions } from '~/stores/userClan';
 import LoadingSpinner from '~/components/Spinner.vue';
-import { getCookie } from '~/utils/cookie';
 import NoLink from '~/pages/dashboard/utils/NoLink.vue';
+import PopUp from '~/pages/dashboard/utils/PopUp.vue';
 
+const name = ref('');
+const tag = ref('');
+const openPopUp = ref(false);
 const userClan = userClanOpeartions();
+
 async function getClans() {
-	await userClan.fetchClansData(getCookie('_auth_token'));
+	await userClan.fetchClansData();
 }
 onMounted(getClans);
+const handlePopUpOpen = (value: boolean) => (openPopUp.value = value);
 </script>

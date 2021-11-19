@@ -6,6 +6,7 @@ import { deleteCookie } from '~/utils/cookie';
 
 export const userStore = defineStore({
 	id: 'user',
+
 	state: (): UserStateProperties => ({
 		authToken: '',
 		userData: { user_name: '', discord_id: '', avatar_id: '', email: '' },
@@ -14,6 +15,7 @@ export const userStore = defineStore({
 		permissions: '',
 		loggedIn: false,
 	}),
+
 	actions: {
 		setTokenData(token: string) {
 			this.authToken = token;

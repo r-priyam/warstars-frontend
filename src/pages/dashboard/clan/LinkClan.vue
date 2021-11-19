@@ -93,13 +93,12 @@
 
 <script setup lang="ts">
 import { userClan as userClanOperations } from '~/stores/userClan';
-import { getCookie } from '~/utils/cookie';
 const userClan = userClanOperations();
 
 async function linkClan() {
 	const form: HTMLFormElement | null = document.querySelector('#clan-link');
 	const formData = new FormData(form!);
 	const clanTag = formData.get('player-tag') as string;
-	await userClan.linkClan(clanTag, getCookie('_auth_token'));
+	await userClan.linkClan(clanTag);
 }
 </script>

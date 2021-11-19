@@ -1,9 +1,10 @@
 <template>
 	<div>
-		<LoadingSpinner v-if="userPlayer.processing" />
-		<NoLink v-if="!userPlayer.processing && !userPlayer.playerData.length" name="Player" />
+		<PopUp process-name="Player" :name="name" :tag="tag" :open="openPopUp" @handle-pop-up="handlePopUpOpen" />
+		<LoadingSpinner v-if="userPlayer.playersDataProcessing" />
+		<NoLink v-if="!userPlayer.playersDataProcessing && !userPlayer.playerData.length" name="Player" />
 		<div
-			v-if="!userPlayer.processing && userPlayer.playerData.length"
+			v-if="!userPlayer.playersDataProcessing && userPlayer.playerData.length"
 			class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500"
 		>
 			<div class="max-w-4xl mx-auto">
@@ -40,8 +41,8 @@
 						</div>
 						<div class="w-full">
 							<div class="absolute top-auto inline-flex items-end justify-end p-2 ml-auto right-2">
-								<div v-for="(labelUrl, name) in player.labels" :key="labelUrl" class="w-8 h-8 mr-2">
-									<img :src="labelUrl" :alt="name" :title="name" class="w-8 h-8" />
+								<div v-for="(labelUrl, labelName) in player.labels" :key="labelUrl" class="w-8 h-8 mr-2">
+									<img :src="labelUrl" :alt="labelName" :title="labelName" class="w-8 h-8" />
 								</div>
 							</div>
 							<div class="absolute inline-flex items-end justify-end p-2 mt-24 ml-auto right-2">
@@ -85,6 +86,15 @@
 								class="text-xl font-extrabold leading-6 text-main-textDark-560 dark:text-main-textLight-560 lg:text-2xl"
 							>
 								{{ player.name }}
+								<button
+									@click="
+										name = player.name;
+										tag = player.tag;
+										openPopUp = true;
+									"
+								>
+									<heroicons-solid:trash class="inline-flex h-6 w-6 -ml-1 p-1 text-red-500" />
+								</button>
 							</p>
 							<span class="text-sm font-black text-main-textDark-600 dark:text-main-textLight-530">
 								{{ player.tag }}
@@ -110,12 +120,17 @@
 <script setup lang="ts">
 import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
 import LoadingSpinner from '~/components/Spinner.vue';
-import { getCookie } from '~/utils/cookie';
 import NoLink from '~/pages/dashboard/utils/NoLink.vue';
+import PopUp from '~/pages/dashboard/utils/PopUp.vue';
 
+const name = ref('');
+const tag = ref('');
+const openPopUp = ref(false);
 const userPlayer = userPlayerOpeartions();
+
 async function getPlayers() {
-	await userPlayer.fetchPlayersData(getCookie('_auth_token'));
+	await userPlayer.fetchPlayersData();
 }
 onMounted(getPlayers);
+const handlePopUpOpen = (value: boolean) => (openPopUp.value = value);
 </script>

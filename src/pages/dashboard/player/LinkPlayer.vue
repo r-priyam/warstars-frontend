@@ -59,7 +59,7 @@
 						/>
 					</div>
 					<button
-						v-if="!userPlayer.processing"
+						v-if="!userPlayer.linkPlayerProcessing"
 						class="
 							py-2
 							font-bold
@@ -80,7 +80,7 @@
 						Proceed
 					</button>
 					<button
-						v-if="userPlayer.processing"
+						v-if="userPlayer.linkPlayerProcessing"
 						class="
 							inline-flex
 							items-center
@@ -120,7 +120,6 @@
 
 <script setup lang="ts">
 import { userPlayer as userPlayerOperations } from '~/stores/userPlayer';
-import { getCookie } from '~/utils/cookie';
 const userPlayer = userPlayerOperations();
 
 async function linkPlayer() {
@@ -128,6 +127,6 @@ async function linkPlayer() {
 	const formData = new FormData(form!);
 	const playerTag = formData.get('player-tag') as string;
 	const apiToken = formData.get('api-token') as string;
-	await userPlayer.linkPlayer(playerTag, apiToken, getCookie('_auth_token'));
+	await userPlayer.linkPlayer(playerTag, apiToken);
 }
 </script>

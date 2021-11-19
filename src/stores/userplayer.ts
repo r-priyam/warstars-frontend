@@ -1,13 +1,18 @@
 import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APIUserPlayer } from '~/api/userPlayer';
-import { TUserPlayer, TUserPlayerLink } from '~/types/userPlayer';
+import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types/userPlayer';
 import { notifications } from './notifications';
 
 export const userPlayer = defineStore({
 	id: 'userPlayer',
 
-	state: (): TUserPlayer => ({ playerData: [], processing: false }),
+	state: (): TUserPlayer => ({
+		playerData: [],
+		playersDataProcessing: false,
+		linkPlayerProcessing: false,
+		removePlayerProcessing: false,
+	}),
 
 	getters: {
 		getPlayerData: (state) => {
@@ -21,44 +26,47 @@ export const userPlayer = defineStore({
 	},
 
 	actions: {
-		async fetchPlayersData(authToken: string) {
+		async fetchPlayersData() {
 			const notification = notifications();
-			this.processing = true;
+			this.playersDataProcessing = true;
 			try {
-				const response = await APIUserPlayer.players(authToken);
+				const response = await APIUserPlayer.players();
 				if (response.status === 200) this.playerData = response.data;
 			} catch (error) {
 				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
-			this.processing = false;
+			this.playersDataProcessing = false;
 		},
 
-		async linkPlayer(playerTag: string, apiToken: string, authToken: string) {
+		async linkPlayer(playerTag: string, apiToken: string) {
 			const notification = notifications();
-			this.processing = true;
+			this.linkPlayerProcessing = true;
 			const data: TUserPlayerLink = { player_tag: playerTag, token: apiToken };
 			try {
-				const response = await APIUserPlayer.addPlayer(data, authToken);
+				const response = await APIUserPlayer.addPlayer(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked player successfully!' });
 			} catch (error) {
 				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
-			this.processing = false;
+			this.linkPlayerProcessing = false;
 		},
 
-		async removePlayer(playerTag: string, authToken: string) {
+		async removePlayer(playerTag: string) {
 			const notification = notifications();
-			this.processing = true;
+			this.removePlayerProcessing = true;
 			try {
-				const response = await APIUserPlayer.removePlayer(playerTag, authToken);
-				if (response.status === 200) notification.notify({ title: 'Success', text: 'Removed player successfully!' });
+				const response = await APIUserPlayer.removePlayer(playerTag);
+				if (response.status === 200) {
+					notification.notify({ title: 'Success', text: 'Removed player successfully!' });
+					this.playerData.splice(this.playerData.findIndex((data: TPlayerData) => data.tag === playerTag));
+				}
 			} catch (error) {
 				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
-			this.processing = false;
+			this.removePlayerProcessing = false;
 		},
 	},
 });
