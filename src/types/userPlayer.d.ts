@@ -9,7 +9,7 @@ export interface TPlayerData {
 }
 
 export interface TUserPlayer {
-	playerData: TPlayeData[] | [];
+	playerData: TPlayerData[] | [];
 	playersDataProcessing: boolean;
 	linkPlayerProcessing: boolean;
 	removePlayerProcessing: boolean;

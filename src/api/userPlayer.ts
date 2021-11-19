@@ -1,9 +1,9 @@
 import HTTP from '~/api';
-import { TPlayeData, TUserPlayerLink } from '~/types/userPlayer';
+import { TPlayerData, TUserPlayerLink } from '~/types/userPlayer';
 
 export const APIUserPlayer = {
 	async players() {
-		return HTTP.get<TPlayeData[]>('/account/players');
+		return HTTP.get<TPlayerData[]>('/account/players');
 	},
 
 	async addPlayer(data: TUserPlayerLink) {
