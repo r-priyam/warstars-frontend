@@ -139,8 +139,8 @@
 </template>
 
 <script setup lang="ts">
-import DashboardSidebar from '~/components/SideBar.vue';
 import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
+import DashboardSidebar from '~/components/SideBar.vue';
 import { notifications } from '~/stores/notifications';
 const notification = notifications();
 

@@ -2,15 +2,15 @@
 	<div>
 		<div class="max-w-lg p-8 mx-auto bg-main-light-530 rounded-lg shadow-xl dark:bg-main-dark-500 md:p-12">
 			<section>
-				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">Link Player</h3>
+				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">Link Clan</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
-				<form id="player-link" class="flex flex-col" @submit.prevent="linkPlayer">
+				<form id="clan-link" class="flex flex-col" @submit.prevent="linkClan">
 					<div>
-						<label for="playerTag" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Player Tag</label>
+						<label for="clan-tag" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Clan Tag</label>
 						<input
-							name="player-tag"
+							name="clan-tag"
 							type="text"
 							autocomplete="off"
 							required="true"
@@ -28,38 +28,11 @@
 								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
 								sm:text-sm
 							"
-							placeholder="Your Player Tag"
-						/>
-					</div>
-					<div>
-						<label for="apiToken" class="block mt-6 text-lg font-bold text-gray-800 dark:text-gray-100"
-							>Game API Token</label
-						>
-						<input
-							name="api-token"
-							type="text"
-							autocomplete="off"
-							required="true"
-							class="
-								block
-								w-full
-								px-3
-								py-2
-								mt-2
-								text-gray-900
-								placeholder-gray-500
-								border border-gray-300
-								rounded-lg
-								shadow-sm
-								select-none
-								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
-								sm:text-sm
-							"
-							placeholder="Game API Token"
+							placeholder="Your Clan Tag"
 						/>
 					</div>
 					<button
-						v-if="!userPlayer.processing"
+						v-if="!userClan.linkClanProcessing"
 						class="
 							py-2
 							font-bold
@@ -80,7 +53,7 @@
 						Proceed
 					</button>
 					<button
-						v-if="userPlayer.processing"
+						v-if="userClan.linkClanProcessing"
 						class="
 							inline-flex
 							items-center
@@ -119,15 +92,14 @@
 </template>
 
 <script setup lang="ts">
-import { userPlayer as userPlayerOperations } from '~/stores/userPlayer';
+import { userClan as userClanOperations } from '~/stores/userClan';
 import { getCookie } from '~/utils/cookie';
-const userPlayer = userPlayerOperations();
+const userClan = userClanOperations();
 
-async function linkPlayer() {
-	const form: HTMLFormElement | null = document.querySelector('#player-link');
+async function linkClan() {
+	const form: HTMLFormElement | null = document.querySelector('#clan-link');
 	const formData = new FormData(form!);
-	const playerTag = formData.get('player-tag') as string;
-	const apiToken = formData.get('api-token') as string;
-	await userPlayer.linkPlayer(playerTag, apiToken, getCookie('_auth_token'));
+	const clanTag = formData.get('player-tag') as string;
+	await userClan.linkClan(clanTag, getCookie('_auth_token'));
 }
 </script>

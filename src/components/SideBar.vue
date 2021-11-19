@@ -115,8 +115,8 @@ const navigation = [
 	{
 		title: 'Clan',
 		items: [
-			{ name: 'Link Clan', href: '/', icon: LinkClan },
-			{ name: 'Linked Clans', href: '/', icon: LinkedClans },
+			{ name: 'Link Clan', href: '/dashboard/clan-link', icon: LinkClan },
+			{ name: 'Linked Clans', href: '/dashboard/clans-linked', icon: LinkedClans },
 		],
 	},
 	{

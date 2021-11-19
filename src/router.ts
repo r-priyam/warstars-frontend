@@ -10,16 +10,18 @@ const routes: RouteRecordRaw[] = [
 		name: 'Dashboard',
 		component: () => import('~/pages/Dashboard.vue'),
 		children: [
-			{ path: 'player-link', name: 'PlayerLink', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
+			{ path: 'player-link', name: 'Player Link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
 			{
 				path: 'players-linked',
-				name: 'PlayersLinked',
+				name: 'Players Linked',
 				component: () => import('~/pages/dashboard/player/LinkedPlayers.vue'),
 			},
-			{ path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('~/pages/NotFound.vue') },
+			{ path: 'clan-link', name: 'Clan Link', component: () => import('~/pages/dashboard/clan/LinkClan.vue') },
+			{ path: 'clans-linked', name: 'Clans Linked', component: () => import('~/pages/dashboard/clan/LinkedClans.vue') },
+			{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') },
 		],
 	},
-	{ path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('~/pages/NotFound.vue') },
+	{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') },
 ];
 
 const router = createRouter({
@@ -30,8 +32,8 @@ const router = createRouter({
 router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
-	const authenticated = await getCookie('_auth_token');
-	if (typeof authenticated !== 'undefined') user.setTokenData(String(authenticated));
+	const authenticated = getCookie('_auth_token');
+	if (typeof authenticated !== 'undefined') user.setTokenData(authenticated);
 	if (!to.fullPath.includes('/dashboard')) return true;
 	if (typeof authenticated === 'undefined') await router.push({ name: 'Home' });
 });
