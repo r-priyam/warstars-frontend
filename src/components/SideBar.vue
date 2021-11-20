@@ -83,7 +83,6 @@ import LinkedPlayers from '~icons/mdi/account-check'; // @ts-ignore
 import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-ignore
 import LinkedClans from '~icons/mdi/account-multiple-check'; // @ts-ignore
 import LeagueQuetions from '~icons/mdi/chat-question'; // @ts-ignore
-import LeagueFaqs from '~icons/bi/question-diamond-fill'; // @ts-ignore
 import LeagueRegister from '~icons/heroicons-solid/pencil-alt'; // @ts-ignore
 import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-ignore
 import LeagueDivisions from '~icons/heroicons-solid/globe'; // @ts-ignore
@@ -122,9 +121,8 @@ const navigation = [
 	{
 		title: 'League Registration',
 		items: [
-			{ name: "What's This?", href: '/', icon: LeagueQuetions },
-			{ name: "FAQ's", href: '/', icon: LeagueFaqs },
-			{ name: 'Register', href: '/', icon: LeagueRegister },
+			{ name: "What's This?", href: '/dashboard/league-register-info', icon: LeagueQuetions },
+			{ name: 'Register', href: '/dashboard/register-league', icon: LeagueRegister },
 		],
 	},
 	{

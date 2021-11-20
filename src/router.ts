@@ -18,6 +18,16 @@ const routes: RouteRecordRaw[] = [
 			},
 			{ path: 'clan-link', name: 'Clan Link', component: () => import('~/pages/dashboard/clan/LinkClan.vue') },
 			{ path: 'clans-linked', name: 'Clans Linked', component: () => import('~/pages/dashboard/clan/LinkedClans.vue') },
+			{
+				path: 'league-register-info',
+				name: 'League Register Info',
+				component: () => import('~/pages/dashboard/leagueRegister/Info.vue'),
+			},
+			{
+				path: 'register-league',
+				name: 'Register League',
+				component: () => import('~/pages/dashboard/leagueRegister/Register.vue'),
+			},
 			{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') },
 		],
 	},

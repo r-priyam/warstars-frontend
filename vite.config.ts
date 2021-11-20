@@ -19,7 +19,6 @@ export default defineConfig({
 			imports: ['vue', 'vue-router', '@vueuse/core'],
 		}),
 		Components({
-			dts: true,
 			resolvers: [
 				IconsResolver({
 					componentPrefix: '',
