@@ -3,8 +3,8 @@ import { resolve } from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
-import { defineConfig } from 'vite';
 import Components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
 	resolve: {
@@ -16,9 +16,10 @@ export default defineConfig({
 		vue(),
 		AutoImport({
 			dts: 'src/auto-imports.d.ts',
-			imports: ['vue', '@vueuse/core'],
+			imports: ['vue', 'vue-router', '@vueuse/core'],
 		}),
 		Components({
+			dts: true,
 			resolvers: [
 				IconsResolver({
 					componentPrefix: '',
