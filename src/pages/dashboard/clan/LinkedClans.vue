@@ -100,7 +100,7 @@
 							<p class="text-sm font-semibold text-red-500 lg:text-base mt-4">
 								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Leader: </span
-								>👑 {{ clan.leader }}
+								><span class="text-yellow-400">👑</span> {{ clan.leader }}
 							</p>
 							<p class="text-sm font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
 								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
