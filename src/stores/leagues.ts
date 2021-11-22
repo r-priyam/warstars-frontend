@@ -17,8 +17,7 @@ export const leagues = defineStore({
 					notification.notify({ title: 'Success', text: 'Registration application submitted' });
 			} catch (error) {
 				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
-				console.log(error);
-				// else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.registerProcessing = false;
 		},
