@@ -180,11 +180,7 @@ withDefaults(defineProps<{ processName?: string; name?: string; tag?: string; op
 const clan = userClan();
 const player = userPlayer();
 const handleRemove = async (processName: string, tag: string) => {
-	if (processName === 'Player') {
-		await player.removePlayer(tag);
-	} else {
-		await clan.removeClan(tag);
-	}
+	await (processName === 'Player' ? player.removePlayer(tag) : clan.removeClan(tag));
 	event('handlePopUp', false);
 };
 </script>
