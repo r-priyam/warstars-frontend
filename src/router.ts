@@ -4,7 +4,7 @@ import { getCookie } from '~/utils/cookie';
 import { userStore } from './stores/user';
 
 const routes: RouteRecordRaw[] = [
-	{ path: '/', component: () => import('~/pages/HomePage.vue') },
+	{ path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
 	{
 		path: '/dashboard',
 		name: 'Dashboard',
@@ -42,10 +42,10 @@ const router = createRouter({
 router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
-	const authenticated = getCookie('_auth_token');
-	if (typeof authenticated !== 'undefined') user.setTokenData(authenticated);
 	if (!to.fullPath.includes('/dashboard')) return true;
-	if (typeof authenticated === 'undefined') await router.push({ name: 'Home' });
+	const authenticated = getCookie('_auth_token');
+	if (!authenticated) await router.push({ name: 'Home' });
+	if (authenticated) user.setTokenData(authenticated);
 });
 
 router.afterEach((to) => {

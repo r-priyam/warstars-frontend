@@ -7,7 +7,7 @@ export function setCookie(name: string, val: string) {
 	document.cookie = `${name}=${value}; secure; expires=${date.toUTCString()}; path=/`;
 }
 
-export function getCookie(cookieName: string): string {
+export function getCookie(cookieName: string): string | null {
 	const name = `${cookieName}=`;
 	const cookies = decodeURIComponent(document.cookie).split(';');
 	let cookieValue;
@@ -15,7 +15,8 @@ export function getCookie(cookieName: string): string {
 	cookies.forEach((value) => {
 		if (value.indexOf(name) === 0) cookieValue = value.substring(name.length);
 	});
-	return String(cookieValue);
+
+	return cookieValue ? String(cookieValue) : null;
 }
 
 export function deleteCookie(name: string) {
