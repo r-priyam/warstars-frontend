@@ -35,7 +35,7 @@
 	.register-form-input-label {
 		@apply block text-base font-bold text-main-textDark-530 dark:text-main-textLight-530;
 	}
-	
+
 	.register-form-input {
 		@apply block w-full px-3 py-2 mt-2 
 		text-gray-900 placeholder-gray-500 border border-gray-300 
