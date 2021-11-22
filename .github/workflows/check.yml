@@ -1,6 +1,23 @@
-name: Test
+name: Lint
 on: [push, pull_request]
 jobs:
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
   build:
     name: Website Build
     runs-on: ubuntu-latest
