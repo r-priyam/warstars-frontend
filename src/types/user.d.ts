@@ -8,13 +8,11 @@ interface discordUserData {
 export interface UserProfileProperties {
 	discord_data: string;
 	expires_on: string;
-	leagues: string;
 }
 
 export interface UserStateProperties {
 	authToken: string;
 	userData: discordUserData;
-	leagues: any;
 	avatarUrl: string;
 	permissions: string;
 	loggedIn: boolean | false;
