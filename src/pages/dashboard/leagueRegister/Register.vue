@@ -27,7 +27,8 @@
 							type="text"
 							autocomplete="off"
 							required="true"
-							class="register-form-input"
+							minlength="2"
+							class="register-form-input uppercase"
 							placeholder="League Abbreviation"
 						/>
 					</div>

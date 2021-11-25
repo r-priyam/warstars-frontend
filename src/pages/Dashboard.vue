@@ -129,7 +129,7 @@
 
 			<div class="flex-1 overflow-y-auto bg-main-light-560 dark:bg-main-dark-560 focus:outline-none custom-scroll">
 				<main class="relative z-0 flex-1 pb-8">
-					<div class="mt-11">
+					<div class="mt-11 lg:mt-0">
 						<router-view />
 					</div>
 				</main>

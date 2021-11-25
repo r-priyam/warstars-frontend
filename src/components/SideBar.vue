@@ -30,6 +30,49 @@
 			</div>
 		</div>
 
+		<div v-if="league.getLeagueLocalConfig !== null" class="items-center px-4 mt-4">
+			<h1 class="text-base font-extrabold text-main-textDark-600 dark:text-main-textLight-530">Current League</h1>
+			<div v-if="league.getLeagueLocalConfig.league.name === ''">
+				<h3 class="font-bold text-center leading-tight truncate text-red-700 dark:text-red-500">No League Selected</h3>
+			</div>
+			<div v-else class="flex items-center flex-shrink-0 mt-2">
+				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.league.icon_url" />
+				<div class="pl-2 overflow-hidden text-base">
+					<h3 class="font-bold leading-tight truncate text-red-700 dark:text-red-500">
+						{{ league.getLeagueLocalConfig.league.name }}
+					</h3>
+				</div>
+			</div>
+			<div v-if="league.getLeagueLocalConfig.child.name === ''">
+				<h3 class="font-bold text-center leading-tight truncate text-green-700 dark:text-green-500">No Child League</h3>
+			</div>
+			<div v-if="league.getLeagueLocalConfig.child.icon_url !== ''" class="flex items-center flex-shrink-0 mt-2">
+				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.icon_url" />
+				<div class="pl-2 overflow-hidden text-base">
+					<h3 class="font-bold leading-tight truncate text-green-700 dark:text-green-500">
+						{{ `${league.getLeagueLocalConfig.child.name} (${league.getLeagueLocalConfig.division.name})` }}
+					</h3>
+				</div>
+			</div>
+			<div class="flex justify-center flex-shrink-0 mt-2">
+				<router-link
+					to="/dashboard/league-selector"
+					class="
+						p-1
+						text-sm
+						font-bold
+						text-white
+						rounded
+						bg-main-textDark-560
+						hover:bg-main-textLight-560
+						dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+					"
+				>
+					Change Config
+				</router-link>
+			</div>
+		</div>
+
 		<nav class="flex flex-col flex-1 px-3 mt-5 overflow-y-auto divide-y divide-gray-300" aria-label="Sidebar">
 			<div v-for="(nav, index) in navigation" :key="index" :class="[index === 0 ? '' : 'pt-3 mt-3']">
 				<div>
@@ -89,9 +132,7 @@ import LeagueDivisions from '~icons/heroicons-solid/globe'; // @ts-ignore
 import EditLeague from '~icons/mdi/shield-edit'; // @ts-ignore
 import EditDivision from '~icons/mdi/shield-edit-outline'; // @ts-ignore
 import HeadAdmin from '~icons/ri/shield-user-fill'; // @ts-ignore
-import DivisionAdmin from '~icons/ri/shield-user-line'; // @ts-ignore
 import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-ignore
-import ManageDivisionAdmin from '~icons/ri/user-settings-line'; // @ts-ignore
 import HitRates from '~icons/mdi/fire'; // @ts-ignore
 import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-ignore
 import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-ignore
@@ -100,9 +141,11 @@ import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-ignore
 import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-ignore
 import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard'; // @ts-ignore
 import { userStore } from '~/stores/user';
+import { leagueManagement } from '~/stores/leagueManagement';
 
 defineEmits(['closeSidebar']);
 const user = userStore();
+const league = leagueManagement();
 const navigation = [
 	{
 		title: 'Player',
@@ -130,19 +173,17 @@ const navigation = [
 		href: '/',
 		items: [
 			{ name: 'Info', href: '/', icon: LeagueInfo },
-			{ name: 'Divisons', href: '/', icon: LeagueDivisions },
-			{ name: 'Edit League', href: '/', icon: EditLeague },
-			{ name: 'Edit Division', href: '/', icon: EditDivision },
+			{ name: 'Child Leagues', href: '/', icon: LeagueDivisions },
+			{ name: 'ManageChild Leagues', href: '/', icon: EditLeague },
+			{ name: 'Manage Divisions', href: '/', icon: EditDivision },
 		],
 	},
 	{
 		title: 'League Admin',
 		href: '/',
 		items: [
-			{ name: 'Head Admins', href: '/', icon: HeadAdmin },
-			{ name: 'Division Admins', href: '/', icon: DivisionAdmin },
-			{ name: 'Manage Head Admins', href: '/', icon: ManageHeadAdmin },
-			{ name: 'Manage Division Admins', href: '/', icon: ManageDivisionAdmin },
+			{ name: 'Admins Info', href: '/', icon: HeadAdmin },
+			{ name: 'Manage Admins', href: '/', icon: ManageHeadAdmin },
 		],
 	},
 	{

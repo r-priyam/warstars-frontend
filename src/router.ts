@@ -1,5 +1,6 @@
 import NProgress from 'nprogress';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { leagueManagement } from '~/stores/leagueManagement';
 import { getCookie } from '~/utils/cookie';
 import { userStore } from './stores/user';
 
@@ -10,6 +11,11 @@ const routes: RouteRecordRaw[] = [
 		name: 'Dashboard',
 		component: () => import('~/pages/Dashboard.vue'),
 		children: [
+			{
+				path: 'league-selector',
+				name: 'League Selector',
+				component: () => import('~/components/dashboard/LeagueSelector.vue'),
+			},
 			{ path: 'player-link', name: 'Player Link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
 			{
 				path: 'players-linked',
@@ -42,10 +48,15 @@ const router = createRouter({
 router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
-	if (!to.fullPath.includes('/dashboard')) return true;
+	const league = leagueManagement();
 	const authenticated = getCookie('_auth_token');
+	if (authenticated) {
+		user.setTokenData(authenticated);
+		await league.syncPermissions();
+		await league.syncLeaguesData();
+	}
+	if (!to.fullPath.includes('/dashboard')) return true;
 	if (!authenticated) await router.push({ name: 'Home' });
-	if (authenticated) user.setTokenData(authenticated);
 });
 
 router.afterEach((to) => {
