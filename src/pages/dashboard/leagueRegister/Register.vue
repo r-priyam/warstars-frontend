@@ -10,7 +10,7 @@
 			<section class="mt-10">
 				<form id="register-league" class="flex flex-col" @submit.prevent="registerLeague">
 					<div>
-						<label class="register-form-input-label">Name</label>
+						<label class="register-form-input-label">Name<span class="text-red-500">*</span></label>
 						<input
 							name="league-name"
 							type="text"
@@ -21,7 +21,9 @@
 						/>
 					</div>
 					<div>
-						<label for="abbreviation" class="mt-4 register-form-input-label">Abbreviation</label>
+						<label for="abbreviation" class="mt-4 register-form-input-label"
+							>Abbreviation<span class="text-red-500">*</span></label
+						>
 						<input
 							name="league-abbreviation"
 							type="text"
