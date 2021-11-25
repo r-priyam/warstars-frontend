@@ -238,6 +238,7 @@
 <script setup lang="ts">
 import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } from '@headlessui/vue';
 import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild } from '~/types/leagues';
+import { notifications } from '~/stores/notifications';
 import router from '~/router';
 
 const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
@@ -283,6 +284,7 @@ const applyLeagueConfig = async () => {
 			division: selectedDivision.value,
 		}),
 	);
+	notifications().notify({ title: 'Success', text: 'Settings saved successfully!' });
 	await router.push({ name: 'Register League' });
 };
 </script>
