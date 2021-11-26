@@ -1,5 +1,9 @@
 language: node_js
 scripts:
   - npm install codecov -g
+
+env:
+  - CODECOV_TOKEN='d6efecc0-dcab-409f-b995-ee4b79e4c2fd'
+
 after_success:
   - codecov
