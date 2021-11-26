@@ -34,6 +34,17 @@ const routes: RouteRecordRaw[] = [
 				name: 'Register League',
 				component: () => import('~/pages/dashboard/leagueRegister/Register.vue'),
 			},
+			{ path: 'league', name: 'League Info', component: () => import('~/pages/dashboard/leagues/LeagueInfo.vue') },
+			{
+				path: 'league-child',
+				name: 'League Child',
+				component: () => import('~/pages/dashboard/leagues/core/LeagueChild.vue'),
+			},
+			{
+				path: 'child-division',
+				name: 'Child Division',
+				component: () => import('~/pages/dashboard/leagues/core/ChildDivision.vue'),
+			},
 			{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') },
 		],
 	},
