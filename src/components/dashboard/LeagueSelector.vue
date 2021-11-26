@@ -102,7 +102,7 @@
 		</div>
 		<div v-if="selectedChildLeague.name !== ''">
 			<div v-if="selectedChildDivisions?.length === 0" class="mt-6 mb-6">
-				<h1 class="text-xl font-bold text-center text-yellow-700 dark:text-yellow-500">
+				<h1 class="text-xl font-bold text-center text-indigo-700 dark:text-indigo-500">
 					{{ `${selectedLeague.name} ${selectedChildLeague.name}` }} has no division
 				</h1>
 				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
@@ -116,11 +116,11 @@
 							text-base
 							font-semibold
 							text-gray-100
-							bg-yellow-700
+							bg-indigo-700
 							rounded-lg
 							shadow-md
-							hover:bg-yellow-800
-							dark:bg-yellow-600 dark:hover:bg-yellow-700
+							hover:bg-indigo-800
+							dark:bg-indigo-600 dark:hover:bg-indigo-700
 							focus:outline-none
 						"
 					>
@@ -129,7 +129,7 @@
 				</div>
 			</div>
 			<div v-else class="mt-6 mb-6">
-				<h1 class="text-xl font-bold text-center text-yellow-700 dark:text-yellow-500">
+				<h1 class="text-xl font-bold text-center text-indigo-700 dark:text-indigo-500">
 					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} Divisions
 				</h1>
 				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
@@ -152,7 +152,7 @@
 									:class="[
 										// probably will change select colour in future..
 										active ? '' : '',
-										checked ? 'bg-yellow-500 bg-opacity-75' : 'bg-yellow-400 hover:bg-yellow-500',
+										checked ? 'bg-indigo-500 bg-opacity-75' : 'bg-indigo-400 hover:bg-indigo-500',
 									]"
 									class="relative flex px-5 py-2 rounded-lg shadow-md cursor-pointer focus:outline-none"
 								>
