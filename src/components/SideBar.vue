@@ -67,6 +67,7 @@
 						hover:bg-main-textLight-560
 						dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
 					"
+					@click="$emit('closeSidebar', false)"
 				>
 					Change Config
 				</router-link>
@@ -128,9 +129,8 @@ import LinkedClans from '~icons/mdi/account-multiple-check'; // @ts-ignore
 import LeagueQuetions from '~icons/mdi/chat-question'; // @ts-ignore
 import LeagueRegister from '~icons/heroicons-solid/pencil-alt'; // @ts-ignore
 import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-ignore
-import LeagueDivisions from '~icons/heroicons-solid/globe'; // @ts-ignore
-import EditLeague from '~icons/mdi/shield-edit'; // @ts-ignore
-import EditDivision from '~icons/mdi/shield-edit-outline'; // @ts-ignore
+import LeagueChild from '~icons/heroicons-solid/globe'; // @ts-ignore
+import LeagueChildDivision from '~icons/mdi/shield-edit'; // @ts-ignore
 import HeadAdmin from '~icons/ri/shield-user-fill'; // @ts-ignore
 import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-ignore
 import HitRates from '~icons/mdi/fire'; // @ts-ignore
@@ -172,10 +172,9 @@ const navigation = [
 		title: 'League Core',
 		href: '/',
 		items: [
-			{ name: 'Info', href: '/', icon: LeagueInfo },
-			{ name: 'Child Leagues', href: '/', icon: LeagueDivisions },
-			{ name: 'ManageChild Leagues', href: '/', icon: EditLeague },
-			{ name: 'Manage Divisions', href: '/', icon: EditDivision },
+			{ name: 'Info', href: '/dashboard/league', icon: LeagueInfo },
+			{ name: 'Child League', href: '/dashboard/league-child', icon: LeagueChild },
+			{ name: 'Divisions', href: '/dashboard/child-division', icon: LeagueChildDivision },
 		],
 	},
 	{

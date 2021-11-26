@@ -130,7 +130,7 @@
 			</div>
 			<div v-else class="mt-6 mb-6">
 				<h1 class="text-xl font-bold text-center text-yellow-700 dark:text-yellow-500">
-					{{ `${selectedLeague.name} ${selectedChildLeague.name}` }} Divisions
+					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} Divisions
 				</h1>
 				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
 					If you will not select a division then any changes will apply to whole
@@ -250,7 +250,14 @@ const selectedLeague = ref<TSelectedLeague>({
 	icon_url: '',
 });
 const selectedChildLeague = ref<TSelectedChild>({ id: 0, name: '', abbreviation: '', icon_url: '', season_id: null });
-const selectedDivision = ref<TUserChildLeagueDivisions>();
+const selectedDivision = ref<TUserChildLeagueDivisions>({
+	id: 0,
+	child_id: 0,
+	season_id: 0,
+	name: '',
+	abbreviation: '',
+	icon_url: null,
+});
 
 const selectedLeagueChild = computed(
 	() => leaguesData.find((league) => league.league_id === selectedLeague.value.league_id)?.child_leagues,
@@ -264,10 +271,9 @@ const selectedChildDivisions = computed(
 );
 
 const handleReset = () => {
-	selectedLeague.value.league_id = 0;
-	selectedChildLeague.value.id = 0;
-	selectedChildLeague.value.name = '';
-	selectedLeague.value.name = '';
+	selectedLeague.value = { league_id: 0, name: '', abbreviation: '', season_id: null, icon_url: '' };
+	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null };
+	selectedDivision.value = { id: 0, child_id: 0, season_id: 0, name: '', abbreviation: '', icon_url: null };
 };
 
 const handleLeagueChange = () => {
@@ -285,6 +291,6 @@ const applyLeagueConfig = async () => {
 		}),
 	);
 	notifications().notify({ title: 'Success', text: 'Settings saved successfully!' });
-	await router.push({ name: 'Register League' });
+	await router.push({ name: 'League Info' });
 };
 </script>
