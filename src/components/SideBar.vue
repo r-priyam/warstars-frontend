@@ -8,7 +8,21 @@
 				</h3>
 			</div>
 			<div
-				class="inline-flex items-end justify-end p-2 mb-8 ml-auto rounded-md focus:outline-none bg-main-light-630 dark:bg-main-dark-500 hover:bg-main-light-560 dark:hover:bg-main-dark-560 lg:hidden"
+				class="
+					inline-flex
+					items-end
+					justify-end
+					p-2
+					mb-8
+					ml-auto
+					rounded-md
+					focus:outline-none
+					bg-main-light-630
+					dark:bg-main-dark-500
+					hover:bg-main-light-560
+					dark:hover:bg-main-dark-560
+					lg:hidden
+				"
 				@click="$emit('closeSidebar', false)"
 			>
 				<span class="sr-only">Close menu</span>
@@ -43,7 +57,16 @@
 			<div class="flex justify-center flex-shrink-0 mt-2">
 				<router-link
 					to="/dashboard/league-selector"
-					class="p-1 text-sm font-bold text-white rounded bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
+					class="
+						p-1
+						text-sm
+						font-bold
+						text-white
+						rounded
+						bg-main-textDark-560
+						hover:bg-main-textLight-560
+						dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+					"
 					@click="$emit('closeSidebar', false)"
 				>
 					Change Config
@@ -63,7 +86,21 @@
 						v-for="item in nav.items"
 						:key="item.name"
 						:to="item.href"
-						class="text-main-textDark-600 dark:text-main-textLight-530 hover:bg-main-light-560 dark:hover:bg-main-dark-600 group flex items-center px-2 py-2 text-sm leading-6 font-semibold rounded-md"
+						class="
+							text-main-textDark-600
+							dark:text-main-textLight-530
+							hover:bg-main-light-560
+							dark:hover:bg-main-dark-600
+							group
+							flex
+							items-center
+							px-2
+							py-2
+							text-sm
+							leading-6
+							font-semibold
+							rounded-md
+						"
 						active-class="bg-main-light-600 dark:bg-main-dark-600"
 						@click="$emit('closeSidebar', false)"
 					>

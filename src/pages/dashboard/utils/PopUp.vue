@@ -26,12 +26,34 @@
 					leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 				>
 					<div
-						class="inline-block align-bottom bg-main-light-560 dark:bg-main-dark-560 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+						class="
+							inline-block
+							align-bottom
+							bg-main-light-560
+							dark:bg-main-dark-560
+							rounded-lg
+							text-left
+							overflow-hidden
+							shadow-xl
+							transform
+							transition-all
+							sm:my-8 sm:align-middle sm:max-w-lg sm:w-full
+						"
 					>
 						<div class="bg-main-light-560 dark:bg-main-dark-560 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 							<div class="sm:flex sm:items-start">
 								<div
-									class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10"
+									class="
+										mx-auto
+										flex-shrink-0 flex
+										items-center
+										justify-center
+										h-12
+										w-12
+										rounded-full
+										bg-red-300
+										sm:mx-0 sm:h-10 sm:w-10
+									"
 								>
 									<heroicons-outline:exclamation class="h-6 w-6 text-red-600" aria-hidden="true" />
 								</div>
@@ -51,14 +73,48 @@
 							<button
 								v-if="!player.removePlayerProcessing && !clan.removeClanProcessing"
 								type="button"
-								class="w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+								class="
+									w-full
+									inline-flex
+									justify-center
+									rounded-md
+									shadow-sm
+									px-4
+									py-2
+									bg-red-600
+									text-base
+									font-medium
+									text-white
+									hover:bg-red-700
+									focus:outline-none
+									sm:ml-3 sm:w-auto sm:text-sm
+								"
 								@click="handleRemove(processName, tag)"
 							>
 								Remove
 							</button>
 							<button
 								v-else
-								class="items-center text-center border border-transparent cursor-not-allowed w-full inline-flex justify-center rounded-md shadow-sm px-6 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+								class="
+									items-center
+									text-center
+									border border-transparent
+									cursor-not-allowed
+									w-full
+									inline-flex
+									justify-center
+									rounded-md
+									shadow-sm
+									px-6
+									py-2
+									bg-red-600
+									text-base
+									font-medium
+									text-white
+									hover:bg-red-700
+									focus:outline-none
+									sm:ml-3 sm:w-auto sm:text-sm
+								"
 								disabled
 							>
 								<svg
@@ -78,7 +134,24 @@
 							<button
 								ref="cancelButtonRef"
 								type="button"
-								class="mt-3 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium text-gray-100 bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+								class="
+									mt-3
+									w-full
+									inline-flex
+									justify-center
+									rounded-md
+									shadow-sm
+									px-4
+									py-2
+									text-base
+									font-medium
+									text-gray-100
+									bg-main-textDark-560
+									hover:bg-main-textLight-560
+									dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+									focus:outline-none
+									sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
+								"
 								@click="$emit('handlePopUp', false)"
 							>
 								Cancel

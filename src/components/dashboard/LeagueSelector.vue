@@ -51,7 +51,19 @@
 					</h1>
 					<div v-if="selectedLeagueChild?.length === 0" class="flex justify-center mt-2 flex-nowrap">
 						<button
-							class="px-4 py-2 text-base font-semibold text-gray-100 bg-green-700 rounded-lg shadow-md hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none"
+							class="
+								px-4
+								py-2
+								text-base
+								font-semibold
+								text-gray-100
+								bg-green-700
+								rounded-lg
+								shadow-md
+								hover:bg-green-800
+								dark:bg-green-600 dark:hover:bg-green-700
+								focus:outline-none
+							"
 						>
 							Add Child League
 						</button>
@@ -98,7 +110,19 @@
 				</h1>
 				<div v-if="selectedChildDivisions?.length === 0" class="flex justify-center mt-2 flex-nowrap">
 					<button
-						class="px-4 py-2 text-base font-semibold text-gray-100 bg-indigo-700 rounded-lg shadow-md hover:bg-indigo-800 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none"
+						class="
+							px-4
+							py-2
+							text-base
+							font-semibold
+							text-gray-100
+							bg-indigo-700
+							rounded-lg
+							shadow-md
+							hover:bg-indigo-800
+							dark:bg-indigo-600 dark:hover:bg-indigo-700
+							focus:outline-none
+						"
 					>
 						Add Division
 					</button>
@@ -165,13 +189,44 @@
 		</div>
 		<div class="flex justify-center mt-4 space-x-4 flex-nowrap">
 			<button
-				class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-100 rounded-md shadow-sm bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+				class="
+					inline-flex
+					justify-center
+					w-full
+					px-4
+					py-2
+					text-base
+					font-medium
+					text-gray-100
+					rounded-md
+					shadow-sm
+					bg-main-textDark-560
+					hover:bg-main-textLight-560
+					dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+					focus:outline-none
+					sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
+				"
 				@click="handleReset()"
 			>
 				Reset
 			</button>
 			<button
-				class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-100 bg-red-600 rounded-md shadow-sm hover:bg-red-700 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+				class="
+					inline-flex
+					justify-center
+					w-full
+					px-4
+					py-2
+					text-base
+					font-medium
+					text-gray-100
+					bg-red-600
+					rounded-md
+					shadow-sm
+					hover:bg-red-700
+					focus:outline-none
+					sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
+				"
 				@click="applyLeagueConfig()"
 			>
 				Apply

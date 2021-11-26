@@ -17,7 +17,19 @@
 				<div
 					v-for="noti in notification.notifications"
 					:key="noti.id"
-					class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden rounded-lg shadow-md bg-main-light-500 dark:bg-main-dark-500 lg:rounded-none"
+					class="
+						flex
+						w-full
+						max-w-sm
+						mx-auto
+						mt-4
+						overflow-hidden
+						rounded-lg
+						shadow-md
+						bg-main-light-500
+						dark:bg-main-dark-500
+						lg:rounded-none
+					"
 				>
 					<div class="px-4 py-2 -mx-3">
 						<div class="mx-3">
@@ -34,7 +46,18 @@
 	<div>
 		<div class="fixed z-20 flex flex-shrink-0 lg:hidden">
 			<button
-				class="inline-flex items-center p-2 text-base font-semibold rounded-br-md bg-main-light-630 dark:bg-main-dark-660 hover:bg-main-light-660 dark:hover:bg-main-dark-600"
+				class="
+					inline-flex
+					items-center
+					p-2
+					text-base
+					font-semibold
+					rounded-br-md
+					bg-main-light-630
+					dark:bg-main-dark-660
+					hover:bg-main-light-660
+					dark:hover:bg-main-dark-600
+				"
 				@click="sidebarOpen = true"
 			>
 				<span class="sr-only">Open sidebar</span>
@@ -48,7 +71,19 @@
 			<!-- Static sidebar for desktop -->
 			<div class="hidden lg:flex lg:flex-shrink-0">
 				<div
-					class="relative flex flex-col flex-grow w-64 pt-5 pb-4 overflow-y-auto border-r shadow-inner bg-main-light-600 custom-scroll dark:bg-main-dark-560"
+					class="
+						relative
+						flex flex-col flex-grow
+						w-64
+						pt-5
+						pb-4
+						overflow-y-auto
+						border-r
+						shadow-inner
+						bg-main-light-600
+						custom-scroll
+						dark:bg-main-dark-560
+					"
 				>
 					<DashboardSidebar />
 				</div>
@@ -71,7 +106,16 @@
 						leave-to="-translate-x-full"
 					>
 						<div
-							class="relative flex flex-col flex-1 w-full max-w-xs border-r shadow-inner bg-main-light-600 dark:bg-main-dark-630"
+							class="
+								relative
+								flex flex-col flex-1
+								w-full
+								max-w-xs
+								border-r
+								shadow-inner
+								bg-main-light-600
+								dark:bg-main-dark-630
+							"
 						>
 							<div ref="sidebarElement" class="pt-5 pb-4 overflow-hidden overflow-y-auto custom-scroll">
 								<DashboardSidebar @close-sidebar="handleSidebarEvent" />
