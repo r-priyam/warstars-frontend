@@ -14,16 +14,7 @@
 					</div>
 					<div class="relative flex justify-start">
 						<span
-							class="
-								pl-2
-								pr-2
-								text-lg
-								font-bold
-								text-main-textDark-600
-								dark:text-main-textLight-530
-								bg-main-light-430
-								dark:bg-main-dark-600
-							"
+							class="pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
 						>
 							Clans Linked
 						</span>
@@ -47,35 +38,14 @@
 							</div>
 							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-20 ml-auto right-2">
 								<span
-									class="
-										inline-flex
-										px-3
-										py-1
-										text-sm
-										rounded-full
-										mr-1
-										text-main-textDark-600
-										dark:text-main-textLight-530
-										bg-main-light-430
-										dark:bg-main-dark-600
-									"
+									class="inline-flex px-3 py-1 text-sm rounded-full mr-1 text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
 									><entypo:trophy class="w-5 h-5 mr-1 text-yellow-400" aria-hidden="true" />
 									<span class="font-bold">
 										{{ clan.trophies }}
 									</span>
 								</span>
 								<span
-									class="
-										inline-flex
-										px-3
-										py-1
-										text-sm
-										rounded-full
-										text-main-textDark-600
-										dark:text-main-textLight-530
-										bg-main-light-430
-										dark:bg-main-dark-600
-									"
+									class="inline-flex px-3 py-1 text-sm rounded-full text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
 									><mdi:trophy class="w-5 h-5 mr-1 text-yellow-600" aria-hidden="true" />
 									<span class="font-bold">
 										{{ clan.versus_trophies }}

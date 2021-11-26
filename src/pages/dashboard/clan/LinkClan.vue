@@ -14,60 +14,20 @@
 							type="text"
 							autocomplete="off"
 							required="true"
-							class="
-								w-full
-								px-3
-								py-2
-								mt-2
-								text-gray-900
-								placeholder-gray-500
-								border border-gray-300
-								rounded-lg
-								shadow-sm
-								appearance-none
-								focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10
-								sm:text-sm
-							"
+							class="w-full px-3 py-2 mt-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
 							placeholder="Your Clan Tag"
 						/>
 					</div>
 					<button
 						v-if="!userClan.linkClanProcessing"
-						class="
-							py-2
-							font-bold
-							text-white
-							transition
-							duration-200
-							mt-10
-							border border-transparent
-							rounded
-							shadow-md
-							bg-main-textDark-560
-							hover:bg-main-textLight-560
-							dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
-							hover:shadow-xl
-						"
+						class="py-2 font-bold text-white transition duration-200 mt-10 border border-transparent rounded shadow-md bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 hover:shadow-xl"
 						type="submit"
 					>
 						Proceed
 					</button>
 					<button
 						v-if="userClan.linkClanProcessing"
-						class="
-							inline-flex
-							items-center
-							justify-center
-							py-2
-							font-bold
-							text-center text-white
-							mt-10
-							border border-transparent
-							rounded
-							cursor-not-allowed
-							bg-main-textLight-560
-							dark:bg-main-textDark-560
-						"
+						class="inline-flex items-center justify-center py-2 font-bold text-center text-white mt-10 border border-transparent rounded cursor-not-allowed bg-main-textLight-560 dark:bg-main-textDark-560"
 						disabled
 					>
 						<svg
