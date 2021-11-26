@@ -5,7 +5,9 @@
 		"project": "./tsconfig.eslint.json"
 	},
 	"env": {
-		"jest": true
+		"jest": true,
+		"browser": true,
+		"node": true
 	},
 	"ignorePatterns": "auto-imports.d.ts"
 }
