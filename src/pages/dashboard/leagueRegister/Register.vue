@@ -1,11 +1,9 @@
 <template>
 	<div>
-		<div class="max-w-lg p-8 mx-auto rounded-lg shadow-xl bg-main-light-530 dark:bg-main-dark-500 md:p-12">
-			<section>
-				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">
-					Register League
-				</h3>
-			</section>
+		<div class="max-w-lg p-8 mx-auto rounded-b-lg shadow-xl bg-main-light-530 dark:bg-main-dark-500 md:p-12">
+			<h1 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">
+				Register League
+			</h1>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
 				<form id="register-league" class="flex flex-col" @submit.prevent="registerLeague">
@@ -30,7 +28,7 @@
 							autocomplete="off"
 							required="true"
 							minlength="2"
-							class="register-form-input uppercase"
+							class="uppercase register-form-input"
 							placeholder="League Abbreviation"
 						/>
 					</div>
@@ -38,7 +36,7 @@
 						<label class="mt-4 register-form-input-label">Head Name</label>
 						<input
 							readonly="true"
-							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
+							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
 							:placeholder="user.userData.user_name"
 						/>
 					</div>
@@ -46,31 +44,31 @@
 						<label class="mt-4 register-form-input-label">Head Discord ID</label>
 						<input
 							readonly="true"
-							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
+							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
 							:placeholder="user.userData.discord_id"
 						/>
 					</div>
 					<div>
 						<label class="mt-4 register-form-input-label"
-							>Discord Invite<span class="text-xs ml-1 font-medium">(Optional)</span></label
+							>Discord Invite<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
 						<input name="discord-invite" type="text" class="register-form-input" placeholder="Discord Server Invite" />
 					</div>
 					<div>
 						<label class="mt-4 register-form-input-label"
-							>Twitter Handle<span class="text-xs ml-1 font-medium">(Optional)</span></label
+							>Twitter Handle<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
 						<input name="twitter-handle" type="text" class="register-form-input" placeholder="Twitter User Name" />
 					</div>
 					<div>
 						<label class="mt-4 register-form-input-label"
-							>Website<span class="text-xs ml-1 font-medium">(Optional)</span></label
+							>Website<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
 						<input name="webiste-url" type="text" class="register-form-input" placeholder="Website URL" />
 					</div>
 					<div>
 						<label class="mt-4 register-form-input-label"
-							>Rules<span class="text-xs ml-1 font-medium">(Optional)</span></label
+							>Rules<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
 						<input name="league-rules" type="text" class="register-form-input" placeholder="Rules Google Doc Link" />
 					</div>

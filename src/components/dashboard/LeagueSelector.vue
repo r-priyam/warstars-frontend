@@ -3,7 +3,7 @@
 		<div class="mb-8">
 			<h1 class="text-3xl font-bold text-center text-red-700 dark:text-red-500">My Leagues</h1>
 		</div>
-		<div class="flex flex-col-1 items-center justify-center flex-shrink-0 mt-2">
+		<div class="flex items-center justify-center flex-shrink-0 mt-2 flex-col-1">
 			<div v-for="league in leaguesData" :key="league.league_id" class="flex flex-wrap justify-center">
 				<button
 					@click="
@@ -18,7 +18,7 @@
 					"
 				>
 					<img
-						class="flex-grow-0 m-1 w-24 h-24 p-1 text-center border-2 border-white rounded-full"
+						class="flex-grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
 						:class="[league.league_id === selectedLeague?.league_id ? 'border-red-700 dark:border-red-500' : '']"
 						:src="league.icon_url"
 						:alt="league.name"
@@ -29,14 +29,14 @@
 		</div>
 		<h1
 			v-if="selectedLeague.league_id === 0"
-			class="text-base mt-4 italic font-medium text-center text-red-700 dark:text-red-500"
+			class="mt-4 text-base italic font-medium text-center text-red-700 dark:text-red-500"
 		>
 			Please select a League to get started
 		</h1>
 		<div v-if="selectedLeague.league_id > 0">
 			<div class="mt-6 mb-6">
 				<transition-group
-					enter-active-class="transition transform-gpu duration-300 ease-out"
+					enter-active-class="transition duration-300 ease-out transform-gpu"
 					enter-from-class="translate-x-12 opacity-0"
 					enter-to-class="translate-x-0 opacity-100"
 				>
@@ -57,9 +57,9 @@
 								text-base
 								font-semibold
 								text-gray-100
+								bg-green-700
 								rounded-lg
 								shadow-md
-								bg-green-700
 								hover:bg-green-800
 								dark:bg-green-600 dark:hover:bg-green-700
 								focus:outline-none
@@ -70,11 +70,11 @@
 					</div>
 				</transition-group>
 			</div>
-			<div class="flex flex-col-1 items-center justify-center flex-shrink-0 mt-2">
+			<div class="flex items-center justify-center flex-shrink-0 mt-2 flex-col-1">
 				<transition-group
-					enter-active-class="transition transform-gpu duration-300 ease-out"
+					enter-active-class="transition duration-300 ease-out transform-gpu"
 					enter-from-class="translate-x-12 opacity-0"
-					enter-to-class="transition transform-gpu duration-300 ease-out"
+					enter-to-class="transition duration-300 ease-out transform-gpu"
 				>
 					<div v-for="childLeague in selectedLeagueChild" :key="childLeague.id" class="flex flex-wrap justify-center">
 						<button
@@ -89,7 +89,7 @@
 							"
 						>
 							<img
-								class="inline-flex flex-grow-0 m-1 w-24 h-24 p-1 text-center border-2 border-white rounded-full"
+								class="inline-flex flex-grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
 								:class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
 								:src="childLeague.icon_url"
 								:alt="childLeague.name"
@@ -105,7 +105,7 @@
 				<h1 class="text-xl font-bold text-center text-yellow-700 dark:text-yellow-500">
 					{{ `${selectedLeague.name} ${selectedChildLeague.name}` }} has no division
 				</h1>
-				<h1 class="text-sm italic text-red-700 dark:text-red-500 text-center">
+				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
 					All the changes will apply to {{ selectedChildLeague.name }} globally.
 				</h1>
 				<div v-if="selectedChildDivisions?.length === 0" class="flex justify-center mt-2 flex-nowrap">
@@ -116,9 +116,9 @@
 							text-base
 							font-semibold
 							text-gray-100
+							bg-yellow-700
 							rounded-lg
 							shadow-md
-							bg-yellow-700
 							hover:bg-yellow-800
 							dark:bg-yellow-600 dark:hover:bg-yellow-700
 							focus:outline-none
@@ -132,7 +132,7 @@
 				<h1 class="text-xl font-bold text-center text-yellow-700 dark:text-yellow-500">
 					{{ `${selectedLeague.name} ${selectedChildLeague.name}` }} Divisions
 				</h1>
-				<h1 class="text-sm italic text-red-700 dark:text-red-500 text-center">
+				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
 					If you will not select a division then any changes will apply to whole
 					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} globally
 				</h1>
@@ -159,10 +159,10 @@
 									<div class="flex items-center justify-between w-full">
 										<div class="flex items-center">
 											<div class="text-sm">
-												<RadioGroupLabel as="p" class="text-black font-bold">
+												<RadioGroupLabel as="p" class="font-bold text-black">
 													{{ division.name }}
 												</RadioGroupLabel>
-												<RadioGroupDescription as="span" class="font-semibold inline text-gray-900">
+												<RadioGroupDescription as="span" class="inline font-semibold text-gray-900">
 													<span> Changes will only apply to {{ division.name }}</span>
 												</RadioGroupDescription>
 											</div>
@@ -187,19 +187,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="space-x-4 flex justify-center mt-4 flex-nowrap">
+		<div class="flex justify-center mt-4 space-x-4 flex-nowrap">
 			<button
 				class="
-					w-full
 					inline-flex
 					justify-center
-					rounded-md
-					shadow-sm
+					w-full
 					px-4
 					py-2
 					text-base
 					font-medium
 					text-gray-100
+					rounded-md
+					shadow-sm
 					bg-main-textDark-560
 					hover:bg-main-textLight-560
 					dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
@@ -212,17 +212,17 @@
 			</button>
 			<button
 				class="
-					w-full
 					inline-flex
 					justify-center
-					rounded-md
-					shadow-sm
+					w-full
 					px-4
 					py-2
 					text-base
 					font-medium
 					text-gray-100
 					bg-red-600
+					rounded-md
+					shadow-sm
 					hover:bg-red-700
 					focus:outline-none
 					sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
