@@ -36,7 +36,11 @@
 				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.icon_url" />
 				<div class="pl-2 overflow-hidden text-base">
 					<h3 class="font-bold leading-tight truncate text-green-700 dark:text-green-500">
-						{{ `${league.getLeagueLocalConfig.child.name} (${league.getLeagueLocalConfig.division.name})` }}
+						{{
+							`${league.getLeagueLocalConfig.child.name} (${
+								league.getLeagueLocalConfig.division.name || 'No Division'
+							})`
+						}}
 					</h3>
 				</div>
 			</div>
