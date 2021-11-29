@@ -41,6 +41,8 @@ export const leagueManagement = defineStore({
 			const notification = notifications();
 			try {
 				const request = await APILeague.getUserLeaguePermissions();
+				// return here since API won't give any data when user is in no league.
+				if (!request.data) return (this.permissions = {});
 				const payloadData: TUserLeaguePermissions = jwt_decode(request.data as string);
 
 				if (request.status === 200) {
