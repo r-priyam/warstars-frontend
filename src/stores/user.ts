@@ -1,8 +1,8 @@
+import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import router from '~/router';
 import { UserProfileProperties, UserStateProperties } from '~/types/user';
-import { deleteCookie } from '~/utils/cookie';
 
 export const userStore = defineStore({
 	id: 'user',
@@ -27,7 +27,7 @@ export const userStore = defineStore({
 		},
 
 		async logOut() {
-			deleteCookie('_auth_token');
+			Cookies.remove('_auth_token');
 			this.loggedIn = false;
 			await router.push({ name: 'Home' });
 		},

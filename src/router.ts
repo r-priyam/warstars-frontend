@@ -1,7 +1,7 @@
+import Cookies from 'js-cookie';
 import NProgress from 'nprogress';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { leagueManagement } from '~/stores/leagueManagement';
-import { getCookie } from '~/utils/cookie';
 import { userStore } from './stores/user';
 
 const routes: RouteRecordRaw[] = [
@@ -34,16 +34,16 @@ const routes: RouteRecordRaw[] = [
 				name: 'Register League',
 				component: () => import('~/pages/dashboard/leagueRegister/Register.vue'),
 			},
-			{ path: 'league', name: 'League Info', component: () => import('~/pages/dashboard/leagues/LeagueInfo.vue') },
+			{ path: 'league', name: 'League Info', component: () => import('~/pages/dashboard/leagues/LeagueMain.vue') },
 			{
 				path: 'league-child',
 				name: 'League Child',
-				component: () => import('~/pages/dashboard/leagues/core/LeagueChild.vue'),
+				component: () => import('~/pages/dashboard/leagues/core/ManageChild.vue'),
 			},
 			{
 				path: 'child-division',
 				name: 'Child Division',
-				component: () => import('~/pages/dashboard/leagues/core/ChildDivision.vue'),
+				component: () => import('~/pages/dashboard/leagues/core/ManageDivision.vue'),
 			},
 			{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') },
 		],
@@ -60,7 +60,7 @@ router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
 	const league = leagueManagement();
-	const authenticated = getCookie('_auth_token');
+	const authenticated = Cookies.get('_auth_token');
 	if (authenticated) {
 		user.setTokenData(authenticated);
 		await league.syncPermissions();

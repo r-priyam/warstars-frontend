@@ -20,6 +20,7 @@ export interface TUserChildLeagueDivisions {
 	name: string;
 	abbreviation: string;
 	icon_url: string | null;
+	clans_count: number;
 }
 
 export interface TUserChildLeague {
@@ -33,6 +34,7 @@ export interface TUserChildLeague {
 	specific_id: number | null;
 	start_time: string | null;
 	end_time: string | null;
+	clans_count: number;
 	divisions: TUserChildLeagueDivisions[] | [];
 }
 
@@ -49,11 +51,13 @@ export interface TUserLeagueData {
 	description: string;
 	icon_url: string;
 	is_verified: boolean;
+	registerd_on: string;
 	season_id: number | null;
 	specific_id: number | null;
 	start_time: string | null;
 	end_time: string | null;
 	is_active: boolean | null;
+	total_admins: number;
 	child_leagues: TUserChildLeague[] | [];
 }
 
@@ -77,4 +81,19 @@ export interface TLocalLeagueConfig {
 	league: TSelectedLeague;
 	child: TSelectedChild;
 	division: TUserChildLeagueDivisions;
+}
+
+export interface TRegisterChild {
+	league_id: number;
+	name: string;
+	abbreviation: string;
+	icon_url: string;
+}
+
+export interface TRegisterDivision {
+	league_id: number;
+	child_id: number;
+	season_id: number;
+	name: string;
+	abbreviation: string;
 }

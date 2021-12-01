@@ -19,7 +19,9 @@
 		"@vueuse/motion": "2.0.0-beta.4",
 		"axios": "0.24.0",
 		"clashofclans.js": "2.0.2",
+		"js-cookie": "^3.0.1",
 		"jwt-decode": "3.1.2",
+		"moment": "^2.29.1",
 		"nprogress": "0.2.0",
 		"pinia": "2.0.4",
 		"vue": "3.2.23",
@@ -27,6 +29,7 @@
 	},
 	"devDependencies": {
 		"@iconify/json": "1.1.435",
+		"@types/js-cookie": "^3.0.1",
 		"@types/node": "16.11.11",
 		"@types/nprogress": "0.2.0",
 		"@typescript-eslint/eslint-plugin": "5.5.0",

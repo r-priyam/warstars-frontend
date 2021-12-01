@@ -56,7 +56,7 @@
 		</div>
 
 		<nav class="flex flex-col flex-1 px-3 mt-5 overflow-y-auto divide-y divide-gray-300" aria-label="Sidebar">
-			<div v-for="(nav, index) in navigation" :key="index" :class="[index === 0 ? '' : 'pt-3 mt-3']">
+			<div v-for="(nav, index) in toggleNavigation" :key="index" :class="[index === 0 ? '' : 'pt-3 mt-3']">
 				<div>
 					<span
 						v-if="nav.title"
@@ -166,4 +166,7 @@ const navigation = [
 		],
 	},
 ];
+
+const toggleNavigation =
+	Object.keys(league.permissions).length === 0 ? navigation.splice(-navigation.length - 3, 3) : navigation;
 </script>

@@ -91,7 +91,7 @@
 		<div v-if="selectedChildLeague.name !== ''">
 			<div v-if="selectedChildDivisions?.length === 0" class="mt-6 mb-6">
 				<h1 class="text-xl font-bold text-center text-indigo-700 dark:text-indigo-500">
-					{{ `${selectedLeague.name} ${selectedChildLeague.name}` }} has no division
+					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} has no division
 				</h1>
 				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
 					All the changes will apply to {{ selectedChildLeague.name }} globally.
@@ -185,6 +185,17 @@ import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } 
 import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild } from '~/types/leagues';
 import { notifications } from '~/stores/notifications';
 import router from '~/router';
+import { leagueManagement } from '~/stores/leagueManagement';
+
+const leagueStore = leagueManagement();
+async function checkPageEntry() {
+	if (Object.keys(leagueStore.permissions).length === 0) {
+		notifications().notify({ title: 'Info', text: "You aren't in any league." });
+		await router.push({ name: 'League Register Info' });
+	}
+}
+// Check if a user is in any league or not. If not redirect back to league info page.
+onBeforeMount(checkPageEntry);
 
 const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
 const selectedLeague = ref<TSelectedLeague>({
