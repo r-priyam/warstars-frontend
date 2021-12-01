@@ -213,6 +213,7 @@ const selectedDivision = ref<TUserChildLeagueDivisions>({
 	name: '',
 	abbreviation: '',
 	icon_url: null,
+	clans_count: 0,
 });
 
 const selectedLeagueChild = computed(
@@ -229,7 +230,15 @@ const selectedChildDivisions = computed(
 const handleReset = () => {
 	selectedLeague.value = { league_id: 0, name: '', abbreviation: '', season_id: null, icon_url: '' };
 	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null };
-	selectedDivision.value = { id: 0, child_id: 0, season_id: 0, name: '', abbreviation: '', icon_url: null };
+	selectedDivision.value = {
+		id: 0,
+		child_id: 0,
+		season_id: 0,
+		name: '',
+		abbreviation: '',
+		icon_url: null,
+		clans_count: 0,
+	};
 };
 
 const handleLeagueChange = () => {
