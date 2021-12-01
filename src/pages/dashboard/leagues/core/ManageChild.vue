@@ -53,14 +53,41 @@
 					</div>
 					<button
 						v-if="!league.childRegisterProcess"
-						class="py-2 mt-10 font-bold text-white transition duration-200 border border-transparent rounded shadow-md bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 hover:shadow-xl"
+						class="
+							py-2
+							mt-10
+							font-bold
+							text-white
+							transition
+							duration-200
+							border border-transparent
+							rounded
+							shadow-md
+							bg-main-textDark-560
+							hover:bg-main-textLight-560
+							dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560
+							hover:shadow-xl
+						"
 						type="submit"
 					>
 						Proceed
 					</button>
 					<button
 						v-if="league.childRegisterProcess"
-						class="inline-flex items-center justify-center py-2 mt-10 font-bold text-center text-white border border-transparent rounded cursor-not-allowed bg-main-textLight-560 dark:bg-main-textDark-560"
+						class="
+							inline-flex
+							items-center
+							justify-center
+							py-2
+							mt-10
+							font-bold
+							text-center text-white
+							border border-transparent
+							rounded
+							cursor-not-allowed
+							bg-main-textLight-560
+							dark:bg-main-textDark-560
+						"
 						disabled
 					>
 						<svg
