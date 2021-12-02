@@ -17,14 +17,19 @@ export const userStore = defineStore({
 	}),
 
 	actions: {
-		setTokenData(token: string) {
+		async setTokenData(token: string) {
 			this.authToken = token;
 			this.loggedIn = true;
-			const payload: UserProfileProperties = jwt_decode(token);
-			this.userData = JSON.parse(payload.discord_data.replace(/'/g, '"'));
-			this.avatarUrl = `https://cdn.discordapp.com/avatars/${BigInt(this.userData.discord_id)}/${
-				this.userData.avatar_id
-			}.png?size=1024`;
+			try {
+				const payload: UserProfileProperties = jwt_decode(token);
+				this.userData = JSON.parse(payload.discord_data.replace(/'/g, '"'));
+				this.avatarUrl = `https://cdn.discordapp.com/avatars/${BigInt(this.userData.discord_id)}/${
+					this.userData.avatar_id
+				}.png?size=1024`;
+			} catch (error) {
+				// user has played with the auth token here.
+				await this.logOut();
+			}
 		},
 
 		async logOut() {

@@ -62,7 +62,7 @@ router.beforeEach(async (to) => {
 	const league = leagueManagement();
 	const authenticated = Cookies.get('_auth_token');
 	if (authenticated) {
-		user.setTokenData(authenticated);
+		await user.setTokenData(authenticated);
 		await league.syncPermissions();
 		await league.syncLeaguesData();
 	}

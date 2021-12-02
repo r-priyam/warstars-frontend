@@ -28,8 +28,9 @@
 							autocomplete="off"
 							required="true"
 							minlength="2"
-							class="uppercase register-form-input"
+							class="register-form-input"
 							placeholder="League Abbreviation"
+							oninput="this.value = this.value.toUpperCase()"
 						/>
 					</div>
 					<div>
