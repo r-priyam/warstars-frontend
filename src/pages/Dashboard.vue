@@ -123,7 +123,7 @@ const notificationColor = (type: string) => {
 
 <style>
 .sidebar-height {
-	height: calc(100vh - 3.99rem);
+	height: calc(100vh - 3.64rem);
 }
 .custom-scroll {
 	scrollbar-width: thin;

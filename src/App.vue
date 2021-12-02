@@ -1,5 +1,5 @@
 <template>
-	<div class="grid min-h-[calc(100vh-68px)] grid-layout">
+	<div class="grid min-h-[calc(100vh-57.98px)] grid-layout">
 		<Navbar />
 		<div id="container" class="grid grid-layout-container">
 			<div class="bg-main-light-600 dark:bg-main-dark-630">

@@ -4,10 +4,11 @@
 	>
 		<Popover class="sticky top-0">
 			<div class="px-2 mx-auto max-w-7xl sm:px-6">
-				<div class="flex items-center justify-between py-3.5 md:py-2 border-gray-100 md:justify-start">
+				<!-- padding to maintain navbar height -->
+				<div class="flex items-center justify-between py-2.5 md:py-1 border-gray-100 md:justify-start">
 					<div class="flex justify-start text-3xl font-bold lg:w-0 lg:flex-1">
 						<router-link to="/">
-							<span class="text-3xl text-main-dark-500 dark:text-white">War</span>
+							<span class="text-main-dark-500 dark:text-white">War</span>
 							<span class="text-main-textDark-600 dark:text-main-textLight-530">Stars</span>
 						</router-link>
 					</div>
