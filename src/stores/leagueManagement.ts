@@ -48,12 +48,15 @@ export const leagueManagement = defineStore({
 					Cookies.remove('_league_permissions');
 					return;
 				}
+				// Here if a response is successfull and user is in No League, i mean
+				// if a user permissions is null then it won't set a cookie or not it will
+				// return anything so return.
+				if (!Cookies.get('_league_permissions')) return;
 				const payloadData: TPermsData = jwt_decode(Cookies.get('_league_permissions')!);
 				this.permissions = JSON.parse(payloadData.value.replace(/'/g, '"'));
 			} catch (error) {
 				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
-				console.log(error);
-				// else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 		},
 
