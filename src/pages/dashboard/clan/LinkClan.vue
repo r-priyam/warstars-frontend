@@ -58,7 +58,7 @@ const userClan = userClanOperations();
 async function linkClan() {
 	const form: HTMLFormElement | null = document.querySelector('#clan-link');
 	const formData = new FormData(form!);
-	const clanTag = formData.get('player-tag') as string;
+	const clanTag = formData.get('clan-tag') as string;
 	await userClan.linkClan(clanTag);
 }
 </script>
