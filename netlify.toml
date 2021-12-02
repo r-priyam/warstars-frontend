@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "www.warstars.priyam.tech"
+  to = "https://warstars.priyam.tech"
+  status = 301
+  force = true
