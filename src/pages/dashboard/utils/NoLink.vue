@@ -10,7 +10,7 @@
 					<button
 						class="flex-shrink-0 px-4 py-2 mt-6 text-base font-semibold text-white rounded-lg shadow-md bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 focus:outline-none"
 						type="button"
-						@click="router.push('/dashboard/player-link')"
+						@click="router.push({ name: `${name} Link` })"
 					>
 						Link {{ name }}
 					</button>
