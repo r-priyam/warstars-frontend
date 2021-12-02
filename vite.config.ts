@@ -5,6 +5,7 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
+import ViteRadar from 'vite-plugin-radar';
 
 export default defineConfig({
 	resolve: {
@@ -26,6 +27,11 @@ export default defineConfig({
 			],
 		}),
 		Icons(),
+		ViteRadar({
+			analytics: {
+				id: 'G-VPF07N5QBR',
+			},
+		}),
 	],
 	server: {
 		host: true,

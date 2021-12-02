@@ -54,6 +54,7 @@
 		"vite": "2.6.14",
 		"vite-plugin-pages": "0.18.2",
 		"vite-plugin-pwa": "0.11.9",
+		"vite-plugin-radar": "^0.3.0",
 		"vue-eslint-parser": "8.0.1",
 		"vue-template-compiler": "2.6.14",
 		"vue-tsc": "0.29.8"
