@@ -1,5 +1,7 @@
 <template>
-	<footer class="relative bg-main-light-500 dark:bg-main-dark-500">
+	<footer
+		class="relative border-t-2 bg-main-light-500 dark:bg-main-dark-500 border-main-light-600 dark:border-main-dark-460"
+	>
 		<div class="container flex flex-col items-center px-2 py-4 mx-auto sm:flex-row">
 			<a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
 				<span class="ml-3 text-xl font-bold text-main-textDark-600 dark:text-main-textLight-530">WarStars</span>
