@@ -1,2 +1,3 @@
 [![Lint](https://github.com/r-priyam/warstars-frontend/actions/workflows/lint.yml/badge.svg)](https://github.com/r-priyam/warstars-frontend/actions/workflows/lint.yml)
 [![Test](https://github.com/r-priyam/warstars-frontend/actions/workflows/buildTest.yml/badge.svg)](https://github.com/r-priyam/warstars-frontend/actions/workflows/buildTest.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/51b4a10d-d36c-4dd3-8e25-1e1082fa1071/deploy-status)](https://app.netlify.com/sites/warstars/deploys)
