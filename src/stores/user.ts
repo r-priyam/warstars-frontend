@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
+import { domain } from '~/env';
 import router from '~/router';
 import { UserProfileProperties, UserStateProperties } from '~/types/user';
 
@@ -27,7 +28,10 @@ export const userStore = defineStore({
 		},
 
 		async logOut() {
-			Cookies.remove('_auth_token');
+			Cookies.remove('_auth_token', { path: '', domain: domain });
+			Cookies.remove('_league_permissions', { path: '', domain: domain });
+			localStorage.removeItem('leagues-data');
+			localStorage.removeItem('selected-league-config');
 			this.loggedIn = false;
 			await router.push({ name: 'Home' });
 		},
