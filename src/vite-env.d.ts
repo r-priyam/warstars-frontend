@@ -1,5 +1,5 @@
 interface ImportMetaEnv {
-	readonly VITE_DOMAIN_DEV: string;
+	readonly VITE_API_URL: string;
 }
 
 interface ImportMeta {
