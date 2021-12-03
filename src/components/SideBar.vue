@@ -8,7 +8,7 @@
 				</h3>
 			</div>
 			<div
-				class="inline-flex items-end justify-end p-2 mb-8 ml-auto rounded-md focus:outline-none bg-main-light-630 dark:bg-main-dark-500 hover:bg-main-light-560 dark:hover:bg-main-dark-560 lg:hidden"
+				class="inline-flex items-end justify-end p-2 mb-8 ml-auto rounded-md focus:outline-none bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-600 dark:hover:bg-main-dark-600 lg:hidden"
 				@click="$emit('closeSidebar', false)"
 			>
 				<span class="sr-only">Close menu</span>

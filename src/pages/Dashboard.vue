@@ -1,40 +1,8 @@
 <template>
-	<div class="fixed bottom-0 left-0 right-0 z-20 flex items-start justify-end p-6 px-0 py-6 pointer-events-none top-10">
-		<div class="w-full max-w-sm">
-			<transition-group
-				:enter-active-class="
-					notification.notifications.length > 1
-						? 'transform ease-out duration-300 transition delay-300'
-						: 'transform ease-out duration-300 transition'
-				"
-				enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-4"
-				enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
-				leave-active-class="transition duration-500 ease-in"
-				leave-from-class="opacity-100"
-				leave-to-class="opacity-0"
-				move-class="transition duration-500"
-			>
-				<div
-					v-for="noti in notification.notifications"
-					:key="noti.id"
-					class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden rounded-lg shadow-md bg-main-light-500 dark:bg-main-dark-500 lg:rounded-none"
-				>
-					<div class="px-4 py-2 -mx-3">
-						<div class="mx-3">
-							<span :class="`${notificationColor(noti.title)} font-semibold`">
-								{{ noti.title }}
-							</span>
-							<p class="text-sm text-gray-800 dark:text-gray-100">{{ noti.text }}</p>
-						</div>
-					</div>
-				</div>
-			</transition-group>
-		</div>
-	</div>
 	<div>
 		<div class="fixed z-20 flex flex-shrink-0 lg:hidden">
 			<button
-				class="inline-flex items-center p-2 text-base font-semibold rounded-br-md bg-main-light-630 dark:bg-main-dark-660 hover:bg-main-light-660 dark:hover:bg-main-dark-600"
+				class="inline-flex items-center p-2 text-base font-semibold rounded-br-md bg-main-light-600 dark:bg-main-dark-660 hover:bg-main-light-630 dark:hover:bg-main-dark-600"
 				@click="sidebarOpen = true"
 			>
 				<span class="sr-only">Open sidebar</span>
@@ -48,7 +16,7 @@
 			<!-- Static sidebar for desktop -->
 			<div class="hidden lg:flex lg:flex-shrink-0">
 				<div
-					class="relative flex flex-col flex-grow w-64 pt-5 pb-4 overflow-y-auto border-r shadow-inner bg-main-light-600 custom-scroll dark:bg-main-dark-560"
+					class="relative flex flex-col flex-grow w-64 pt-5 pb-4 overflow-y-auto border-r shadow-inner bg-main-light-530 custom-scroll dark:bg-main-dark-530"
 				>
 					<DashboardSidebar />
 				</div>
@@ -57,7 +25,7 @@
 			<TransitionRoot as="template" :show="sidebarOpen">
 				<Dialog
 					static
-					class="fixed bottom-0 left-0 right-0 z-50 flex top-16 lg:hidden"
+					class="fixed bottom-0 left-0 right-0 z-50 flex top-14 lg:hidden"
 					:open="sidebarOpen"
 					@close="sidebarOpen = false"
 				>
@@ -71,7 +39,7 @@
 						leave-to="-translate-x-full"
 					>
 						<div
-							class="relative flex flex-col flex-1 w-full max-w-xs border-r shadow-inner bg-main-light-600 dark:bg-main-dark-630"
+							class="relative flex flex-col flex-1 w-full max-w-xs border-r shadow-inner bg-main-light-530 dark:bg-main-dark-530"
 						>
 							<div ref="sidebarElement" class="pt-5 pb-4 overflow-hidden overflow-y-auto custom-scroll">
 								<DashboardSidebar @close-sidebar="handleSidebarEvent" />
@@ -85,6 +53,40 @@
 			</TransitionRoot>
 
 			<div class="flex-1 overflow-y-auto bg-main-light-560 dark:bg-main-dark-560 focus:outline-none custom-scroll">
+				<div class="flex justify-end">
+					<div class="absolute z-20 p-6 px-0 py-4 pointer-events-none top-10">
+						<div class="w-72">
+							<transition-group
+								:enter-active-class="
+									notification.notifications.length > 1
+										? 'transform ease-out duration-300 transition delay-300'
+										: 'transform ease-out duration-300 transition'
+								"
+								enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-4"
+								enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
+								leave-active-class="transition duration-500 ease-in"
+								leave-from-class="opacity-100"
+								leave-to-class="opacity-0"
+								move-class="transition duration-500"
+							>
+								<div
+									v-for="noti in notification.notifications"
+									:key="noti.id"
+									class="flex w-full max-w-sm mx-auto mt-2 overflow-hidden rounded-lg shadow-md bg-main-light-500 dark:bg-main-dark-500"
+								>
+									<div class="px-4 py-2 -mx-3">
+										<div class="mx-3">
+											<span :class="`${notificationColor(noti.title)} font-semibold`">
+												{{ noti.title }}
+											</span>
+											<p class="text-sm text-gray-800 dark:text-gray-100">{{ noti.text }}</p>
+										</div>
+									</div>
+								</div>
+							</transition-group>
+						</div>
+					</div>
+				</div>
 				<main class="relative z-0 flex-1 pb-8">
 					<div class="mt-11 lg:mt-0">
 						<router-view />
