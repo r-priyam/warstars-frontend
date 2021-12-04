@@ -55,7 +55,7 @@
 							</transition>
 						</Menu>
 						<button
-							class="inline-flex items-center justify-center p-2 mr-2 rounded-md hover:bg-main-light-560 dark:hover:bg-main-dark-560 focus:outline-none"
+							class="inline-flex items-center justify-center p-2 rounded-md hover:bg-main-light-560 dark:hover:bg-main-dark-560 focus:outline-none"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
@@ -110,7 +110,7 @@
 					</PopoverGroup>
 					<div class="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
 						<button
-							class="inline-flex items-center justify-center px-4 py-3 transition duration-500 ease-in-out rounded-md hover:bg-main-light-560 dark:hover:bg-main-dark-560 hover:text-gray-200 focus:outline-none"
+							class="inline-flex items-center justify-center p-2 transition duration-500 ease-in-out rounded-md hover:bg-main-light-560 dark:hover:bg-main-dark-560 hover:text-gray-200 focus:outline-none"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
