@@ -95,7 +95,7 @@
 import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
 defineEmits(['closePopUp', 'confirmation']);
-withDefaults(defineProps<{ title: string; description: string; open: boolean; processing: boolean }>(), {
+withDefaults(defineProps<{ title: string; description: string; open: boolean; processing?: boolean }>(), {
 	title: '',
 	description: '',
 	open: false,
