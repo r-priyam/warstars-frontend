@@ -6,7 +6,11 @@
 			:open="showPopUp"
 			:processing="popUpProcessing"
 			@close-pop-up="() => (showPopUp = false)"
-			@confirmation="handleConfirmation"
+			@confirmation="
+				async () => (
+					(popUpProcessing = true), await userClan.removeClan(clanTag), (popUpProcessing = false), (showPopUp = false)
+				)
+			"
 		/>
 		<LoadingSpinner v-if="userClan.clansDataProcessing" />
 		<NoLink v-if="!userClan.clansDataProcessing && !userClan.clanData.length" name="Clan" />
@@ -112,11 +116,4 @@ const clanTag = ref('');
 
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
-
-async function handleConfirmation() {
-	popUpProcessing.value = true;
-	await userClan.removeClan(clanTag.value);
-	popUpProcessing.value = false;
-	showPopUp.value = false;
-}
 </script>

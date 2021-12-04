@@ -6,7 +6,14 @@
 			:open="showPopUp"
 			:processing="popUpProcessing"
 			@close-pop-up="() => (showPopUp = false)"
-			@confirmation="handleConfirmation"
+			@confirmation="
+				async () => (
+					(popUpProcessing = true),
+					await userPlayer.removePlayer(playerTag),
+					(popUpProcessing = false),
+					(showPopUp = false)
+				)
+			"
 		/>
 		<LoadingSpinner v-if="userPlayer.playersDataProcessing" />
 		<NoLink v-if="!userPlayer.playersDataProcessing && !userPlayer.playerData.length" name="Player" />
@@ -108,11 +115,4 @@ const playerTag = ref('');
 
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
-
-async function handleConfirmation() {
-	popUpProcessing.value = true;
-	await userPlayer.removePlayer(playerTag.value);
-	popUpProcessing.value = false;
-	showPopUp.value = false;
-}
 </script>
