@@ -144,7 +144,7 @@
 						</button>
 						<a
 							v-if="!user.loggedIn"
-							class="inline-flex items-center px-6 py-3 ml-2 text-base font-semibold rounded-md text-main-textDark-600 dark:text-main-textLight-530 focus:outline-none focus-visible:ring-1 focus-visible:ring-white bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-660 dark:hover:bg-main-dark-660"
+							class="inline-flex items-center px-4 py-2 ml-2 text-base font-semibold rounded-md text-main-textDark-600 dark:text-main-textLight-530 focus:outline-none focus-visible:ring-1 focus-visible:ring-white bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-660 dark:hover:bg-main-dark-660"
 							:href="`${apiUrl}/api/v1/discord/authorize/login`"
 						>
 							<mdi:discord class="w-5 h-5 mr-1" />
