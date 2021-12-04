@@ -1,6 +1,6 @@
 <template>
 	<TransitionRoot as="template" :show="open">
-		<Dialog as="div" class="fixed z-10 inset-0 overflow-y-auto" @close="$emit('handlePopUp', false)">
+		<Dialog as="div" class="fixed z-10 inset-0 overflow-y-auto" @close="$emit('closePopUp')">
 			<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 				<TransitionChild
 					as="template"
@@ -79,7 +79,7 @@
 								ref="cancelButtonRef"
 								type="button"
 								class="mt-3 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium text-gray-100 bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-								@click="$emit('handlePopUp', false)"
+								@click="$emit('closePopUp')"
 							>
 								Cancel
 							</button>
@@ -94,7 +94,7 @@
 <script setup lang="ts">
 import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
-defineEmits(['handlePopUp', 'confirmation']);
+defineEmits(['closePopUp', 'confirmation']);
 withDefaults(defineProps<{ title: string; description: string; open: boolean; processing: boolean }>(), {
 	title: '',
 	description: '',
