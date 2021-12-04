@@ -1,6 +1,13 @@
 <template>
 	<div>
-		<PopUp process-name="Clan" :name="name" :tag="tag" :open="openPopUp" @handle-pop-up="handlePopUpOpen" />
+		<PopUp
+			title="Remove Clan"
+			:description="`Are you sure you want to remove ${clanName} (${clanTag})? You can add it later again!`"
+			:open="showPopUp"
+			:processing="popUpProcessing"
+			@close-pop-up="() => (showPopUp = false)"
+			@confirmation="handleConfirmation"
+		/>
 		<LoadingSpinner v-if="userClan.clansDataProcessing" />
 		<NoLink v-if="!userClan.clansDataProcessing && !userClan.clanData.length" name="Clan" />
 		<div
@@ -59,9 +66,9 @@
 								</span>
 								<button
 									@click="
-										name = clan.name;
-										tag = clan.tag;
-										openPopUp = true;
+										clanName = clan.name;
+										clanTag = clan.tag;
+										showPopUp = true;
 									"
 								>
 									<heroicons-solid:trash class="inline-flex h-6 w-6 mt-0.5 -ml-1 p-1 text-red-500" aria-hidden="true" />
@@ -95,16 +102,21 @@
 import { userClan as userClanOpeartions } from '~/stores/userClan';
 import LoadingSpinner from '~/components/Spinner.vue';
 import NoLink from '~/pages/dashboard/utils/NoLink.vue';
-import PopUp from '~/pages/dashboard/utils/PopUp.vue';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
-const name = ref('');
-const tag = ref('');
-const openPopUp = ref(false);
 const userClan = userClanOpeartions();
+onMounted(userClan.fetchClansData);
 
-async function getClans() {
-	await userClan.fetchClansData();
+const clanName = ref('');
+const clanTag = ref('');
+
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+
+async function handleConfirmation() {
+	popUpProcessing.value = true;
+	await userClan.removeClan(clanTag.value);
+	popUpProcessing.value = false;
+	showPopUp.value = false;
 }
-onMounted(getClans);
-const handlePopUpOpen = (value: boolean) => (openPopUp.value = value);
 </script>

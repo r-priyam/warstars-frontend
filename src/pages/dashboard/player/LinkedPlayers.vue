@@ -1,6 +1,13 @@
 <template>
 	<div>
-		<PopUp process-name="Player" :name="name" :tag="tag" :open="openPopUp" @handle-pop-up="handlePopUpOpen" />
+		<PopUp
+			title="Remove Player"
+			:description="`Are you sure you want to remove ${playerName} (${playerTag})? You can add it later again!`"
+			:open="showPopUp"
+			:processing="popUpProcessing"
+			@close-pop-up="() => (showPopUp = false)"
+			@confirmation="handleConfirmation"
+		/>
 		<LoadingSpinner v-if="userPlayer.playersDataProcessing" />
 		<NoLink v-if="!userPlayer.playersDataProcessing && !userPlayer.playerData.length" name="Player" />
 		<div
@@ -58,9 +65,9 @@
 								{{ player.name }}
 								<button
 									@click="
-										name = player.name;
-										tag = player.tag;
-										openPopUp = true;
+										playerName = player.name;
+										playerTag = player.tag;
+										showPopUp = true;
 									"
 								>
 									<heroicons-solid:trash class="inline-flex h-6 w-6 -ml-1 p-1 text-red-500" />
@@ -91,16 +98,21 @@
 import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
 import LoadingSpinner from '~/components/Spinner.vue';
 import NoLink from '~/pages/dashboard/utils/NoLink.vue';
-import PopUp from '~/pages/dashboard/utils/PopUp.vue';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
-const name = ref('');
-const tag = ref('');
-const openPopUp = ref(false);
 const userPlayer = userPlayerOpeartions();
+onMounted(userPlayer.fetchPlayersData);
 
-async function getPlayers() {
-	await userPlayer.fetchPlayersData();
+const playerName = ref('');
+const playerTag = ref('');
+
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+
+async function handleConfirmation() {
+	popUpProcessing.value = true;
+	await userPlayer.removePlayer(playerTag.value);
+	popUpProcessing.value = false;
+	showPopUp.value = false;
 }
-onMounted(getPlayers);
-const handlePopUpOpen = (value: boolean) => (openPopUp.value = value);
 </script>
