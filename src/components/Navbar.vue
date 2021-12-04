@@ -1,4 +1,11 @@
 <template>
+	<PopUp
+		title="Log Out"
+		:description="`Are you sure you want to logout?`"
+		:open="showPopUp"
+		@close-pop-up="() => (showPopUp = false)"
+		@confirmation="() => (user.logOut(), (showPopUp = false))"
+	/>
 	<header
 		class="sticky top-0 z-40 border-b-2 bg-main-light-500 dark:bg-main-dark-500 border-main-light-600 dark:border-main-dark-460"
 	>
@@ -46,7 +53,7 @@
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
 												'group flex rounded-md items-center px-4 py-2 text-sm w-full font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
-											@click="user.logOut()"
+											@click="showPopUp = true"
 										>
 											<bx:bx-log-out class="mr-1" />Log out
 										</button>
@@ -181,7 +188,7 @@
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
 												'group flex rounded-md items-center px-4 py-2 w-full text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
-											@click="user.logOut()"
+											@click="showPopUp = true"
 										>
 											<bx:bx-log-out class="mr-1" />Log out
 										</button>
@@ -283,6 +290,8 @@ import {
 import { userStore } from '~/stores/user';
 import { apiUrl } from '~/env';
 import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
 const user = userStore();
+const showPopUp = ref(false);
 </script>
