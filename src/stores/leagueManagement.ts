@@ -13,7 +13,12 @@ interface TPermsData {
 
 export const leagueManagement = defineStore({
 	id: 'leagueManagement',
-	state: () => ({ permissions: {}, childRegisterProcess: false, divisionRegisterProcess: false }),
+	state: () => ({
+		permissions: {},
+		childRegisterProcess: false,
+		divisionRegisterProcess: false,
+		notification: notifications(),
+	}),
 
 	getters: {
 		getLeagueLocalConfig: (state) => {
@@ -39,7 +44,6 @@ export const leagueManagement = defineStore({
 
 	actions: {
 		async syncPermsToken() {
-			const notification = notifications();
 			try {
 				const request = await APILeague.getUserLeaguePermissions();
 				// return here since API won't give any data when user is in no league.
@@ -55,8 +59,8 @@ export const leagueManagement = defineStore({
 				const payloadData: TPermsData = jwt_decode(Cookies.get('_league_permissions')!);
 				this.permissions = JSON.parse(payloadData.value.replace(/'/g, '"'));
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 		},
 
@@ -72,14 +76,13 @@ export const leagueManagement = defineStore({
 		},
 
 		async refreshLeaguesData() {
-			const notification = notifications();
 			try {
 				const request = await APILeague.getUserLeagueData();
 				if (!request.data) return localStorage.removeItem('leagues-data');
 				localStorage.setItem('leagues-data', JSON.stringify({ epoch: Date.now(), value: request.data }));
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 		},
 
@@ -96,27 +99,25 @@ export const leagueManagement = defineStore({
 		},
 
 		async registerChild(data: TRegisterChild) {
-			const notification = notifications();
 			this.childRegisterProcess = true;
 			try {
 				const response = await APILeague.registerChildLeague(data);
-				if (response.status === 200) notification.notify({ title: 'Success', text: 'Registered child league' });
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Registered child league' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.childRegisterProcess = false;
 		},
 
 		async registerDivision(data: TRegisterDivision) {
-			const notification = notifications();
 			this.divisionRegisterProcess = true;
 			try {
 				const response = await APILeague.registerChildDivision(data);
-				if (response.status === 200) notification.notify({ title: 'Success', text: 'Registered division' });
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Registered division' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.divisionRegisterProcess = false;
 		},
