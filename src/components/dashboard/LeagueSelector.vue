@@ -50,7 +50,7 @@
 						{{ selectedLeague.name }} Child Leagues
 					</h1>
 					<div v-if="selectedLeagueChild?.length === 0" class="flex justify-center mt-2 flex-nowrap">
-						<router-link to="/dashboard/league-child">
+						<router-link to="/dashboard/add-league-child">
 							<button
 								class="px-4 py-2 text-base font-semibold text-gray-100 bg-green-700 rounded-lg shadow-md hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none"
 								@click="applyLeagueConfig()"
@@ -100,7 +100,7 @@
 					All the changes will apply to {{ selectedChildLeague.name }} globally.
 				</h1>
 				<div v-if="selectedChildDivisions?.length === 0" class="flex justify-center mt-2 flex-nowrap">
-					<router-link to="/dashboard/child-division">
+					<router-link to="/dashboard/add-child-division">
 						<button
 							class="px-4 py-2 text-base font-semibold text-gray-100 bg-indigo-700 rounded-lg shadow-md hover:bg-indigo-800 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none"
 							@click="applyLeagueConfig()"

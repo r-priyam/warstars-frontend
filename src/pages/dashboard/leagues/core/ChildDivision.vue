@@ -54,7 +54,7 @@
 		<div class="flex justify-center mt-2 flex-nowrap">
 			<button
 				class="px-4 py-2 mt-4 text-base font-semibold text-gray-100 rounded-lg shadow-md bg-main-fail-450 hover:bg-main-fail-500 dark:bg-main-fail-500 dark:hover:bg-main-fail-600 focus:outline-none"
-				@click="router.push({ name: 'Child Division' })"
+				@click="router.push({ name: 'Add Child Division' })"
 			>
 				Add Child League
 			</button>
