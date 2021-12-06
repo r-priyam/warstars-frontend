@@ -50,11 +50,14 @@
 						{{ selectedLeague.name }} Child Leagues
 					</h1>
 					<div v-if="selectedLeagueChild?.length === 0" class="flex justify-center mt-2 flex-nowrap">
-						<button
-							class="px-4 py-2 text-base font-semibold text-gray-100 bg-green-700 rounded-lg shadow-md hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none"
-						>
-							Add Child League
-						</button>
+						<router-link to="/dashboard/league-child">
+							<button
+								class="px-4 py-2 text-base font-semibold text-gray-100 bg-green-700 rounded-lg shadow-md hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none"
+								@click="applyLeagueConfig()"
+							>
+								Add Child League
+							</button>
+						</router-link>
 					</div>
 				</transition-group>
 			</div>
@@ -97,11 +100,14 @@
 					All the changes will apply to {{ selectedChildLeague.name }} globally.
 				</h1>
 				<div v-if="selectedChildDivisions?.length === 0" class="flex justify-center mt-2 flex-nowrap">
-					<button
-						class="px-4 py-2 text-base font-semibold text-gray-100 bg-indigo-700 rounded-lg shadow-md hover:bg-indigo-800 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none"
-					>
-						Add Division
-					</button>
+					<router-link to="/dashboard/child-division">
+						<button
+							class="px-4 py-2 text-base font-semibold text-gray-100 bg-indigo-700 rounded-lg shadow-md hover:bg-indigo-800 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none"
+							@click="applyLeagueConfig()"
+						>
+							Add Division
+						</button>
+					</router-link>
 				</div>
 			</div>
 			<div v-else class="mt-6 mb-6">
