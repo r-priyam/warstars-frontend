@@ -103,7 +103,7 @@ async function checkEntry() {
 			},
 			6000,
 		);
-		await router.push({ name: 'League Selector' });
+		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
 	}
 }
 onBeforeMount(checkEntry);

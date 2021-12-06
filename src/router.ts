@@ -59,6 +59,7 @@ const routes: RouteRecordRaw[] = [
 				path: 'season-core',
 				name: 'Season Core',
 				component: () => import('~/pages/dashboard/leagues/season/SeasonCore.vue'),
+				props: (route) => ({ showChildSeason: Boolean(route.query.showChildSeason) }),
 			},
 			{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') },
 		],
