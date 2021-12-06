@@ -38,14 +38,14 @@
 					Start Date
 					<mdi:arrow-right-thin class="inline-flex w-4 h-4 mb-0.5" aria-hidden="true" />
 					<span class="item-data">{{
-						childLeague.start_time !== null ? moment(childLeague.start_time).format('MMMM-DD-YYYY') : '--:--:----'
+						childLeague.start_time !== null ? moment(childLeague.start_time).format('MMM DD, YYYY') : '--:--:----'
 					}}</span>
 				</p>
 				<p class="item-name">
 					End Date
 					<mdi:arrow-right-thin class="inline-flex w-4 h-4 mb-0.5" aria-hidden="true" />
 					<span class="item-data">{{
-						childLeague.end_time !== null ? moment(childLeague.end_time).format('MMMM-DD-YYYY') : '--:--:----'
+						childLeague.end_time !== null ? moment(childLeague.end_time).format('MMM DD, YYYY') : '--:--:----'
 					}}</span>
 				</p>
 			</div>
