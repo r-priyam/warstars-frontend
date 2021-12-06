@@ -19,23 +19,23 @@
 		<div v-if="league.getLeagueLocalConfig !== null" class="items-center px-4 mt-4">
 			<h1 class="text-base font-extrabold text-main-textDark-600 dark:text-main-textLight-530">Current League</h1>
 			<div v-if="league.getLeagueLocalConfig.league.name === ''">
-				<h3 class="font-bold text-center leading-tight truncate text-red-700 dark:text-red-500">No League Selected</h3>
+				<h3 class="font-bold leading-tight text-center text-red-700 truncate dark:text-red-500">No League Selected</h3>
 			</div>
 			<div v-else class="flex items-center flex-shrink-0 mt-2">
 				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.league.icon_url" />
 				<div class="pl-2 overflow-hidden text-base">
-					<h3 class="font-bold leading-tight truncate text-red-700 dark:text-red-500">
+					<h3 class="font-bold leading-tight text-red-700 truncate dark:text-red-500">
 						{{ league.getLeagueLocalConfig.league.name }}
 					</h3>
 				</div>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.name === ''">
-				<h3 class="font-bold text-center leading-tight truncate text-green-700 dark:text-green-500">No Child League</h3>
+				<h3 class="font-bold leading-tight text-center text-green-700 truncate dark:text-green-500">No Child League</h3>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.icon_url !== ''" class="flex items-center flex-shrink-0 mt-2">
 				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.icon_url" />
 				<div class="pl-2 overflow-hidden text-base">
-					<h3 class="font-bold leading-tight truncate text-green-700 dark:text-green-500">
+					<h3 class="font-bold leading-tight text-green-700 truncate dark:text-green-500">
 						{{
 							`${league.getLeagueLocalConfig.child.name} (${
 								league.getLeagueLocalConfig.division.name || 'No Division'
@@ -61,13 +61,14 @@
 					<span
 						v-if="nav.title"
 						class="text-xs font-extrabold uppercase text-main-textDark-700 dark:text-main-textLight-430"
-						>{{ nav.title }}</span
 					>
+						{{ nav.title }}
+					</span>
 					<router-link
 						v-for="item in nav.items"
 						:key="item.name"
 						:to="item.href"
-						class="text-main-textDark-600 dark:text-main-textLight-530 hover:bg-main-light-560 dark:hover:bg-main-dark-600 group flex items-center px-2 py-2 text-sm leading-6 font-semibold rounded-md"
+						class="flex items-center px-2 py-2 mt-1 text-sm font-semibold rounded-md text-main-textDark-600 dark:text-main-textLight-530 hover:bg-main-light-560 dark:hover:bg-main-dark-600 group"
 						active-class="bg-main-light-600 dark:bg-main-dark-600"
 						@click="$emit('closeSidebar', false)"
 					>
@@ -156,8 +157,8 @@ const navigation = [
 		title: 'League Season',
 		href: '/',
 		items: [
-			{ name: 'Core', href: '/', icon: SeasonCore },
-			{ name: 'Info', href: '/', icon: SeasonInfo },
+			{ name: 'Info', href: '/dashboard/season-info', icon: SeasonInfo },
+			{ name: 'Core', href: '/dashboard/season-core', icon: SeasonCore },
 			{ name: 'Clans', href: '/', icon: SeasonClans },
 			{ name: 'Matches', href: '/', icon: SeasonMatches },
 			{ name: 'Results', href: '/', icon: SeasonResult },

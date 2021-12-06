@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APILeague } from '~/api/leagues';
-import { TLocalLeagueConfig, TRegisterChild, TRegisterDivision } from '~/types/leagues';
+import { TLocalLeagueConfig, TNewChildSeason, TNewSeason, TRegisterChild, TRegisterDivision } from '~/types/leagues';
 import { notifications } from './notifications';
 
 interface TPermsData {
@@ -17,6 +17,8 @@ export const leagueManagement = defineStore({
 		permissions: {},
 		childRegisterProcess: false,
 		divisionRegisterProcess: false,
+		newSeasonProcess: false,
+		childSeasonProcess: false,
 		notification: notifications(),
 	}),
 
@@ -120,6 +122,30 @@ export const leagueManagement = defineStore({
 				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.divisionRegisterProcess = false;
+		},
+
+		async newSeason(data: TNewSeason) {
+			this.newSeasonProcess = true;
+			try {
+				const response = await APILeague.startNewSeason(data);
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Season created' });
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
+			this.newSeasonProcess = false;
+		},
+
+		async newChildSeason(data: TNewChildSeason) {
+			this.childSeasonProcess = true;
+			try {
+				const response = await APILeague.startNewChildSeason(data);
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Season created' });
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
+			this.childSeasonProcess = false;
 		},
 	},
 });

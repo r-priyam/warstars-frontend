@@ -1,5 +1,5 @@
 import HTTP from '~/api';
-import { TLeagueRegister, TRegisterChild, TRegisterDivision } from '~/types/leagues';
+import { TLeagueRegister, TNewChildSeason, TNewSeason, TRegisterChild, TRegisterDivision } from '~/types/leagues';
 
 export const APILeague = {
 	async registerLeague(data: TLeagueRegister) {
@@ -20,5 +20,13 @@ export const APILeague = {
 
 	async getUserLeagueData() {
 		return HTTP.get('league/user-leagues');
+	},
+
+	async startNewSeason(data: TNewSeason) {
+		return HTTP.post('/league/season/new', data);
+	},
+
+	async startNewChildSeason(data: TNewChildSeason) {
+		return HTTP.post('/league/season/new-child', data);
 	},
 };

@@ -97,3 +97,17 @@ export interface TRegisterDivision {
 	name: string;
 	abbreviation: string;
 }
+
+export interface TNewSeason {
+	league_id: number;
+	start_time: string;
+	end_time: string;
+	child_data?: number[];
+}
+
+export interface TNewChildSeason {
+	league_id: number;
+	child_league_id: number;
+	start_time: string;
+	end_time: string;
+}
