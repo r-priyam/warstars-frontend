@@ -54,7 +54,7 @@
 
 			<div class="flex-1 overflow-y-auto bg-main-light-560 dark:bg-main-dark-560 focus:outline-none custom-scroll">
 				<div class="flex justify-end">
-					<div class="absolute z-20 p-6 px-0 py-4 pointer-events-none top-10">
+					<div class="absolute z-20 p-6 px-0 py-4 pointer-events-none top-10 overflow-hidden">
 						<div class="w-72">
 							<transition-group
 								:enter-active-class="
