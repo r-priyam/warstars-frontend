@@ -40,13 +40,13 @@ const routes: RouteRecordRaw[] = [
 			// league core section
 			{ path: 'league', name: 'League Info', component: () => import('~/pages/dashboard/leagues/LeagueMain.vue') },
 			{
-				path: 'league-child',
-				name: 'League Child',
+				path: 'add-league-child',
+				name: 'Add Child League',
 				component: () => import('~/pages/dashboard/leagues/core/ManageChild.vue'),
 			},
 			{
-				path: 'child-division',
-				name: 'Child Division',
+				path: 'add-child-division',
+				name: 'Add Child Division',
 				component: () => import('~/pages/dashboard/leagues/core/ManageDivision.vue'),
 			},
 			// league season section
