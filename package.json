@@ -30,7 +30,6 @@
 	"devDependencies": {
 		"@iconify/json": "1.1.439",
 		"@types/js-cookie": "3.0.1",
-		"@types/node": "16.11.12",
 		"@types/nprogress": "0.2.0",
 		"@typescript-eslint/eslint-plugin": "5.6.0",
 		"@typescript-eslint/parser": "5.6.0",
