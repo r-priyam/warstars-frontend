@@ -71,29 +71,42 @@
 								</button>
 							</div>
 							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-[4.9rem] ml-auto right-2">
-								<span class="inline-flex px-3 py-1 mr-1 text-sm rounded-full bg-main-light-430 dark:bg-main-dark-600"
+								<span
+									v-if="selectedLeagueData.season_active"
+									class="inline-flex px-3 py-1 mr-1 text-sm rounded-full bg-main-light-430 dark:bg-main-dark-600"
 									><bx:bxs-calendar-check class="w-5 h-5 mr-1 text-green-500" aria-hidden="true" />
 									<span class="font-bold text-green-600"> Season Active </span>
 								</span>
+								<span
+									v-else
+									class="inline-flex px-3 py-1 mr-1 text-sm font-bold text-red-500 rounded-full bg-main-light-430 dark:bg-main-dark-600"
+									><ph:calendar-x-fill class="w-5 h-5 mr-1" aria-hidden="true" />
+									<span> Not In A Season </span>
+								</span>
 							</div>
 							<p class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl">
-								{{ selectedLeagueData.name }}
-							</p>
-							<p class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base">
-								Season {{ selectedLeagueData.specific_id }}
+								{{ selectedLeagueData.abbreviation }}
 							</p>
 							<p
-								v-if="selectedLeagueData.season_active !== null"
+								v-if="selectedLeagueData.season_active"
+								class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+							>
+								Season {{ selectedLeagueData.specific_id }}
+							</p>
+							<p v-else class="mt-2 text-base font-bold text-red-500 lg:text-base">No Season</p>
+							<p
+								v-if="selectedLeagueData.season_active !== null && selectedLeagueData.season_active"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Start Date: </span
 								>{{ moment(selectedLeagueData.start_time).format('MMM DD, YYYY') }}
 							</p>
-							<p class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
-								<span
-									v-if="selectedLeagueData.season_active !== null"
-									class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+							<p
+								v-if="selectedLeagueData.season_active !== null && selectedLeagueData.season_active"
+								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
+							>
+								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>End Date: </span
 								>{{ moment(selectedLeagueData.end_time).format('MMM DD, YYYY') }}
 							</p>
@@ -169,7 +182,7 @@
 							</p>
 							<p v-else class="mt-2 text-base font-bold text-red-500 lg:text-base">No Season</p>
 							<p
-								v-if="child.season_active !== null"
+								v-if="child.season_active !== null && child.season_active"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
@@ -177,7 +190,7 @@
 								>{{ moment(child.start_time).format('MMM DD, YYYY') }}
 							</p>
 							<p
-								v-if="child.season_active !== null"
+								v-if="child.season_active !== null && child.season_active"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
