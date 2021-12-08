@@ -43,17 +43,31 @@
 						<div class="w-full h-32">
 							<div class="absolute inline-flex items-end justify-end mt-auto ml-auto lg:p-2 right-2">
 								<button
+									v-if="selectedLeagueData.season_active"
 									title="New Season"
 									@click="
-										handleNewSeason(selectedLeagueData?.season_active || null);
-										type = 'league';
+										popUpTitle = 'Warning';
+										// eslint-disable-next-line prettier/prettier
+										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
+										showPopUp = true;
+										type = 'childLeague';
 									"
 								>
+									>
 									<span
 										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
 										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
 									</span>
 								</button>
+								<router-link
+									v-if="!selectedLeagueData.season_active || selectedLeagueData.season_active === null"
+									:to="{ name: 'Season Core', query: { showChildSeason: 'true' } }"
+								>
+									<span
+										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
+										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
+									</span>
+								</router-link>
 								<button
 									v-if="selectedLeagueData.season_active"
 									title="End Season"
@@ -129,9 +143,13 @@
 						<div class="w-full h-32">
 							<div class="absolute inline-flex items-end justify-end mt-auto ml-auto lg:p-2 right-2">
 								<button
+									v-if="child.season_active"
 									title="New Season"
 									@click="
-										handleNewSeason(child.season_active || null);
+										popUpTitle = 'Warning';
+										// eslint-disable-next-line prettier/prettier
+										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
+										showPopUp = true;
 										type = 'childLeague';
 									"
 								>
@@ -140,6 +158,15 @@
 										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
 									</span>
 								</button>
+								<router-link
+									v-if="!child.season_active || child.season_active === null"
+									:to="{ name: 'Season Core', query: { showChildSeason: 'true' } }"
+								>
+									<span
+										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
+										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
+									</span>
+								</router-link>
 								<button
 									v-if="child.season_active"
 									title="End Season"
@@ -233,16 +260,4 @@ onBeforeMount(async () => {
 		await router.push({ name: 'League Selector' });
 	}
 });
-
-async function handleNewSeason(active: boolean | null) {
-	if (active) {
-		popUpTitle.value = 'Warning';
-		popUpDescription.value =
-			'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
-		showPopUp.value = true;
-	}
-	// push to season creation page
-	else if (type.value === 'league') await router.push({ name: 'Season Core' });
-	else if (type.value === 'childLeague') await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
-}
 </script>
