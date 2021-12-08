@@ -29,4 +29,12 @@ export const APILeague = {
 	async startNewChildSeason(data: TNewChildSeason) {
 		return HTTP.post('/league/season/new-child', data);
 	},
+
+	async endSeason() {
+		return HTTP.put('/league/season/end');
+	},
+
+	async endChildSeason() {
+		return HTTP.put('/league/season/end-child');
+	},
 };

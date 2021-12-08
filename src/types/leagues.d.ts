@@ -34,6 +34,7 @@ export interface TUserChildLeague {
 	specific_id: number | null;
 	start_time: string | null;
 	end_time: string | null;
+	season_active: boolean | null;
 	clans_count: number;
 	divisions: TUserChildLeagueDivisions[] | [];
 }
@@ -56,7 +57,7 @@ export interface TUserLeagueData {
 	specific_id: number | null;
 	start_time: string | null;
 	end_time: string | null;
-	is_active: boolean | null;
+	season_active: boolean | null;
 	total_admins: number;
 	child_leagues: TUserChildLeague[] | [];
 }
