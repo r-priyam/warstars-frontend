@@ -9,8 +9,10 @@
 			async () => (
 				(popUpProcessing = true),
 				type === 'league' ? await league.endSeason({ season_id: selectedLeagueData?.season_id!, league_id: selectedLeagueData?.league_id! }) : await league.endChildSeason({ season_id: clickedChildData.seasonId, league_id: selectedLeagueData?.league_id!, child_league_id: clickedChildData.childId }),
+				type === 'league' && forceEnd ? await router.push({ name: 'Season Core' }) : await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } }),
 				(popUpProcessing = false),
-				(showPopUp = false)
+				(showPopUp = false),
+				(forceEnd = false)
 			)
 		"
 	/>
@@ -51,6 +53,7 @@
 										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
 										showPopUp = true;
 										type = 'league';
+										forceEnd = true;
 									"
 								>
 									>
@@ -152,6 +155,7 @@
 										showPopUp = true;
 										type = 'childLeague';
 										clickedChildData = { childId: child.id, seasonId: child.season_id! };
+										forceEnd = true;
 									"
 								>
 									<span
@@ -248,6 +252,7 @@ const popUpDescription = ref('');
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
 const type = ref('');
+const forceEnd = ref(false);
 const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();
