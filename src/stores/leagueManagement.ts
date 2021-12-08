@@ -19,6 +19,7 @@ export const leagueManagement = defineStore({
 		divisionRegisterProcess: false,
 		newSeasonProcess: false,
 		childSeasonProcess: false,
+		leagueDataRefreshProcess: false,
 		notification: notifications(),
 	}),
 
@@ -78,6 +79,7 @@ export const leagueManagement = defineStore({
 		},
 
 		async refreshLeaguesData() {
+			this.leagueDataRefreshProcess = true;
 			try {
 				const request = await APILeague.getUserLeagueData();
 				if (!request.data) return localStorage.removeItem('leagues-data');
@@ -86,6 +88,7 @@ export const leagueManagement = defineStore({
 				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
 				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
+			this.leagueDataRefreshProcess = false;
 		},
 
 		async syncLeaguesData() {
