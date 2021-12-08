@@ -61,7 +61,7 @@
 								</button>
 								<router-link
 									v-if="!selectedLeagueData.season_active || selectedLeagueData.season_active === null"
-									:to="{ name: 'Season Core', query: { showChildSeason: 'true' } }"
+									:to="{ name: 'Season Core' }"
 								>
 									<span
 										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
