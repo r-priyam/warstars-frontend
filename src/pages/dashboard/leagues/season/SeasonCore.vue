@@ -130,13 +130,16 @@ const selectedLeagueChild = computed(
 	() => leaguesData.find((child) => child.league_id === league.getLeagueLocalConfig?.league.league_id)?.child_leagues,
 );
 
-async function checkEntry() {
+onBeforeMount(async () => {
 	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
 		notifications().notify({ title: 'Warning', text: 'Please select a league to continue!' });
 		await router.push({ name: 'League Selector' });
 	}
-}
-onBeforeMount(checkEntry);
+	if (childSeason.value && league.getLeagueLocalConfig?.child.id === 0) {
+		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		await router.push({ name: 'League Selector' });
+	}
+});
 
 watch(childSeason, async (now) => {
 	if (now && league.getLeagueLocalConfig?.child.id === 0) {
