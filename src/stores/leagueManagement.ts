@@ -3,7 +3,15 @@ import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APILeague } from '~/api/leagues';
-import { TLocalLeagueConfig, TNewChildSeason, TNewSeason, TRegisterChild, TRegisterDivision } from '~/types/leagues';
+import {
+	TEndChildSeason,
+	TEndLeagueSeason,
+	TLocalLeagueConfig,
+	TNewChildSeason,
+	TNewSeason,
+	TRegisterChild,
+	TRegisterDivision,
+} from '~/types/leagues';
 import { notifications } from './notifications';
 
 interface TPermsData {
@@ -149,6 +157,26 @@ export const leagueManagement = defineStore({
 				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.childSeasonProcess = false;
+		},
+
+		async endSeason(data: TEndLeagueSeason) {
+			try {
+				const response = await APILeague.endSeason(data);
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Season ended' });
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
+		},
+
+		async endChildSeason(data: TEndChildSeason) {
+			try {
+				const response = await APILeague.endChildSeason(data);
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Season ended' });
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
 		},
 	},
 });
