@@ -57,7 +57,7 @@ export const leagueManagement = defineStore({
 				// Here if a response is successfull and user is in No League, i mean
 				// if a user permissions is null then it won't set a cookie or not it will
 				// return anything so return.
-				if (!Cookies.get('_league_permissions')) return;
+				if (!Cookies.get('_league_permissions')) return Cookies.remove('_league_permissions');
 				const payloadData: TPermsData = jwt_decode(Cookies.get('_league_permissions')!);
 				this.permissions = JSON.parse(payloadData.value.replace(/'/g, '"'));
 			} catch (error) {
@@ -70,7 +70,7 @@ export const leagueManagement = defineStore({
 			const permissionsCookie = Cookies.get('_league_permissions');
 			if (permissionsCookie) {
 				const permsPayload: TPermsData = jwt_decode(permissionsCookie);
-				const checkTwoMins = Date.now() - ~~permsPayload.epoch;
+				const checkTwoMins = Date.now() - Number(permsPayload.epoch);
 				// check for permissions change per 2 minutes
 				if (checkTwoMins > 120000) await this.syncPermsToken();
 				else this.permissions = JSON.parse(permsPayload.value.replace(/'/g, '"'));
@@ -94,7 +94,7 @@ export const leagueManagement = defineStore({
 				await this.refreshLeaguesData();
 			} else {
 				if (!localLeaguessData.epoch) await this.refreshLeaguesData();
-				const checkFiveMins = Date.now() - ~~localLeaguessData.epoch;
+				const checkFiveMins = Date.now() - Number(localLeaguessData.epoch);
 				// check for league data change per 5 minutes
 				if (checkFiveMins > 300000) await this.refreshLeaguesData();
 			}
