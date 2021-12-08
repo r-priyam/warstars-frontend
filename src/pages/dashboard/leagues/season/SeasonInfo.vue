@@ -50,7 +50,7 @@
 										// eslint-disable-next-line prettier/prettier
 										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
 										showPopUp = true;
-										type = 'childLeague';
+										type = 'league';
 									"
 								>
 									>
@@ -151,6 +151,7 @@
 										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
 										showPopUp = true;
 										type = 'childLeague';
+										clickedChildData = { childId: child.id, seasonId: child.season_id! };
 									"
 								>
 									<span
