@@ -5,6 +5,14 @@
 		:open="showPopUp"
 		:processing="popUpProcessing"
 		@close-pop-up="() => (showPopUp = false)"
+		@confirmation="
+			async () => (
+				(popUpProcessing = true),
+				type === 'league' ? await league.endSeason({ season_id: selectedLeagueData?.season_id!, league_id: selectedLeagueData?.league_id! }) : await league.endChildSeason({ season_id: clickedChildData.seasonId, league_id: selectedLeagueData?.league_id!, child_league_id: clickedChildData.childId }),
+				(popUpProcessing = false),
+				(showPopUp = false)
+			)
+		"
 	/>
 	<LoadingSpinner v-if="league.leagueDataRefreshProcess" />
 	<div v-else class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500">
@@ -127,6 +135,7 @@
 										popUpDescription = `Are you sure you want to end season ${child.specific_id}? This action is irreversible`;
 										showPopUp = true;
 										type = 'childLeague';
+										clickedChildData = { childId: child.id, seasonId: child.season_id! };
 									"
 								>
 									<span
@@ -197,6 +206,7 @@ const popUpDescription = ref('');
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
 const type = ref('');
+const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();
 const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;

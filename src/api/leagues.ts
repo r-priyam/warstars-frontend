@@ -1,5 +1,13 @@
 import HTTP from '~/api';
-import { TLeagueRegister, TNewChildSeason, TNewSeason, TRegisterChild, TRegisterDivision } from '~/types/leagues';
+import {
+	TEndChildSeason,
+	TEndLeagueSeason,
+	TLeagueRegister,
+	TNewChildSeason,
+	TNewSeason,
+	TRegisterChild,
+	TRegisterDivision,
+} from '~/types/leagues';
 
 export const APILeague = {
 	async registerLeague(data: TLeagueRegister) {
@@ -30,11 +38,11 @@ export const APILeague = {
 		return HTTP.post('/league/season/new-child', data);
 	},
 
-	async endSeason() {
-		return HTTP.put('/league/season/end');
+	async endSeason(data: TEndLeagueSeason) {
+		return HTTP.put('/league/season/end', data);
 	},
 
-	async endChildSeason() {
-		return HTTP.put('/league/season/end-child');
+	async endChildSeason(data: TEndChildSeason) {
+		return HTTP.put('/league/season/end-child', data);
 	},
 };

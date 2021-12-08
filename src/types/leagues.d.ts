@@ -112,3 +112,11 @@ export interface TNewChildSeason {
 	start_time: string;
 	end_time: string;
 }
+export interface TEndLeagueSeason {
+	season_id: number;
+	league_id: number;
+}
+
+export interface TEndChildSeason extends TEndLeagueSeason {
+	child_league_id: number;
+}
