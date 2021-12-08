@@ -161,6 +161,7 @@
 								<router-link
 									v-if="!child.season_active || child.season_active === null"
 									:to="{ name: 'Season Core', query: { showChildSeason: 'true' } }"
+									@click="saveForceSelectedLeague(child)"
 								>
 									<span
 										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
@@ -235,7 +236,7 @@
 <script setup lang="ts">
 import moment from 'moment';
 import router from '~/router';
-import { TUserLeagueData } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeague } from '~/types/leagues';
 import LoadingSpinner from '~/components/Spinner.vue';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -260,4 +261,21 @@ onBeforeMount(async () => {
 		await router.push({ name: 'League Selector' });
 	}
 });
+
+function saveForceSelectedLeague(child: TUserChildLeague) {
+	localStorage.setItem(
+		'selected-league-config',
+		JSON.stringify({
+			league: league.getLeagueLocalConfig?.league,
+			child: {
+				id: child.id,
+				name: child.name,
+				abbreviation: child.abbreviation,
+				icon_url: child.icon_url,
+				season_id: child.season_id,
+			},
+			division: league.getLeagueLocalConfig?.division,
+		}),
+	);
+}
 </script>
