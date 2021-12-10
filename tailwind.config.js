@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-	mode: 'jit',
-	purge: ['./index.html', './src/**/*.{vue,js}'],
+	content: ['./index.html', './src/**/*.{vue,js}'],
 	darkMode: 'class',
 	theme: {
 		extend: {
@@ -12,6 +12,9 @@ module.exports = {
 				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
 			},
 			colors: {
+				green: colors.emerald,
+				yellow: colors.amber,
+				gray: colors.gray,
 				main: {
 					600: '#1574d3',
 					dark: {

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="fixed z-20 flex flex-shrink-0 lg:hidden">
+		<div class="fixed z-20 flex shrink-0 lg:hidden">
 			<button
 				class="inline-flex items-center p-2 text-base font-semibold rounded-br-md bg-main-light-600 dark:bg-main-dark-660 hover:bg-main-light-630 dark:hover:bg-main-dark-600"
 				@click="sidebarOpen = true"
@@ -14,7 +14,7 @@
 		</div>
 		<div class="flex overflow-hidden scrolling-touch sidebar-height bg-main-light-600 dark:bg-main-dark-630">
 			<!-- Static sidebar for desktop -->
-			<div class="hidden lg:flex lg:flex-shrink-0">
+			<div class="hidden lg:flex lg:shrink-0">
 				<div
 					class="relative flex flex-col flex-grow w-64 pt-5 pb-4 overflow-y-auto border-r shadow-inner bg-main-light-530 custom-scroll dark:bg-main-dark-530"
 				>
@@ -46,7 +46,7 @@
 							</div>
 						</div>
 					</TransitionChild>
-					<div class="flex-shrink-0 w-14" aria-hidden="true">
+					<div class="shrink-0 w-14" aria-hidden="true">
 						<!-- Dummy element to force sidebar to shrink to fit close icon -->
 					</div>
 				</Dialog>

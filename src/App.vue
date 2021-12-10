@@ -13,7 +13,7 @@
 						</span>
 					</p>
 				</div>
-				<div class="flex-shrink-0 order-2 sm:order-3 sm:ml-3">
+				<div class="shrink-0 order-2 sm:order-3 sm:ml-3">
 					<button
 						type="button"
 						class="flex p-2 -mr-1 rounded-md hover:bg-main-light-500 dark:hover:bg-main-dark-500 focus:outline-none sm:-mr-2"

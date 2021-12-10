@@ -35,7 +35,7 @@
 			<div v-if="selectedLeagueData">
 				<div>
 					<div class="mt-4 border-b border-gray-400 sm:flex lg:items-end group dark:border-gray-100">
-						<div class="flex items-center justify-center flex-shrink-0 sm:mb-0 sm:mr-4">
+						<div class="flex items-center justify-center shrink-0 sm:mb-0 sm:mr-4">
 							<img
 								class="object-contain w-24 h-24 mb-4 border-2 border-red-700 rounded-full dark:border-red-500 md:w-32 md:h-32"
 								:src="selectedLeagueData.icon_url"
@@ -136,7 +136,7 @@
 						:key="child.id"
 						class="mt-4 border-b border-gray-400 sm:flex lg:items-end group dark:border-gray-100"
 					>
-						<div class="flex items-center justify-center flex-shrink-0 sm:mb-0 sm:mr-4">
+						<div class="flex items-center justify-center shrink-0 sm:mb-0 sm:mr-4">
 							<img
 								class="object-contain w-24 h-24 mb-4 border-2 border-green-700 rounded-full dark:border-green-500 md:w-32 md:h-32"
 								:src="child.icon_url"

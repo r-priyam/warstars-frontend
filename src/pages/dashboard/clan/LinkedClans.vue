@@ -34,7 +34,7 @@
 
 				<div v-for="clan in userClan.clanData" :key="clan.tag">
 					<div class="pt-6 sm:flex lg:items-end group">
-						<div class="flex items-center justify-center flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+						<div class="flex items-center justify-center shrink-0 mb-4 sm:mb-0 sm:mr-4">
 							<img
 								class="object-contain w-24 h-24 mb-2 rounded-md md:w-32 md:h-32"
 								:src="clan.badge || '/clash/clanless.png'"

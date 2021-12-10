@@ -3,7 +3,7 @@
 		<div class="mb-8">
 			<h1 class="text-3xl font-bold text-center text-red-700 dark:text-red-500">My Leagues</h1>
 		</div>
-		<div class="flex items-center justify-center flex-shrink-0 mt-2 flex-col-1">
+		<div class="flex items-center justify-center shrink-0 mt-2 flex-col-1">
 			<div v-for="league in leaguesData" :key="league.league_id" class="flex flex-wrap justify-center">
 				<button
 					@click="
@@ -18,7 +18,7 @@
 					"
 				>
 					<img
-						class="flex-grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
+						class="grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
 						:class="[league.league_id === selectedLeague?.league_id ? 'border-red-700 dark:border-red-500' : '']"
 						:src="league.icon_url"
 						:alt="league.name"
@@ -61,7 +61,7 @@
 					</div>
 				</transition-group>
 			</div>
-			<div class="flex items-center justify-center flex-shrink-0 mt-2 flex-col-1">
+			<div class="flex items-center justify-center shrink-0 mt-2 flex-col-1">
 				<transition-group
 					enter-active-class="transition duration-300 ease-out transform-gpu"
 					enter-from-class="translate-x-12 opacity-0"
@@ -80,7 +80,7 @@
 							"
 						>
 							<img
-								class="inline-flex flex-grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
+								class="inline-flex grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
 								:class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
 								:src="childLeague.icon_url"
 								:alt="childLeague.name"
@@ -149,7 +149,7 @@
 												</RadioGroupDescription>
 											</div>
 										</div>
-										<div v-show="checked" class="flex-shrink-0 text-black">
+										<div v-show="checked" class="shrink-0 text-black">
 											<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
 												<circle cx="12" cy="12" r="12" fill="#fff" fill-opacity="0.2" />
 												<path
