@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="flex items-center flex-shrink-0 px-4">
+		<div class="flex items-center shrink-0 px-4">
 			<img class="w-12 h-12 rounded-lg" :src="user.avatarUrl" />
 			<div class="pl-2 overflow-hidden text-base">
 				<h3 class="font-black leading-tight truncate text-main-textDark-600 dark:text-main-textLight-530">
@@ -21,7 +21,7 @@
 			<div v-if="league.getLeagueLocalConfig.league.name === ''">
 				<h3 class="font-bold leading-tight text-center text-red-700 truncate dark:text-red-500">No League Selected</h3>
 			</div>
-			<div v-else class="flex items-center flex-shrink-0 mt-2">
+			<div v-else class="flex items-center shrink-0 mt-2">
 				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.league.icon_url" />
 				<div class="pl-2 overflow-hidden text-base">
 					<h3 class="font-bold leading-tight text-red-700 truncate dark:text-red-500">
@@ -32,7 +32,7 @@
 			<div v-if="league.getLeagueLocalConfig.child.name === ''">
 				<h3 class="font-bold leading-tight text-center text-green-700 truncate dark:text-green-500">No Child League</h3>
 			</div>
-			<div v-if="league.getLeagueLocalConfig.child.icon_url !== ''" class="flex items-center flex-shrink-0 mt-2">
+			<div v-if="league.getLeagueLocalConfig.child.icon_url !== ''" class="flex items-center shrink-0 mt-2">
 				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.icon_url" />
 				<div class="pl-2 overflow-hidden text-base">
 					<h3 class="font-bold leading-tight text-green-700 truncate dark:text-green-500">
@@ -44,7 +44,7 @@
 					</h3>
 				</div>
 			</div>
-			<div class="flex justify-center flex-shrink-0 mt-2">
+			<div class="flex justify-center shrink-0 mt-2">
 				<router-link
 					to="/dashboard/league-selector"
 					class="p-1 text-sm font-bold text-white rounded bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
@@ -74,10 +74,7 @@
 					>
 						<component
 							:is="item.icon"
-							:class="[
-								$route.path === item.href ? 'text-primary' : 'text-secondary-dark',
-								'flex-shrink-0 w-6 h-6 mr-2',
-							]"
+							:class="[$route.path === item.href ? 'text-primary' : 'text-secondary-dark', 'shrink-0 w-6 h-6 mr-2']"
 							aria-hidden="true"
 						/>
 						{{ item.name }}
