@@ -33,7 +33,7 @@
 		"@types/nprogress": "0.2.0",
 		"@typescript-eslint/eslint-plugin": "5.6.0",
 		"@typescript-eslint/parser": "5.6.0",
-		"@vitejs/plugin-vue": "1.10.2",
+		"@vitejs/plugin-vue": "2.0.0",
 		"@vue/compiler-sfc": "3.2.26",
 		"@vue/component-compiler-utils": "3.3.0",
 		"autoprefixer": "10.4.0",
