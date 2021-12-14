@@ -86,19 +86,12 @@
 
 <script setup lang="ts">
 import { TRegisterChild } from '~/types/leagues';
-import router from '~/router';
-import { notifications } from '~/stores/notifications';
+import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 
-const league = leagueManagement();
+onBeforeMount(checkLeague);
 
-async function checkEntry() {
-	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please select a league to continue!' });
-		await router.push({ name: 'League Selector' });
-	}
-}
-onBeforeMount(checkEntry);
+const league = leagueManagement();
 
 async function registerChild() {
 	const form: HTMLFormElement | null = document.querySelector('#register-child');

@@ -196,14 +196,14 @@ import router from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
 
 const leagueStore = leagueManagement();
-async function checkPageEntry() {
+
+// Check if a user is in any league or not. If not redirect back to league info page.
+onBeforeMount(async () => {
 	if (Object.keys(leagueStore.permissions).length === 0) {
 		notifications().notify({ title: 'Info', text: "You aren't in any league." });
 		await router.push({ name: 'League Register Info' });
 	}
-}
-// Check if a user is in any league or not. If not redirect back to league info page.
-onBeforeMount(checkPageEntry);
+});
 
 const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
 const selectedLeague = ref<TSelectedLeague>({

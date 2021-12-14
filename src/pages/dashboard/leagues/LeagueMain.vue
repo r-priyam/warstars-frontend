@@ -168,21 +168,13 @@
 import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
 import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
 import { TUserLeagueData, TUserChildLeagueDivisions } from '~/types/leagues';
-import router from '~/router';
-import { notifications } from '~/stores/notifications';
+import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import moment from 'moment';
 
+onBeforeMount(checkLeague);
+
 const leagueStore = leagueManagement();
-
-async function checkEntry() {
-	if (leagueStore.getLeagueLocalConfig?.league.league_id === 0 || !leagueStore.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please select a league to continue!' });
-		await router.push({ name: 'League Selector' });
-	}
-}
-onBeforeMount(checkEntry);
-
 const league = ref(true); // true by default to show the league main page.
 const childLeague = ref(false);
 const division = ref(false);

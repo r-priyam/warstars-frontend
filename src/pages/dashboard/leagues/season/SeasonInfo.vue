@@ -243,9 +243,11 @@ import moment from 'moment';
 import router from '~/router';
 import { TUserLeagueData, TUserChildLeague } from '~/types/leagues';
 import LoadingSpinner from '~/components/Spinner.vue';
-import { notifications } from '~/stores/notifications';
+import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+
+onBeforeMount(checkLeague);
 
 const popUpTitle = ref('');
 const popUpDescription = ref('');
@@ -260,13 +262,6 @@ const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-
 const selectedLeagueData = computed(() =>
 	leaguesData.find((leagueData) => leagueData.league_id === league.getLeagueLocalConfig?.league.league_id),
 );
-
-onBeforeMount(async () => {
-	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please select a league to continue!' });
-		await router.push({ name: 'League Selector' });
-	}
-});
 
 function saveForceSelectedLeague(child: TUserChildLeague) {
 	localStorage.setItem(
