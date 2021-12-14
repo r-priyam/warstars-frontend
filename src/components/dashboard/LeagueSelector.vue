@@ -192,7 +192,7 @@
 import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } from '@headlessui/vue';
 import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild } from '~/types/leagues';
 import { notifications } from '~/stores/notifications';
-import router from '~/router';
+import router, { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
 
 const leagueStore = leagueManagement();
@@ -279,6 +279,6 @@ const applyLeagueConfig = async () => {
 		}),
 	);
 	notifications().notify({ title: 'Success', text: 'Settings saved successfully!' });
-	await router.push({ name: 'League Info' });
+	await router.push({ name: pushLeagueSaveRoute.value });
 };
 </script>

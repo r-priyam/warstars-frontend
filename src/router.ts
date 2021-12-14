@@ -4,6 +4,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { userStore } from './stores/user';
 
+export const pushLeagueSaveRoute = ref('');
+
 const routes: RouteRecordRaw[] = [
 	{ path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
 	{
@@ -15,6 +17,19 @@ const routes: RouteRecordRaw[] = [
 				path: 'league-selector',
 				name: 'League Selector',
 				component: () => import('~/components/dashboard/LeagueSelector.vue'),
+				beforeEnter: (_to, from) => {
+					if (!from.name) pushLeagueSaveRoute.value = 'League Info';
+					if (
+						from.fullPath !== '/dashboard/player-link' &&
+						from.fullPath !== '/dashboard/players-linked' &&
+						from.fullPath !== '/dashboard/clan-link' &&
+						from.fullPath !== '/dashboard/clans-linked' &&
+						from.fullPath !== '/dashboard/league-register-info' &&
+						from.fullPath !== '/dashboard/register-league'
+					)
+						pushLeagueSaveRoute.value = String(from.name);
+					else pushLeagueSaveRoute.value = 'League Info';
+				},
 			},
 			// player section
 			{ path: 'player-link', name: 'Player Link', component: () => import('~/pages/dashboard/player/LinkPlayer.vue') },
