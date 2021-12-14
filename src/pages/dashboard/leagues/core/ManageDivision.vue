@@ -88,14 +88,14 @@ import { leagueManagement } from '~/stores/leagueManagement';
 
 const league = leagueManagement();
 
-async function checkEntry() {
+onBeforeMount(async () => {
 	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
 		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
 		await router.push({ name: 'League Selector' });
 	} else if (league.getLeagueLocalConfig.child.id === 0) {
 		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
 		await router.push({ name: 'League Selector' });
-	} else if (league.getLeagueLocalConfig.child.season_id === null) {
+	} else if (!league.getLeagueLocalConfig.child.season_active) {
 		notifications().notify(
 			{
 				title: 'Warning',
@@ -105,8 +105,7 @@ async function checkEntry() {
 		);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
 	}
-}
-onBeforeMount(checkEntry);
+});
 
 async function registerDivision() {
 	const form: HTMLFormElement | null = document.querySelector('#register-division');
