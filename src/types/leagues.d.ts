@@ -68,6 +68,7 @@ export interface TSelectedLeague {
 	abbreviation: string;
 	season_id: number | null;
 	icon_url: string;
+	season_active: boolean | null;
 }
 
 export interface TSelectedChild {
@@ -76,6 +77,7 @@ export interface TSelectedChild {
 	abbreviation: string;
 	icon_url: string;
 	season_id: number | null;
+	season_active: boolean | null;
 }
 
 export interface TLocalLeagueConfig {

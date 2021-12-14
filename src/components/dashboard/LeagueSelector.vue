@@ -13,6 +13,7 @@
 							abbreviation: league.abbreviation,
 							season_id: league.season_id,
 							icon_url: league.icon_url,
+							season_active: league.season_active,
 						};
 						handleLeagueChange();
 					"
@@ -76,6 +77,7 @@
 									abbreviation: childLeague.abbreviation,
 									icon_url: childLeague.icon_url,
 									season_id: childLeague.season_id,
+									season_active: childLeague.season_active,
 								}
 							"
 						>
@@ -210,8 +212,16 @@ const selectedLeague = ref<TSelectedLeague>({
 	abbreviation: '',
 	season_id: null,
 	icon_url: '',
+	season_active: null,
 });
-const selectedChildLeague = ref<TSelectedChild>({ id: 0, name: '', abbreviation: '', icon_url: '', season_id: null });
+const selectedChildLeague = ref<TSelectedChild>({
+	id: 0,
+	name: '',
+	abbreviation: '',
+	icon_url: '',
+	season_id: null,
+	season_active: null,
+});
 const selectedDivision = ref<TUserChildLeagueDivisions>({
 	id: 0,
 	child_id: 0,
@@ -234,8 +244,15 @@ const selectedChildDivisions = computed(
 );
 
 const handleReset = () => {
-	selectedLeague.value = { league_id: 0, name: '', abbreviation: '', season_id: null, icon_url: '' };
-	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null };
+	selectedLeague.value = {
+		league_id: 0,
+		name: '',
+		abbreviation: '',
+		season_id: null,
+		icon_url: '',
+		season_active: null,
+	};
+	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null, season_active: null };
 	selectedDivision.value = {
 		id: 0,
 		child_id: 0,

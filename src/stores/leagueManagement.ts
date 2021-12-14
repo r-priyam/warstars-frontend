@@ -36,8 +36,8 @@ export const leagueManagement = defineStore({
 			{
 				if (Object.keys(state.permissions).length > 0) {
 					const data = useStorage('selected-league-config', {
-						league: { league_id: 0, name: '', abbreviation: '', season_id: null, icon_url: '' },
-						child: { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null },
+						league: { league_id: 0, name: '', abbreviation: '', season_id: null, icon_url: '', season_active: null },
+						child: { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null, season_active: null },
 						division: { id: 0, child_id: 0, season_id: 0, name: '', abbreviation: '', icon_url: null, clans_count: 0 },
 					});
 					const dataToReturn: TLocalLeagueConfig = {
