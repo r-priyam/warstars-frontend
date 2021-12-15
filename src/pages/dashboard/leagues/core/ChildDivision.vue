@@ -1,52 +1,64 @@
 <template>
-	<div v-if="divisionsData.length > 0" class="flex flex-col">
-		<div class="overflow-x-auto m-2">
-			<div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-				<div class="overflow-hidden rounded-lg shadow-md">
-					<table class="min-w-full">
-						<thead class="bg-gray-50 dark:bg-gray-700">
-							<tr>
-								<th
-									scope="col"
-									class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-normal dark:text-gray-400"
-								>
-									Name
-								</th>
-								<th
-									scope="col"
-									class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-normal dark:text-gray-400"
-								>
-									Child League
-								</th>
-								<th
-									scope="col"
-									class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-normal dark:text-gray-400"
-								>
-									Clans
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr
-								v-for="division in divisionsData"
-								:key="division.id"
-								class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-							>
-								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-									{{ `${division.name}(${division.abbreviation})` }}
-								</td>
-								<td class="text-sm text-gray-500 px-6 py-4 whitespace-nowrap dark:text-gray-400">{{ division.id }}</td>
-								<td class="text-sm text-gray-500 px-6 py-4 whitespace-nowrap dark:text-gray-400">
-									{{ division.clans_count }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
+	<div v-for="(child, index) in childData" :key="index">
+		<h1
+			v-if="child.divisions.length > 0"
+			class="mt-6 text-3xl font-bold text-center text-green-700 md:text-3xl dark:text-green-500"
+		>
+			{{ child.name }}
+		</h1>
+		<div v-for="(division, dIndex) in child.divisions" :key="dIndex" class="flex flex-col p-8 -mt-2">
+			<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+				<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+					<div class="overflow-hidden rounded-t-lg">
+						<table class="min-w-full text-center">
+							<thead class="border-b border-gray-600 dark:border-gray-400 bg-main-light-430 dark:bg-main-dark-630">
+								<tr>
+									<th
+										scope="col"
+										class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
+									>
+										Name
+									</th>
+									<th
+										scope="col"
+										class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
+									>
+										Abbreviation
+									</th>
+									<th
+										scope="col"
+										class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
+									>
+										Clans
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="border-b border-gray-600 bg-main-light-330 dark:bg-main-dark-530 dark:border-gray-400">
+									<td
+										class="px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500 whitespace-nowrap"
+									>
+										{{ division.name }}
+									</td>
+									<td
+										class="px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500 whitespace-nowrap"
+									>
+										{{ division.abbreviation }}
+									</td>
+									<td
+										class="px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500 whitespace-nowrap"
+									>
+										{{ division.clans_count }}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div v-else>
+	<div v-if="divisionsData.length === 0">
 		<h1 class="text-6xl font-bold text-center text-main-fail-650 dark:text-main-fail-400">Oops!</h1>
 		<h1 class="mt-6 text-xl font-semibold text-center text-main-fail-550 dark:text-main-fail-300">
 			Child Leagues Has No Division
@@ -56,14 +68,13 @@
 				class="px-4 py-2 mt-4 text-base font-semibold text-gray-100 rounded-lg shadow-md bg-main-fail-450 hover:bg-main-fail-500 dark:bg-main-fail-500 dark:hover:bg-main-fail-600 focus:outline-none"
 				@click="router.push({ name: 'Add Child Division' })"
 			>
-				Add Child League
+				Add Child Division
 			</button>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-// TODO: Heavy development needed here
 import router from '~/router';
 import { TUserChildLeagueDivisions, TUserChildLeague } from '~/types/leagues';
 withDefaults(defineProps<{ divisionsData: TUserChildLeagueDivisions[]; childData: TUserChildLeague[] }>(), {
