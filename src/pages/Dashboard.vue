@@ -72,7 +72,7 @@
 								<div
 									v-for="noti in notification.notifications"
 									:key="noti.id"
-									class="flex w-full max-w-sm mx-auto mt-2 overflow-hidden rounded-lg shadow-md bg-main-light-500 dark:bg-main-dark-500"
+									class="flex w-full max-w-sm mx-auto mt-2 overflow-hidden rounded-lg shadow-md bg-main-light-500 dark:bg-main-dark-460/50"
 								>
 									<div class="px-4 py-2 -mx-3">
 										<div class="mx-3">
