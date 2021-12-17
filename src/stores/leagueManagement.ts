@@ -11,6 +11,7 @@ import {
 	TNewSeason,
 	TRegisterChild,
 	TRegisterDivision,
+	TSeasoncClanAdd,
 } from '~/types/leagues';
 import { notifications } from './notifications';
 
@@ -27,6 +28,7 @@ export const leagueManagement = defineStore({
 		divisionRegisterProcess: false,
 		newSeasonProcess: false,
 		childSeasonProcess: false,
+		seasonClanAddProcess: false,
 		leagueDataRefreshProcess: false,
 		notification: notifications(),
 	}),
@@ -177,6 +179,18 @@ export const leagueManagement = defineStore({
 				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
 				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
+		},
+
+		async seasonClanAdd(data: TSeasoncClanAdd) {
+			this.seasonClanAddProcess = true;
+			try {
+				const response = await APILeague.addSeasonClans(data);
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Clans Added Successfully!' });
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
+			this.seasonClanAddProcess = false;
 		},
 	},
 });

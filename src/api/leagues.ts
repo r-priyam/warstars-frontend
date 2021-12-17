@@ -7,6 +7,7 @@ import {
 	TNewSeason,
 	TRegisterChild,
 	TRegisterDivision,
+	TSeasoncClanAdd,
 } from '~/types/leagues';
 
 export const APILeague = {
@@ -44,5 +45,9 @@ export const APILeague = {
 
 	async endChildSeason(data: TEndChildSeason) {
 		return HTTP.put('/league/season/end-child', data);
+	},
+
+	async addSeasonClans(data: TSeasoncClanAdd) {
+		return HTTP.post('/league/season/add-clans', data);
 	},
 };

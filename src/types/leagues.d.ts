@@ -122,3 +122,12 @@ export interface TEndLeagueSeason {
 export interface TEndChildSeason extends TEndLeagueSeason {
 	child_league_id: number;
 }
+
+export interface TSeasoncClanAdd {
+	league_id: number;
+	child_id: number;
+	division_id: number;
+	league_season_id: number;
+	child_season_id: number;
+	clan_tags: Array<string>;
+}

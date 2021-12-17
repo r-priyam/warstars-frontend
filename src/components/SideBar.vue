@@ -101,6 +101,7 @@ import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-ignore
 import HitRates from '~icons/mdi/fire'; // @ts-ignore
 import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-ignore
 import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-ignore
+import SeasonAddClans from '~icons/ic/baseline-group-add'; // @ts-ignore
 import SeasonClans from '~icons/mdi/account-group'; // @ts-ignore
 import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-ignore
 import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-ignore
@@ -156,7 +157,8 @@ const navigation = [
 		items: [
 			{ name: 'Info', href: '/dashboard/season-info', icon: SeasonInfo },
 			{ name: 'Core', href: '/dashboard/season-core', icon: SeasonCore },
-			{ name: 'Clans', href: '/', icon: SeasonClans },
+			{ name: 'Clans', href: '/dashboard/season-clans', icon: SeasonClans },
+			{ name: 'Add Clans', href: '/dashboard/season-clans-add', icon: SeasonAddClans },
 			{ name: 'Matches', href: '/', icon: SeasonMatches },
 			{ name: 'Results', href: '/', icon: SeasonResult },
 			{ name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },

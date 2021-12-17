@@ -77,6 +77,16 @@ const routes: RouteRecordRaw[] = [
 				props: (route) => ({ showChildSeason: Boolean(route.query.showChildSeason) }),
 			},
 			{
+				path: 'season-clans',
+				name: 'Season Clans',
+				component: () => import('~/pages/dashboard/leagues/season/SeasonClans.vue'),
+			},
+			{
+				path: 'season-clans-add',
+				name: 'Season Add Clans',
+				component: () => import('~/pages/dashboard/leagues/season/SeasonClansadd.vue'),
+			},
+			{
 				path: '/dashboard/:pathMatch(.*)',
 				name: 'Dashboard Not Found',
 				component: () => import('~/pages/NotFound.vue'),
