@@ -165,9 +165,3 @@ const selectedOptionClans = computed(() => {
 onMounted(selectedChildDivisions);
 onMounted(getSeasonChildClans);
 </script>
-
-<style scoped>
-.view-height {
-	height: calc(100vh - 3.7rem);
-}
-</style>
