@@ -20,15 +20,15 @@
 				<div class="flex flex-col p-2 -mt-2">
 					<div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
 						<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-							<div class="rounded-md bg-main-light-400 dark:bg-main-dark-560 p-2">
-								<span class="font-bold text-base">Showing Data For {{ selectedOption.name }}</span>
+							<div class="p-2 rounded-md bg-main-light-400 dark:bg-main-dark-560">
+								<span class="text-base font-bold">Showing Data For {{ selectedOption.name }}</span>
 								<Listbox v-model="selectedOption">
 									<div class="absolute top-auto inline-flex right-6 sm:right-6 lg:right-[1.8rem]">
 										<ListboxButton
 											class="relative mr-[0.130rem] cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
 										>
 											<heroicons-solid:filter
-												class="relative inline-flex w-6 mb-2 rounded-md h-7 text-main-textDark-500 dark:text-main-textLight-500 bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-660 dark:hover:bg-main-dark-660"
+												class="relative inline-flex w-6 mb-2 rounded-md h-7 text-main-textDark-500 dark:text-main-textLight-500 hover:bg-main-light-560 dark:hover:bg-main-dark-660"
 												aria-hidden="true"
 											/>
 										</ListboxButton>
@@ -118,7 +118,7 @@
 									</tbody>
 								</table>
 							</div>
-							<div v-else class="text-center mt-8 text-red-500 font-bold text-2xl">No Clan Linked</div>
+							<div v-else class="mt-8 text-2xl font-bold text-center text-red-500">No Clan Linked</div>
 						</div>
 					</div>
 				</div>
