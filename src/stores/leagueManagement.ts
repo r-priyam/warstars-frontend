@@ -6,6 +6,7 @@ import { APILeague } from '~/api/leagues';
 import {
 	TEndChildSeason,
 	TEndLeagueSeason,
+	TLeagueManagement,
 	TLocalLeagueConfig,
 	TNewChildSeason,
 	TNewSeason,
@@ -22,14 +23,17 @@ interface TPermsData {
 
 export const leagueManagement = defineStore({
 	id: 'leagueManagement',
-	state: () => ({
+
+	state: (): TLeagueManagement => ({
 		permissions: {},
+		childClans: {},
 		childRegisterProcess: false,
 		divisionRegisterProcess: false,
 		newSeasonProcess: false,
 		childSeasonProcess: false,
 		seasonClanAddProcess: false,
 		leagueDataRefreshProcess: false,
+		fetchingChildClans: false,
 		notification: notifications(),
 	}),
 
@@ -191,6 +195,19 @@ export const leagueManagement = defineStore({
 				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.seasonClanAddProcess = false;
+		},
+
+		async seasonChildClans(childId: number, seasonId: number) {
+			if (this.childClans.hasOwnProperty(childId)) return;
+			this.fetchingChildClans = true;
+			try {
+				const response = await APILeague.getLeagueChildClans(childId, seasonId);
+				if (response.status === 200) this.childClans[childId] = response.data;
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
+			this.fetchingChildClans = false;
 		},
 	},
 });

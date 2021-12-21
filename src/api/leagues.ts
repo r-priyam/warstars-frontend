@@ -1,5 +1,6 @@
 import HTTP from '~/api';
 import {
+	TChildClans,
 	TEndChildSeason,
 	TEndLeagueSeason,
 	TLeagueRegister,
@@ -29,6 +30,10 @@ export const APILeague = {
 
 	async getUserLeagueData() {
 		return HTTP.get('league/user-leagues');
+	},
+
+	async getLeagueChildClans(childId: number, seasonId: number) {
+		return HTTP.get<TChildClans | []>(`/league/season/child-clans/${childId}/${seasonId}`);
 	},
 
 	async startNewSeason(data: TNewSeason) {

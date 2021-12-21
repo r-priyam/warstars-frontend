@@ -131,3 +131,26 @@ export interface TSeasoncClanAdd {
 	child_season_id: number;
 	clan_tags: Array<string>;
 }
+
+export interface TChildClans {
+	league_id: number;
+	child_id: number;
+	division_id: number;
+	league_season_id: number;
+	child_season_id: number;
+	name: string;
+	tag: string;
+}
+
+export interface TLeagueManagement {
+	permissions: Record<string, unknown>;
+	childClans: Record<number, TChildClans[]> | Record<null, null>;
+	childRegisterProcess: boolean;
+	divisionRegisterProcess: boolean;
+	newSeasonProcess: boolean;
+	childSeasonProcess: boolean;
+	seasonClanAddProcess: boolean;
+	leagueDataRefreshProcess: boolean;
+	fetchingChildClans: boolean;
+	notification: Store<'notifications', TNotifications>;
+}
