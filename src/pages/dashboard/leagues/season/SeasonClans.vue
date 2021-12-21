@@ -8,7 +8,7 @@
 			@close-pop-up="() => (showPopUp = false)"
 			@confirmation="
 				async () => (
-					(popUpProcessing = true), await leagueStore.seasonRemoveClan(removeClanData!), (popUpProcessing = false), (showPopUp = false)
+					(popUpProcessing = true), await leagueStore.seasonRemoveClan(removeClanData!), (popUpProcessing = false), (showPopUp = false), clansData?.splice(clansData.indexOf(removeClanData!), 1)
 				)
 			"
 		/>
