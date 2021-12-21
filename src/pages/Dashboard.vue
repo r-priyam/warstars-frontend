@@ -52,7 +52,9 @@
 				</Dialog>
 			</TransitionRoot>
 
-			<div class="flex-1 overflow-y-auto bg-main-light-560 dark:bg-main-dark-560 focus:outline-none custom-scroll">
+			<div
+				class="flex-1 router-view-height overflow-y-auto bg-main-light-560 dark:bg-main-dark-560 focus:outline-none custom-scroll"
+			>
 				<div class="flex justify-end">
 					<div class="absolute z-20 p-6 px-0 py-4 pointer-events-none top-10 overflow-hidden">
 						<div class="w-72">
@@ -126,6 +128,10 @@ const notificationColor = (type: string) => {
 <style>
 .sidebar-height {
 	height: calc(100vh - 3.64rem);
+}
+
+.router-view-height {
+	height: calc(100vh - 1.68rem);
 }
 .custom-scroll {
 	scrollbar-width: thin;
