@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APILeague } from '~/api/leagues';
 import {
+	TChildClans,
 	TEndChildSeason,
 	TEndLeagueSeason,
 	TLeagueManagement,
@@ -34,6 +35,7 @@ export const leagueManagement = defineStore({
 		seasonClanAddProcess: false,
 		leagueDataRefreshProcess: false,
 		fetchingChildClans: false,
+		clanRemoveProcess: false,
 		notification: notifications(),
 	}),
 
@@ -208,6 +210,18 @@ export const leagueManagement = defineStore({
 				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.fetchingChildClans = false;
+		},
+
+		async seasonRemoveClan(data: TChildClans) {
+			this.clanRemoveProcess = true;
+			try {
+				const response = await APILeague.removeSeasonClan(data);
+				if (response.status === 200) this.notification.notify({ title: 'Success', text: 'Clan Removed Successfully!' });
+			} catch (error) {
+				if (axios.isAxiosError(error)) this.notification.notify({ title: 'Error', text: error.response?.data.detail });
+				else this.notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			}
+			this.clanRemoveProcess = false;
 		},
 	},
 });

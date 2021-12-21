@@ -55,4 +55,8 @@ export const APILeague = {
 	async addSeasonClans(data: TSeasoncClanAdd) {
 		return HTTP.post('/league/season/add-clans', data);
 	},
+
+	async removeSeasonClan(data: TChildClans) {
+		return HTTP.delete('/league/season/remove-clan', { data: data });
+	},
 };

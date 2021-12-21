@@ -152,5 +152,6 @@ export interface TLeagueManagement {
 	seasonClanAddProcess: boolean;
 	leagueDataRefreshProcess: boolean;
 	fetchingChildClans: boolean;
+	clanRemoveProcess: boolean;
 	notification: Store<'notifications', TNotifications>;
 }

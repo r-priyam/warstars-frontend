@@ -1,4 +1,18 @@
 <template>
+	<div>
+		<PopUp
+			title="Remove Clan"
+			:description="popUpMessage"
+			:open="showPopUp"
+			:processing="popUpProcessing"
+			@close-pop-up="() => (showPopUp = false)"
+			@confirmation="
+				async () => (
+					(popUpProcessing = true), await leagueStore.seasonRemoveClan(removeClanData!), (popUpProcessing = false), (showPopUp = false)
+				)
+			"
+		/>
+	</div>
 	<LoadingSpinner v-if="leagueStore.fetchingChildClans" />
 	<div v-else class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500">
 		<div class="max-w-4xl mx-auto">
@@ -112,7 +126,15 @@
 												{{ clan.tag }}
 											</td>
 											<td class="px-6 py-4 text-sm text-red-500 cursor-pointer hover:text-red-600 whitespace-nowrap">
-												<button>Remove</button>
+												<button
+													@click="
+														removeClanData = clan;
+														popUpMessage = `Are you sure you want to remove ${clan.name}(${clan.tag}) for the season?`;
+														showPopUp = true;
+													"
+												>
+													Remove
+												</button>
 											</td>
 										</tr>
 									</tbody>
@@ -131,16 +153,21 @@
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import LoadingSpinner from '~/components/Spinner.vue';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import { TChildClans, TUserChildLeagueDivisions, TUserLeagueData } from '~/types/leagues';
 
 const leagueStore = leagueManagement();
 const filterOptions = ref([
 	{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id },
-	{ name: 'Test', id: 10 },
 ]);
 const selectedOption = ref(filterOptions.value[0]);
 const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
 const clansData = ref<TChildClans[] | null>(null);
+
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+const popUpMessage = ref('');
+const removeClanData = ref<TChildClans | null>(null);
 
 const selectedChildDivisions = () =>
 	leaguesData
