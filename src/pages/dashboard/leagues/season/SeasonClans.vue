@@ -155,6 +155,8 @@ import { leagueManagement } from '~/stores/leagueManagement';
 import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import { TChildClans, TUserChildLeagueDivisions, TUserLeagueData } from '~/types/leagues';
+import { notifications } from '~/stores/notifications';
+import router from '~/router';
 
 const leagueStore = leagueManagement();
 const filterOptions = ref([
@@ -191,4 +193,14 @@ const selectedOptionClans = computed(() => {
 });
 onMounted(selectedChildDivisions);
 onMounted(getSeasonChildClans);
+
+onBeforeMount(async () => {
+	if (leagueStore.getLeagueLocalConfig?.league.league_id === 0 || !leagueStore.getLeagueLocalConfig) {
+		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
+		await router.push({ name: 'League Selector' });
+	} else if (leagueStore.getLeagueLocalConfig.child.id === 0) {
+		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		await router.push({ name: 'League Selector' });
+	}
+});
 </script>
