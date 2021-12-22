@@ -29,7 +29,7 @@
 		"vue-router": "4.0.12"
 	},
 	"devDependencies": {
-		"@iconify/json": "1.1.445",
+		"@iconify/json": "1.1.446",
 		"@types/js-cookie": "3.0.1",
 		"@types/nprogress": "0.2.0",
 		"@typescript-eslint/eslint-plugin": "5.8.0",
@@ -51,7 +51,7 @@
 		"unplugin-auto-import": "0.5.4",
 		"unplugin-icons": "0.12.23",
 		"unplugin-vue-components": "0.17.9",
-		"vite": "2.7.3",
+		"vite": "2.7.6",
 		"vite-plugin-pages": "0.19.6",
 		"vite-plugin-pwa": "0.11.12",
 		"vite-plugin-radar": "0.4.1",
