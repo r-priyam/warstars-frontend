@@ -173,14 +173,14 @@ const removeClanData = ref<TChildClans | null>(null);
 
 const selectedChildDivisions = () =>
 	leaguesData
-		.find((league) => league.league_id === leagueStore.getLeagueLocalConfig!.league.league_id)
-		?.child_leagues.find((child) => child.id === leagueStore.getLeagueLocalConfig!.child.id)!
+		.find((league) => league.leagueId === leagueStore.getLeagueLocalConfig!.league.leagueId)
+		?.childLeagues.find((child) => child.id === leagueStore.getLeagueLocalConfig!.child.id)!
 		.divisions.map((data: TUserChildLeagueDivisions) => filterOptions.value.push({ name: data.name, id: data.id }));
 
 const getSeasonChildClans = async () => {
 	await leagueStore.seasonChildClans(
 		leagueStore.getLeagueLocalConfig?.child.id ?? 0,
-		leagueStore.getLeagueLocalConfig?.child.season_id ?? 0,
+		leagueStore.getLeagueLocalConfig?.child.seasonId ?? 0,
 	);
 	clansData.value = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
 	console.log(leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id]);
@@ -189,13 +189,13 @@ const getSeasonChildClans = async () => {
 const selectedOptionClans = computed(() => {
 	if (!clansData.value) return [];
 	if (selectedOption.value === filterOptions.value[0]) return clansData.value;
-	return clansData.value.filter((data) => data.division_id === selectedOption.value.id);
+	return clansData.value.filter((data) => data.divisionId === selectedOption.value.id);
 });
 onMounted(selectedChildDivisions);
 onMounted(getSeasonChildClans);
 
 onBeforeMount(async () => {
-	if (leagueStore.getLeagueLocalConfig?.league.league_id === 0 || !leagueStore.getLeagueLocalConfig) {
+	if (leagueStore.getLeagueLocalConfig?.league.leagueId === 0 || !leagueStore.getLeagueLocalConfig) {
 		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
 		await router.push({ name: 'League Selector' });
 	} else if (leagueStore.getLeagueLocalConfig.child.id === 0) {

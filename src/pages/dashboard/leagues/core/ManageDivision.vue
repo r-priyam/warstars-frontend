@@ -64,13 +64,13 @@ import ProcessButton from '~/components/ProcessButton.vue';
 const league = leagueManagement();
 
 onBeforeMount(async () => {
-	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
+	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
 		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
 		await router.push({ name: 'League Selector' });
 	} else if (league.getLeagueLocalConfig.child.id === 0) {
 		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
 		await router.push({ name: 'League Selector' });
-	} else if (!league.getLeagueLocalConfig.child.season_active) {
+	} else if (!league.getLeagueLocalConfig.child.seasonActive) {
 		notifications().notify(
 			{
 				title: 'Warning',
@@ -86,9 +86,9 @@ async function registerDivision() {
 	const form: HTMLFormElement | null = document.querySelector('#register-division');
 	const formData = new FormData(form!);
 	const childDivisionData: TRegisterDivision = {
-		league_id: league.getLeagueLocalConfig?.league.league_id ?? 0,
-		child_id: league.getLeagueLocalConfig?.child.id ?? 0,
-		season_id: league.getLeagueLocalConfig?.child.season_id ?? 0,
+		leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
+		childId: league.getLeagueLocalConfig?.child.id ?? 0,
+		seasonId: league.getLeagueLocalConfig?.child.seasonId ?? 0,
 		name: formData.get('division-name') as string,
 		abbreviation: formData.get('division-abbreviation') as string,
 	};

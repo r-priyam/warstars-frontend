@@ -22,7 +22,7 @@
 				<h3 class="font-bold leading-tight text-center text-red-700 truncate dark:text-red-500">No League Selected</h3>
 			</div>
 			<div v-else class="flex items-center shrink-0 mt-2">
-				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.league.icon_url" />
+				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.league.iconUrl" />
 				<div class="pl-2 overflow-hidden text-base">
 					<h3 class="font-bold leading-tight text-red-700 truncate dark:text-red-500">
 						{{ league.getLeagueLocalConfig.league.name }}
@@ -32,8 +32,8 @@
 			<div v-if="league.getLeagueLocalConfig.child.name === ''">
 				<h3 class="font-bold leading-tight text-center text-green-700 truncate dark:text-green-500">No Child League</h3>
 			</div>
-			<div v-if="league.getLeagueLocalConfig.child.icon_url !== ''" class="flex items-center shrink-0 mt-2">
-				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.icon_url" />
+			<div v-if="league.getLeagueLocalConfig.child.iconUrl !== ''" class="flex items-center shrink-0 mt-2">
+				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.iconUrl" />
 				<div class="pl-2 overflow-hidden text-base">
 					<h3 class="font-bold leading-tight text-green-700 truncate dark:text-green-500">
 						{{

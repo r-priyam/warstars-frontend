@@ -48,7 +48,7 @@
 									<td
 										class="px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500 whitespace-nowrap"
 									>
-										{{ division.clans_count }}
+										{{ division.clansCount }}
 									</td>
 								</tr>
 							</tbody>
