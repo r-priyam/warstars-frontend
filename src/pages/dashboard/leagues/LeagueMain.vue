@@ -54,7 +54,7 @@
 				{{ leagueData?.name }}
 			</h1>
 			<div class="flex items-center justify-center mt-4">
-				<img class="p-1 border-2 border-red-500 border-opacity-75 rounded-full w-36 h-36" :src="leagueData?.icon_url" />
+				<img class="p-1 border-2 border-red-500 border-opacity-75 rounded-full w-36 h-36" :src="leagueData?.iconUrl" />
 			</div>
 
 			<div class="p-5 mt-10 space-y-1 text-sm bg-transparent rounded-lg">
@@ -73,7 +73,7 @@
 							<subway:admin class="inline-flex w-4 h-3 mb-1" aria-hidden="true" />
 							Head Name
 						</span>
-						<span class="league-info-item-data">{{ leagueData?.head_admin }}</span>
+						<span class="league-info-item-data">{{ leagueData?.headAdmin }}</span>
 					</div>
 				</div>
 				<div class="league-info-item-box">
@@ -82,7 +82,7 @@
 							<ph:hash-bold class="inline-flex w-4 h-4 mb-1" aria-hidden="true" />
 							Head Discord ID
 						</span>
-						<span class="league-info-item-data">{{ leagueData?.discord_id }}</span>
+						<span class="league-info-item-data">{{ leagueData?.discordId }}</span>
 					</div>
 				</div>
 				<div class="league-info-item-box">
@@ -91,7 +91,7 @@
 							<file-icons:moleculer class="inline-flex w-4 h-4 mb-1" aria-hidden="true" />
 							Child Leagues
 						</span>
-						<span class="league-info-item-data">{{ leagueData?.child_leagues.length }}</span>
+						<span class="league-info-item-data">{{ leagueData?.childLeagues.length }}</span>
 					</div>
 				</div>
 				<div class="league-info-item-box">
@@ -100,7 +100,7 @@
 							<ion:ios-people class="inline-flex w-4 h-4 mb-1" aria-hidden="true" />
 							Total Admins
 						</span>
-						<span class="league-info-item-data">{{ leagueData?.total_admins }}</span>
+						<span class="league-info-item-data">{{ leagueData?.totalAdmins }}</span>
 					</div>
 				</div>
 				<div class="league-info-item-box">
@@ -118,8 +118,8 @@
 							<ic:baseline-discord class="inline-flex w-4 h-4 mb-1" aria-hidden="true" />
 							Discord
 						</span>
-						<span v-if="leagueData?.discord_invite" class="league-info-item-data">{{
-							leagueData?.discord_invite
+						<span v-if="leagueData?.discordInvite" class="league-info-item-data">{{
+							leagueData?.discordInvite
 						}}</span>
 						<span else class="league-info-item-data">Not Provided</span>
 					</div>
@@ -130,8 +130,8 @@
 							<mdi:twitter class="inline-flex w-4 h-4 mb-1" aria-hidden="true" />
 							Twitter
 						</span>
-						<span v-if="leagueData?.twitter_handle" class="league-info-item-data">{{
-							leagueData?.twitter_handle
+						<span v-if="leagueData?.twitterHandle" class="league-info-item-data">{{
+							leagueData?.twitterHandle
 						}}</span>
 						<span v-else class="league-info-item-data">Not Provided</span>
 					</div>
@@ -152,15 +152,15 @@
 							<iwwa:year class="inline-flex w-4 h-4 mb-1" aria-hidden="true" />
 							Registered On
 						</span>
-						<span v-if="leagueData?.registerd_on" class="league-info-item-data">{{
-							moment(leagueData.registerd_on).format('MMMM-DD-YYYY')
+						<span v-if="leagueData?.registerdOn" class="league-info-item-data">{{
+							moment(leagueData.registerdOn).format('MMMM-DD-YYYY')
 						}}</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<LeagueChild v-if="childLeague" :child-data="leagueData?.child_leagues" />
-		<ChildDivision v-if="division" :child-data="leagueData?.child_leagues" :divisions-data="leagueDivisions()" />
+		<LeagueChild v-if="childLeague" :child-data="leagueData?.childLeagues" />
+		<ChildDivision v-if="division" :child-data="leagueData?.childLeagues" :divisions-data="leagueDivisions()" />
 	</div>
 </template>
 
@@ -181,16 +181,16 @@ const division = ref(false);
 const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 
 const leagueData = computed(() =>
-	leaguesData.find((leagueData) => leagueData.league_id === leagueStore.getLeagueLocalConfig?.league.league_id),
+	leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId),
 );
 
 const leagueDivisions = () => {
 	const leagueData_ = leaguesData.find(
-		(leagueData) => leagueData.league_id === leagueStore.getLeagueLocalConfig?.league.league_id,
+		(leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId,
 	);
-	if (!leagueData_?.child_leagues) return [];
+	if (!leagueData_?.childLeagues) return [];
 	const divisions: Array<TUserChildLeagueDivisions> = [];
-	leagueData_.child_leagues.forEach((element) => {
+	leagueData_.childLeagues.forEach((element) => {
 		divisions.push(...element.divisions);
 	});
 	return divisions;

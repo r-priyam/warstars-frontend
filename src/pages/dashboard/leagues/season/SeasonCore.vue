@@ -102,11 +102,11 @@ const childSeason = ref(prop.showChildSeason);
 const selectedChilds = ref([]);
 const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const selectedLeagueChild = computed(
-	() => leaguesData.find((child) => child.league_id === league.getLeagueLocalConfig?.league.league_id)?.child_leagues,
+	() => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues,
 );
 
 onBeforeMount(async () => {
-	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
+	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
 		notifications().notify({ title: 'Warning', text: 'Please select a league to continue!' });
 		await router.push({ name: 'League Selector' });
 	}
@@ -138,18 +138,18 @@ async function registerSeason() {
 
 	if (leagueSeason.value) {
 		const newSeasonData: TNewSeason = {
-			league_id: league.getLeagueLocalConfig?.league.league_id ?? 0,
-			start_time: formData.get('start-date') as string,
-			end_time: formData.get('end-date') as string,
-			child_data: selectedChilds.value,
+			leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
+			startTime: formData.get('start-date') as string,
+			endTime: formData.get('end-date') as string,
+			childData: selectedChilds.value,
 		};
 		await league.newSeason(newSeasonData);
 	} else {
 		const childSeasonData: TNewChildSeason = {
-			league_id: league.getLeagueLocalConfig?.league.league_id ?? 0,
-			child_league_id: league.getLeagueLocalConfig?.child.id ?? 0,
-			start_time: formData.get('start-date') as string,
-			end_time: formData.get('end-date') as string,
+			leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
+			childLeagueId: league.getLeagueLocalConfig?.child.id ?? 0,
+			startTime: formData.get('start-date') as string,
+			endTime: formData.get('end-date') as string,
 		};
 		await league.newChildSeason(childSeasonData);
 	}

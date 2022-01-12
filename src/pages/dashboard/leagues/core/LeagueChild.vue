@@ -5,13 +5,13 @@
 	>
 		<div
 			v-for="childLeague in childData"
-			:key="childLeague.league_id"
+			:key="childLeague.leagueId"
 			class="overflow-hidden rounded shadow-lg bg-main-light-530 dark:bg-main-dark-660"
 		>
 			<div class="flex items-center justify-center">
 				<img
 					class="p-1 mt-1 border-2 border-white rounded-full border-opacity-80 w-36 h-36"
-					:src="childLeague.icon_url"
+					:src="childLeague.iconUrl"
 					:alt="childLeague.name"
 				/>
 			</div>
@@ -27,25 +27,25 @@
 				<p class="item-name">
 					Clans
 					<mdi:arrow-right-thin class="inline-flex w-4 h-4 mb-0.5" aria-hidden="true" />
-					<span class="item-data">{{ childLeague.clans_count }}</span>
+					<span class="item-data">{{ childLeague.clansCount }}</span>
 				</p>
 				<p class="item-name">
 					Season
 					<mdi:arrow-right-thin class="inline-flex w-4 h-4 mb-0.5" aria-hidden="true" />
-					<span class="item-data">{{ childLeague.specific_id || 0 }}</span>
+					<span class="item-data">{{ childLeague.specificId || 0 }}</span>
 				</p>
 				<p class="item-name">
 					Start Date
 					<mdi:arrow-right-thin class="inline-flex w-4 h-4 mb-0.5" aria-hidden="true" />
 					<span class="item-data">{{
-						childLeague.start_time !== null ? moment(childLeague.start_time).format('MMM DD, YYYY') : '--:--:----'
+						childLeague.startTime !== null ? moment(childLeague.startTime).format('MMM DD, YYYY') : '--:--:----'
 					}}</span>
 				</p>
 				<p class="item-name">
 					End Date
 					<mdi:arrow-right-thin class="inline-flex w-4 h-4 mb-0.5" aria-hidden="true" />
 					<span class="item-data">{{
-						childLeague.end_time !== null ? moment(childLeague.end_time).format('MMM DD, YYYY') : '--:--:----'
+						childLeague.endTime !== null ? moment(childLeague.endTime).format('MMM DD, YYYY') : '--:--:----'
 					}}</span>
 				</p>
 			</div>

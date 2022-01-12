@@ -58,13 +58,13 @@ const notification = notifications();
 const leagueData = league.getLeagueLocalConfig;
 
 onBeforeMount(async () => {
-	if (league.getLeagueLocalConfig?.league.league_id === 0 || !league.getLeagueLocalConfig) {
+	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
 		notification.notify({ title: 'Warning', text: 'Please config a league to continue!' });
 		await router.push({ name: 'League Selector' });
 	} else if (league.getLeagueLocalConfig.child.id === 0) {
 		notification.notify({ title: 'Warning', text: 'Please select a child league to continue!' });
 		await router.push({ name: 'League Selector' });
-	} else if (league.getLeagueLocalConfig.child.season_id === null) {
+	} else if (league.getLeagueLocalConfig.child.seasonId === null) {
 		notification.notify(
 			{
 				title: 'Warning',
@@ -73,7 +73,7 @@ onBeforeMount(async () => {
 			6000,
 		);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
-	} else if (!league.getLeagueLocalConfig.child.season_active) {
+	} else if (!league.getLeagueLocalConfig.child.seasonActive) {
 		notification.notify(
 			{
 				title: 'Warning',
@@ -107,12 +107,12 @@ async function addClans() {
 	const seasonClanRegisterData: TSeasoncClanAdd = {
 		// Ignore typecheck here because since season check is
 		// already being checked above before mounting the page.
-		league_id: leagueData!.league.league_id,
-		child_id: leagueData!.child.id,
-		division_id: leagueData!.division.id, // @ts-expect-error
-		league_season_id: leagueData!.league.season_id, // @ts-expect-error
-		child_season_id: leagueData!.child.season_id,
-		clan_tags: clanTags,
+		leagueId: leagueData!.league.leagueId,
+		childId: leagueData!.child.id,
+		divisionId: leagueData!.division.id, // @ts-expect-error
+		leagueSeasonId: leagueData!.league.seasonId, // @ts-expect-error
+		childSeasonId: leagueData!.child.seasonId,
+		clanTags: clanTags,
 	};
 	await league.seasonClanAdd(seasonClanRegisterData);
 }

@@ -44,7 +44,7 @@
 						<input
 							readonly="true"
 							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
-							:placeholder="String(league.getLeagueLocalConfig?.league.league_id)"
+							:placeholder="String(league.getLeagueLocalConfig?.league.leagueId)"
 						/>
 					</div>
 					<div>
@@ -72,10 +72,10 @@ async function registerChild() {
 	const form: HTMLFormElement | null = document.querySelector('#register-child');
 	const formData = new FormData(form!);
 	const childRegisterData: TRegisterChild = {
-		league_id: league.getLeagueLocalConfig?.league.league_id ?? 0,
+		leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
 		name: formData.get('child-name') as string,
 		abbreviation: formData.get('child-abbreviation') as string,
-		icon_url: formData.get('icon-url') as string,
+		iconUrl: formData.get('icon-url') as string,
 	};
 	await league.registerChild(childRegisterData);
 }

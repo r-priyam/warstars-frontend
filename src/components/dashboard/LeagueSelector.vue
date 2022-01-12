@@ -4,24 +4,24 @@
 			<h1 class="text-3xl font-bold text-center text-red-700 dark:text-red-500">My Leagues</h1>
 		</div>
 		<div class="flex items-center justify-center shrink-0 mt-2 flex-col-1">
-			<div v-for="league in leaguesData" :key="league.league_id" class="flex flex-wrap justify-center">
+			<div v-for="league in leaguesData" :key="league.leagueId" class="flex flex-wrap justify-center">
 				<button
 					@click="
 						selectedLeague = {
-							league_id: league.league_id,
+							leagueId: league.leagueId,
 							name: league.name,
 							abbreviation: league.abbreviation,
-							season_id: league.season_id,
-							icon_url: league.icon_url,
-							season_active: league.season_active,
+							seasonId: league.seasonId,
+							iconUrl: league.iconUrl,
+							seasonActive: league.seasonActive,
 						};
 						handleLeagueChange();
 					"
 				>
 					<img
 						class="grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
-						:class="[league.league_id === selectedLeague?.league_id ? 'border-red-700 dark:border-red-500' : '']"
-						:src="league.icon_url"
+						:class="[league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : '']"
+						:src="league.iconUrl"
 						:alt="league.name"
 						:title="league.name"
 					/>
@@ -29,12 +29,12 @@
 			</div>
 		</div>
 		<h1
-			v-if="selectedLeague.league_id === 0"
+			v-if="selectedLeague.leagueId === 0"
 			class="mt-4 text-base italic font-medium text-center text-red-700 dark:text-red-500"
 		>
 			Please select a League to get started
 		</h1>
-		<div v-if="selectedLeague.league_id > 0">
+		<div v-if="selectedLeague.leagueId > 0">
 			<div class="mt-6 mb-6">
 				<transition-group
 					enter-active-class="transition duration-300 ease-out transform-gpu"
@@ -75,16 +75,16 @@
 									id: childLeague.id,
 									name: childLeague.name,
 									abbreviation: childLeague.abbreviation,
-									icon_url: childLeague.icon_url,
-									season_id: childLeague.season_id,
-									season_active: childLeague.season_active,
+									iconUrl: childLeague.iconUrl,
+									seasonId: childLeague.seasonId,
+									seasonActive: childLeague.seasonActive,
 								}
 							"
 						>
 							<img
 								class="inline-flex grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
 								:class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
-								:src="childLeague.icon_url"
+								:src="childLeague.iconUrl"
 								:alt="childLeague.name"
 								:title="childLeague.name"
 							/>
@@ -207,60 +207,60 @@ onBeforeMount(async () => {
 
 const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const selectedLeague = ref<TSelectedLeague>({
-	league_id: 0,
+	leagueId: 0,
 	name: '',
 	abbreviation: '',
-	season_id: null,
-	icon_url: '',
-	season_active: null,
+	seasonId: null,
+	iconUrl: '',
+	seasonActive: null,
 });
 const selectedChildLeague = ref<TSelectedChild>({
 	id: 0,
 	name: '',
 	abbreviation: '',
-	icon_url: '',
-	season_id: null,
-	season_active: null,
+	iconUrl: '',
+	seasonId: null,
+	seasonActive: null,
 });
 const selectedDivision = ref<TUserChildLeagueDivisions>({
 	id: 0,
-	child_id: 0,
-	season_id: 0,
+	childId: 0,
+	seasonId: 0,
 	name: '',
 	abbreviation: '',
-	icon_url: null,
-	clans_count: 0,
+	iconUrl: null,
+	clansCount: 0,
 });
 
 const selectedLeagueChild = computed(
-	() => leaguesData.find((league) => league.league_id === selectedLeague.value.league_id)?.child_leagues,
+	() => leaguesData.find((league) => league.leagueId === selectedLeague.value.leagueId)?.childLeagues,
 );
 
 const selectedChildDivisions = computed(
 	() =>
 		leaguesData
-			.find((league) => league.league_id === selectedLeague.value.league_id)
-			?.child_leagues.find((child) => child.id === selectedChildLeague.value.id)?.divisions,
+			.find((league) => league.leagueId === selectedLeague.value.leagueId)
+			?.childLeagues.find((child) => child.id === selectedChildLeague.value.id)?.divisions,
 );
 
 const handleReset = () => {
 	selectedLeague.value = {
-		league_id: 0,
+		leagueId: 0,
 		name: '',
 		abbreviation: '',
-		season_id: null,
-		icon_url: '',
-		season_active: null,
+		seasonId: null,
+		iconUrl: '',
+		seasonActive: null,
 	};
-	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', icon_url: '', season_id: null, season_active: null };
+	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null };
 	selectedDivision.value = {
 		id: 0,
-		child_id: 0,
-		season_id: 0,
+		childId: 0,
+		seasonId: 0,
 		name: '',
 		abbreviation: '',
-		icon_url: null,
-		clans_count: 0,
+		iconUrl: null,
+		clansCount: 0,
 	};
 };
 

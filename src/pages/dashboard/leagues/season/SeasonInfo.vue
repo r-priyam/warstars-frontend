@@ -8,7 +8,7 @@
 		@confirmation="
 			async () => (
 				(popUpProcessing = true),
-				type === 'league' ? await league.endSeason({ season_id: selectedLeagueData?.season_id!, league_id: selectedLeagueData?.league_id! }) : await league.endChildSeason({ season_id: clickedChildData.seasonId, league_id: selectedLeagueData?.league_id!, child_league_id: clickedChildData.childId }),
+				type === 'league' ? await league.endSeason({ seasonId: selectedLeagueData?.seasonId!, leagueId: selectedLeagueData?.leagueId! }) : await league.endChildSeason({ seasonId: clickedChildData.seasonId, leagueId: selectedLeagueData?.leagueId!, childLeagueId: clickedChildData.childId }),
 				type === 'league' && forceEnd ? await router.push({ name: 'Season Core' }) : await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } }),
 				(popUpProcessing = false),
 				(showPopUp = false),
@@ -38,14 +38,14 @@
 						<div class="flex items-center justify-center shrink-0 sm:mb-0 sm:mr-4">
 							<img
 								class="object-contain w-24 h-24 mb-4 border-2 border-red-700 rounded-full dark:border-red-500 md:w-32 md:h-32"
-								:src="selectedLeagueData.icon_url"
+								:src="selectedLeagueData.iconUrl"
 								:alt="`${selectedLeagueData.name} Icon`"
 							/>
 						</div>
 						<div class="w-full h-32">
 							<div class="absolute inline-flex items-end justify-end mt-auto ml-auto lg:p-2 right-2">
 								<button
-									v-if="selectedLeagueData.season_active"
+									v-if="selectedLeagueData.seasonActive"
 									title="New Season"
 									@click="
 										popUpTitle = 'Warning';
@@ -63,7 +63,7 @@
 									</span>
 								</button>
 								<router-link
-									v-if="!selectedLeagueData.season_active || selectedLeagueData.season_active === null"
+									v-if="!selectedLeagueData.seasonActive || selectedLeagueData.seasonActive === null"
 									:to="{ name: 'Season Core' }"
 								>
 									<span
@@ -72,11 +72,11 @@
 									</span>
 								</router-link>
 								<button
-									v-if="selectedLeagueData.season_active"
+									v-if="selectedLeagueData.seasonActive"
 									title="End Season"
 									@click="
 										popUpTitle = 'End Season';
-										popUpDescription = `Are you sure you want to end season ${selectedLeagueData?.specific_id}? This action is irreversible`;
+										popUpDescription = `Are you sure you want to end season ${selectedLeagueData?.specificId}? This action is irreversible`;
 										showPopUp = true;
 										type = 'league';
 									"
@@ -89,7 +89,7 @@
 							</div>
 							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-[4.9rem] ml-auto right-2">
 								<span
-									v-if="selectedLeagueData.season_active"
+									v-if="selectedLeagueData.seasonActive"
 									class="inline-flex px-3 py-1 mr-1 text-sm rounded-full bg-main-light-430 dark:bg-main-dark-600"
 									><bx:bxs-calendar-check class="w-5 h-5 mr-1 text-green-500" aria-hidden="true" />
 									<span class="font-bold text-green-600"> Season Active </span>
@@ -105,48 +105,48 @@
 								{{ selectedLeagueData.abbreviation }}
 							</p>
 							<p
-								v-if="selectedLeagueData.season_active"
+								v-if="selectedLeagueData.seasonActive"
 								class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 							>
-								Season {{ selectedLeagueData.specific_id }}
+								Season {{ selectedLeagueData.specificId }}
 							</p>
 							<p v-else class="mt-2 text-base font-bold text-red-500 lg:text-base">No Season</p>
 							<p
-								v-if="selectedLeagueData.season_active !== null && selectedLeagueData.season_active"
+								v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Start Date: </span
-								>{{ moment(selectedLeagueData.start_time).format('MMM DD, YYYY') }}
+								>{{ moment(selectedLeagueData.startTime).format('MMM DD, YYYY') }}
 							</p>
 							<p
-								v-if="selectedLeagueData.season_active !== null && selectedLeagueData.season_active"
+								v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>End Date: </span
-								>{{ moment(selectedLeagueData.end_time).format('MMM DD, YYYY') }}
+								>{{ moment(selectedLeagueData.endTime).format('MMM DD, YYYY') }}
 							</p>
 						</div>
 					</div>
 
 					<!-- Child Data -->
 					<div
-						v-for="child in selectedLeagueData.child_leagues"
+						v-for="child in selectedLeagueData.childLeagues"
 						:key="child.id"
 						class="mt-4 border-b border-gray-400 sm:flex lg:items-end group dark:border-gray-100"
 					>
 						<div class="flex items-center justify-center shrink-0 sm:mb-0 sm:mr-4">
 							<img
 								class="object-contain w-24 h-24 mb-4 border-2 border-green-700 rounded-full dark:border-green-500 md:w-32 md:h-32"
-								:src="child.icon_url"
+								:src="child.iconUrl"
 								:alt="`${child.name} Icon`"
 							/>
 						</div>
 						<div class="w-full h-32">
 							<div class="absolute inline-flex items-end justify-end mt-auto ml-auto lg:p-2 right-2">
 								<button
-									v-if="child.season_active"
+									v-if="child.seasonActive"
 									title="New Season"
 									@click="
 										popUpTitle = 'Warning';
@@ -154,7 +154,7 @@
 										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
 										showPopUp = true;
 										type = 'childLeague';
-										clickedChildData = { childId: child.id, seasonId: child.season_id! };
+										clickedChildData = { childId: child.id, seasonId: child.seasonId! };
 										forceEnd = true;
 									"
 								>
@@ -164,7 +164,7 @@
 									</span>
 								</button>
 								<router-link
-									v-if="!child.season_active || child.season_active === null"
+									v-if="!child.seasonActive || child.seasonActive === null"
 									:to="{ name: 'Season Core', query: { showChildSeason: 'true' } }"
 									@click="saveForceSelectedLeague(child)"
 								>
@@ -174,14 +174,14 @@
 									</span>
 								</router-link>
 								<button
-									v-if="child.season_active"
+									v-if="child.seasonActive"
 									title="End Season"
 									@click="
 										popUpTitle = 'End Season';
-										popUpDescription = `Are you sure you want to end season ${child.specific_id}? This action is irreversible`;
+										popUpDescription = `Are you sure you want to end season ${child.specificId}? This action is irreversible`;
 										showPopUp = true;
 										type = 'childLeague';
-										clickedChildData = { childId: child.id, seasonId: child.season_id! };
+										clickedChildData = { childId: child.id, seasonId: child.seasonId! };
 									"
 								>
 									<span
@@ -192,7 +192,7 @@
 							</div>
 							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-[4.9rem] ml-auto right-2">
 								<span
-									v-if="child.season_active"
+									v-if="child.seasonActive"
 									class="inline-flex px-3 py-1 mr-1 text-sm rounded-full bg-main-light-430 dark:bg-main-dark-600"
 									><bx:bxs-calendar-check class="w-5 h-5 mr-1 text-green-500" aria-hidden="true" />
 									<span class="font-bold text-green-600"> Season Active </span>
@@ -208,27 +208,27 @@
 								{{ `${selectedLeagueData.abbreviation} ${child.name}` }}
 							</p>
 							<p
-								v-if="child.season_active"
+								v-if="child.seasonActive"
 								class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 							>
-								Season {{ child.specific_id }}
+								Season {{ child.specificId }}
 							</p>
 							<p v-else class="mt-2 text-base font-bold text-red-500 lg:text-base">No Season</p>
 							<p
-								v-if="child.season_active !== null && child.season_active"
+								v-if="child.seasonActive !== null && child.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Start Date: </span
-								>{{ moment(child.start_time).format('MMM DD, YYYY') }}
+								>{{ moment(child.startTime).format('MMM DD, YYYY') }}
 							</p>
 							<p
-								v-if="child.season_active !== null && child.season_active"
+								v-if="child.seasonActive !== null && child.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
 								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>End Date: </span
-								>{{ moment(child.end_time).format('MMM DD, YYYY') }}
+								>{{ moment(child.endTime).format('MMM DD, YYYY') }}
 							</p>
 						</div>
 					</div>
@@ -260,7 +260,7 @@ const clickedChildData = ref({ childId: 0, seasonId: 0 });
 const league = leagueManagement();
 const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const selectedLeagueData = computed(() =>
-	leaguesData.find((leagueData) => leagueData.league_id === league.getLeagueLocalConfig?.league.league_id),
+	leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId),
 );
 
 function saveForceSelectedLeague(child: TUserChildLeague) {
@@ -272,8 +272,8 @@ function saveForceSelectedLeague(child: TUserChildLeague) {
 				id: child.id,
 				name: child.name,
 				abbreviation: child.abbreviation,
-				icon_url: child.icon_url,
-				season_id: child.season_id,
+				iconUrl: child.iconUrl,
+				seasonId: child.seasonId,
 			},
 			division: league.getLeagueLocalConfig?.division,
 		}),
