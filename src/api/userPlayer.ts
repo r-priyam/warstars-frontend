@@ -3,14 +3,14 @@ import { TPlayerData, TUserPlayerLink } from '~/types/userPlayer';
 
 export const APIUserPlayer = {
 	async players() {
-		return HTTP.get<TPlayerData[]>('/account/players');
+		return HTTP.get<TPlayerData[]>('/account/player/players');
 	},
 
 	async addPlayer(data: TUserPlayerLink) {
-		return HTTP.post('/account/link-player', data);
+		return HTTP.post('/account/player/link-player', data);
 	},
 
 	async removePlayer(playerTag: string) {
-		return HTTP.delete('/account/unlink-player', { data: { playerTag: playerTag } });
+		return HTTP.delete('/account/player/unlink-player', { data: { playerTag: playerTag } });
 	},
 };
