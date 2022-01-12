@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APIUserClan } from '~/api/userClan';
+import { APIError } from '~/types/user';
 import { TClanData, TUserClan } from '~/types/userClan';
 import { notifications } from './notifications';
 
@@ -22,7 +23,7 @@ export const userClan = defineStore({
 				const response = await APIUserClan.clans();
 				if (response.status === 200) this.clanData = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.clansDataProcessing = false;
@@ -35,7 +36,7 @@ export const userClan = defineStore({
 				const response = await APIUserClan.addClan(clanTag);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked clan successfully!' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.linkClanProcessing = false;
@@ -51,7 +52,7 @@ export const userClan = defineStore({
 					this.clanData.splice(this.clanData.findIndex((data: TClanData) => data.tag === clanTag));
 				}
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.removeClanProcessing = false;

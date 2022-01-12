@@ -92,7 +92,7 @@ import router from '~/router';
 import { notifications } from '~/stores/notifications';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
-import { TUserLeagueData, TNewSeason, TNewChildSeason } from '~/types/leagues';
+import { TUserLeagueData, TNewSeason, TNewChildSeason, TLocalLeagueData } from '~/types/leagues';
 
 const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showChildSeason: false });
 
@@ -100,7 +100,7 @@ const league = leagueManagement();
 const leagueSeason = ref(!prop.showChildSeason);
 const childSeason = ref(prop.showChildSeason);
 const selectedChilds = ref([]);
-const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const selectedLeagueChild = computed(
 	() => leaguesData.find((child) => child.league_id === league.getLeagueLocalConfig?.league.league_id)?.child_leagues,
 );

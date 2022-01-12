@@ -190,7 +190,7 @@
 
 <script setup lang="ts">
 import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } from '@headlessui/vue';
-import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild, TLocalLeagueData } from '~/types/leagues';
 import { notifications } from '~/stores/notifications';
 import router, { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -205,7 +205,7 @@ onBeforeMount(async () => {
 	}
 });
 
-const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const selectedLeague = ref<TSelectedLeague>({
 	league_id: 0,
 	name: '',

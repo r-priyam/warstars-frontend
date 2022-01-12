@@ -2,6 +2,7 @@ import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APILeague } from '~/api/leagues';
 import { TLeagueRegister } from '~/types/leagues';
+import { APIError } from '~/types/user';
 import { notifications } from './notifications';
 
 export const leagues = defineStore({
@@ -16,7 +17,7 @@ export const leagues = defineStore({
 				if (response.status === 200)
 					notification.notify({ title: 'Success', text: 'Registration application submitted' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.registerProcessing = false;

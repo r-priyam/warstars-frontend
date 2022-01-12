@@ -154,7 +154,7 @@ import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headless
 import { leagueManagement } from '~/stores/leagueManagement';
 import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { TChildClans, TUserChildLeagueDivisions, TUserLeagueData } from '~/types/leagues';
+import { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types/leagues';
 import { notifications } from '~/stores/notifications';
 import router from '~/router';
 
@@ -163,7 +163,7 @@ const filterOptions = ref([
 	{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id },
 ]);
 const selectedOption = ref(filterOptions.value[0]);
-const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const clansData = ref<TChildClans[] | null>(null);
 
 const showPopUp = ref(false);
@@ -182,7 +182,7 @@ const getSeasonChildClans = async () => {
 		leagueStore.getLeagueLocalConfig?.child.id ?? 0,
 		leagueStore.getLeagueLocalConfig?.child.season_id ?? 0,
 	);
-	clansData.value = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id];
+	clansData.value = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
 	console.log(leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id]);
 };
 

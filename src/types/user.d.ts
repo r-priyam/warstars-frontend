@@ -12,3 +12,14 @@ export interface UserStateProperties {
 	permissions: string;
 	loggedIn: boolean | false;
 }
+
+interface Error {
+	statusCode: number;
+	timestamp: string;
+	detail: string;
+	path: string;
+}
+
+export interface APIError {
+	data: Error;
+}

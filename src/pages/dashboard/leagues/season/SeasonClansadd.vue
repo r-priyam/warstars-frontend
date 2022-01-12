@@ -109,8 +109,8 @@ async function addClans() {
 		// already being checked above before mounting the page.
 		league_id: leagueData!.league.league_id,
 		child_id: leagueData!.child.id,
-		division_id: leagueData!.division.id, // @ts-ignore
-		league_season_id: leagueData!.league.season_id, // @ts-ignore
+		division_id: leagueData!.division.id, // @ts-expect-error
+		league_season_id: leagueData!.league.season_id, // @ts-expect-error
 		child_season_id: leagueData!.child.season_id,
 		clan_tags: clanTags,
 	};
