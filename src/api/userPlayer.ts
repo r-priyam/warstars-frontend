@@ -11,6 +11,6 @@ export const APIUserPlayer = {
 	},
 
 	async removePlayer(playerTag: string) {
-		return HTTP.delete('/account/unlink-player', { data: { player_tag: playerTag } });
+		return HTTP.delete('/account/unlink-player', { data: { playerTag: playerTag } });
 	},
 };

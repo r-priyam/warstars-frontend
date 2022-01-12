@@ -145,7 +145,7 @@
 						<a
 							v-if="!user.loggedIn"
 							class="inline-flex items-center px-4 py-2 ml-2 text-base font-semibold rounded-md text-main-textDark-600 dark:text-main-textLight-530 focus:outline-none focus-visible:ring-1 focus-visible:ring-white bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-660 dark:hover:bg-main-dark-660"
-							:href="`${apiUrl}/api/v1/discord/authorize/login`"
+							:href="`${apiUrl}/discord/login`"
 						>
 							<mdi:discord class="w-5 h-5 mr-1" />
 							<span>Login</span>
@@ -261,7 +261,7 @@
 							<div>
 								<a
 									v-if="!user.loggedIn"
-									:href="`${apiUrl}/api/v1/discord/authorize/login`"
+									:href="`${apiUrl}/discord/login`"
 									class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-gray-200 border border-transparent rounded-md shadow-sm bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
 									@click="close()"
 								>

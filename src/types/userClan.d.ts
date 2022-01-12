@@ -7,9 +7,9 @@ export interface TClanData {
 	level: number;
 	location: string;
 	trophies: number;
-	versus_trophies: number;
+	versusTrophies: number;
 	labels: Record<string, string>;
-	linked_at: string;
+	linkedAt: string;
 }
 
 export interface TUserClan {

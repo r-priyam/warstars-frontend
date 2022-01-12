@@ -4,7 +4,7 @@
 			<img class="w-12 h-12 rounded-lg" :src="user.avatarUrl" />
 			<div class="pl-2 overflow-hidden text-base">
 				<h3 class="font-black leading-tight truncate text-main-textDark-600 dark:text-main-textLight-530">
-					{{ user.userData.user_name }}
+					{{ user.userData.username }}
 				</h3>
 			</div>
 			<div

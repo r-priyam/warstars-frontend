@@ -42,7 +42,7 @@ export const userPlayer = defineStore({
 		async linkPlayer(playerTag: string, apiToken: string) {
 			const notification = notifications();
 			this.linkPlayerProcessing = true;
-			const data: TUserPlayerLink = { player_tag: playerTag, token: apiToken };
+			const data: TUserPlayerLink = { playerTag: playerTag, apiToken: apiToken };
 			try {
 				const response = await APIUserPlayer.addPlayer(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked player successfully!' });

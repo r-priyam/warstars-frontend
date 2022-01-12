@@ -38,7 +38,7 @@
 						<input
 							readonly="true"
 							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
-							:placeholder="user.userData.user_name"
+							:placeholder="user.userData.username"
 						/>
 					</div>
 					<div>
@@ -46,7 +46,7 @@
 						<input
 							readonly="true"
 							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
-							:placeholder="user.userData.discord_id"
+							:placeholder="user.userData.discordId"
 						/>
 					</div>
 					<div>
@@ -99,8 +99,8 @@ async function registerLeague() {
 	const leagueRegisterData: TLeagueRegister = {
 		name: formData.get('league-name') as string,
 		abbreviation: formData.get('league-abbreviation') as string,
-		head_admin: user.userData.user_name,
-		discord_id: user.userData.discord_id,
+		head_admin: user.userData.username,
+		discord_id: user.userData.discordId,
 	};
 	if (formData.get('discord-invite')) leagueRegisterData.discord_invite = String(formData.get('discord-invite'));
 	if (formData.get('twitter-handle')) leagueRegisterData.twitter_handle = String(formData.get('twitter-handle'));

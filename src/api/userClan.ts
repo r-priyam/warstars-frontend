@@ -7,10 +7,10 @@ export const APIUserClan = {
 	},
 
 	async addClan(clanTag: string) {
-		return HTTP.post('/account/link-clan', { clan_tag: clanTag });
+		return HTTP.post('/account/link-clan', { clanTag: clanTag });
 	},
 
 	async removeClan(clanTag: string) {
-		return HTTP.delete('/account/unlink-clan', { data: { clan_tag: clanTag } });
+		return HTTP.delete('/account/unlink-clan', { data: { clanTag: clanTag } });
 	},
 };

@@ -1,17 +1,12 @@
 interface discordUserData {
-	user_name: string;
-	discord_id: string;
-	avatar_id: string;
-	email: string;
-}
-
-export interface UserProfileProperties {
-	discord_data: string;
-	expires_on: string;
+	discordId: string;
+	username: string;
+	discriminator: string;
+	avatar: string;
+	createdAt: string;
 }
 
 export interface UserStateProperties {
-	authToken: string;
 	userData: discordUserData;
 	avatarUrl: string;
 	permissions: string;
