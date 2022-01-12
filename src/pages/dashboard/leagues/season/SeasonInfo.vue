@@ -241,7 +241,7 @@
 <script setup lang="ts">
 import moment from 'moment';
 import router from '~/router';
-import { TUserLeagueData, TUserChildLeague } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeague, TLocalLeagueData } from '~/types/leagues';
 import LoadingSpinner from '~/components/Spinner.vue';
 import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -258,7 +258,7 @@ const forceEnd = ref(false);
 const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();
-const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 const selectedLeagueData = computed(() =>
 	leaguesData.find((leagueData) => leagueData.league_id === league.getLeagueLocalConfig?.league.league_id),
 );

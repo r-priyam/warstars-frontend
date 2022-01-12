@@ -142,6 +142,11 @@ export interface TChildClans {
 	tag: string;
 }
 
+export interface TLocalLeagueData {
+	epoch?: string;
+	value?: TUserLeagueData[]
+}
+
 export interface TLeagueManagement {
 	permissions: Record<string, unknown>;
 	childClans: Record<number, TChildClans[]> | Record<null, null>;
@@ -153,5 +158,4 @@ export interface TLeagueManagement {
 	leagueDataRefreshProcess: boolean;
 	fetchingChildClans: boolean;
 	clanRemoveProcess: boolean;
-	notification: Store<'notifications', TNotifications>;
 }

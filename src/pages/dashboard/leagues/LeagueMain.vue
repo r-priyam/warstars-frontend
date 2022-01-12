@@ -167,7 +167,7 @@
 <script setup lang="ts">
 import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
 import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
-import { TUserLeagueData, TUserChildLeagueDivisions } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeagueDivisions, TLocalLeagueData } from '~/types/leagues';
 import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import moment from 'moment';
@@ -178,7 +178,7 @@ const leagueStore = leagueManagement();
 const league = ref(true); // true by default to show the league main page.
 const childLeague = ref(false);
 const division = ref(false);
-const leaguesData: TUserLeagueData[] = JSON.parse(localStorage.getItem('leagues-data') ?? '{}').value;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
 
 const leagueData = computed(() =>
 	leaguesData.find((leagueData) => leagueData.league_id === leagueStore.getLeagueLocalConfig?.league.league_id),

@@ -86,26 +86,27 @@
 </template>
 
 <script setup lang="ts">
-// @ts-ignore
-import LinkPlayer from '~icons/mdi/account-plus'; // @ts-ignore
-import LinkedPlayers from '~icons/mdi/account-check'; // @ts-ignore
-import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-ignore
-import LinkedClans from '~icons/mdi/account-multiple-check'; // @ts-ignore
-import LeagueQuetions from '~icons/mdi/chat-question'; // @ts-ignore
-import LeagueRegister from '~icons/heroicons-solid/pencil-alt'; // @ts-ignore
-import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-ignore
-import LeagueChild from '~icons/mdi/shield-plus'; // @ts-ignore
-import LeagueChildDivision from '~icons/mdi/shield-plus-outline'; // @ts-ignore
-import HeadAdmin from '~icons/ri/shield-user-fill'; // @ts-ignore
-import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-ignore
-import HitRates from '~icons/mdi/fire'; // @ts-ignore
-import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-ignore
-import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-ignore
-import SeasonAddClans from '~icons/ic/baseline-group-add'; // @ts-ignore
-import SeasonClans from '~icons/mdi/account-group'; // @ts-ignore
-import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-ignore
-import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-ignore
-import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard'; // @ts-ignore
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+// @ts-expect-error
+import LinkPlayer from '~icons/mdi/account-plus'; // @ts-expect-error
+import LinkedPlayers from '~icons/mdi/account-check'; // @ts-expect-error
+import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-expect-error
+import LinkedClans from '~icons/mdi/account-multiple-check'; // @ts-expect-error
+import LeagueQuetions from '~icons/mdi/chat-question'; // @ts-expect-error
+import LeagueRegister from '~icons/heroicons-solid/pencil-alt'; // @ts-expect-error
+import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-expect-error
+import LeagueChild from '~icons/mdi/shield-plus'; // @ts-expect-error
+import LeagueChildDivision from '~icons/mdi/shield-plus-outline'; // @ts-expect-error
+import HeadAdmin from '~icons/ri/shield-user-fill'; // @ts-expect-error
+import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-expect-error
+import HitRates from '~icons/mdi/fire'; // @ts-expect-error
+import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-expect-error
+import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-expect-error
+import SeasonAddClans from '~icons/ic/baseline-group-add'; // @ts-expect-error
+import SeasonClans from '~icons/mdi/account-group'; // @ts-expect-error
+import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-expect-error
+import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-expect-error
+import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard';
 import { userStore } from '~/stores/user';
 import { leagueManagement } from '~/stores/leagueManagement';
 

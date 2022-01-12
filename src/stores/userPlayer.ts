@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { APIUserPlayer } from '~/api/userPlayer';
+import { APIError } from '~/types/user';
 import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types/userPlayer';
 import { notifications } from './notifications';
 
@@ -15,14 +16,12 @@ export const userPlayer = defineStore({
 	}),
 
 	getters: {
-		getPlayerData: (state) => {
-			return (playerTag: string) => {
+		getPlayerData: (state) => (playerTag: string) => {
 				if (!state.playerData.length) return null;
 				state.playerData.forEach((item) => {
 					if (item.tag === playerTag) return item;
 				});
-			};
-		},
+			},
 	},
 
 	actions: {
@@ -33,7 +32,7 @@ export const userPlayer = defineStore({
 				const response = await APIUserPlayer.players();
 				if (response.status === 200) this.playerData = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.playersDataProcessing = false;
@@ -47,7 +46,7 @@ export const userPlayer = defineStore({
 				const response = await APIUserPlayer.addPlayer(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked player successfully!' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.linkPlayerProcessing = false;
@@ -63,7 +62,7 @@ export const userPlayer = defineStore({
 					this.playerData.splice(this.playerData.findIndex((data: TPlayerData) => data.tag === playerTag));
 				}
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: error.response?.data.detail });
+				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.removePlayerProcessing = false;
