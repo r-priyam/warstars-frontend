@@ -2,7 +2,7 @@ import axios from 'axios';
 import { apiUrl } from '~/env';
 
 export default axios.create({
-	baseURL: `${apiUrl}/api/v1`,
+	baseURL: `${apiUrl}`,
 	timeout: 30000,
 	withCredentials: true,
 	transitional: {

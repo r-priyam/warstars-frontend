@@ -59,7 +59,7 @@
 									class="inline-flex px-3 py-1 text-sm rounded-full text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
 									><mdi:trophy class="w-5 h-5 mr-1 text-yellow-600" aria-hidden="true" />
 									<span class="font-bold">
-										{{ clan.versus_trophies }}
+										{{ clan.versusTrophies }}
 									</span>
 								</span>
 							</div>

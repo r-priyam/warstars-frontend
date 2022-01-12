@@ -2,10 +2,10 @@ export interface TPlayerData {
 	name: string;
 	tag: string;
 	trophies: number;
-	versus_trophies: number;
+	versusTrophies: number;
 	clan: { name: string; position: string; badge: string };
 	labels: Record<string, string>;
-	linked_at: string;
+	linkedAt: string;
 }
 
 export interface TUserPlayer {
@@ -16,6 +16,6 @@ export interface TUserPlayer {
 }
 
 export interface TUserPlayerLink {
-	player_tag: string;
-	token: string;
+	playerTag: string;
+	apiToken: string;
 }

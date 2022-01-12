@@ -1,7 +1,7 @@
-import Cookies from 'js-cookie';
 import NProgress from 'nprogress';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { leagueManagement } from '~/stores/leagueManagement';
+import { APIUser } from './api/user';
 import { userStore } from './stores/user';
 
 export const pushLeagueSaveRoute = ref('');
@@ -105,14 +105,14 @@ router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
 	const league = leagueManagement();
-	const authenticated = Cookies.get('_auth_token');
-	if (authenticated) {
-		await user.setTokenData(authenticated);
-		await league.syncPermissions();
-		await league.syncLeaguesData();
+	const checkAuthenticated = await APIUser.checkAuthenticated();
+	if (checkAuthenticated.status === 200) {
+		if (user.userData.discordId === '') await user.setUserData();
+		// await league.syncPermissions();
+		// await league.syncLeaguesData();
 	}
 	if (!to.fullPath.includes('/dashboard')) return true;
-	if (!authenticated) await router.push({ name: 'Home' });
+	// if (!authenticated) await router.push({ name: 'Home' });
 });
 
 router.afterEach((to) => {
