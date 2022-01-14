@@ -14,7 +14,7 @@ export const leagues = defineStore({
 			this.registerProcessing = true;
 			try {
 				const response = await APILeague.registerLeague(data);
-				if (response.status === 201)
+				if (response.status === 200)
 					notification.notify({ title: 'Success', text: 'Registration application submitted' });
 			} catch (error) {
 				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });

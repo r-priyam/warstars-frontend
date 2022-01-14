@@ -12,8 +12,19 @@ import {
 } from '~/types/leagues';
 
 export const APILeague = {
+	// admin
+	// core
+	async getUserLeaguePermissions() {
+		return HTTP.get('/league/core/user-league-permissions');
+	},
+
+	async getUserLeagueData() {
+		return HTTP.get('league/core/user-leagues');
+	},
+
+	// register
 	async registerLeague(data: TLeagueRegister) {
-		return HTTP.post('/league/register', data);
+		return HTTP.post('/league/register/league', data);
 	},
 
 	async registerChildLeague(data: TRegisterChild) {
@@ -21,15 +32,13 @@ export const APILeague = {
 	},
 
 	async registerChildDivision(data: TRegisterDivision) {
-		return HTTP.post('/league/register/division', data);
+		return HTTP.post('/league/register/child-division', data);
 	},
 
-	async getUserLeaguePermissions() {
-		return HTTP.get('/league/user-permissions');
-	},
-
-	async getUserLeagueData() {
-		return HTTP.get('league/user-leagues');
+	// season
+	async getSeasonChildInfo(seasonId: number) {
+		// TODO: add type
+		return HTTP.get(`/league/season/child-info/${seasonId}`)
 	},
 
 	async getLeagueChildClans(childId: number, seasonId: number) {
