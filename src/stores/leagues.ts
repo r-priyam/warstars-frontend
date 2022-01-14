@@ -14,11 +14,11 @@ export const leagues = defineStore({
 			this.registerProcessing = true;
 			try {
 				const response = await APILeague.registerLeague(data);
-				if (response.status === 200)
+				if (response.status === 201)
 					notification.notify({ title: 'Success', text: 'Registration application submitted' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.registerProcessing = false;
 		},
