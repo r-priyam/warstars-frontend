@@ -17,10 +17,12 @@ export const leagues = defineStore({
 				if (response.status === 200)
 					notification.notify({ title: 'Success', text: 'Registration application submitted' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.registerProcessing = false;
 			}
-			this.registerProcessing = false;
 		},
 	},
 });

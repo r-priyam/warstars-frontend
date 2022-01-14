@@ -5,6 +5,7 @@
 	"scripts": {
 		"build": "vue-tsc --noEmit && vite build",
 		"dev": "vite",
+		"format": "prettier --write \"src/**/*.{ts, vue}\"",
 		"lint": "eslint src --ext .ts,.vue",
 		"lint:fix": "eslint src --ext .ts,.vue --fix",
 		"serve": "vite preview",
