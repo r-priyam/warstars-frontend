@@ -32,8 +32,8 @@ export const userPlayer = defineStore({
 				const response = await APIUserPlayer.players();
 				if (response.status === 200) this.playerData = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.playersDataProcessing = false;
 		},
@@ -46,8 +46,8 @@ export const userPlayer = defineStore({
 				const response = await APIUserPlayer.addPlayer(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked player successfully!' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.linkPlayerProcessing = false;
 		},
@@ -62,8 +62,8 @@ export const userPlayer = defineStore({
 					this.playerData.splice(this.playerData.findIndex((data: TPlayerData) => data.tag === playerTag));
 				}
 			} catch (error) {
-				if (axios.isAxiosError(error)) notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				else notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 			this.removePlayerProcessing = false;
 		},
