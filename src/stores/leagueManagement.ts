@@ -65,7 +65,7 @@ export const leagueManagement = defineStore({
 
 	actions: {
 		async syncPermsToken() {
-			const notification = notifications()
+			const notification = notifications();
 			try {
 				const request = await APILeague.getUserLeaguePermissions();
 				// return here since API won't give any data when user is in no league.
@@ -81,7 +81,8 @@ export const leagueManagement = defineStore({
 				const payloadData: TPermsData = jwt_decode(Cookies.get('_league_permissions')!);
 				this.permissions = JSON.parse(payloadData.value.replace(/'/g, '"')) as Record<string, unknown>;
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 		},
@@ -98,21 +99,28 @@ export const leagueManagement = defineStore({
 		},
 
 		async refreshLeaguesData() {
-			const notification = notifications()
+			const notification = notifications();
 			this.leagueDataRefreshProcess = true;
 			try {
 				const request = await APILeague.getUserLeagueData();
 				if (!request.data) return localStorage.removeItem('leagues-data');
-				localStorage.setItem('leagues-data', JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData[] }));
+				localStorage.setItem(
+					'leagues-data',
+					JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData[] }),
+				);
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.leagueDataRefreshProcess = false;
 			}
-			this.leagueDataRefreshProcess = false;
 		},
 
 		async syncLeaguesData() {
-			const localLeaguesData: TLocalLeagueData = JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData;
+			const localLeaguesData: TLocalLeagueData = JSON.parse(
+				localStorage.getItem('leagues-data') ?? '{}',
+			) as TLocalLeagueData;
 			if (Object.keys(localLeaguesData).length === 0) {
 				await this.refreshLeaguesData();
 			} else {
@@ -124,117 +132,133 @@ export const leagueManagement = defineStore({
 		},
 
 		async registerChild(data: TRegisterChild) {
-			const notification = notifications()
+			const notification = notifications();
 			this.childRegisterProcess = true;
 			try {
 				const response = await APILeague.registerChildLeague(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Registered child league' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.childRegisterProcess = false;
 			}
-			this.childRegisterProcess = false;
 		},
 
 		async registerDivision(data: TRegisterDivision) {
-			const notification = notifications()
+			const notification = notifications();
 			this.divisionRegisterProcess = true;
 			try {
 				const response = await APILeague.registerChildDivision(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Registered division' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.divisionRegisterProcess = false;
 			}
-			this.divisionRegisterProcess = false;
 		},
 
 		async newSeason(data: TNewSeason) {
-			const notification = notifications()
+			const notification = notifications();
 			this.newSeasonProcess = true;
 			try {
 				const response = await APILeague.startNewSeason(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Season created' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.newSeasonProcess = false;
 			}
-			this.newSeasonProcess = false;
 		},
 
 		async newChildSeason(data: TNewChildSeason) {
-			const notification = notifications()
+			const notification = notifications();
 			this.childSeasonProcess = true;
 			try {
 				const response = await APILeague.startNewChildSeason(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Season created' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.childSeasonProcess = false;
 			}
-			this.childSeasonProcess = false;
 		},
 
 		async endSeason(data: TEndLeagueSeason) {
-			const notification = notifications()
+			const notification = notifications();
 			try {
 				const response = await APILeague.endSeason(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Season ended' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 		},
 
 		async endChildSeason(data: TEndChildSeason) {
-			const notification = notifications()
+			const notification = notifications();
 			try {
 				const response = await APILeague.endChildSeason(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Season ended' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
 			}
 		},
 
 		async seasonClanAdd(data: TSeasoncClanAdd) {
-			const notification = notifications()
+			const notification = notifications();
 			this.seasonClanAddProcess = true;
 			try {
 				const response = await APILeague.addSeasonClans(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Clans Added Successfully!' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.seasonClanAddProcess = false;
 			}
-			this.seasonClanAddProcess = false;
 		},
 
 		async seasonChildClans(childId: number, seasonId: number) {
-			const notification = notifications()
+			const notification = notifications();
 			if (this.childClans.hasOwnProperty(childId)) return;
 			this.fetchingChildClans = true;
 			try {
 				const response = await APILeague.getLeagueChildClans(childId, seasonId);
 				if (response.status === 200) this.childClans[childId] = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.fetchingChildClans = false;
 			}
-			this.fetchingChildClans = false;
 		},
 
 		async seasonRemoveClan(data: TChildClans) {
-			const notification = notifications()
+			const notification = notifications();
 			this.clanRemoveProcess = true;
 			try {
 				const response = await APILeague.removeSeasonClan(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Clan Removed Successfully!' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.clanRemoveProcess = false;
 			}
-			this.clanRemoveProcess = false;
 		},
 	},
 });

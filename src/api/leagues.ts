@@ -38,7 +38,7 @@ export const APILeague = {
 	// season
 	async getSeasonChildInfo(seasonId: number) {
 		// TODO: add type
-		return HTTP.get(`/league/season/child-info/${seasonId}`)
+		return HTTP.get(`/league/season/child-info/${seasonId}`);
 	},
 
 	async getLeagueChildClans(childId: number, seasonId: number) {

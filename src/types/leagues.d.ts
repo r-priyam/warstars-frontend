@@ -144,7 +144,7 @@ export interface TChildClans {
 
 export interface TLocalLeagueData {
 	epoch?: string;
-	value?: TUserLeagueData[]
+	value?: TUserLeagueData[];
 }
 
 export interface TLeagueManagement {

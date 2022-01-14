@@ -17,11 +17,11 @@ export const userPlayer = defineStore({
 
 	getters: {
 		getPlayerData: (state) => (playerTag: string) => {
-				if (!state.playerData.length) return null;
-				state.playerData.forEach((item) => {
-					if (item.tag === playerTag) return item;
-				});
-			},
+			if (!state.playerData.length) return null;
+			state.playerData.forEach((item) => {
+				if (item.tag === playerTag) return item;
+			});
+		},
 	},
 
 	actions: {
@@ -32,10 +32,12 @@ export const userPlayer = defineStore({
 				const response = await APIUserPlayer.players();
 				if (response.status === 200) this.playerData = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.playersDataProcessing = false;
 			}
-			this.playersDataProcessing = false;
 		},
 
 		async linkPlayer(playerTag: string, apiToken: string) {
@@ -46,10 +48,12 @@ export const userPlayer = defineStore({
 				const response = await APIUserPlayer.addPlayer(data);
 				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked player successfully!' });
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.linkPlayerProcessing = false;
 			}
-			this.linkPlayerProcessing = false;
 		},
 
 		async removePlayer(playerTag: string) {
@@ -62,10 +66,12 @@ export const userPlayer = defineStore({
 					this.playerData.splice(this.playerData.findIndex((data: TPlayerData) => data.tag === playerTag));
 				}
 			} catch (error) {
-				if (axios.isAxiosError(error)) return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
+				if (axios.isAxiosError(error))
+					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
 				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+			} finally {
+				this.removePlayerProcessing = false;
 			}
-			this.removePlayerProcessing = false;
 		},
 	},
 });
