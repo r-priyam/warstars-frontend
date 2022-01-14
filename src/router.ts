@@ -105,14 +105,19 @@ router.beforeEach(async (to) => {
 	NProgress.start();
 	const user = userStore();
 	const league = leagueManagement();
-	const checkAuthenticated = await APIUser.checkAuthenticated();
-	if (checkAuthenticated.status === 200) {
-		if (user.userData.discordId === '') await user.setUserData();
-		// await league.syncPermissions();
-		// await league.syncLeaguesData();
+
+	try {
+		const checkAuthenticated = await APIUser.checkAuthenticated();
+		if (checkAuthenticated.status === 200) {
+			if (user.userData.discordId === '') await user.setUserData();
+			await league.syncPermissions();
+			await league.syncLeaguesData();
+		}
+	} catch (error) {
+		user.loggedIn = false;
+		if (!to.fullPath.includes('/dashboard')) return true;
+		await router.push({ name: 'Home' });
 	}
-	if (!to.fullPath.includes('/dashboard')) return true;
-	// if (!authenticated) await router.push({ name: 'Home' });
 });
 
 router.afterEach((to) => {
