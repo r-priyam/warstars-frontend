@@ -6,13 +6,6 @@ interface discordUserData {
 	createdAt: string;
 }
 
-export interface UserStateProperties {
-	userData: discordUserData;
-	avatarUrl: string;
-	permissions: string;
-	loggedIn: boolean | false;
-}
-
 interface Error {
 	statusCode: number;
 	timestamp: string;
