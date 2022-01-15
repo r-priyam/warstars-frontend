@@ -44,7 +44,7 @@ export const leagueManagement = defineStore({
 	getters: {
 		getLeagueLocalConfig: (state) => {
 			{
-				if (Object.keys(state.permissions).length > 0) {
+				if (Object.keys(state.permissions).length > 1) {
 					const data = useStorage('selected-league-config', {
 						league: { leagueId: 0, name: '', abbreviation: '', seasonId: null, iconUrl: '', seasonActive: null },
 						child: { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null },
@@ -79,7 +79,7 @@ export const leagueManagement = defineStore({
 				// return anything so return.
 				if (!Cookies.get('_league_permissions')) return Cookies.remove('_league_permissions');
 				const payloadData: TPermsData = jwt_decode(Cookies.get('_league_permissions')!);
-				this.permissions = JSON.parse(payloadData.value.replace(/'/g, '"')) as Record<string, unknown>;
+				this.permissions = payloadData as unknown as Record<string, unknown>;
 			} catch (error) {
 				if (axios.isAxiosError(error))
 					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
@@ -94,7 +94,7 @@ export const leagueManagement = defineStore({
 				const checkTwoMins = Date.now() - Number(permsPayload.epoch);
 				// check for permissions change per 2 minutes
 				if (checkTwoMins > 120000) await this.syncPermsToken();
-				else this.permissions = JSON.parse(permsPayload.value.replace(/'/g, '"')) as Record<string, unknown>;
+				else this.permissions = permsPayload as unknown as Record<string, unknown>;
 			} else await this.syncPermsToken();
 		},
 
@@ -106,7 +106,7 @@ export const leagueManagement = defineStore({
 				if (!request.data) return localStorage.removeItem('leagues-data');
 				localStorage.setItem(
 					'leagues-data',
-					JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData[] }),
+					JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData }),
 				);
 			} catch (error) {
 				if (axios.isAxiosError(error))

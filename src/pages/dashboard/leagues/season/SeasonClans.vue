@@ -183,7 +183,6 @@ const getSeasonChildClans = async () => {
 		leagueStore.getLeagueLocalConfig?.child.seasonId ?? 0,
 	);
 	clansData.value = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
-	console.log(leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id]);
 };
 
 const selectedOptionClans = computed(() => {

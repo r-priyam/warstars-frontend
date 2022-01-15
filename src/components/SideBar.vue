@@ -169,5 +169,5 @@ const navigation = [
 ];
 
 const toggleNavigation =
-	Object.keys(league.permissions).length === 0 ? navigation.splice(-navigation.length - 3, 3) : navigation;
+	Object.keys(league.permissions).length === 1 ? navigation.splice(-navigation.length - 3, 3) : navigation;
 </script>
