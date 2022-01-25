@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div class="max-w-lg p-8 mx-auto rounded-b-lg shadow-xl bg-main-light-530 dark:bg-main-dark-500 md:p-12">
-			<h1 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">
+		<div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
+			<h1 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">
 				Add Child Division
 			</h1>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
@@ -19,7 +19,7 @@
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
 						<input
 							name="division-abbreviation"
 							type="text"
@@ -32,18 +32,18 @@
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Child League Name</label>
+						<label class="register-form-input-label mt-4">Child League Name</label>
 						<input
 							readonly="true"
-							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
+							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
 							:placeholder="league.getLeagueLocalConfig?.child.name"
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Child League ID</label>
+						<label class="register-form-input-label mt-4">Child League ID</label>
 						<input
 							readonly="true"
-							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
+							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
 							:placeholder="String(league.getLeagueLocalConfig?.child.id)"
 						/>
 					</div>

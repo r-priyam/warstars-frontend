@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div class="max-w-lg p-8 mx-auto rounded-b-lg shadow-xl bg-main-light-530 dark:bg-main-dark-500 md:p-12">
-			<h1 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">
+		<div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
+			<h1 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">
 				Register Child
 			</h1>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
@@ -19,7 +19,7 @@
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
 						<input
 							name="child-abbreviation"
 							type="text"
@@ -32,23 +32,23 @@
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Main League Name</label>
+						<label class="register-form-input-label mt-4">Main League Name</label>
 						<input
 							readonly="true"
-							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
+							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
 							:placeholder="league.getLeagueLocalConfig?.league.name"
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Main League ID</label>
+						<label class="register-form-input-label mt-4">Main League ID</label>
 						<input
 							readonly="true"
-							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
+							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
 							:placeholder="String(league.getLeagueLocalConfig?.league.leagueId)"
 						/>
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Logo URL<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4">Logo URL<span class="ml-0.5 text-red-500">*</span></label>
 						<input name="icon-url" type="text" class="register-form-input" placeholder="Child Logo URL" />
 					</div>
 					<ProcessButton :processing="league.childRegisterProcess" />

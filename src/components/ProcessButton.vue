@@ -1,18 +1,18 @@
 <template>
 	<button
 		v-if="!processing"
-		class="py-2 mt-10 font-bold text-white transition duration-200 border border-transparent rounded shadow-md bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 hover:shadow-xl"
+		class="mt-10 rounded border border-transparent bg-main-textDark-560 py-2 font-bold text-white shadow-md transition duration-200 hover:bg-main-textLight-560 hover:shadow-xl dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
 		type="submit"
 	>
 		Proceed
 	</button>
 	<button
 		v-else
-		class="inline-flex items-center justify-center py-2 font-bold text-center text-white mt-10 border border-transparent rounded cursor-not-allowed bg-main-textLight-560 dark:bg-main-textDark-560"
+		class="mt-10 inline-flex cursor-not-allowed items-center justify-center rounded border border-transparent bg-main-textLight-560 py-2 text-center font-bold text-white dark:bg-main-textDark-560"
 		disabled
 	>
 		<svg
-			class="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
+			class="mr-3 -ml-1 h-5 w-5 animate-spin text-white"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
 			viewBox="0 0 24 24"

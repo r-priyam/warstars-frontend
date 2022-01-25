@@ -1,9 +1,9 @@
 <template>
-	<div class="max-w-full p-8 transparent md:p-12">
+	<div class="transparent max-w-full p-8 md:p-12">
 		<div class="mb-8">
-			<h1 class="text-3xl font-bold text-center text-red-700 dark:text-red-500">My Leagues</h1>
+			<h1 class="text-center text-3xl font-bold text-red-700 dark:text-red-500">My Leagues</h1>
 		</div>
-		<div class="flex items-center justify-center shrink-0 mt-2 flex-col-1">
+		<div class="flex-col-1 mt-2 flex shrink-0 items-center justify-center">
 			<div v-for="league in leaguesData" :key="league.leagueId" class="flex flex-wrap justify-center">
 				<button
 					@click="
@@ -19,7 +19,7 @@
 					"
 				>
 					<img
-						class="grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
+						class="m-1 h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
 						:class="[league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : '']"
 						:src="league.iconUrl"
 						:alt="league.name"
@@ -30,7 +30,7 @@
 		</div>
 		<h1
 			v-if="selectedLeague.leagueId === 0"
-			class="mt-4 text-base italic font-medium text-center text-red-700 dark:text-red-500"
+			class="mt-4 text-center text-base font-medium italic text-red-700 dark:text-red-500"
 		>
 			Please select a League to get started
 		</h1>
@@ -43,17 +43,17 @@
 				>
 					<h1
 						v-if="selectedLeagueChild?.length === 0"
-						class="text-xl font-bold text-center text-green-700 dark:text-green-500"
+						class="text-center text-xl font-bold text-green-700 dark:text-green-500"
 					>
 						{{ selectedLeague.name }} has no child league
 					</h1>
-					<h1 v-else class="text-xl font-bold text-center text-green-700 dark:text-green-500">
+					<h1 v-else class="text-center text-xl font-bold text-green-700 dark:text-green-500">
 						{{ selectedLeague.name }} Child Leagues
 					</h1>
-					<div v-if="selectedLeagueChild?.length === 0" class="flex justify-center mt-2 flex-nowrap">
+					<div v-if="selectedLeagueChild?.length === 0" class="mt-2 flex flex-nowrap justify-center">
 						<router-link to="/dashboard/add-league-child">
 							<button
-								class="px-4 py-2 text-base font-semibold text-gray-100 bg-green-700 rounded-lg shadow-md hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none"
+								class="rounded-lg bg-green-700 px-4 py-2 text-base font-semibold text-gray-100 shadow-md hover:bg-green-800 focus:outline-none dark:bg-green-600 dark:hover:bg-green-700"
 								@click="applyLeagueConfig()"
 							>
 								Add Child League
@@ -62,7 +62,7 @@
 					</div>
 				</transition-group>
 			</div>
-			<div class="flex items-center justify-center shrink-0 mt-2 flex-col-1">
+			<div class="flex-col-1 mt-2 flex shrink-0 items-center justify-center">
 				<transition-group
 					enter-active-class="transition duration-300 ease-out transform-gpu"
 					enter-from-class="translate-x-12 opacity-0"
@@ -82,7 +82,7 @@
 							"
 						>
 							<img
-								class="inline-flex grow-0 w-24 h-24 p-1 m-1 text-center border-2 border-white rounded-full"
+								class="m-1 inline-flex h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
 								:class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
 								:src="childLeague.iconUrl"
 								:alt="childLeague.name"
@@ -95,16 +95,16 @@
 		</div>
 		<div v-if="selectedChildLeague.name !== ''">
 			<div v-if="selectedChildDivisions?.length === 0" class="mt-6 mb-6">
-				<h1 class="text-xl font-bold text-center text-indigo-700 dark:text-indigo-500">
+				<h1 class="text-center text-xl font-bold text-indigo-700 dark:text-indigo-500">
 					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} has no division
 				</h1>
-				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
+				<h1 class="text-center text-sm italic text-red-700 dark:text-red-500">
 					All the changes will apply to {{ selectedChildLeague.name }} globally.
 				</h1>
-				<div v-if="selectedChildDivisions?.length === 0" class="flex justify-center mt-2 flex-nowrap">
+				<div v-if="selectedChildDivisions?.length === 0" class="mt-2 flex flex-nowrap justify-center">
 					<router-link to="/dashboard/add-child-division">
 						<button
-							class="px-4 py-2 text-base font-semibold text-gray-100 bg-indigo-700 rounded-lg shadow-md hover:bg-indigo-800 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none"
+							class="rounded-lg bg-indigo-700 px-4 py-2 text-base font-semibold text-gray-100 shadow-md hover:bg-indigo-800 focus:outline-none dark:bg-indigo-600 dark:hover:bg-indigo-700"
 							@click="applyLeagueConfig()"
 						>
 							Add Division
@@ -113,16 +113,16 @@
 				</div>
 			</div>
 			<div v-else class="mt-6 mb-6">
-				<h1 class="text-xl font-bold text-center text-indigo-700 dark:text-indigo-500">
+				<h1 class="text-center text-xl font-bold text-indigo-700 dark:text-indigo-500">
 					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} Divisions
 				</h1>
-				<h1 class="text-sm italic text-center text-red-700 dark:text-red-500">
+				<h1 class="text-center text-sm italic text-red-700 dark:text-red-500">
 					If you will not select a division then any changes will apply to whole
 					{{ `${selectedLeague.abbreviation} ${selectedChildLeague.name}` }} globally
 				</h1>
 			</div>
 			<div>
-				<div class="w-full max-w-md mx-auto">
+				<div class="mx-auto w-full max-w-md">
 					<RadioGroup v-model="selectedDivision">
 						<div class="space-y-2">
 							<RadioGroupOption
@@ -138,9 +138,9 @@
 										active ? '' : '',
 										checked ? 'bg-indigo-500 bg-opacity-75' : 'bg-indigo-400 hover:bg-indigo-500',
 									]"
-									class="relative flex px-5 py-2 rounded-lg shadow-md cursor-pointer focus:outline-none"
+									class="relative flex cursor-pointer rounded-lg px-5 py-2 shadow-md focus:outline-none"
 								>
-									<div class="flex items-center justify-between w-full">
+									<div class="flex w-full items-center justify-between">
 										<div class="flex items-center">
 											<div class="text-sm">
 												<RadioGroupLabel as="p" class="font-bold text-black">
@@ -152,7 +152,7 @@
 											</div>
 										</div>
 										<div v-show="checked" class="shrink-0 text-black">
-											<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+											<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
 												<circle cx="12" cy="12" r="12" fill="#fff" fill-opacity="0.2" />
 												<path
 													d="M7 13l3 3 7-7"
@@ -171,15 +171,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex justify-center mt-4 space-x-4 flex-nowrap">
+		<div class="mt-4 flex flex-nowrap justify-center space-x-4">
 			<button
-				class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-100 rounded-md shadow-sm bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+				class="inline-flex w-full justify-center rounded-md bg-main-textDark-560 px-4 py-2 text-base font-medium text-gray-100 shadow-sm hover:bg-main-textLight-560 focus:outline-none dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
 				@click="handleReset()"
 			>
 				Reset
 			</button>
 			<button
-				class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-100 bg-red-600 rounded-md shadow-sm hover:bg-red-700 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+				class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-base font-medium text-gray-100 shadow-sm hover:bg-red-700 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
 				@click="applyLeagueConfig()"
 			>
 				Apply
@@ -190,7 +190,13 @@
 
 <script setup lang="ts">
 import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } from '@headlessui/vue';
-import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild, TLocalLeagueData } from '~/types/leagues';
+import {
+	TUserLeagueData,
+	TUserChildLeagueDivisions,
+	TSelectedLeague,
+	TSelectedChild,
+	TLocalLeagueData,
+} from '~/types/leagues';
 import { notifications } from '~/stores/notifications';
 import router, { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -205,7 +211,8 @@ onBeforeMount(async () => {
 	}
 });
 
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData)
+	.value!;
 const selectedLeague = ref<TSelectedLeague>({
 	leagueId: 0,
 	name: '',

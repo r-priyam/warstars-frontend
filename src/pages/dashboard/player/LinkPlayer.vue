@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<div class="max-w-lg p-8 mx-auto bg-main-light-530 rounded-lg shadow-xl dark:bg-main-dark-500 md:p-12">
+		<div class="mx-auto max-w-lg rounded-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
 			<section>
-				<h3 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">Link Player</h3>
+				<h3 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">Link Player</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
@@ -14,13 +14,13 @@
 							type="text"
 							autocomplete="off"
 							required="true"
-							class="w-full px-3 py-2 mt-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
+							class="mt-2 w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 shadow-sm focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
 							placeholder="Your Player Tag"
 							oninput="this.value = this.value.toUpperCase()"
 						/>
 					</div>
 					<div>
-						<label for="apiToken" class="block mt-6 text-lg font-bold text-gray-800 dark:text-gray-100"
+						<label for="apiToken" class="mt-6 block text-lg font-bold text-gray-800 dark:text-gray-100"
 							>Game API Token</label
 						>
 						<input
@@ -28,7 +28,7 @@
 							type="text"
 							autocomplete="off"
 							required="true"
-							class="block w-full px-3 py-2 mt-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg shadow-sm select-none focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
+							class="mt-2 block w-full select-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 shadow-sm focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
 							placeholder="Game API Token"
 						/>
 					</div>

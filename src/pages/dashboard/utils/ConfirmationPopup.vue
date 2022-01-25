@@ -1,7 +1,7 @@
 <template>
 	<TransitionRoot as="template" :show="open">
-		<Dialog as="div" class="fixed z-10 inset-0 overflow-y-auto" @close="$emit('closePopUp', true)">
-			<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+		<Dialog as="div" class="fixed inset-0 z-10 overflow-y-auto" @close="$emit('closePopUp', true)">
+			<div class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
 				<TransitionChild
 					as="template"
 					enter="ease-out duration-300"
@@ -15,7 +15,7 @@
 				</TransitionChild>
 
 				<!-- This element is to trick the browser into centering the modal contents. -->
-				<span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+				<span class="hidden sm:inline-block sm:h-screen sm:align-middle" aria-hidden="true">&#8203;</span>
 				<TransitionChild
 					as="template"
 					enter="ease-out duration-300"
@@ -26,17 +26,17 @@
 					leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 				>
 					<div
-						class="inline-block align-bottom bg-main-light-560 dark:bg-main-dark-560 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+						class="inline-block transform overflow-hidden rounded-lg bg-main-light-560 text-left align-bottom shadow-xl transition-all dark:bg-main-dark-560 sm:my-8 sm:w-full sm:max-w-lg sm:align-middle"
 					>
-						<div class="bg-main-light-560 dark:bg-main-dark-560 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+						<div class="bg-main-light-560 px-4 pt-5 pb-4 dark:bg-main-dark-560 sm:p-6 sm:pb-4">
 							<div class="sm:flex sm:items-start">
 								<div
-									class="mx-auto shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10"
+									class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10"
 								>
 									<heroicons-outline:exclamation class="h-6 w-6 text-red-600" aria-hidden="true" />
 								</div>
 								<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-									<DialogTitle as="h3" class="text-lg leading-6 font-bold text-red-500">
+									<DialogTitle as="h3" class="text-lg font-bold leading-6 text-red-500">
 										{{ title }}
 									</DialogTitle>
 									<div class="mt-2">
@@ -47,22 +47,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="bg-main-light-560 dark:bg-main-dark-560 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+						<div class="bg-main-light-560 px-4 py-3 dark:bg-main-dark-560 sm:flex sm:flex-row-reverse sm:px-6">
 							<button
 								v-if="!processing"
 								type="button"
-								class="w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+								class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
 								@click="$emit('confirmation')"
 							>
 								Confirm
 							</button>
 							<button
 								v-else
-								class="items-center text-center border border-transparent cursor-not-allowed w-full inline-flex justify-center rounded-md shadow-sm px-6 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+								class="inline-flex w-full cursor-not-allowed items-center justify-center rounded-md border border-transparent bg-red-600 px-6 py-2 text-center text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
 								disabled
 							>
 								<svg
-									class="w-5 h-5 text-white animate-spin"
+									class="h-5 w-5 animate-spin text-white"
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
@@ -78,7 +78,7 @@
 							<button
 								ref="cancelButtonRef"
 								type="button"
-								class="mt-3 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium text-gray-100 bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+								class="mt-3 inline-flex w-full justify-center rounded-md bg-main-textDark-560 px-4 py-2 text-base font-medium text-gray-100 shadow-sm hover:bg-main-textLight-560 focus:outline-none dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
 								@click="$emit('closePopUp')"
 							>
 								Cancel

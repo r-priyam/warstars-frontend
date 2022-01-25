@@ -16,16 +16,16 @@
 		<NoLink v-if="!userClan.clansDataProcessing && !userClan.clanData.length" name="Clan" />
 		<div
 			v-if="!userClan.clansDataProcessing && userClan.clanData.length"
-			class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500"
+			class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500"
 		>
-			<div class="max-w-4xl mx-auto">
+			<div class="mx-auto max-w-4xl">
 				<div class="relative">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-black dark:border-white"></div>
 					</div>
 					<div class="relative flex justify-start">
 						<span
-							class="pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
+							class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
 						>
 							Clans Linked
 						</span>
@@ -33,31 +33,31 @@
 				</div>
 
 				<div v-for="clan in userClan.clanData" :key="clan.tag">
-					<div class="pt-6 sm:flex lg:items-end group">
-						<div class="flex items-center justify-center shrink-0 mb-4 sm:mb-0 sm:mr-4">
+					<div class="group pt-6 sm:flex lg:items-end">
+						<div class="mb-4 flex shrink-0 items-center justify-center sm:mb-0 sm:mr-4">
 							<img
-								class="object-contain w-24 h-24 mb-2 rounded-md md:w-32 md:h-32"
+								class="mb-2 h-24 w-24 rounded-md object-contain md:h-32 md:w-32"
 								:src="clan.badge || '/clash/clanless.png'"
 								alt="clan-badge"
 							/>
 						</div>
-						<div class="w-full h-32">
-							<div class="absolute top-auto inline-flex items-end justify-end ml-auto right-2" aria-hidden="true">
-								<div v-for="(labelUrl, labelName) in clan.labels" :key="labelUrl" class="w-8 h-8 mr-2">
-									<img :src="labelUrl" :alt="labelName" :title="labelName" class="w-8 h-8" />
+						<div class="h-32 w-full">
+							<div class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end" aria-hidden="true">
+								<div v-for="(labelUrl, labelName) in clan.labels" :key="labelUrl" class="mr-2 h-8 w-8">
+									<img :src="labelUrl" :alt="labelName" :title="labelName" class="h-8 w-8" />
 								</div>
 							</div>
-							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-20 ml-auto right-2">
+							<div class="absolute right-2 mt-20 ml-auto inline-flex items-end justify-end lg:p-2">
 								<span
-									class="inline-flex px-3 py-1 text-sm rounded-full mr-1 text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
-									><entypo:trophy class="w-5 h-5 mr-1 text-yellow-400" aria-hidden="true" />
+									class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
+									><entypo:trophy class="mr-1 h-5 w-5 text-yellow-400" aria-hidden="true" />
 									<span class="font-bold">
 										{{ clan.trophies }}
 									</span>
 								</span>
 								<span
-									class="inline-flex px-3 py-1 text-sm rounded-full text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
-									><mdi:trophy class="w-5 h-5 mr-1 text-yellow-600" aria-hidden="true" />
+									class="inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
+									><mdi:trophy class="mr-1 h-5 w-5 text-yellow-600" aria-hidden="true" />
 									<span class="font-bold">
 										{{ clan.versusTrophies }}
 									</span>
@@ -75,10 +75,10 @@
 										showPopUp = true;
 									"
 								>
-									<heroicons-solid:trash class="inline-flex h-6 w-6 mt-0.5 -ml-1 p-1 text-red-500" aria-hidden="true" />
+									<heroicons-solid:trash class="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500" aria-hidden="true" />
 								</button>
 							</p>
-							<p class="text-sm font-semibold text-red-500 lg:text-base mt-4">
+							<p class="mt-4 text-sm font-semibold text-red-500 lg:text-base">
 								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Leader: </span
 								><span class="text-yellow-400">👑</span> {{ clan.leader }}

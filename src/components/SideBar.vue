@@ -1,41 +1,41 @@
 <template>
 	<div>
-		<div class="flex items-center shrink-0 px-4">
-			<img class="w-12 h-12 rounded-lg" :src="user.avatarUrl" />
-			<div class="pl-2 overflow-hidden text-base">
-				<h3 class="font-black leading-tight truncate text-main-textDark-600 dark:text-main-textLight-530">
+		<div class="flex shrink-0 items-center px-4">
+			<img class="h-12 w-12 rounded-lg" :src="user.avatarUrl" />
+			<div class="overflow-hidden pl-2 text-base">
+				<h3 class="truncate font-black leading-tight text-main-textDark-600 dark:text-main-textLight-530">
 					{{ user.userData.username }}
 				</h3>
 			</div>
 			<div
-				class="inline-flex items-end justify-end p-2 mb-8 ml-auto rounded-md focus:outline-none bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-600 dark:hover:bg-main-dark-600 lg:hidden"
+				class="mb-8 ml-auto inline-flex items-end justify-end rounded-md bg-main-light-560 p-2 hover:bg-main-light-600 focus:outline-none dark:bg-main-dark-560 dark:hover:bg-main-dark-600 lg:hidden"
 				@click="$emit('closeSidebar', false)"
 			>
 				<span class="sr-only">Close menu</span>
-				<heroicons-outline:x class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
+				<heroicons-outline:x class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
 			</div>
 		</div>
 
-		<div v-if="league.getLeagueLocalConfig !== null" class="items-center px-4 mt-4">
+		<div v-if="league.getLeagueLocalConfig !== null" class="mt-4 items-center px-4">
 			<h1 class="text-base font-extrabold text-main-textDark-600 dark:text-main-textLight-530">Current League</h1>
 			<div v-if="league.getLeagueLocalConfig.league.name === ''">
-				<h3 class="font-bold leading-tight text-center text-red-700 truncate dark:text-red-500">No League Selected</h3>
+				<h3 class="truncate text-center font-bold leading-tight text-red-700 dark:text-red-500">No League Selected</h3>
 			</div>
-			<div v-else class="flex items-center shrink-0 mt-2">
-				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.league.iconUrl" />
-				<div class="pl-2 overflow-hidden text-base">
-					<h3 class="font-bold leading-tight text-red-700 truncate dark:text-red-500">
+			<div v-else class="mt-2 flex shrink-0 items-center">
+				<img class="h-12 w-12 rounded-lg" :src="league.getLeagueLocalConfig.league.iconUrl" />
+				<div class="overflow-hidden pl-2 text-base">
+					<h3 class="truncate font-bold leading-tight text-red-700 dark:text-red-500">
 						{{ league.getLeagueLocalConfig.league.name }}
 					</h3>
 				</div>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.name === ''">
-				<h3 class="font-bold leading-tight text-center text-green-700 truncate dark:text-green-500">No Child League</h3>
+				<h3 class="truncate text-center font-bold leading-tight text-green-700 dark:text-green-500">No Child League</h3>
 			</div>
-			<div v-if="league.getLeagueLocalConfig.child.iconUrl !== ''" class="flex items-center shrink-0 mt-2">
-				<img class="w-12 h-12 rounded-lg" :src="league.getLeagueLocalConfig.child.iconUrl" />
-				<div class="pl-2 overflow-hidden text-base">
-					<h3 class="font-bold leading-tight text-green-700 truncate dark:text-green-500">
+			<div v-if="league.getLeagueLocalConfig.child.iconUrl !== ''" class="mt-2 flex shrink-0 items-center">
+				<img class="h-12 w-12 rounded-lg" :src="league.getLeagueLocalConfig.child.iconUrl" />
+				<div class="overflow-hidden pl-2 text-base">
+					<h3 class="truncate font-bold leading-tight text-green-700 dark:text-green-500">
 						{{
 							`${league.getLeagueLocalConfig.child.name} (${
 								league.getLeagueLocalConfig.division.name || 'No Division'
@@ -44,10 +44,10 @@
 					</h3>
 				</div>
 			</div>
-			<div class="flex justify-center shrink-0 mt-2">
+			<div class="mt-2 flex shrink-0 justify-center">
 				<router-link
 					to="/dashboard/league-selector"
-					class="p-1 text-sm font-bold text-white rounded bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
+					class="rounded bg-main-textDark-560 p-1 text-sm font-bold text-white hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
 					@click="$emit('closeSidebar', false)"
 				>
 					Change Config
@@ -55,8 +55,8 @@
 			</div>
 		</div>
 
-		<nav class="flex flex-col flex-1 px-3 mt-5 overflow-y-auto divide-y divide-gray-300" aria-label="Sidebar">
-			<div v-for="(nav, index) in toggleNavigation" :key="index" :class="[index === 0 ? '' : 'pt-3 mt-3']">
+		<nav class="mt-5 flex flex-1 flex-col divide-y divide-gray-300 overflow-y-auto px-3" aria-label="Sidebar">
+			<div v-for="(nav, index) in toggleNavigation" :key="index" :class="[index === 0 ? '' : 'mt-3 pt-3']">
 				<div>
 					<span
 						v-if="nav.title"
@@ -68,13 +68,13 @@
 						v-for="item in nav.items"
 						:key="item.name"
 						:to="item.href"
-						class="flex items-center px-2 py-2 mt-1 text-sm font-semibold rounded-md text-main-textDark-600 dark:text-main-textLight-530 hover:bg-main-light-560 dark:hover:bg-main-dark-600 group"
+						class="group mt-1 flex items-center rounded-md px-2 py-2 text-sm font-semibold text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600"
 						active-class="bg-main-light-600 dark:bg-main-dark-600"
 						@click="$emit('closeSidebar', false)"
 					>
 						<component
 							:is="item.icon"
-							:class="[$route.path === item.href ? 'text-primary' : 'text-secondary-dark', 'shrink-0 w-6 h-6 mr-2']"
+							:class="[$route.path === item.href ? 'text-primary' : 'text-secondary-dark', 'mr-2 h-6 w-6 shrink-0']"
 							aria-hidden="true"
 						/>
 						{{ item.name }}

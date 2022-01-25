@@ -7,12 +7,12 @@
 		@confirmation="() => (user.logOut(), (showPopUp = false))"
 	/>
 	<header
-		class="sticky top-0 z-40 border-b-2 bg-main-light-500 dark:bg-main-dark-500 border-main-light-600 dark:border-main-dark-460"
+		class="sticky top-0 z-40 border-b-2 border-main-light-600 bg-main-light-500 dark:border-main-dark-460 dark:bg-main-dark-500"
 	>
 		<Popover class="sticky top-0">
-			<div class="px-2 mx-auto max-w-7xl sm:px-6">
+			<div class="mx-auto max-w-7xl px-2 sm:px-6">
 				<!-- padding to maintain navbar height -->
-				<div class="flex items-center justify-between py-2.5 md:py-1 border-gray-100 md:justify-start">
+				<div class="flex items-center justify-between border-gray-100 py-2.5 md:justify-start md:py-1">
 					<div class="flex justify-start text-3xl font-bold lg:w-0 lg:flex-1">
 						<router-link to="/">
 							<span class="text-main-dark-500 dark:text-white">War</span>
@@ -22,8 +22,8 @@
 					<div class="-my-2 -mr-2 md:hidden">
 						<Menu v-if="user.loggedIn" as="div" class="inline-flex items-center justify-center p-2">
 							<div>
-								<MenuButton class="flex text-sm rounded-full">
-									<img class="w-6 h-6 rounded-full" :src="user.avatarUrl" />
+								<MenuButton class="flex rounded-full text-sm">
+									<img class="h-6 w-6 rounded-full" :src="user.avatarUrl" />
 								</MenuButton>
 							</div>
 							<transition
@@ -35,14 +35,14 @@
 								leave-to-class="transform scale-95 opacity-0"
 							>
 								<MenuItems
-									class="absolute w-48 py-1 mt-32 origin-top-right rounded-md shadow-lg bg-main-light-500 dark:bg-main-dark-500 ring-1 ring-black ring-opacity-5 focus:outline-none"
+									class="absolute mt-32 w-48 origin-top-right rounded-md bg-main-light-500 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-main-dark-500"
 								>
 									<MenuItem v-slot="{ active }">
 										<router-link
 											to="/dashboard"
 											:class="[
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-												'group flex rounded-md items-center px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+												'group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
 											><ic:sharp-dashboard class="mr-1" />Dashboard</router-link
 										>
@@ -51,7 +51,7 @@
 										<button
 											:class="[
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-												'group flex rounded-md items-center px-4 py-2 text-sm w-full font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+												'group flex w-full items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
 											@click="showPopUp = true"
 										>
@@ -62,7 +62,7 @@
 							</transition>
 						</Menu>
 						<button
-							class="inline-flex items-center justify-center p-2 rounded-md hover:bg-main-light-560 dark:hover:bg-main-dark-560 focus:outline-none"
+							class="inline-flex items-center justify-center rounded-md p-2 hover:bg-main-light-560 focus:outline-none dark:hover:bg-main-dark-560"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
@@ -77,47 +77,47 @@
 							>
 								<heroicons-outline-sun
 									v-if="!isDarkMode"
-									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
+									class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 								<heroicons-outline-moon
 									v-else
-									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
+									class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 							</transition>
 						</button>
 						<PopoverButton
-							class="text-gray-800 navbar-open-menu dark:text-gray-100 hover:bg-main-light-560 dark:hover:bg-main-dark-560"
+							class="navbar-open-menu text-gray-800 hover:bg-main-light-560 dark:text-gray-100 dark:hover:bg-main-dark-560"
 						>
 							<span class="sr-only">Open menu</span>
 							<heroicons-outline-menu
-								class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
+								class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
 								aria-hidden="true"
 							/>
 						</PopoverButton>
 					</div>
 					<PopoverGroup as="nav" class="hidden space-x-2 md:flex">
 						<router-link to="/" class="navbar-item">
-							<heroicons-outline:home class="w-5 h-5 mr-1" aria-hidden="true" />
+							<heroicons-outline:home class="mr-1 h-5 w-5" aria-hidden="true" />
 							<span>Home</span>
 						</router-link>
 						<router-link to="/clans" class="navbar-item">
-							<heroicons-outline:shield-check class="w-5 h-5 mr-1" aria-hidden="true" />
+							<heroicons-outline:shield-check class="mr-1 h-5 w-5" aria-hidden="true" />
 							<span>Clans</span>
 						</router-link>
 						<router-link to="/leagues" class="navbar-item">
-							<heroicons-outline:globe class="w-5 h-5 mr-1" aria-hidden="true" />
+							<heroicons-outline:globe class="mr-1 h-5 w-5" aria-hidden="true" />
 							<span>Leagues</span>
 						</router-link>
 						<router-link to="/docs" class="navbar-item">
-							<heroicons-outline:document-text class="w-5 h-5 mr-1" aria-hidden="true" />
+							<heroicons-outline:document-text class="mr-1 h-5 w-5" aria-hidden="true" />
 							<span>Docs</span>
 						</router-link>
 					</PopoverGroup>
-					<div class="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
+					<div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
 						<button
-							class="inline-flex items-center justify-center p-2 transition duration-500 ease-in-out rounded-md hover:bg-main-light-560 dark:hover:bg-main-dark-560 hover:text-gray-200 focus:outline-none"
+							class="inline-flex items-center justify-center rounded-md p-2 transition duration-500 ease-in-out hover:bg-main-light-560 hover:text-gray-200 focus:outline-none dark:hover:bg-main-dark-560"
 							:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
 							@click="toggleDarkMode()"
 						>
@@ -132,31 +132,31 @@
 							>
 								<heroicons-outline-sun
 									v-if="!isDarkMode"
-									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
+									class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 								<heroicons-outline-moon
 									v-else
-									class="w-6 h-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
+									class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
 									aria-hidden="true"
 								/>
 							</transition>
 						</button>
 						<a
 							v-if="!user.loggedIn"
-							class="inline-flex items-center px-4 py-2 ml-2 text-base font-semibold rounded-md text-main-textDark-600 dark:text-main-textLight-530 focus:outline-none focus-visible:ring-1 focus-visible:ring-white bg-main-light-560 dark:bg-main-dark-560 hover:bg-main-light-660 dark:hover:bg-main-dark-660"
+							class="ml-2 inline-flex items-center rounded-md bg-main-light-560 px-4 py-2 text-base font-semibold text-main-textDark-600 hover:bg-main-light-660 focus:outline-none focus-visible:ring-1 focus-visible:ring-white dark:bg-main-dark-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-660"
 							:href="`${apiUrl}/discord/login`"
 						>
-							<mdi:discord class="w-5 h-5 mr-1" />
+							<mdi:discord class="mr-1 h-5 w-5" />
 							<span>Login</span>
 						</a>
 						<Menu v-if="user.loggedIn" as="div" class="relative ml-3">
 							<div>
-								<MenuButton class="flex text-sm rounded-full">
+								<MenuButton class="flex rounded-full text-sm">
 									<span class="sr-only">Open user menu</span>
-									<img class="rounded-full w-9 h-9" :src="user.avatarUrl" />
+									<img class="h-9 w-9 rounded-full" :src="user.avatarUrl" />
 									<heroicons-solid:chevron-down
-										class="w-5 h-5 ml-1 mt-2.5 text-main-textDark-600 dark:text-main-textLight-530 hover:text-violet-100"
+										class="ml-1 mt-2.5 h-5 w-5 text-main-textDark-600 hover:text-violet-100 dark:text-main-textLight-530"
 										aria-hidden="true"
 									/>
 								</MenuButton>
@@ -170,14 +170,14 @@
 								leave-to-class="transform scale-95 opacity-0"
 							>
 								<MenuItems
-									class="absolute right-0 w-48 py-1 mt-2 origin-top-right rounded-md shadow-lg bg-main-light-500 dark:bg-main-dark-500 ring-1 ring-black ring-opacity-5 focus:outline-none"
+									class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-main-light-500 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-main-dark-500"
 								>
 									<MenuItem v-slot="{ active }">
 										<router-link
 											to="/dashboard"
 											:class="[
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-												'group flex rounded-md items-center px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+												'group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
 											><ic:sharp-dashboard class="mr-1" />Dashboard</router-link
 										>
@@ -186,7 +186,7 @@
 										<button
 											:class="[
 												active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-												'group flex rounded-md items-center px-4 py-2 w-full text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
+												'group flex w-full items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530',
 											]"
 											@click="showPopUp = true"
 										>
@@ -211,9 +211,9 @@
 				<PopoverPanel
 					v-slot="{ close }"
 					focus
-					class="absolute inset-x-0 top-0 z-20 w-screen transition origin-top-right transform -translate-x-1/2 rounded-md md:hidden left-1/2 max-w-screen sm:px-0"
+					class="max-w-screen absolute inset-x-0 top-0 left-1/2 z-20 w-screen origin-top-right -translate-x-1/2 transform rounded-md transition sm:px-0 md:hidden"
 				>
-					<div class="divide-y-2 divide-gray-200 rounded-lg shadow-2xl bg-main-light-500 dark:bg-main-dark-500">
+					<div class="divide-y-2 divide-gray-200 rounded-lg bg-main-light-500 shadow-2xl dark:bg-main-dark-500">
 						<div class="px-5 pt-5 pb-6">
 							<div class="flex items-center justify-between">
 								<div>
@@ -221,11 +221,11 @@
 								</div>
 								<div class="-mr-2">
 									<PopoverButton
-										class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none hover:bg-main-light-560 dark:hover:bg-main-dark-560"
+										class="inline-flex items-center justify-center rounded-md p-2 hover:bg-main-light-560 focus:outline-none dark:hover:bg-main-dark-560"
 									>
 										<span class="sr-only">Close menu</span>
 										<heroicons-outline:x
-											class="w-6 h-6 text-main-textDark-600 dark:text-main-textLight-530"
+											class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
 											aria-hidden="true"
 										/>
 									</PopoverButton>
@@ -257,15 +257,15 @@
 							</div>
 						</div>
 
-						<div class="px-5 py-6 space-y-6">
+						<div class="space-y-6 px-5 py-6">
 							<div>
 								<a
 									v-if="!user.loggedIn"
 									:href="`${apiUrl}/discord/login`"
-									class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-gray-200 border border-transparent rounded-md shadow-sm bg-main-textDark-560 hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
+									class="flex w-full items-center justify-center rounded-md border border-transparent bg-main-textDark-560 px-4 py-2 text-base font-medium text-gray-200 shadow-sm hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
 									@click="close()"
 								>
-									<mdi:discord class="w-5 h-5 mr-1" />Login with Discord
+									<mdi:discord class="mr-1 h-5 w-5" />Login with Discord
 								</a>
 							</div>
 						</div>

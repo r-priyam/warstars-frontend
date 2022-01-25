@@ -17,15 +17,15 @@
 		"
 	/>
 	<LoadingSpinner v-if="league.leagueDataRefreshProcess" />
-	<div v-else class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500">
-		<div class="max-w-4xl mx-auto">
+	<div v-else class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500">
+		<div class="mx-auto max-w-4xl">
 			<div class="relative">
 				<div class="absolute inset-0 flex items-center" aria-hidden="true">
 					<div class="w-full border-t border-black dark:border-white"></div>
 				</div>
-				<div class="relative flex jusify-start">
+				<div class="jusify-start relative flex">
 					<span
-						class="pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
+						class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
 					>
 						Season Information
 					</span>
@@ -34,23 +34,24 @@
 
 			<div v-if="selectedLeagueData">
 				<div>
-					<div class="mt-4 border-b border-gray-400 sm:flex lg:items-end group dark:border-gray-100">
-						<div class="flex items-center justify-center shrink-0 sm:mb-0 sm:mr-4">
+					<div class="group mt-4 border-b border-gray-400 dark:border-gray-100 sm:flex lg:items-end">
+						<div class="flex shrink-0 items-center justify-center sm:mb-0 sm:mr-4">
 							<img
-								class="object-contain w-24 h-24 mb-4 border-2 border-red-700 rounded-full dark:border-red-500 md:w-32 md:h-32"
+								class="mb-4 h-24 w-24 rounded-full border-2 border-red-700 object-contain dark:border-red-500 md:h-32 md:w-32"
 								:src="selectedLeagueData.iconUrl"
 								:alt="`${selectedLeagueData.name} Icon`"
 							/>
 						</div>
-						<div class="w-full h-32">
-							<div class="absolute inline-flex items-end justify-end mt-auto ml-auto lg:p-2 right-2">
+						<div class="h-32 w-full">
+							<div class="absolute right-2 mt-auto ml-auto inline-flex items-end justify-end lg:p-2">
 								<button
 									v-if="selectedLeagueData.seasonActive"
 									title="New Season"
 									@click="
 										popUpTitle = 'Warning';
 										// eslint-disable-next-line prettier/prettier
-										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
+										popUpDescription =
+											'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
 										showPopUp = true;
 										type = 'league';
 										forceEnd = true;
@@ -58,8 +59,8 @@
 								>
 									>
 									<span
-										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
-										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
+										class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
+										><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
 									</span>
 								</button>
 								<router-link
@@ -67,8 +68,8 @@
 									:to="{ name: 'Season Core' }"
 								>
 									<span
-										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
-										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
+										class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
+										><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
 									</span>
 								</router-link>
 								<button
@@ -82,22 +83,22 @@
 									"
 								>
 									<span
-										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-red-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
-										><ph:calendar-x-fill class="w-5 h-5 mr-1" aria-hidden="true" /> End
+										class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-red-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
+										><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" /> End
 									</span>
 								</button>
 							</div>
-							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-[4.9rem] ml-auto right-2">
+							<div class="absolute right-2 mt-[4.9rem] ml-auto inline-flex items-end justify-end lg:p-2">
 								<span
 									v-if="selectedLeagueData.seasonActive"
-									class="inline-flex px-3 py-1 mr-1 text-sm rounded-full bg-main-light-430 dark:bg-main-dark-600"
-									><bx:bxs-calendar-check class="w-5 h-5 mr-1 text-green-500" aria-hidden="true" />
+									class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm dark:bg-main-dark-600"
+									><bx:bxs-calendar-check class="mr-1 h-5 w-5 text-green-500" aria-hidden="true" />
 									<span class="font-bold text-green-600"> Season Active </span>
 								</span>
 								<span
 									v-else
-									class="inline-flex px-3 py-1 mr-1 text-sm font-bold text-red-500 rounded-full bg-main-light-430 dark:bg-main-dark-600"
-									><ph:calendar-x-fill class="w-5 h-5 mr-1" aria-hidden="true" />
+									class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm font-bold text-red-500 dark:bg-main-dark-600"
+									><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" />
 									<span> Not In A Season </span>
 								</span>
 							</div>
@@ -134,17 +135,17 @@
 					<div
 						v-for="child in selectedLeagueData.childLeagues"
 						:key="child.id"
-						class="mt-4 border-b border-gray-400 sm:flex lg:items-end group dark:border-gray-100"
+						class="group mt-4 border-b border-gray-400 dark:border-gray-100 sm:flex lg:items-end"
 					>
-						<div class="flex items-center justify-center shrink-0 sm:mb-0 sm:mr-4">
+						<div class="flex shrink-0 items-center justify-center sm:mb-0 sm:mr-4">
 							<img
-								class="object-contain w-24 h-24 mb-4 border-2 border-green-700 rounded-full dark:border-green-500 md:w-32 md:h-32"
+								class="mb-4 h-24 w-24 rounded-full border-2 border-green-700 object-contain dark:border-green-500 md:h-32 md:w-32"
 								:src="child.iconUrl"
 								:alt="`${child.name} Icon`"
 							/>
 						</div>
-						<div class="w-full h-32">
-							<div class="absolute inline-flex items-end justify-end mt-auto ml-auto lg:p-2 right-2">
+						<div class="h-32 w-full">
+							<div class="absolute right-2 mt-auto ml-auto inline-flex items-end justify-end lg:p-2">
 								<button
 									v-if="child.seasonActive"
 									title="New Season"
@@ -159,8 +160,8 @@
 									"
 								>
 									<span
-										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
-										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
+										class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
+										><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
 									</span>
 								</button>
 								<router-link
@@ -169,8 +170,8 @@
 									@click="saveForceSelectedLeague(child)"
 								>
 									<span
-										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-green-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
-										><bx:bxs-calendar-plus class="w-5 h-5 mr-1" aria-hidden="true" />New
+										class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
+										><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
 									</span>
 								</router-link>
 								<button
@@ -185,22 +186,22 @@
 									"
 								>
 									<span
-										class="inline-flex px-2 py-1 mr-1 text-sm font-bold text-red-600 rounded-md bg-main-light-430 dark:bg-main-dark-600 hover:bg-main-light-500 dark:hover:bg-main-dark-700"
-										><ph:calendar-x-fill class="w-5 h-5 mr-1" aria-hidden="true" /> End
+										class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-red-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
+										><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" /> End
 									</span>
 								</button>
 							</div>
-							<div class="absolute inline-flex items-end lg:p-2 justify-end mt-[4.9rem] ml-auto right-2">
+							<div class="absolute right-2 mt-[4.9rem] ml-auto inline-flex items-end justify-end lg:p-2">
 								<span
 									v-if="child.seasonActive"
-									class="inline-flex px-3 py-1 mr-1 text-sm rounded-full bg-main-light-430 dark:bg-main-dark-600"
-									><bx:bxs-calendar-check class="w-5 h-5 mr-1 text-green-500" aria-hidden="true" />
+									class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm dark:bg-main-dark-600"
+									><bx:bxs-calendar-check class="mr-1 h-5 w-5 text-green-500" aria-hidden="true" />
 									<span class="font-bold text-green-600"> Season Active </span>
 								</span>
 								<span
 									v-else
-									class="inline-flex px-3 py-1 mr-1 text-sm font-bold text-red-500 rounded-full bg-main-light-430 dark:bg-main-dark-600"
-									><ph:calendar-x-fill class="w-5 h-5 mr-1" aria-hidden="true" />
+									class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm font-bold text-red-500 dark:bg-main-dark-600"
+									><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" />
 									<span> Not In A Season </span>
 								</span>
 							</div>
@@ -258,7 +259,8 @@ const forceEnd = ref(false);
 const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData)
+	.value!;
 const selectedLeagueData = computed(() =>
 	leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId),
 );

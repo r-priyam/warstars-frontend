@@ -1,44 +1,44 @@
 <template>
 	<div v-if="showBetaNotice" class="bg-main-light-560 dark:bg-main-dark-560">
-		<div class="px-2 py-1 mx-auto max-w-7xl sm:px-6 lg:px-6">
+		<div class="mx-auto max-w-7xl px-2 py-1 sm:px-6 lg:px-6">
 			<div class="flex flex-wrap items-center justify-between">
-				<div class="flex items-center flex-1 w-0">
-					<span class="flex p-2 rounded-lg bg-main-light-500 dark:bg-main-dark-500">
-						<heroicons-outline:speakerphone class="w-6 h-6 text-red-500" aria-hidden="true" />
+				<div class="flex w-0 flex-1 items-center">
+					<span class="flex rounded-lg bg-main-light-500 p-2 dark:bg-main-dark-500">
+						<heroicons-outline:speakerphone class="h-6 w-6 text-red-500" aria-hidden="true" />
 					</span>
-					<p class="ml-3 font-medium text-red-500 truncate">
+					<p class="ml-3 truncate font-medium text-red-500">
 						<span class="md:hidden">Site is under active development</span>
 						<span class="hidden text-red-500 md:inline">
 							Site is under heavy development and it doesn't represent the final version. Thank you!
 						</span>
 					</p>
 				</div>
-				<div class="shrink-0 order-2 sm:order-3 sm:ml-3">
+				<div class="order-2 shrink-0 sm:order-3 sm:ml-3">
 					<button
 						type="button"
-						class="flex p-2 -mr-1 rounded-md hover:bg-main-light-500 dark:hover:bg-main-dark-500 focus:outline-none sm:-mr-2"
+						class="-mr-1 flex rounded-md p-2 hover:bg-main-light-500 focus:outline-none dark:hover:bg-main-dark-500 sm:-mr-2"
 						@click="setBetaNoticeValue()"
 					>
 						<span class="sr-only">Dismiss</span>
-						<heroicons-outline:x class="w-6 h-6 text-red-500" aria-hidden="true" />
+						<heroicons-outline:x class="h-6 w-6 text-red-500" aria-hidden="true" />
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="grid min-h-[calc(100vh-57.98px)] grid-layout">
+	<div class="grid-layout grid min-h-[calc(100vh-57.98px)]">
 		<Navbar />
-		<div id="container" class="grid grid-layout-container">
+		<div id="container" class="grid-layout-container grid">
 			<div class="bg-main-light-600 dark:bg-main-dark-630">
 				<div
 					v-if="!router.currentRoute.value.path.includes('/dashboard')"
-					class="max-w-6xl min-h-full mx-auto bg-main-light-560 dark:bg-main-dark-560"
+					class="mx-auto min-h-full max-w-6xl bg-main-light-560 dark:bg-main-dark-560"
 				>
 					<router-view />
 				</div>
 				<div
 					v-if="router.currentRoute.value.path.includes('/dashboard')"
-					class="max-w-6xl mx-auto bg-main-light-560 dark:bg-main-dark-560"
+					class="mx-auto max-w-6xl bg-main-light-560 dark:bg-main-dark-560"
 				>
 					<router-view />
 				</div>

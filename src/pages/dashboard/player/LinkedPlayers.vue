@@ -19,16 +19,16 @@
 		<NoLink v-if="!userPlayer.playersDataProcessing && !userPlayer.playerData.length" name="Player" />
 		<div
 			v-if="!userPlayer.playersDataProcessing && userPlayer.playerData.length"
-			class="px-4 mx-auto bg-main-light-530 dark:bg-main-dark-500"
+			class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500"
 		>
-			<div class="max-w-4xl mx-auto">
+			<div class="mx-auto max-w-4xl">
 				<div class="relative">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-black dark:border-white"></div>
 					</div>
 					<div class="relative flex justify-start">
 						<span
-							class="pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
+							class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
 						>
 							Players Linked
 						</span>
@@ -36,31 +36,31 @@
 				</div>
 
 				<div v-for="player in userPlayer.playerData" :key="player.tag">
-					<div class="pt-6 sm:flex lg:items-end group">
-						<div class="flex items-center justify-center shrink-0 mb-4 sm:mb-0 sm:mr-4">
+					<div class="group pt-6 sm:flex lg:items-end">
+						<div class="mb-4 flex shrink-0 items-center justify-center sm:mb-0 sm:mr-4">
 							<img
-								class="object-contain w-24 h-24 mb-2 rounded-md md:w-32 md:h-32"
+								class="mb-2 h-24 w-24 rounded-md object-contain md:h-32 md:w-32"
 								:src="`/clash/townHall/14.5.png`"
 								alt="townhall"
 							/>
 						</div>
 						<div class="w-full">
-							<div class="absolute top-auto inline-flex items-end justify-end p-2 ml-auto right-2">
-								<div v-for="(labelUrl, labelName) in player.labels" :key="labelUrl" class="w-8 h-8 mr-2">
-									<img :src="labelUrl" :alt="labelName" :title="labelName" class="w-8 h-8" />
+							<div class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end p-2">
+								<div v-for="(labelUrl, labelName) in player.labels" :key="labelUrl" class="mr-2 h-8 w-8">
+									<img :src="labelUrl" :alt="labelName" :title="labelName" class="h-8 w-8" />
 								</div>
 							</div>
-							<div class="absolute inline-flex items-end justify-end p-2 mt-24 ml-auto right-2">
+							<div class="absolute right-2 mt-24 ml-auto inline-flex items-end justify-end p-2">
 								<span
-									class="inline-flex px-3 mr-1 py-1 text-sm rounded-full text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
-									><entypo:trophy class="w-5 h-5 mr-1 text-yellow-400" aria-hidden="true" />
+									class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
+									><entypo:trophy class="mr-1 h-5 w-5 text-yellow-400" aria-hidden="true" />
 									<span class="font-bold">
 										{{ player.trophies }}
 									</span>
 								</span>
 								<span
-									class="inline-flex px-3 py-1 text-sm rounded-full text-main-textDark-600 dark:text-main-textLight-530 bg-main-light-430 dark:bg-main-dark-600"
-									><mdi:trophy class="w-5 h-5 mr-1 text-yellow-600" aria-hidden="true" />
+									class="inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
+									><mdi:trophy class="mr-1 h-5 w-5 text-yellow-600" aria-hidden="true" />
 									<span class="font-bold">
 										{{ player.versusTrophies }}
 									</span>
@@ -77,14 +77,14 @@
 										showPopUp = true;
 									"
 								>
-									<heroicons-solid:trash class="inline-flex h-6 w-6 -ml-1 p-1 text-red-500" />
+									<heroicons-solid:trash class="-ml-1 inline-flex h-6 w-6 p-1 text-red-500" />
 								</button>
 							</p>
 							<span class="text-sm font-black text-main-textDark-600 dark:text-main-textLight-530">
 								{{ player.tag }}
 							</span>
-							<div class="flex flex-wrap mt-5">
-								<img :src="player.clan.badge || '/clash/clanless.png'" class="w-16 h-16 mr-2 -ml-2" />
+							<div class="mt-5 flex flex-wrap">
+								<img :src="player.clan.badge || '/clash/clanless.png'" class="mr-2 -ml-2 h-16 w-16" />
 								<div class="my-auto">
 									<span class="text-base font-bold text-gray-800 dark:text-gray-300">{{ player.clan.name }}</span>
 									<p v-if="player.clan.position !== 'None'" class="text-sm text-gray-800 dark:text-gray-300">

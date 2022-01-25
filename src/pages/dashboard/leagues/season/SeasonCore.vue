@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div class="max-w-lg p-8 mx-auto rounded-b-lg shadow-lg bg-main-light-530 dark:bg-main-dark-500 md:p-12">
-			<div class="grid grid-cols-2 gap-5 mb-8">
+		<div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-lg dark:bg-main-dark-500 md:p-12">
+			<div class="mb-8 grid grid-cols-2 gap-5">
 				<button
 					class="tab-item"
 					:class="
@@ -31,7 +31,7 @@
 					Child League Season
 				</button>
 			</div>
-			<h1 class="text-3xl font-black text-center text-main-textDark-600 dark:text-main-textLight-530">
+			<h1 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">
 				{{ `${leagueSeason ? 'League Season' : 'Child League Season'}` }}
 			</h1>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
@@ -42,26 +42,26 @@
 						<input name="start-date" type="date" placeholder="DD-MM-YY" required="true" class="register-form-input" />
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">End Date<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4">End Date<span class="ml-0.5 text-red-500">*</span></label>
 						<input id="end-date" name="end-date" type="date" required="true" class="register-form-input" />
 					</div>
 					<div>
-						<label class="mt-4 register-form-input-label">Main League Name</label>
+						<label class="register-form-input-label mt-4">Main League Name</label>
 						<input
 							readonly="true"
-							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
+							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
 							:placeholder="league.getLeagueLocalConfig?.league.name"
 						/>
 					</div>
 					<div v-if="childSeason">
-						<label class="mt-4 register-form-input-label">Child League Name</label>
+						<label class="register-form-input-label mt-4">Child League Name</label>
 						<input
 							readonly="true"
-							class="cursor-not-allowed register-form-input focus-visible:ring-transparent"
+							class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
 							:placeholder="league.getLeagueLocalConfig?.child.name"
 						/>
 					</div>
-					<div v-if="selectedLeagueChild?.length !== 0 && !childSeason" class="block mt-4">
+					<div v-if="selectedLeagueChild?.length !== 0 && !childSeason" class="mt-4 block">
 						<span class="register-form-input-label">Select child leagues to start season for</span>
 						<div class="mt-2">
 							<div v-for="child in selectedLeagueChild" :key="child.id">
@@ -69,7 +69,7 @@
 									<input
 										v-model="selectedChilds"
 										:value="child.id"
-										class="rounded shadow-sm text-main-textDark-600 dark:text-main-textLight-600 focus:ring focus:ring-offset-0 focus:ring-main-textLight-460 focus:ring-opacity-40"
+										class="rounded text-main-textDark-600 shadow-sm focus:ring focus:ring-main-textLight-460 focus:ring-opacity-40 focus:ring-offset-0 dark:text-main-textLight-600"
 										type="checkbox"
 									/>
 									<span class="ml-2 font-semibold text-main-textDark-500 dark:text-main-textLight-500">
@@ -100,7 +100,8 @@ const league = leagueManagement();
 const leagueSeason = ref(!prop.showChildSeason);
 const childSeason = ref(prop.showChildSeason);
 const selectedChilds = ref([]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData)
+	.value!;
 const selectedLeagueChild = computed(
 	() => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues,
 );
@@ -158,9 +159,9 @@ async function registerSeason() {
 
 <style scoped>
 .tab-item {
-	@apply text-white w-full p-2 font-bold rounded border border-transparent shadow-md
-	hover:bg-main-textLight-560 dark:hover:bg-main-textDark-560
-	hover:shadow-xl;
+	@apply w-full rounded border border-transparent p-2 font-bold text-white shadow-md
+	hover:bg-main-textLight-560 hover:shadow-xl
+	dark:hover:bg-main-textDark-560;
 }
 
 input {
