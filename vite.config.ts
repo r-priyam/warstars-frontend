@@ -20,13 +20,16 @@ export default defineConfig({
 			imports: ['vue', 'vue-router', '@vueuse/core'],
 		}),
 		Components({
+			dts: 'src/components.d.ts',
 			resolvers: [
 				IconsResolver({
 					componentPrefix: '',
 				}),
 			],
 		}),
-		Icons(),
+		Icons({
+			autoInstall: true,
+		  }),
 		ViteRadar({
 			analytics: {
 				id: 'G-VPF07N5QBR',
@@ -35,7 +38,6 @@ export default defineConfig({
 	],
 	server: {
 		host: true,
-		open: true,
 		port: 3333,
 		strictPort: true,
 	},
