@@ -36,10 +36,7 @@
 				>
 					<router-view />
 				</div>
-				<div
-					v-if="router.currentRoute.value.path.includes('/dashboard')"
-					class="mx-auto max-w-6xl bg-main-light-560 dark:bg-main-dark-560"
-				>
+				<div v-else class="mx-auto max-w-6xl bg-main-light-560 dark:bg-main-dark-560">
 					<router-view />
 				</div>
 				<Footer v-if="!router.currentRoute.value.path.includes('/dashboard')" />
