@@ -148,8 +148,8 @@ const navigation = [
 		title: 'League Admin',
 		href: '/',
 		items: [
-			{ name: 'Admins Info', href: '/', icon: HeadAdmin },
-			{ name: 'Manage Admins', href: '/', icon: ManageHeadAdmin },
+			{ name: 'Admins Info', href: '/dashboard/league-admin', icon: HeadAdmin },
+			{ name: 'Manage Admins', href: '/dashboard/league-admin-manage', icon: ManageHeadAdmin },
 		],
 	},
 	{
