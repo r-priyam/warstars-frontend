@@ -123,7 +123,7 @@ router.beforeEach(async (to) => {
 router.afterEach((to) => {
 	NProgress.done();
 	if (!to.name) document.title = 'WarStars';
-	if (to.name) document.title = `WarStars - ${String(to.name)}`;
+	document.title = `WarStars - ${String(to.name)}`;
 });
 
 export default router;
