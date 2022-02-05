@@ -34,7 +34,7 @@
 				<div class="-mt-2 flex flex-col p-2">
 					<div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
 						<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-							<div class="rounded-md bg-main-light-400 p-2 dark:bg-main-dark-560">
+							<div v-if="selectedOptionClans.length > 0" class="rounded-md bg-main-light-400 p-2 dark:bg-main-dark-560">
 								<span class="text-base font-bold">Showing Data For {{ selectedOption.name }}</span>
 								<Listbox v-model="selectedOption">
 									<div class="absolute top-auto right-6 inline-flex sm:right-6 lg:right-[1.8rem]">
