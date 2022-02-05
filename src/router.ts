@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
 						from.fullPath !== '/dashboard/league-register-info' &&
 						from.fullPath !== '/dashboard/register-league'
 					)
-						pushLeagueSaveRoute.value = String(from.name);
+						pushLeagueSaveRoute.value = String(from.name ?? 'League Info');
 					else pushLeagueSaveRoute.value = 'League Info';
 				},
 			},
@@ -63,6 +63,17 @@ const routes: RouteRecordRaw[] = [
 				path: 'add-child-division',
 				name: 'Add Child Division',
 				component: () => import('~/pages/dashboard/leagues/core/ManageDivision.vue'),
+			},
+			// League admin section
+			{
+				path: 'league-admin',
+				name: 'League Admin',
+				component: () => import('~/pages/dashboard/leagues/admin/Admin.vue'),
+			},
+			{
+				path: 'league-admin-manage',
+				name: 'League Admin Manage',
+				component: () => import('~/pages/dashboard/leagues/admin/ManageAdmin.vue'),
 			},
 			// league season section
 			{
