@@ -168,7 +168,7 @@ import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import moment from 'moment';
 
-onBeforeMount(checkLeague);
+onBeforeMount(() => checkLeague());
 
 const leagueStore = leagueManagement();
 const league = ref(true); // true by default to show the league main page.

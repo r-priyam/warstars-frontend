@@ -7,5 +7,5 @@ export default defineComponent({ name: 'LeagueAdmin' });
 <script setup lang="ts">
 import { checkLeague } from '~/utils/leagueUtils';
 
-onBeforeMount(checkLeague);
+onBeforeMount(() => checkLeague());
 </script>

@@ -248,7 +248,7 @@ import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
-onBeforeMount(checkLeague);
+onBeforeMount(() => checkLeague());
 
 const popUpTitle = ref('');
 const popUpDescription = ref('');
