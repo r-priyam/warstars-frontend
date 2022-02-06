@@ -15,19 +15,34 @@ export const notifications = defineStore({
 	id: 'notifications',
 	state: (): TNotifications => ({ notificationId: 0, notifications: [] }),
 	actions: {
-		notify(notification: TNotification, timeout?: number) {
-			this.notificationId++;
-			notification.id = notification.id ?? this.notificationId;
-			notification.text = notification.text ?? 'Something went wrong! Please try again.';
-			this.notifications.push(notification);
-			setTimeout(() => this.removeNotification(notification.id!), timeout ?? 4000);
-		},
-
 		removeNotification(id: number) {
 			this.notifications.splice(
-				this.notifications.findIndex((noti: TNotification) => noti.id === id),
+				this.notifications.findIndex((notification: TNotification) => notification.id === id),
 				1,
 			);
+		},
+
+		notify(title: string, text: string, timeout: number) {
+			this.notificationId++;
+			const notificationPayload = { id: this.notificationId, title: title, text: text };
+			this.notifications.push(notificationPayload)
+			setTimeout(() => this.removeNotification(this.notificationId), timeout);
+		},
+
+		info(text: string, timeout = 4000){
+			this.notify('Info', text, timeout)
+		},
+
+		success(text: string, timeout = 4000){
+			this.notify('Success', text, timeout)
+		},
+
+		warning(text: string, timeout = 4000){
+			this.notify('Warning', text, timeout)
+		},
+
+		error(text = 'Something went wrong!', timeout = 4000){
+			this.notify('Error', text, timeout)
 		},
 	},
 });

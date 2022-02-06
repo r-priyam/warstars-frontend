@@ -108,18 +108,18 @@ const selectedLeagueChild = computed(
 
 onBeforeMount(async () => {
 	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please select a league to continue!' });
+		notifications().warning('Please select a league to continue!');
 		await router.push({ name: 'League Selector' });
 	}
 	if (childSeason.value && league.getLeagueLocalConfig?.child.id === 0) {
-		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		notifications().warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	}
 });
 
 watch(childSeason, async (now) => {
 	if (now && league.getLeagueLocalConfig?.child.id === 0) {
-		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		notifications().warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	}
 });
@@ -128,14 +128,14 @@ async function registerSeason() {
 	const form: HTMLFormElement | null = document.querySelector('#season');
 	const formData = new FormData(form!);
 	if (moment(new Date(formData.get('start-date') as string)).isBefore(new Date()))
-		return notifications().notify({ title: 'Error', text: 'Start date is in past' });
+		return notifications().error('Start date is in past');
 	else if (moment(new Date(formData.get('end-date') as string)).isBefore(new Date()))
-		return notifications().notify({ title: 'Error', text: 'End date is in past' });
+		return notifications().error('End date is in past');
 	else if (
 		moment(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <=
 		13
 	)
-		return notifications().notify({ title: 'Error', text: 'Season duration must be 2 weeks or grater than it' });
+		return notifications().error('Season duration must be 2 weeks or grater than it');
 
 	if (leagueSeason.value) {
 		const newSeasonData: TNewSeason = {

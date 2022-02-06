@@ -196,10 +196,10 @@ onMounted(getSeasonChildClans);
 
 onBeforeMount(async () => {
 	if (leagueStore.getLeagueLocalConfig?.league.leagueId === 0 || !leagueStore.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
+		notifications().warning('Please config a league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (leagueStore.getLeagueLocalConfig.child.id === 0) {
-		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		notifications().warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	}
 });

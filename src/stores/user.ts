@@ -23,8 +23,8 @@ export const userStore = defineStore({
 				this.userData = (await APIUser.user()).data;
 			} catch (error) {
 				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong while fetching user data!' });
+					return notification.error((error.response as APIError).data.detail);
+				notification.error('Something went wrong while fetching user data!');
 			}
 		},
 
@@ -33,7 +33,7 @@ export const userStore = defineStore({
 			try {
 				await APIUser.logOut();
 			} catch (error) {
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				notification.error();
 			} finally {
 				Cookies.remove('_league_permissions', { path: '', domain: domain });
 				localStorage.removeItem('leagues-data');

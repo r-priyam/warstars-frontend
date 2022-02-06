@@ -24,8 +24,8 @@ export const userClan = defineStore({
 				if (response.status === 200) this.clanData = response.data;
 			} catch (error) {
 				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+					return notification.error((error.response as APIError).data.detail);
+				notification.error();
 			} finally {
 				this.clansDataProcessing = false;
 			}
@@ -36,11 +36,11 @@ export const userClan = defineStore({
 			this.linkClanProcessing = true;
 			try {
 				const response = await APIUserClan.addClan(clanTag);
-				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked clan successfully!' });
+				if (response.status === 200) notification.success('Linked clan successfully!');
 			} catch (error) {
 				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+					return notification.error((error.response as APIError).data.detail);
+				notification.error();
 			} finally {
 				this.linkClanProcessing = false;
 			}
@@ -52,13 +52,13 @@ export const userClan = defineStore({
 			try {
 				const response = await APIUserClan.removeClan(clanTag);
 				if (response.status === 200) {
-					notification.notify({ title: 'Success', text: 'Removed clan successfully!' });
+					notification.success('Removed clan successfully!');
 					this.clanData.splice(this.clanData.findIndex((data: TClanData) => data.tag === clanTag));
 				}
 			} catch (error) {
 				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+					return notification.error((error.response as APIError).data.detail);
+				notification.error();
 			} finally {
 				this.removeClanProcessing = false;
 			}
