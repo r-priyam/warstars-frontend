@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<div class="flex shrink-0 items-center px-4">
-			<img class="h-12 w-12 rounded-lg" :src="user.avatarUrl" />
+			<img
+				class="h-12 w-12 rounded-lg"
+				:src="`https://cdn.discordapp.com/avatars/${user.userData.discordId}/${user.userData.avatar}.png?size=1024`"
+			/>
 			<div class="overflow-hidden pl-2 text-base">
 				<h3 class="truncate font-black leading-tight text-main-textDark-600 dark:text-main-textLight-530">
 					{{ user.userData.username }}

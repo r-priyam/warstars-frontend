@@ -12,7 +12,6 @@ export const userStore = defineStore({
 
 	state: () => ({
 		userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '' },
-		avatarUrl: '',
 		loggedIn: false,
 	}),
 
@@ -22,7 +21,6 @@ export const userStore = defineStore({
 			this.loggedIn = true;
 			try {
 				this.userData = (await APIUser.user()).data;
-				this.avatarUrl = `https://cdn.discordapp.com/avatars/${this.userData.discordId}/${this.userData.avatar}.png?size=1024`;
 			} catch (error) {
 				if (axios.isAxiosError(error))
 					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
