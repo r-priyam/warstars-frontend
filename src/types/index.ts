@@ -1,4 +1,4 @@
 export * from './userClan';
-export * from './Leagues';
-export * from './User';
-export * from './UserPlayer';
+export * from './leagues';
+export * from './user';
+export * from './userPlayer';
