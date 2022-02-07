@@ -109,7 +109,7 @@ import NoLink from '~/pages/dashboard/utils/NoLink.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
 const userClan = userClanOpeartions();
-onMounted(userClan.fetchClansData);
+onMounted(() => userClan.fetchClansData());
 
 const clanName = ref('');
 const clanTag = ref('');

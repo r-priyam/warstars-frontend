@@ -108,7 +108,7 @@ import NoLink from '~/pages/dashboard/utils/NoLink.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
 const userPlayer = userPlayerOpeartions();
-onMounted(userPlayer.fetchPlayersData);
+onMounted(() => userPlayer.fetchPlayersData());
 
 const playerName = ref('');
 const playerTag = ref('');

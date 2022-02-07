@@ -23,9 +23,8 @@
 				<div class="relative flex justify-start">
 					<span
 						class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
+						>Season Clans</span
 					>
-						Season Clans
-					</span>
 				</div>
 			</div>
 		</div>
@@ -191,8 +190,10 @@ const selectedOptionClans = computed(() => {
 	if (selectedOption.value === filterOptions.value[0]) return clansData.value;
 	return clansData.value.filter((data) => data.divisionId === selectedOption.value.id);
 });
-onMounted(selectedChildDivisions);
-onMounted(getSeasonChildClans);
+onMounted(async () => {
+	selectedChildDivisions();
+	await getSeasonChildClans();
+});
 
 onBeforeMount(async () => {
 	if (leagueStore.getLeagueLocalConfig?.league.leagueId === 0 || !leagueStore.getLeagueLocalConfig) {
