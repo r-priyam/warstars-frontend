@@ -1,2 +1,2 @@
-export const apiUrl: string = import.meta.env.VITE_API_URL;
-export const domain: string = import.meta.env.VITE_DOMAIN;
+export const apiUrl: string = import.meta.env.DEV ? 'http://localhost:8888' : 'https://api.priyam.tech';
+export const domain: string = import.meta.env.DEV ? 'localhost' : '.priyam.tech';
