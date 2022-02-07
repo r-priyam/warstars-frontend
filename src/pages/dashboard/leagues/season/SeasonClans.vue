@@ -154,7 +154,7 @@ import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headless
 import { leagueManagement } from '~/stores/leagueManagement';
 import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types/leagues';
+import { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
 import router from '~/router';
 
@@ -196,10 +196,10 @@ onMounted(getSeasonChildClans);
 
 onBeforeMount(async () => {
 	if (leagueStore.getLeagueLocalConfig?.league.leagueId === 0 || !leagueStore.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
+		notifications().warning('Please config a league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (leagueStore.getLeagueLocalConfig.child.id === 0) {
-		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		notifications().warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	}
 });

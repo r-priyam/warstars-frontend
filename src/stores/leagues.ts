@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { APILeague } from '~/api/leagues';
-import { TLeagueRegister } from '~/types/leagues';
-import { APIError } from '~/types/user';
+import { RESTManager, HTTPError } from '~/api';
+import { TLeagueRegister } from '~/types';
 import { notifications } from './notifications';
+
+const API = new RESTManager();
 
 export const leagues = defineStore({
 	id: 'leagues',
@@ -13,13 +13,10 @@ export const leagues = defineStore({
 			const notification = notifications();
 			this.registerProcessing = true;
 			try {
-				const response = await APILeague.registerLeague(data);
-				if (response.status === 200)
-					notification.notify({ title: 'Success', text: 'Registration application submitted' });
+				const response = await API.registerLeague(data);
+				if (response.status === 200) notification.success('Registration application submitted');
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.registerProcessing = false;
 			}

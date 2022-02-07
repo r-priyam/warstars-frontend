@@ -242,13 +242,13 @@
 <script setup lang="ts">
 import moment from 'moment';
 import router from '~/router';
-import { TUserLeagueData, TUserChildLeague, TLocalLeagueData } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeague, TLocalLeagueData } from '~/types';
 import LoadingSpinner from '~/components/Spinner.vue';
 import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
-onBeforeMount(checkLeague);
+onBeforeMount(() => checkLeague());
 
 const popUpTitle = ref('');
 const popUpDescription = ref('');

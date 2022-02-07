@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { TRegisterDivision } from '~/types/leagues';
+import { TRegisterDivision } from '~/types';
 import router from '~/router';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -65,17 +65,14 @@ const league = leagueManagement();
 
 onBeforeMount(async () => {
 	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
-		notifications().notify({ title: 'Warning', text: 'Please config a league to continue!' });
+		notifications().warning('Please config a league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (league.getLeagueLocalConfig.child.id === 0) {
-		notifications().notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		notifications().warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (!league.getLeagueLocalConfig.child.seasonActive) {
-		notifications().notify(
-			{
-				title: 'Warning',
-				text: 'Child league has no active season. Please start new season first to add a division!',
-			},
+		notifications().warning(
+			'Child league has no active season. Please start new season first to add a division!',
 			6000,
 		);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });

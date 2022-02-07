@@ -190,13 +190,7 @@
 
 <script setup lang="ts">
 import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } from '@headlessui/vue';
-import {
-	TUserLeagueData,
-	TUserChildLeagueDivisions,
-	TSelectedLeague,
-	TSelectedChild,
-	TLocalLeagueData,
-} from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild, TLocalLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
 import router, { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -206,7 +200,7 @@ const leagueStore = leagueManagement();
 // Check if a user is in any league or not. If not redirect back to league info page.
 onBeforeMount(async () => {
 	if (Object.keys(leagueStore.permissions).length === 1) {
-		notifications().notify({ title: 'Info', text: "You aren't in any league." });
+		notifications().info("You aren't in any league.");
 		await router.push({ name: 'League Register Info' });
 	}
 });
@@ -285,7 +279,7 @@ const applyLeagueConfig = async () => {
 			division: selectedDivision.value,
 		}),
 	);
-	notifications().notify({ title: 'Success', text: 'Settings saved successfully!' });
+	notifications().info('Settings saved successfully!');
 	await router.push({ name: pushLeagueSaveRoute.value });
 };
 </script>

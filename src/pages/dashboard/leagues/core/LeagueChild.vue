@@ -70,7 +70,7 @@
 <script setup lang="ts">
 import moment from 'moment';
 import router from '~/router';
-import { TUserChildLeague } from '~/types/leagues';
+import { TUserChildLeague } from '~/types';
 withDefaults(defineProps<{ childData: TUserChildLeague[] }>(), { childData: Array });
 </script>
 

@@ -3,7 +3,7 @@
 		title="Warning"
 		description="'You haven't selected any child division. All the changes will apply to the child league!!"
 		:open="showPopUp"
-		@close-pop-up="(outsideClick: Boolean) => {if(!outsideClick) showPopUp = false; router.push({name: 'League Selector'}); notification.notify({ title: 'Info', text: 'Please select a division to continue!' })}"
+		@close-pop-up="(outsideClick: Boolean) => {if(!outsideClick) showPopUp = false; router.push({name: 'League Selector'}); notification.info('Please select a division to continue!')}"
 		@confirmation="() => (showPopUp = false)"
 	/>
 	<div>
@@ -50,7 +50,7 @@ import ProcessButton from '~/components/ProcessButton.vue';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { formatTag, isValidTag } from '~/utils/clashUtils';
-import { TSeasoncClanAdd } from '~/types/leagues';
+import { TSeasoncClanAdd } from '~/types';
 
 const showPopUp = ref(false);
 const league = leagueManagement();
@@ -59,28 +59,16 @@ const leagueData = league.getLeagueLocalConfig;
 
 onBeforeMount(async () => {
 	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
-		notification.notify({ title: 'Warning', text: 'Please config a league to continue!' });
+		notification.warning('Please config a league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (league.getLeagueLocalConfig.child.id === 0) {
-		notification.notify({ title: 'Warning', text: 'Please select a child league to continue!' });
+		notification.warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (league.getLeagueLocalConfig.child.seasonId === null) {
-		notification.notify(
-			{
-				title: 'Warning',
-				text: 'Child league has no active season. Please start new season first to add a clan!',
-			},
-			6000,
-		);
+		notification.warning('Child league has no active season. Please start new season first to add a clan!', 6000);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
 	} else if (!league.getLeagueLocalConfig.child.seasonActive) {
-		notification.notify(
-			{
-				title: 'Warning',
-				text: 'Child league has no active season. Please start new season first to add a clan!',
-			},
-			6000,
-		);
+		notification.warning('Child league has no active season. Please start new season first to add a clan!', 6000);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
 	} else if (league.getLeagueLocalConfig.division.id === 0) {
 		showPopUp.value = true;
@@ -99,7 +87,7 @@ async function addClans() {
 
 	for (const tag of clanTags) {
 		if (!isValidTag(tag)) {
-			notification.notify({ title: 'Error', text: `${tag} isn't a valid clan tag. Please check the tag!` });
+			notification.error(`${tag} isn't a valid clan tag. Please check the tag!`);
 			return;
 		}
 	}

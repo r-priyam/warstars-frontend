@@ -1,11 +1,3 @@
-import axios from 'axios';
-import { apiUrl } from '~/env';
-
-export default axios.create({
-	baseURL: `${apiUrl}`,
-	timeout: 30000,
-	withCredentials: true,
-	transitional: {
-		clarifyTimeoutError: true,
-	},
-});
+export * from './HTTPError';
+export * from './RESTManager';
+export * from './RequestHandler';

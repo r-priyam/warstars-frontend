@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { APIUserClan } from '~/api/userClan';
-import { APIError } from '~/types/user';
-import { TClanData, TUserClan } from '~/types/userClan';
+import { RESTManager, HTTPError } from '~/api';
+import { TClanData, TUserClan } from '~/types';
 import { notifications } from './notifications';
+
+const API = new RESTManager();
 
 export const userClan = defineStore({
 	id: 'userClan',
@@ -20,12 +20,10 @@ export const userClan = defineStore({
 			const notification = notifications();
 			this.clansDataProcessing = true;
 			try {
-				const response = await APIUserClan.clans();
+				const response = await API.clans();
 				if (response.status === 200) this.clanData = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.clansDataProcessing = false;
 			}
@@ -35,12 +33,10 @@ export const userClan = defineStore({
 			const notification = notifications();
 			this.linkClanProcessing = true;
 			try {
-				const response = await APIUserClan.addClan(clanTag);
-				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked clan successfully!' });
+				const response = await API.addClan(clanTag);
+				if (response.status === 200) notification.success('Linked clan successfully!');
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.linkClanProcessing = false;
 			}
@@ -50,15 +46,13 @@ export const userClan = defineStore({
 			const notification = notifications();
 			this.removeClanProcessing = true;
 			try {
-				const response = await APIUserClan.removeClan(clanTag);
+				const response = await API.removeClan(clanTag);
 				if (response.status === 200) {
-					notification.notify({ title: 'Success', text: 'Removed clan successfully!' });
+					notification.success('Removed clan successfully!');
 					this.clanData.splice(this.clanData.findIndex((data: TClanData) => data.tag === clanTag));
 				}
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.removeClanProcessing = false;
 			}

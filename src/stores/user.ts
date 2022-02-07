@@ -1,18 +1,18 @@
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { APIUser } from '~/api/user';
+import { HTTPError } from '~/api/HTTPError';
+import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
 import router from '~/router';
-import { APIError } from '~/types/user';
 import { notifications } from './notifications';
+
+const API = new RESTManager();
 
 export const userStore = defineStore({
 	id: 'user',
 
 	state: () => ({
 		userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '' },
-		avatarUrl: '',
 		loggedIn: false,
 	}),
 
@@ -21,21 +21,18 @@ export const userStore = defineStore({
 			const notification = notifications();
 			this.loggedIn = true;
 			try {
-				this.userData = (await APIUser.user()).data;
-				this.avatarUrl = `https://cdn.discordapp.com/avatars/${this.userData.discordId}/${this.userData.avatar}.png?size=1024`;
+				this.userData = (await API.user()).data;
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong while fetching user data!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			}
 		},
 
 		async logOut() {
 			const notification = notifications();
 			try {
-				await APIUser.logOut();
+				await API.logOut();
 			} catch (error) {
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				notification.error();
 			} finally {
 				Cookies.remove('_league_permissions', { path: '', domain: domain });
 				localStorage.removeItem('leagues-data');

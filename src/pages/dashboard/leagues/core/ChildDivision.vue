@@ -76,7 +76,7 @@
 
 <script setup lang="ts">
 import router from '~/router';
-import { TUserChildLeagueDivisions, TUserChildLeague } from '~/types/leagues';
+import { TUserChildLeagueDivisions, TUserChildLeague } from '~/types';
 withDefaults(defineProps<{ divisionsData: TUserChildLeagueDivisions[]; childData: TUserChildLeague[] }>(), {
 	divisionsData: Array,
 	childData: Array,

@@ -23,7 +23,10 @@
 						<Menu v-if="user.loggedIn" as="div" class="inline-flex items-center justify-center p-2">
 							<div>
 								<MenuButton class="flex rounded-full text-sm">
-									<img class="h-6 w-6 rounded-full" :src="user.avatarUrl" />
+									<img
+										class="h-6 w-6 rounded-full"
+										:src="`https://cdn.discordapp.com/avatars/${user.userData.discordId}/${user.userData.avatar}.png?size=1024`"
+									/>
 								</MenuButton>
 							</div>
 							<transition
@@ -154,7 +157,10 @@
 							<div>
 								<MenuButton class="flex rounded-full text-sm">
 									<span class="sr-only">Open user menu</span>
-									<img class="h-9 w-9 rounded-full" :src="user.avatarUrl" />
+									<img
+										class="h-9 w-9 rounded-full"
+										:src="`https://cdn.discordapp.com/avatars/${user.userData.discordId}/${user.userData.avatar}.png?size=1024`"
+									/>
 									<heroicons-solid:chevron-down
 										class="ml-1 mt-2.5 h-5 w-5 text-main-textDark-600 hover:text-violet-100 dark:text-main-textLight-530"
 										aria-hidden="true"

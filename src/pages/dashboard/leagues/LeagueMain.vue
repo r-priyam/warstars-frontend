@@ -163,12 +163,12 @@
 <script setup lang="ts">
 import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
 import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
-import { TUserLeagueData, TUserChildLeagueDivisions, TLocalLeagueData } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeagueDivisions, TLocalLeagueData } from '~/types';
 import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import moment from 'moment';
 
-onBeforeMount(checkLeague);
+onBeforeMount(() => checkLeague());
 
 const leagueStore = leagueManagement();
 const league = ref(true); // true by default to show the league main page.

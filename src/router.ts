@@ -1,7 +1,7 @@
 import NProgress from 'nprogress';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { leagueManagement } from '~/stores/leagueManagement';
-import { APIUser } from './api/user';
+import { RESTManager } from '~/api';
 import { userStore } from './stores/user';
 
 export const pushLeagueSaveRoute = ref('');
@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
 						from.fullPath !== '/dashboard/league-register-info' &&
 						from.fullPath !== '/dashboard/register-league'
 					)
-						pushLeagueSaveRoute.value = String(from.name);
+						pushLeagueSaveRoute.value = String(from.name ?? 'League Info');
 					else pushLeagueSaveRoute.value = 'League Info';
 				},
 			},
@@ -63,6 +63,17 @@ const routes: RouteRecordRaw[] = [
 				path: 'add-child-division',
 				name: 'Add Child Division',
 				component: () => import('~/pages/dashboard/leagues/core/ManageDivision.vue'),
+			},
+			// League admin section
+			{
+				path: 'league-admin',
+				name: 'League Admin',
+				component: () => import('~/pages/dashboard/leagues/admin/Admin.vue'),
+			},
+			{
+				path: 'league-admin-manage',
+				name: 'League Admin Manage',
+				component: () => import('~/pages/dashboard/leagues/admin/ManageAdmin.vue'),
 			},
 			// league season section
 			{
@@ -103,11 +114,12 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
 	NProgress.start();
+	const API = new RESTManager();
 	const user = userStore();
 	const league = leagueManagement();
 
 	try {
-		const checkAuthenticated = await APIUser.checkAuthenticated();
+		const checkAuthenticated = await API.checkAuthenticated();
 		if (checkAuthenticated.status === 200) {
 			if (user.userData.discordId === '') await user.setUserData();
 			await league.syncPermissions();

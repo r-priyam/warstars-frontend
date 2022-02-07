@@ -59,12 +59,12 @@
 </template>
 
 <script setup lang="ts">
-import { TRegisterChild } from '~/types/leagues';
+import { TRegisterChild } from '~/types';
 import { checkLeague } from '~/utils/leagueUtils';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 
-onBeforeMount(checkLeague);
+onBeforeMount(() => checkLeague());
 
 const league = leagueManagement();
 

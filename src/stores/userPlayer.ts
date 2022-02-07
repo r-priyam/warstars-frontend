@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { APIUserPlayer } from '~/api/userPlayer';
-import { APIError } from '~/types/user';
-import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types/userPlayer';
+import { RESTManager, HTTPError } from '~/api';
+import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types';
 import { notifications } from './notifications';
+
+const API = new RESTManager();
 
 export const userPlayer = defineStore({
 	id: 'userPlayer',
@@ -29,12 +29,10 @@ export const userPlayer = defineStore({
 			const notification = notifications();
 			this.playersDataProcessing = true;
 			try {
-				const response = await APIUserPlayer.players();
+				const response = await API.players();
 				if (response.status === 200) this.playerData = response.data;
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.playersDataProcessing = false;
 			}
@@ -45,12 +43,10 @@ export const userPlayer = defineStore({
 			this.linkPlayerProcessing = true;
 			const data: TUserPlayerLink = { playerTag: playerTag, apiToken: apiToken };
 			try {
-				const response = await APIUserPlayer.addPlayer(data);
-				if (response.status === 200) notification.notify({ title: 'Success', text: 'Linked player successfully!' });
+				const response = await API.addPlayer(data);
+				if (response.status === 200) notification.success('Linked player successfully!');
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.linkPlayerProcessing = false;
 			}
@@ -60,15 +56,13 @@ export const userPlayer = defineStore({
 			const notification = notifications();
 			this.removePlayerProcessing = true;
 			try {
-				const response = await APIUserPlayer.removePlayer(playerTag);
+				const response = await API.removePlayer(playerTag);
 				if (response.status === 200) {
-					notification.notify({ title: 'Success', text: 'Removed player successfully!' });
+					notification.success('Removed player successfully!');
 					this.playerData.splice(this.playerData.findIndex((data: TPlayerData) => data.tag === playerTag));
 				}
 			} catch (error) {
-				if (axios.isAxiosError(error))
-					return notification.notify({ title: 'Error', text: (error.response as APIError).data.detail });
-				notification.notify({ title: 'Error', text: 'Something went wrong!' });
+				if (error instanceof HTTPError) notification.error(error.message);
 			} finally {
 				this.removePlayerProcessing = false;
 			}
