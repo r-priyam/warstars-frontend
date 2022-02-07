@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
@@ -43,3 +43,7 @@ export const userStore = defineStore({
 		},
 	},
 });
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(userStore, import.meta.hot));
+}

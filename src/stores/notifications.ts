@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 
 interface TNotification {
 	id?: number;
@@ -46,3 +46,7 @@ export const notifications = defineStore({
 		},
 	},
 });
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(notifications, import.meta.hot));
+}

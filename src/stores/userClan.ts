@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { RESTManager, HTTPError } from '~/api';
 import { TClanData, TUserClan } from '~/types';
 import { notifications } from './notifications';
@@ -59,3 +59,7 @@ export const userClan = defineStore({
 		},
 	},
 });
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(userClan, import.meta.hot));
+}
