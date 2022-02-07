@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
-import { acceptHMRUpdate, defineStore } from 'pinia';
+import { defineStore } from 'pinia';
 import { RESTManager, HTTPError } from '~/api';
 import {
 	TChildClans,
@@ -240,7 +240,3 @@ export const leagueManagement = defineStore({
 		},
 	},
 });
-
-if (import.meta.hot) {
-	import.meta.hot.accept(acceptHMRUpdate(leagueManagement, import.meta.hot));
-}

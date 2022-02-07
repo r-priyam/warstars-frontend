@@ -1,4 +1,4 @@
-import { acceptHMRUpdate, defineStore } from 'pinia';
+import { defineStore } from 'pinia';
 import { RESTManager, HTTPError } from '~/api';
 import { TLeagueRegister } from '~/types';
 import { notifications } from './notifications';
@@ -23,7 +23,3 @@ export const leagues = defineStore({
 		},
 	},
 });
-
-if (import.meta.hot) {
-	import.meta.hot.accept(acceptHMRUpdate(leagues, import.meta.hot));
-}

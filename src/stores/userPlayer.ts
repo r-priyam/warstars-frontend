@@ -1,4 +1,4 @@
-import { acceptHMRUpdate, defineStore } from 'pinia';
+import { defineStore } from 'pinia';
 import { RESTManager, HTTPError } from '~/api';
 import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types';
 import { notifications } from './notifications';
@@ -69,7 +69,3 @@ export const userPlayer = defineStore({
 		},
 	},
 });
-
-if (import.meta.hot) {
-	import.meta.hot.accept(acceptHMRUpdate(userPlayer, import.meta.hot));
-}
