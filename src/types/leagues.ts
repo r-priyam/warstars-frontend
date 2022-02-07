@@ -149,7 +149,7 @@ export interface TLocalLeagueData {
 
 export interface TLeagueManagement {
 	permissions: Record<string, unknown>;
-	childClans: Record<number, TChildClans[]> | Record<null, null>;
+	childClans: Record<number, TChildClans[]> | Record<any, null>;
 	childRegisterProcess: boolean;
 	divisionRegisterProcess: boolean;
 	newSeasonProcess: boolean;

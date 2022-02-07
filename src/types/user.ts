@@ -1,4 +1,4 @@
-export interface discordUserData {
+export interface TDiscordUserData {
 	discordId: string;
 	username: string;
 	discriminator: string;

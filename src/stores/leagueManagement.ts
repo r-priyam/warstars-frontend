@@ -15,7 +15,7 @@ import {
 	TRegisterDivision,
 	TSeasoncClanAdd,
 	TUserLeagueData,
-} from '~/types/leagues';
+} from '~/types';
 import { notifications } from './notifications';
 
 interface TPermsData {

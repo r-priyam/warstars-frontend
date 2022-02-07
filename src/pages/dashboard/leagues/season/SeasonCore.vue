@@ -92,7 +92,7 @@ import router from '~/router';
 import { notifications } from '~/stores/notifications';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
-import { TUserLeagueData, TNewSeason, TNewChildSeason, TLocalLeagueData } from '~/types/leagues';
+import { TUserLeagueData, TNewSeason, TNewChildSeason, TLocalLeagueData } from '~/types';
 
 const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showChildSeason: false });
 

@@ -1,6 +1,6 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { RESTManager, HTTPError } from '~/api';
-import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types/userPlayer';
+import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types';
 import { notifications } from './notifications';
 
 const API = new RESTManager();

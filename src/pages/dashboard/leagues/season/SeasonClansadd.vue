@@ -50,7 +50,7 @@ import ProcessButton from '~/components/ProcessButton.vue';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { formatTag, isValidTag } from '~/utils/clashUtils';
-import { TSeasoncClanAdd } from '~/types/leagues';
+import { TSeasoncClanAdd } from '~/types';
 
 const showPopUp = ref(false);
 const league = leagueManagement();

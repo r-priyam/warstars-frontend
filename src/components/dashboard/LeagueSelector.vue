@@ -190,13 +190,7 @@
 
 <script setup lang="ts">
 import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption } from '@headlessui/vue';
-import {
-	TUserLeagueData,
-	TUserChildLeagueDivisions,
-	TSelectedLeague,
-	TSelectedChild,
-	TLocalLeagueData,
-} from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeagueDivisions, TSelectedLeague, TSelectedChild, TLocalLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
 import router, { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';

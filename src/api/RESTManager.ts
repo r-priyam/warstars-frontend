@@ -1,8 +1,9 @@
-import { discordUserData } from '~/types/user';
 import { RequestHandler } from './RequestHandler';
-import { TClanData } from '~/types/userClan';
-import { TPlayerData, TUserPlayerLink } from '~/types/userPlayer';
 import {
+	TDiscordUserData,
+	TClanData,
+	TPlayerData,
+	TUserPlayerLink,
 	TAddAdmin,
 	TChildClans,
 	TEndChildSeason,
@@ -16,7 +17,7 @@ import {
 	TRemoveAdmin,
 	TSeasoncClanAdd,
 	TUpdateAdminPermission,
-} from '~/types/leagues';
+} from '~/types';
 
 export class RESTManager {
 	private readonly handler: RequestHandler;
@@ -27,7 +28,7 @@ export class RESTManager {
 
 	// user
 	public user() {
-		return this.handler.request<discordUserData>('/discord/user');
+		return this.handler.request<TDiscordUserData>('/discord/user');
 	}
 
 	public checkAuthenticated() {
@@ -57,8 +58,8 @@ export class RESTManager {
 		return this.handler.request<TPlayerData[]>('/account/player/players');
 	}
 
-	public addPlayer(data: TUserPlayerLink) {
-		return this.handler.request('/account/player/link-player', 'POST', JSON.stringify(data));
+	public addPlayer(payload: TUserPlayerLink) {
+		return this.handler.request('/account/player/link-player', 'POST', JSON.stringify(payload));
 	}
 
 	public removePlayer(playerTag: string) {
@@ -67,19 +68,19 @@ export class RESTManager {
 
 	// admin
 	public getAdmins(leagueId: number) {
-		return this.handler.request<TLeagueAdmin[]>(`/league/admin/admins/${leagueId}`)
+		return this.handler.request<TLeagueAdmin[]>(`/league/admin/admins/${leagueId}`);
 	}
 
-	public addAdmin (payload: TAddAdmin) {
-		return this.handler.request('/league/admin/add-admin', 'POST', JSON.stringify(payload))
+	public addAdmin(payload: TAddAdmin) {
+		return this.handler.request('/league/admin/add-admin', 'POST', JSON.stringify(payload));
 	}
 
-	public updateAdminPermission (payload: TUpdateAdminPermission) {
-		return this.handler.request('/league/admin/update-permission', 'PUT', JSON.stringify(payload))
+	public updateAdminPermission(payload: TUpdateAdminPermission) {
+		return this.handler.request('/league/admin/update-permission', 'PUT', JSON.stringify(payload));
 	}
 
-	public removeAdmin (payload: TRemoveAdmin) {
-		return this.handler.request('/league/admin/remove-admin', 'DELETE', JSON.stringify(payload))
+	public removeAdmin(payload: TRemoveAdmin) {
+		return this.handler.request('/league/admin/remove-admin', 'DELETE', JSON.stringify(payload));
 	}
 
 	// league core
@@ -92,16 +93,16 @@ export class RESTManager {
 	}
 
 	// league register
-	public registerLeague(data: TLeagueRegister) {
-		return this.handler.request('/league/register/league', 'POST', JSON.stringify(data));
+	public registerLeague(payload: TLeagueRegister) {
+		return this.handler.request('/league/register/league', 'POST', JSON.stringify(payload));
 	}
 
-	public registerChildLeague(data: TRegisterChild) {
-		return this.handler.request('/league/register/child-league', 'POST', JSON.stringify(data));
+	public registerChildLeague(payload: TRegisterChild) {
+		return this.handler.request('/league/register/child-league', 'POST', JSON.stringify(payload));
 	}
 
-	public registerChildDivision(data: TRegisterDivision) {
-		return this.handler.request('/league/register/child-division', 'POST', JSON.stringify(data));
+	public registerChildDivision(payload: TRegisterDivision) {
+		return this.handler.request('/league/register/child-division', 'POST', JSON.stringify(payload));
 	}
 
 	// league season
@@ -114,27 +115,27 @@ export class RESTManager {
 		return this.handler.request<TChildClans | []>(`/league/season/child-clans/${childId}/${seasonId}`);
 	}
 
-	public startNewSeason(data: TNewSeason) {
-		return this.handler.request('/league/season/new', 'POST', JSON.stringify(data));
+	public startNewSeason(payload: TNewSeason) {
+		return this.handler.request('/league/season/new', 'POST', JSON.stringify(payload));
 	}
 
-	public startNewChildSeason(data: TNewChildSeason) {
-		return this.handler.request('/league/season/new-child', 'POST', JSON.stringify(data));
+	public startNewChildSeason(payload: TNewChildSeason) {
+		return this.handler.request('/league/season/new-child', 'POST', JSON.stringify(payload));
 	}
 
-	public endSeason(data: TEndLeagueSeason) {
-		return this.handler.request('/league/season/end', 'PUT', JSON.stringify(data));
+	public endSeason(payload: TEndLeagueSeason) {
+		return this.handler.request('/league/season/end', 'PUT', JSON.stringify(payload));
 	}
 
-	public endChildSeason(data: TEndChildSeason) {
-		return this.handler.request('/league/season/end-child', 'PUT', JSON.stringify(data));
+	public endChildSeason(payload: TEndChildSeason) {
+		return this.handler.request('/league/season/end-child', 'PUT', JSON.stringify(payload));
 	}
 
-	public addSeasonClans(data: TSeasoncClanAdd) {
-		return this.handler.request('/league/season/add-clans', 'POST', JSON.stringify(data));
+	public addSeasonClans(payload: TSeasoncClanAdd) {
+		return this.handler.request('/league/season/add-clans', 'POST', JSON.stringify(payload));
 	}
 
-	public removeSeasonClan(data: TChildClans) {
-		return this.handler.request('/league/season/remove-clan', 'DELETE', JSON.stringify({ data: data }));
+	public removeSeasonClan(payload: TChildClans) {
+		return this.handler.request('/league/season/remove-clan', 'DELETE', JSON.stringify({ payload }));
 	}
 }

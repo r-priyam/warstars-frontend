@@ -163,7 +163,7 @@
 <script setup lang="ts">
 import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
 import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
-import { TUserLeagueData, TUserChildLeagueDivisions, TLocalLeagueData } from '~/types/leagues';
+import { TUserLeagueData, TUserChildLeagueDivisions, TLocalLeagueData } from '~/types';
 import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import moment from 'moment';
