@@ -25,24 +25,24 @@ export const notifications = defineStore({
 		notify(title: string, text: string, timeout: number) {
 			this.notificationId++;
 			const notificationPayload = { id: this.notificationId, title: title, text: text };
-			this.notifications.push(notificationPayload)
+			this.notifications.push(notificationPayload);
 			setTimeout(() => this.removeNotification(this.notificationId), timeout);
 		},
 
-		info(text: string, timeout = 4000){
-			this.notify('Info', text, timeout)
+		info(text: string, timeout = 4000) {
+			this.notify('Info', text, timeout);
 		},
 
-		success(text: string, timeout = 4000){
-			this.notify('Success', text, timeout)
+		success(text: string, timeout = 4000) {
+			this.notify('Success', text, timeout);
 		},
 
-		warning(text: string, timeout = 4000){
-			this.notify('Warning', text, timeout)
+		warning(text: string, timeout = 4000) {
+			this.notify('Warning', text, timeout);
 		},
 
-		error(text = 'Something went wrong!', timeout = 4000){
-			this.notify('Error', text, timeout)
+		error(text = 'Something went wrong!', timeout = 4000) {
+			this.notify('Error', text, timeout);
 		},
 	},
 });

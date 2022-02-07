@@ -8,4 +8,4 @@ export async function checkLeague() {
 		notifications().info('Please select a league to continue');
 		await router.push({ name: 'League Selector' });
 	}
-};
+}

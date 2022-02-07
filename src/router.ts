@@ -1,7 +1,7 @@
 import NProgress from 'nprogress';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { leagueManagement } from '~/stores/leagueManagement';
-import { APIUser } from './api/user';
+import { RESTManager } from '~/api';
 import { userStore } from './stores/user';
 
 export const pushLeagueSaveRoute = ref('');
@@ -114,11 +114,12 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
 	NProgress.start();
+	const API = new RESTManager();
 	const user = userStore();
 	const league = leagueManagement();
 
 	try {
-		const checkAuthenticated = await APIUser.checkAuthenticated();
+		const checkAuthenticated = await API.checkAuthenticated();
 		if (checkAuthenticated.status === 200) {
 			if (user.userData.discordId === '') await user.setUserData();
 			await league.syncPermissions();

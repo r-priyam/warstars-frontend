@@ -71,7 +71,10 @@ onBeforeMount(async () => {
 		notifications().warning('Please select a child league to continue!');
 		await router.push({ name: 'League Selector' });
 	} else if (!league.getLeagueLocalConfig.child.seasonActive) {
-		notifications().warning('Child league has no active season. Please start new season first to add a division!', 6000);
+		notifications().warning(
+			'Child league has no active season. Please start new season first to add a division!',
+			6000,
+		);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
 	}
 });
