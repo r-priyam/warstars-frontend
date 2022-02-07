@@ -159,3 +159,31 @@ export interface TLeagueManagement {
 	fetchingChildClans: boolean;
 	clanRemoveProcess: boolean;
 }
+
+export interface TLeagueAdmin {
+	id: number;
+	discordId: string;
+	leagueId: number;
+	permissions: number;
+	addedAt: string;
+	username: string;
+	discriminator: string;
+	avatar: string;
+}
+
+export interface TAddAdmin {
+	discordId: string;
+	leagueId: string;
+	permissions: number;
+}
+
+export interface TUpdateAdminPermission {
+	leagueId: number;
+	adminId: number;
+	permissions: number;
+}
+
+export interface TRemoveAdmin {
+	adminId: number;
+	leagueId: number;
+}

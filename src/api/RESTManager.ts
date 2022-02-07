@@ -3,15 +3,19 @@ import { RequestHandler } from './RequestHandler';
 import { TClanData } from '~/types/userClan';
 import { TPlayerData, TUserPlayerLink } from '~/types/userPlayer';
 import {
+	TAddAdmin,
 	TChildClans,
 	TEndChildSeason,
 	TEndLeagueSeason,
+	TLeagueAdmin,
 	TLeagueRegister,
 	TNewChildSeason,
 	TNewSeason,
 	TRegisterChild,
 	TRegisterDivision,
+	TRemoveAdmin,
 	TSeasoncClanAdd,
+	TUpdateAdminPermission,
 } from '~/types/leagues';
 
 export class RESTManager {
@@ -62,6 +66,22 @@ export class RESTManager {
 	}
 
 	// admin
+	public getAdmins(leagueId: number) {
+		return this.handler.request<TLeagueAdmin[]>(`/league/admin/admins/${leagueId}`)
+	}
+
+	public addAdmin (payload: TAddAdmin) {
+		return this.handler.request('/league/admin/add-admin', 'POST', JSON.stringify(payload))
+	}
+
+	public updateAdminPermission (payload: TUpdateAdminPermission) {
+		return this.handler.request('/league/admin/update-permission', 'PUT', JSON.stringify(payload))
+	}
+
+	public removeAdmin (payload: TRemoveAdmin) {
+		return this.handler.request('/league/admin/remove-admin', 'DELETE', JSON.stringify(payload))
+	}
+
 	// league core
 	public getUserLeaguePermissions() {
 		return this.handler.request('/league/core/user-league-permissions');
