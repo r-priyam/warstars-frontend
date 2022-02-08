@@ -112,7 +112,7 @@ export class RESTManager {
 	}
 
 	public getLeagueChildClans(childId: number, seasonId: number) {
-		return this.handler.request<TChildClans | []>(`/league/season/child-clans/${childId}/${seasonId}`);
+		return this.handler.request<TChildClans[] | []>(`/league/season/child-clans/${childId}/${seasonId}`);
 	}
 
 	public startNewSeason(payload: TNewSeason) {
