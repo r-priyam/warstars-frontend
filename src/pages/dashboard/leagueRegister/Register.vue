@@ -80,15 +80,13 @@
 	</div>
 </template>
 
-<script lang="ts">
-export default defineComponent({ name: 'LeagueRegister' });
-</script>
-
 <script setup lang="ts">
 import { userStore } from '~/stores/user';
 import { leagues } from '~/stores/leagues';
-import { TLeagueRegister } from '~/types';
+import type { TLeagueRegister } from '~/types';
 import ProcessButton from '~/components/ProcessButton.vue';
+
+defineComponent({ name: 'LeagueRegister' });
 
 const user = userStore();
 const league = leagues();

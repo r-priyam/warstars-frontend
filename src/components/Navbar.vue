@@ -284,14 +284,14 @@
 
 <script setup lang="ts">
 import {
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuItems,
 	Popover,
 	PopoverButton,
 	PopoverGroup,
 	PopoverPanel,
-	Menu,
-	MenuButton,
-	MenuItems,
-	MenuItem,
 } from '@headlessui/vue';
 import { userStore } from '~/stores/user';
 import { apiUrl } from '~/env';

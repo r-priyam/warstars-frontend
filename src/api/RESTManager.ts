@@ -1,22 +1,22 @@
 import { RequestHandler } from './RequestHandler';
-import {
-	TDiscordUserData,
-	TClanData,
-	TPlayerData,
-	TUserPlayerLink,
+import type {
 	TAddAdmin,
 	TChildClans,
+	TClanData,
+	TDiscordUserData,
 	TEndChildSeason,
 	TEndLeagueSeason,
 	TLeagueAdmin,
 	TLeagueRegister,
 	TNewChildSeason,
 	TNewSeason,
+	TPlayerData,
 	TRegisterChild,
 	TRegisterDivision,
 	TRemoveAdmin,
 	TSeasoncClanAdd,
 	TUpdateAdminPermission,
+	TUserPlayerLink,
 } from '~/types';
 
 export class RESTManager {
@@ -46,11 +46,11 @@ export class RESTManager {
 	}
 
 	public addClan(clanTag: string) {
-		return this.handler.request('/account/clan/link-clan', 'POST', JSON.stringify({ clanTag: clanTag }));
+		return this.handler.request('/account/clan/link-clan', 'POST', JSON.stringify({ clanTag }));
 	}
 
 	public removeClan(clanTag: string) {
-		return this.handler.request('/account/clan/remove-clan', 'DELETE', JSON.stringify({ clanTag: clanTag }));
+		return this.handler.request('/account/clan/remove-clan', 'DELETE', JSON.stringify({ clanTag }));
 	}
 
 	// user player
@@ -63,7 +63,7 @@ export class RESTManager {
 	}
 
 	public removePlayer(playerTag: string) {
-		return this.handler.request('/account/player/unlink-player', 'DELETE', JSON.stringify({ playerTag: playerTag }));
+		return this.handler.request('/account/player/unlink-player', 'DELETE', JSON.stringify({ playerTag }));
 	}
 
 	// admin

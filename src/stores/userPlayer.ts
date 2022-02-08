@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { RESTManager, HTTPError } from '~/api';
-import { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types';
 import { notifications } from './notifications';
+import { HTTPError, RESTManager } from '~/api';
+import type { TPlayerData, TUserPlayer, TUserPlayerLink } from '~/types';
 
 const API = new RESTManager();
 
@@ -41,7 +41,7 @@ export const userPlayer = defineStore({
 		async linkPlayer(playerTag: string, apiToken: string) {
 			const notification = notifications();
 			this.linkPlayerProcessing = true;
-			const data: TUserPlayerLink = { playerTag: playerTag, apiToken: apiToken };
+			const data: TUserPlayerLink = { playerTag, apiToken };
 			try {
 				const response = await API.addPlayer(data);
 				if (response.status === 200) notification.success('Linked player successfully!');

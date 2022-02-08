@@ -149,11 +149,11 @@
 </template>
 
 <script setup lang="ts">
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
+import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
 import router from '~/router';
 

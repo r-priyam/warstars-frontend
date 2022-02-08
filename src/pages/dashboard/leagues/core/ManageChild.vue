@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { TRegisterChild } from '~/types';
+import type { TRegisterChild } from '~/types';
 import { checkLeague } from '~/utils/leagueUtils';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';

@@ -1,10 +1,10 @@
 import Cookies from 'js-cookie';
 import { acceptHMRUpdate, defineStore } from 'pinia';
+import { notifications } from './notifications';
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
 import router from '~/router';
-import { notifications } from './notifications';
 
 const API = new RESTManager();
 
@@ -34,7 +34,7 @@ export const userStore = defineStore({
 			} catch (error) {
 				notification.error();
 			} finally {
-				Cookies.remove('_league_permissions', { path: '', domain: domain });
+				Cookies.remove('_league_permissions', { path: '', domain });
 				localStorage.removeItem('leagues-data');
 				localStorage.removeItem('selected-league-config');
 				this.loggedIn = false;

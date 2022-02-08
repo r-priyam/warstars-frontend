@@ -1,8 +1,9 @@
 import NProgress from 'nprogress';
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
+import { userStore } from './stores/user';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { RESTManager } from '~/api';
-import { userStore } from './stores/user';
 
 export const pushLeagueSaveRoute = ref('');
 

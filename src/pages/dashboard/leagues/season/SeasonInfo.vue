@@ -242,7 +242,7 @@
 <script setup lang="ts">
 import moment from 'moment';
 import router from '~/router';
-import { TUserLeagueData, TUserChildLeague, TLocalLeagueData } from '~/types';
+import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
 import LoadingSpinner from '~/components/Spinner.vue';
 import { checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';

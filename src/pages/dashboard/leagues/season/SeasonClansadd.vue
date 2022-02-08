@@ -50,7 +50,7 @@ import ProcessButton from '~/components/ProcessButton.vue';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { formatTag, isValidTag } from '~/utils/clashUtils';
-import { TSeasoncClanAdd } from '~/types';
+import type { TSeasoncClanAdd } from '~/types';
 
 const showPopUp = ref(false);
 const league = leagueManagement();
@@ -97,10 +97,10 @@ async function addClans() {
 		// already being checked above before mounting the page.
 		leagueId: leagueData!.league.leagueId,
 		childId: leagueData!.child.id,
-		divisionId: leagueData!.division.id, // @ts-expect-error
-		leagueSeasonId: leagueData!.league.seasonId, // @ts-expect-error
+		divisionId: leagueData!.division.id, // @ts-expect-error, already checking for it when page is mounted
+		leagueSeasonId: leagueData!.league.seasonId, // @ts-expect-error, already checking for it when page is mounted
 		childSeasonId: leagueData!.child.seasonId,
-		clanTags: clanTags,
+		clanTags,
 	};
 	await league.seasonClanAdd(seasonClanRegisterData);
 }

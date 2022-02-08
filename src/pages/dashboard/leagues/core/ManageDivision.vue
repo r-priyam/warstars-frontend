@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { TRegisterDivision } from '~/types';
+import type { TRegisterDivision } from '~/types';
 import router from '~/router';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';

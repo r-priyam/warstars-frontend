@@ -1,5 +1,5 @@
-import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
+import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
@@ -30,7 +30,7 @@ export default defineConfig({
 		}),
 		Icons({
 			autoInstall: true,
-		  }),
+		}),
 		ViteRadar({
 			analytics: {
 				id: 'G-VPF07N5QBR',

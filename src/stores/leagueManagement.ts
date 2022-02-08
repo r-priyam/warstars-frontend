@@ -1,8 +1,9 @@
 import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { RESTManager, HTTPError } from '~/api';
-import {
+import { notifications } from './notifications';
+import { HTTPError, RESTManager } from '~/api';
+import type {
 	TChildClans,
 	TEndChildSeason,
 	TEndLeagueSeason,
@@ -16,7 +17,6 @@ import {
 	TSeasoncClanAdd,
 	TUserLeagueData,
 } from '~/types';
-import { notifications } from './notifications';
 
 interface TPermsData {
 	epoch: string;
@@ -43,6 +43,7 @@ export const leagueManagement = defineStore({
 
 	getters: {
 		getLeagueLocalConfig: (state) => {
+			// eslint-disable-next-line no-lone-blocks
 			{
 				if (Object.keys(state.permissions).length > 1) {
 					const data = useStorage('selected-league-config', {
@@ -214,6 +215,7 @@ export const leagueManagement = defineStore({
 
 		async seasonChildClans(childId: number, seasonId: number) {
 			const notification = notifications();
+			// eslint-disable-next-line no-prototype-builtins
 			if (this.childClans.hasOwnProperty(childId)) return;
 			this.fetchingChildClans = true;
 			try {

@@ -24,7 +24,7 @@ export const notifications = defineStore({
 
 		notify(title: string, text: string, timeout: number) {
 			this.notificationId++;
-			const notificationPayload = { id: this.notificationId, title: title, text: text };
+			const notificationPayload = { id: this.notificationId, title, text };
 			this.notifications.push(notificationPayload);
 			setTimeout(() => this.removeNotification(this.notificationId), timeout);
 		},

@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { RESTManager, HTTPError } from '~/api';
-import { TClanData, TUserClan } from '~/types';
 import { notifications } from './notifications';
+import { HTTPError, RESTManager } from '~/api';
+import type { TClanData, TUserClan } from '~/types';
 
 const API = new RESTManager();
 

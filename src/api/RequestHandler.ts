@@ -1,5 +1,5 @@
-import { apiUrl } from '~/env';
 import { HTTPError } from './HTTPError';
+import { apiUrl } from '~/env';
 
 interface Response<T> {
 	ok: boolean;
@@ -20,7 +20,6 @@ export class RequestHandler {
 			return await this.execute(path, method, body);
 		} catch (error) {
 			if (error instanceof HTTPError) throw error;
-			console.log(error);
 			throw new HTTPError('Something went wrong!');
 		}
 	}
@@ -33,8 +32,8 @@ export class RequestHandler {
 		const response = await fetch(`${apiUrl}${path}`, {
 			keepalive: true,
 			credentials: 'include',
-			method: method,
-			body: body,
+			method,
+			body,
 			signal: controller.signal,
 			headers: { 'Content-Type': 'application/json' },
 		});
