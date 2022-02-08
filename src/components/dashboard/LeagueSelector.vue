@@ -198,9 +198,10 @@ import type {
 	TUserLeagueData
 } from '~/types';
 import { notifications } from '~/stores/notifications';
-import router, { pushLeagueSaveRoute } from '~/router';
+import { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
 
+const router = useRouter();
 const leagueStore = leagueManagement();
 
 // Check if a user is in any league or not. If not redirect back to league info page.

@@ -6,7 +6,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     BackToTop: typeof import('./components/BackToTop.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
-    LeagueSelector: typeof import('./components/dashboard/LeagueSelector.vue')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
     ProcessButton: typeof import('./components/ProcessButton.vue')['default']
     SideBar: typeof import('./components/SideBar.vue')['default']

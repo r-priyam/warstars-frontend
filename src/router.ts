@@ -1,9 +1,4 @@
-import NProgress from 'nprogress';
 import type { RouteRecordRaw } from 'vue-router';
-import { createRouter, createWebHistory } from 'vue-router';
-import { userStore } from './stores/user';
-import { leagueManagement } from '~/stores/leagueManagement';
-import { RESTManager } from '~/api';
 
 export const pushLeagueSaveRoute = ref('');
 
@@ -120,35 +115,4 @@ const routes: RouteRecordRaw[] = [
 	{ path: '/:pathMatch(.*)*', name: 'Not Found', component: () => import('~/pages/NotFound.vue') }
 ];
 
-const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
-	routes
-});
-
-router.beforeEach(async (to) => {
-	NProgress.start();
-	const API = new RESTManager();
-	const user = userStore();
-	const league = leagueManagement();
-
-	try {
-		const checkAuthenticated = await API.checkAuthenticated();
-		if (checkAuthenticated.status === 200) {
-			if (user.userData.discordId === '') await user.setUserData();
-			await league.syncPermissions();
-			await league.syncLeaguesData();
-		}
-	} catch (error) {
-		user.loggedIn = false;
-		if (!to.fullPath.includes('/dashboard')) return true;
-		await router.push({ name: 'Home' });
-	}
-});
-
-router.afterEach((to) => {
-	NProgress.done();
-	if (!to.name) document.title = 'WarStars';
-	document.title = `WarStars - ${String(to.name)}`;
-});
-
-export default router;
+export default routes;

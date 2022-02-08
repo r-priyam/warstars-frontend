@@ -56,11 +56,11 @@
 
 <script setup lang="ts">
 import type { TRegisterDivision } from '~/types';
-import router from '~/router';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
 import ProcessButton from '~/components/ProcessButton.vue';
 
+const router = useRouter();
 const league = leagueManagement();
 
 onBeforeMount(async () => {

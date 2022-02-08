@@ -75,10 +75,11 @@
 </template>
 
 <script setup lang="ts">
-import router from '~/router';
 import type { TUserChildLeague, TUserChildLeagueDivisions } from '~/types';
 withDefaults(defineProps<{ divisionsData: TUserChildLeagueDivisions[]; childData: TUserChildLeague[] }>(), {
 	divisionsData: Array,
 	childData: Array
 });
+
+const router = useRouter();
 </script>

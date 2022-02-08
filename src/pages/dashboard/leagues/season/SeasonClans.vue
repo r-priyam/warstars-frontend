@@ -155,8 +155,8 @@ import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
-import router from '~/router';
 
+const router = useRouter();
 const leagueStore = leagueManagement();
 const filterOptions = ref([
 	{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id }
