@@ -45,13 +45,13 @@
 
 <script setup lang="ts">
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import router from '~/router';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { notifications } from '~/stores/notifications';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { formatTag, isValidTag } from '~/utils/clashUtils';
 import type { TSeasoncClanAdd } from '~/types';
 
+const router = useRouter();
 const showPopUp = ref(false);
 const league = leagueManagement();
 const notification = notifications();

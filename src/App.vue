@@ -50,8 +50,8 @@
 
 <script setup lang="ts">
 import Navbar from '~/components/Navbar.vue';
-import router from '~/router';
 
+const router = useRouter();
 const showBetaNotice = ref(false);
 const setBetaNoticeValue = () => {
 	localStorage.setItem('beta-warning', 'false');

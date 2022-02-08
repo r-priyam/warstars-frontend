@@ -241,7 +241,6 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import router from '~/router';
 import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
 import LoadingSpinner from '~/components/Spinner.vue';
 import { checkLeague } from '~/utils/leagueUtils';
@@ -256,6 +255,7 @@ const showPopUp = ref(false);
 const popUpProcessing = ref(false);
 const type = ref('');
 const forceEnd = ref(false);
+const router = useRouter();
 const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();

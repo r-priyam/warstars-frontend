@@ -26,5 +26,5 @@
 </template>
 
 <script setup lang="ts">
-import router from '~/router';
+const router = useRouter();
 </script>

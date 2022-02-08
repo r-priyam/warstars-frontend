@@ -6,6 +6,7 @@ import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import ViteRadar from 'vite-plugin-radar';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
 	resolve: {
@@ -35,6 +36,9 @@ export default defineConfig({
 			analytics: {
 				id: 'G-VPF07N5QBR'
 			}
+		}),
+		VitePWA({
+			registerType: 'autoUpdate'
 		})
 	],
 	server: {

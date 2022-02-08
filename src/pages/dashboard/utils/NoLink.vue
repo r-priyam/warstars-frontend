@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import router from '~/router';
-
 withDefaults(defineProps<{ name?: string }>(), { name: '' });
+
+const router = useRouter();
 </script>

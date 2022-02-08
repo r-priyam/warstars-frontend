@@ -4,7 +4,6 @@ import { notifications } from './notifications';
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
-import router from '~/router';
 
 const API = new RESTManager();
 
@@ -28,6 +27,7 @@ export const userStore = defineStore({
 		},
 
 		async logOut() {
+			const router = useRouter();
 			const notification = notifications();
 			try {
 				await API.logOut();

@@ -88,7 +88,6 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import router from '~/router';
 import { notifications } from '~/stores/notifications';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
@@ -96,6 +95,7 @@ import type { TLocalLeagueData, TNewChildSeason, TNewSeason, TUserLeagueData } f
 
 const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showChildSeason: false });
 
+const router = useRouter();
 const league = leagueManagement();
 const leagueSeason = ref(!prop.showChildSeason);
 const childSeason = ref(prop.showChildSeason);

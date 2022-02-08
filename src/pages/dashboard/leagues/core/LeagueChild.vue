@@ -69,9 +69,10 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import router from '~/router';
 import type { TUserChildLeague } from '~/types';
 withDefaults(defineProps<{ childData: TUserChildLeague[] }>(), { childData: Array });
+
+const router = useRouter();
 </script>
 
 <style scoped>
