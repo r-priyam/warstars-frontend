@@ -219,9 +219,7 @@
 					focus
 					class="max-w-screen absolute inset-x-0 top-0 left-1/2 z-20 w-screen origin-top-right -translate-x-1/2 transform rounded-md transition sm:px-0 md:hidden"
 				>
-					<div
-						class="divide-y-2 divide-gray-200 rounded-lg bg-main-light-500 shadow-2xl dark:bg-main-dark-500"
-					>
+					<div class="divide-y-2 divide-gray-200 rounded-lg bg-main-light-500 shadow-2xl dark:bg-main-dark-500">
 						<div class="px-5 pt-5 pb-6">
 							<div class="flex items-center justify-between">
 								<div>

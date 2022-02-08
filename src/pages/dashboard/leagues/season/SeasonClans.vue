@@ -33,10 +33,7 @@
 				<div class="-mt-2 flex flex-col p-2">
 					<div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
 						<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-							<div
-								v-if="selectedOptionClans.length > 0"
-								class="rounded-md bg-main-light-400 p-2 dark:bg-main-dark-560"
-							>
+							<div v-if="selectedOptionClans.length > 0" class="rounded-md bg-main-light-400 p-2 dark:bg-main-dark-560">
 								<span class="text-base font-bold">Showing Data For {{ selectedOption.name }}</span>
 								<Listbox v-model="selectedOption">
 									<div class="absolute top-auto right-6 inline-flex sm:right-6 lg:right-[1.8rem]">
@@ -95,9 +92,7 @@
 
 							<div v-if="selectedOptionClans.length > 0" class="mt-1 overflow-hidden rounded-t-lg">
 								<table class="min-w-full text-center">
-									<thead
-										class="border-b border-gray-600 bg-main-light-430 dark:border-gray-400 dark:bg-main-dark-630"
-									>
+									<thead class="border-b border-gray-600 bg-main-light-430 dark:border-gray-400 dark:bg-main-dark-630">
 										<tr>
 											<th
 												scope="col"
@@ -118,9 +113,7 @@
 										</tr>
 									</thead>
 									<tbody v-for="clan in selectedOptionClans" :key="clan.tag">
-										<tr
-											class="border-b border-gray-600 bg-main-light-330 dark:border-gray-400 dark:bg-main-dark-530"
-										>
+										<tr class="border-b border-gray-600 bg-main-light-330 dark:border-gray-400 dark:bg-main-dark-530">
 											<td
 												class="whitespace-nowrap px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500"
 											>
@@ -131,9 +124,7 @@
 											>
 												{{ clan.tag }}
 											</td>
-											<td
-												class="cursor-pointer whitespace-nowrap px-6 py-4 text-sm text-red-500 hover:text-red-600"
-											>
+											<td class="cursor-pointer whitespace-nowrap px-6 py-4 text-sm text-red-500 hover:text-red-600">
 												<button
 													@click="
 														removeClanData = clan;

@@ -19,9 +19,7 @@
 						/>
 					</div>
 					<div>
-						<label class="register-form-input-label mt-4"
-							>Abbreviation<span class="ml-0.5 text-red-500">*</span></label
-						>
+						<label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
 						<input
 							name="division-abbreviation"
 							type="text"

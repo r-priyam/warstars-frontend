@@ -15,19 +15,14 @@
 				@click="$emit('closeSidebar', false)"
 			>
 				<span class="sr-only">Close menu</span>
-				<heroicons-outline:x
-					class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
-					aria-hidden="true"
-				/>
+				<heroicons-outline:x class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
 			</div>
 		</div>
 
 		<div v-if="league.getLeagueLocalConfig !== null" class="mt-4 items-center px-4">
 			<h1 class="text-base font-extrabold text-main-textDark-600 dark:text-main-textLight-530">Current League</h1>
 			<div v-if="league.getLeagueLocalConfig.league.name === ''">
-				<h3 class="truncate text-center font-bold leading-tight text-red-700 dark:text-red-500">
-					No League Selected
-				</h3>
+				<h3 class="truncate text-center font-bold leading-tight text-red-700 dark:text-red-500">No League Selected</h3>
 			</div>
 			<div v-else class="mt-2 flex shrink-0 items-center">
 				<img class="h-12 w-12 rounded-lg" :src="league.getLeagueLocalConfig.league.iconUrl" />
@@ -38,9 +33,7 @@
 				</div>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.name === ''">
-				<h3 class="truncate text-center font-bold leading-tight text-green-700 dark:text-green-500">
-					No Child League
-				</h3>
+				<h3 class="truncate text-center font-bold leading-tight text-green-700 dark:text-green-500">No Child League</h3>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.iconUrl !== ''" class="mt-2 flex shrink-0 items-center">
 				<img class="h-12 w-12 rounded-lg" :src="league.getLeagueLocalConfig.child.iconUrl" />
@@ -84,10 +77,7 @@
 					>
 						<component
 							:is="item.icon"
-							:class="[
-								$route.path === item.href ? 'text-primary' : 'text-secondary-dark',
-								'mr-2 h-6 w-6 shrink-0'
-							]"
+							:class="[$route.path === item.href ? 'text-primary' : 'text-secondary-dark', 'mr-2 h-6 w-6 shrink-0']"
 							aria-hidden="true"
 						/>
 						{{ item.name }}

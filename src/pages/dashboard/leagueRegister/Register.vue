@@ -53,23 +53,13 @@
 						<label class="register-form-input-label mt-4"
 							>Discord Invite<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
-						<input
-							name="discord-invite"
-							type="text"
-							class="register-form-input"
-							placeholder="Discord Server Invite"
-						/>
+						<input name="discord-invite" type="text" class="register-form-input" placeholder="Discord Server Invite" />
 					</div>
 					<div>
 						<label class="register-form-input-label mt-4"
 							>Twitter Handle<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
-						<input
-							name="twitter-handle"
-							type="text"
-							class="register-form-input"
-							placeholder="Twitter User Name"
-						/>
+						<input name="twitter-handle" type="text" class="register-form-input" placeholder="Twitter User Name" />
 					</div>
 					<div>
 						<label class="register-form-input-label mt-4"
@@ -81,12 +71,7 @@
 						<label class="register-form-input-label mt-4"
 							>Rules<span class="ml-1 text-xs font-medium">(Optional)</span></label
 						>
-						<input
-							name="league-rules"
-							type="text"
-							class="register-form-input"
-							placeholder="Rules Google Doc Link"
-						/>
+						<input name="league-rules" type="text" class="register-form-input" placeholder="Rules Google Doc Link" />
 					</div>
 					<ProcessButton :processing="league.registerProcessing" />
 				</form>

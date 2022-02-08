@@ -54,10 +54,7 @@
 				{{ leagueData?.name }}
 			</h1>
 			<div class="mt-4 flex items-center justify-center">
-				<img
-					class="h-36 w-36 rounded-full border-2 border-red-500 border-opacity-75 p-1"
-					:src="leagueData?.iconUrl"
-				/>
+				<img class="h-36 w-36 rounded-full border-2 border-red-500 border-opacity-75 p-1" :src="leagueData?.iconUrl" />
 			</div>
 
 			<div class="mt-10 space-y-1 rounded-lg bg-transparent p-5 text-sm">
@@ -121,9 +118,7 @@
 							<ic:baseline-discord class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
 							Discord
 						</span>
-						<span v-if="leagueData?.discordInvite" class="league-info-item-data">{{
-							leagueData?.discordInvite
-						}}</span>
+						<span v-if="leagueData?.discordInvite" class="league-info-item-data">{{ leagueData?.discordInvite }}</span>
 						<span else class="league-info-item-data">Not Provided</span>
 					</div>
 				</div>
@@ -133,9 +128,7 @@
 							<mdi:twitter class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
 							Twitter
 						</span>
-						<span v-if="leagueData?.twitterHandle" class="league-info-item-data">{{
-							leagueData?.twitterHandle
-						}}</span>
+						<span v-if="leagueData?.twitterHandle" class="league-info-item-data">{{ leagueData?.twitterHandle }}</span>
 						<span v-else class="league-info-item-data">Not Provided</span>
 					</div>
 				</div>

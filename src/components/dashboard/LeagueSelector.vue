@@ -20,9 +20,7 @@
 				>
 					<img
 						class="m-1 h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
-						:class="[
-							league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : ''
-						]"
+						:class="[league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : '']"
 						:src="league.iconUrl"
 						:alt="league.name"
 						:title="league.name"
@@ -70,11 +68,7 @@
 					enter-from-class="translate-x-12 opacity-0"
 					enter-to-class="transition duration-300 ease-out transform-gpu"
 				>
-					<div
-						v-for="childLeague in selectedLeagueChild"
-						:key="childLeague.id"
-						class="flex flex-wrap justify-center"
-					>
+					<div v-for="childLeague in selectedLeagueChild" :key="childLeague.id" class="flex flex-wrap justify-center">
 						<button
 							@click="
 								selectedChildLeague = {
@@ -89,11 +83,7 @@
 						>
 							<img
 								class="m-1 inline-flex h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
-								:class="[
-									childLeague.id === selectedChildLeague.id
-										? 'border-green-700 dark:border-green-500'
-										: ''
-								]"
+								:class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
 								:src="childLeague.iconUrl"
 								:alt="childLeague.name"
 								:title="childLeague.name"
@@ -156,10 +146,7 @@
 												<RadioGroupLabel as="p" class="font-bold text-black">
 													{{ division.name }}
 												</RadioGroupLabel>
-												<RadioGroupDescription
-													as="span"
-													class="inline font-semibold text-gray-900"
-												>
+												<RadioGroupDescription as="span" class="inline font-semibold text-gray-900">
 													<span> Changes will only apply to {{ division.name }}</span>
 												</RadioGroupDescription>
 											</div>

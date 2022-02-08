@@ -2,17 +2,13 @@
 	<div>
 		<div class="mx-auto max-w-lg rounded-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
 			<section>
-				<h3 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">
-					Link Player
-				</h3>
+				<h3 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">Link Player</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
 				<form id="player-link" class="flex flex-col" @submit.prevent="linkPlayer">
 					<div>
-						<label for="playerTag" class="block text-lg font-bold text-gray-800 dark:text-gray-100"
-							>Player Tag</label
-						>
+						<label for="playerTag" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Player Tag</label>
 						<input
 							name="player-tag"
 							type="text"

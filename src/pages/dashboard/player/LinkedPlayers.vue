@@ -46,11 +46,7 @@
 						</div>
 						<div class="w-full">
 							<div class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end p-2">
-								<div
-									v-for="(labelUrl, labelName) in player.labels"
-									:key="labelUrl"
-									class="mr-2 h-8 w-8"
-								>
+								<div v-for="(labelUrl, labelName) in player.labels" :key="labelUrl" class="mr-2 h-8 w-8">
 									<img :src="labelUrl" :alt="labelName" :title="labelName" class="h-8 w-8" />
 								</div>
 							</div>
@@ -90,13 +86,8 @@
 							<div class="mt-5 flex flex-wrap">
 								<img :src="player.clan.badge || '/clash/clanless.png'" class="mr-2 -ml-2 h-16 w-16" />
 								<div class="my-auto">
-									<span class="text-base font-bold text-gray-800 dark:text-gray-300">{{
-										player.clan.name
-									}}</span>
-									<p
-										v-if="player.clan.position !== 'None'"
-										class="text-sm text-gray-800 dark:text-gray-300"
-									>
+									<span class="text-base font-bold text-gray-800 dark:text-gray-300">{{ player.clan.name }}</span>
+									<p v-if="player.clan.position !== 'None'" class="text-sm text-gray-800 dark:text-gray-300">
 										{{ player.clan.position }}
 									</p>
 								</div>
