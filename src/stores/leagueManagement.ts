@@ -15,7 +15,7 @@ import type {
 	TRegisterChild,
 	TRegisterDivision,
 	TSeasoncClanAdd,
-	TUserLeagueData,
+	TUserLeagueData
 } from '~/types';
 
 interface TPermsData {
@@ -38,7 +38,7 @@ export const leagueManagement = defineStore({
 		seasonClanAddProcess: false,
 		leagueDataRefreshProcess: false,
 		fetchingChildClans: false,
-		clanRemoveProcess: false,
+		clanRemoveProcess: false
 	}),
 
 	getters: {
@@ -47,21 +47,36 @@ export const leagueManagement = defineStore({
 			{
 				if (Object.keys(state.permissions).length > 1) {
 					const data = useStorage('selected-league-config', {
-						league: { leagueId: 0, name: '', abbreviation: '', seasonId: null, iconUrl: '', seasonActive: null },
+						league: {
+							leagueId: 0,
+							name: '',
+							abbreviation: '',
+							seasonId: null,
+							iconUrl: '',
+							seasonActive: null
+						},
 						child: { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null },
-						division: { id: 0, childId: 0, seasonId: 0, name: '', abbreviation: '', iconUrl: null, clansCount: 0 },
+						division: {
+							id: 0,
+							childId: 0,
+							seasonId: 0,
+							name: '',
+							abbreviation: '',
+							iconUrl: null,
+							clansCount: 0
+						}
 					});
 					const dataToReturn: TLocalLeagueConfig = {
 						league: data.value.league,
 						child: data.value.child,
-						division: data.value.division,
+						division: data.value.division
 					};
 					return dataToReturn;
 				}
 				localStorage.removeItem('selected-league-config');
 				return null;
 			}
-		},
+		}
 	},
 
 	actions: {
@@ -105,7 +120,7 @@ export const leagueManagement = defineStore({
 				if (!request.data) return localStorage.removeItem('leagues-data');
 				localStorage.setItem(
 					'leagues-data',
-					JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData }),
+					JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData })
 				);
 			} catch (error) {
 				if (error instanceof HTTPError) notification.error(error.message);
@@ -116,7 +131,7 @@ export const leagueManagement = defineStore({
 
 		async syncLeaguesData() {
 			const localLeaguesData: TLocalLeagueData = JSON.parse(
-				localStorage.getItem('leagues-data') ?? '{}',
+				localStorage.getItem('leagues-data') ?? '{}'
 			) as TLocalLeagueData;
 			if (Object.keys(localLeaguesData).length === 0) {
 				await this.refreshLeaguesData();
@@ -239,8 +254,8 @@ export const leagueManagement = defineStore({
 			} finally {
 				this.clanRemoveProcess = false;
 			}
-		},
-	},
+		}
+	}
 });
 
 if (import.meta.hot) {

@@ -2,13 +2,17 @@
 	<div>
 		<div class="mx-auto max-w-lg rounded-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
 			<section>
-				<h3 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">Link Clan</h3>
+				<h3 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">
+					Link Clan
+				</h3>
 			</section>
 			<div class="mt-3 border-t-2 border-gray-200"></div>
 			<section class="mt-10">
 				<form id="clan-link" class="flex flex-col" @submit.prevent="linkClan">
 					<div>
-						<label for="clan-tag" class="block text-lg font-bold text-gray-800 dark:text-gray-100">Clan Tag</label>
+						<label for="clan-tag" class="block text-lg font-bold text-gray-800 dark:text-gray-100"
+							>Clan Tag</label
+						>
 						<input
 							name="clan-tag"
 							type="text"

@@ -9,7 +9,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans]
 			},
 			colors: {
 				green: colors.emerald,
@@ -42,7 +42,7 @@ module.exports = {
 						800: '#080b0c',
 						830: '#050809',
 						860: '#030505',
-						900: '#010202',
+						900: '#010202'
 					},
 					light: {
 						100: '#fcfeff',
@@ -69,7 +69,7 @@ module.exports = {
 						800: '#343f46',
 						830: '#252d32',
 						860: '#161b1e',
-						900: '#07090a',
+						900: '#07090a'
 					},
 					textDark: {
 						100: '#f5f8f9',
@@ -96,7 +96,7 @@ module.exports = {
 						800: '#041521',
 						830: '#030f17',
 						860: '#02090e',
-						900: '#010305',
+						900: '#010305'
 					},
 					textLight: {
 						100: '#f7fafc',
@@ -123,7 +123,7 @@ module.exports = {
 						800: '#0e2434',
 						830: '#0a1a25',
 						860: '#061016',
-						900: '#020507',
+						900: '#020507'
 					},
 					info: {
 						100: '#c7eef9',
@@ -142,7 +142,7 @@ module.exports = {
 						750: '#08586f',
 						800: '#074a5e',
 						850: '#053c4d',
-						900: '#042f3b',
+						900: '#042f3b'
 					},
 					success: {
 						100: '#cef6bf',
@@ -161,7 +161,7 @@ module.exports = {
 						750: '#193d0b',
 						800: '#133207',
 						850: '#0f2905',
-						900: '#0c2203',
+						900: '#0c2203'
 					},
 					warning: {
 						100: '#fdf4cd',
@@ -180,7 +180,7 @@ module.exports = {
 						750: '#856f06',
 						800: '#6f5d06',
 						850: '#594b05',
-						900: '#433804',
+						900: '#433804'
 					},
 					fail: {
 						100: '#fca5a5',
@@ -199,19 +199,19 @@ module.exports = {
 						750: '#770c0c',
 						800: '#640909',
 						850: '#500606',
-						900: '#3c0404',
-					},
-				},
-			},
-		},
+						900: '#3c0404'
+					}
+				}
+			}
+		}
 	},
 	variants: {
-		extend: {},
+		extend: {}
 	},
 	plugins: [
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/line-clamp'),
-		require('@tailwindcss/aspect-ratio'),
-	],
+		require('@tailwindcss/aspect-ratio')
+	]
 };

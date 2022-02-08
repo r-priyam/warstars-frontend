@@ -18,7 +18,7 @@ export const notifications = defineStore({
 		removeNotification(id: number) {
 			this.notifications.splice(
 				this.notifications.findIndex((notification: TNotification) => notification.id === id),
-				1,
+				1
 			);
 		},
 
@@ -43,8 +43,8 @@ export const notifications = defineStore({
 
 		error(text = 'Something went wrong!', timeout = 4000) {
 			this.notify('Error', text, timeout);
-		},
-	},
+		}
+	}
 });
 
 if (import.meta.hot) {

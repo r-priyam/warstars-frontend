@@ -38,7 +38,9 @@
 					Start Date
 					<mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
 					<span class="item-data">{{
-						childLeague.startTime !== null ? moment(childLeague.startTime).format('MMM DD, YYYY') : '--:--:----'
+						childLeague.startTime !== null
+							? moment(childLeague.startTime).format('MMM DD, YYYY')
+							: '--:--:----'
 					}}</span>
 				</p>
 				<p class="item-name">

@@ -12,7 +12,7 @@ export const userClan = defineStore({
 		clanData: [],
 		clansDataProcessing: false,
 		linkClanProcessing: false,
-		removeClanProcessing: false,
+		removeClanProcessing: false
 	}),
 
 	actions: {
@@ -56,8 +56,8 @@ export const userClan = defineStore({
 			} finally {
 				this.removeClanProcessing = false;
 			}
-		},
-	},
+		}
+	}
 });
 
 if (import.meta.hot) {

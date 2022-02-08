@@ -8,8 +8,8 @@
 					The page you requested doesn't exist.
 				</p>
 				<p class="mt-4 mb-8 font-medium text-main-textDark-600 dark:text-main-textLight-530">
-					But dont worry, i can help you with going back from where you came or you can watch this page. Choice is
-					yours!
+					But dont worry, i can help you with going back from where you came or you can watch this page.
+					Choice is yours!
 				</p>
 				<div class="mt-2 flex flex-nowrap justify-center">
 					<button

@@ -13,7 +13,7 @@ export const userStore = defineStore({
 
 	state: () => ({
 		userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '' },
-		loggedIn: false,
+		loggedIn: false
 	}),
 
 	actions: {
@@ -40,8 +40,8 @@ export const userStore = defineStore({
 				this.loggedIn = false;
 				await router.push({ name: 'Home' });
 			}
-		},
-	},
+		}
+	}
 });
 
 if (import.meta.hot) {

@@ -19,7 +19,9 @@
 						/>
 					</div>
 					<div>
-						<label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4"
+							>Abbreviation<span class="ml-0.5 text-red-500">*</span></label
+						>
 						<input
 							name="division-abbreviation"
 							type="text"
@@ -73,7 +75,7 @@ onBeforeMount(async () => {
 	} else if (!league.getLeagueLocalConfig.child.seasonActive) {
 		notifications().warning(
 			'Child league has no active season. Please start new season first to add a division!',
-			6000,
+			6000
 		);
 		await router.push({ name: 'Season Core', query: { showChildSeason: 'true' } });
 	}
@@ -87,7 +89,7 @@ async function registerDivision() {
 		childId: league.getLeagueLocalConfig?.child.id ?? 0,
 		seasonId: league.getLeagueLocalConfig?.child.seasonId ?? 0,
 		name: formData.get('division-name') as string,
-		abbreviation: formData.get('division-abbreviation') as string,
+		abbreviation: formData.get('division-abbreviation') as string
 	};
 	await league.registerDivision(childDivisionData);
 }

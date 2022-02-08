@@ -11,7 +11,9 @@
 				<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
 					<div class="overflow-hidden rounded-t-lg">
 						<table class="min-w-full text-center">
-							<thead class="border-b border-gray-600 bg-main-light-430 dark:border-gray-400 dark:bg-main-dark-630">
+							<thead
+								class="border-b border-gray-600 bg-main-light-430 dark:border-gray-400 dark:bg-main-dark-630"
+							>
 								<tr>
 									<th
 										scope="col"
@@ -34,7 +36,9 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="border-b border-gray-600 bg-main-light-330 dark:border-gray-400 dark:bg-main-dark-530">
+								<tr
+									class="border-b border-gray-600 bg-main-light-330 dark:border-gray-400 dark:bg-main-dark-530"
+								>
 									<td
 										class="whitespace-nowrap px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500"
 									>
@@ -79,6 +83,6 @@ import router from '~/router';
 import type { TUserChildLeague, TUserChildLeagueDivisions } from '~/types';
 withDefaults(defineProps<{ divisionsData: TUserChildLeagueDivisions[]; childData: TUserChildLeague[] }>(), {
 	divisionsData: Array,
-	childData: Array,
+	childData: Array
 });
 </script>

@@ -20,8 +20,8 @@ export const leagues = defineStore({
 			} finally {
 				this.registerProcessing = false;
 			}
-		},
-	},
+		}
+	}
 });
 
 if (import.meta.hot) {

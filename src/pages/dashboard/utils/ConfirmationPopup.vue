@@ -40,14 +40,18 @@
 										{{ title }}
 									</DialogTitle>
 									<div class="mt-2">
-										<p class="text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-430">
+										<p
+											class="text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-430"
+										>
 											{{ description }}
 										</p>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="bg-main-light-560 px-4 py-3 dark:bg-main-dark-560 sm:flex sm:flex-row-reverse sm:px-6">
+						<div
+							class="bg-main-light-560 px-4 py-3 dark:bg-main-dark-560 sm:flex sm:flex-row-reverse sm:px-6"
+						>
 							<button
 								v-if="!processing"
 								type="button"
@@ -67,7 +71,14 @@
 									fill="none"
 									viewBox="0 0 24 24"
 								>
-									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+									<circle
+										class="opacity-25"
+										cx="12"
+										cy="12"
+										r="10"
+										stroke="currentColor"
+										stroke-width="4"
+									></circle>
 									<path
 										class="opacity-75"
 										fill="currentColor"
@@ -99,6 +110,6 @@ withDefaults(defineProps<{ title: string; description: string; open: boolean; pr
 	title: '',
 	description: '',
 	open: false,
-	processing: false,
+	processing: false
 });
 </script>

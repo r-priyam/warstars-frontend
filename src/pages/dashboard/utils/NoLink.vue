@@ -4,7 +4,8 @@
 			<div class="max-w-md">
 				<p class="text-center text-6xl font-extrabold text-main-fail-600 dark:text-main-fail-400">Oops!</p>
 				<p class="mt-6 text-xl font-bold text-main-textDark-500 dark:text-main-textLight-500">
-					There is no {{ name }} linked for your account. To link a {{ name }} please click on the button below.
+					There is no {{ name }} linked for your account. To link a {{ name }} please click on the button
+					below.
 				</p>
 				<div class="mt-2 flex flex-nowrap justify-center">
 					<button

@@ -30,6 +30,6 @@
 
 <script setup lang="ts">
 withDefaults(defineProps<{ processing: boolean }>(), {
-	processing: false,
+	processing: false
 });
 </script>

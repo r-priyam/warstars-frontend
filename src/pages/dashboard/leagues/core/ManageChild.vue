@@ -19,7 +19,9 @@
 						/>
 					</div>
 					<div>
-						<label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4"
+							>Abbreviation<span class="ml-0.5 text-red-500">*</span></label
+						>
 						<input
 							name="child-abbreviation"
 							type="text"
@@ -48,7 +50,9 @@
 						/>
 					</div>
 					<div>
-						<label class="register-form-input-label mt-4">Logo URL<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4"
+							>Logo URL<span class="ml-0.5 text-red-500">*</span></label
+						>
 						<input name="icon-url" type="text" class="register-form-input" placeholder="Child Logo URL" />
 					</div>
 					<ProcessButton :processing="league.childRegisterProcess" />
@@ -75,7 +79,7 @@ async function registerChild() {
 		leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
 		name: formData.get('child-name') as string,
 		abbreviation: formData.get('child-abbreviation') as string,
-		iconUrl: formData.get('icon-url') as string,
+		iconUrl: formData.get('icon-url') as string
 	};
 	await league.registerChild(childRegisterData);
 }

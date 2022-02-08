@@ -16,7 +16,7 @@ import type {
 	TRemoveAdmin,
 	TSeasoncClanAdd,
 	TUpdateAdminPermission,
-	TUserPlayerLink,
+	TUserPlayerLink
 } from '~/types';
 
 export class RESTManager {

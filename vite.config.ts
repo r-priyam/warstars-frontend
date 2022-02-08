@@ -10,37 +10,37 @@ import ViteRadar from 'vite-plugin-radar';
 export default defineConfig({
 	resolve: {
 		alias: {
-			'~/': `${resolve(__dirname, 'src')}/`,
-		},
+			'~/': `${resolve(__dirname, 'src')}/`
+		}
 	},
 	plugins: [
 		vue(),
 		AutoImport({
 			dts: 'src/auto-imports.d.ts',
-			imports: ['vue', 'vue-router', '@vueuse/core'],
+			imports: ['vue', 'vue-router', '@vueuse/core']
 		}),
 		Components({
 			dts: 'src/components.d.ts',
 			resolvers: [
 				IconsResolver({
 					prefix: false,
-					componentPrefix: '',
-				}),
-			],
+					componentPrefix: ''
+				})
+			]
 		}),
 		Icons({
-			autoInstall: true,
+			autoInstall: true
 		}),
 		ViteRadar({
 			analytics: {
-				id: 'G-VPF07N5QBR',
-			},
-		}),
+				id: 'G-VPF07N5QBR'
+			}
+		})
 	],
 	server: {
 		host: true,
 		port: 3333,
-		strictPort: true,
+		strictPort: true
 	},
-	clearScreen: false,
+	clearScreen: false
 });

@@ -38,11 +38,21 @@
 			<section class="mt-10">
 				<form id="season" class="flex flex-col" @submit.prevent="registerSeason">
 					<div>
-						<label class="register-form-input-label">Start Date<span class="ml-0.5 text-red-500">*</span></label>
-						<input name="start-date" type="date" placeholder="DD-MM-YY" required="true" class="register-form-input" />
+						<label class="register-form-input-label"
+							>Start Date<span class="ml-0.5 text-red-500">*</span></label
+						>
+						<input
+							name="start-date"
+							type="date"
+							placeholder="DD-MM-YY"
+							required="true"
+							class="register-form-input"
+						/>
 					</div>
 					<div>
-						<label class="register-form-input-label mt-4">End Date<span class="ml-0.5 text-red-500">*</span></label>
+						<label class="register-form-input-label mt-4"
+							>End Date<span class="ml-0.5 text-red-500">*</span></label
+						>
 						<input id="end-date" name="end-date" type="date" required="true" class="register-form-input" />
 					</div>
 					<div>
@@ -72,7 +82,9 @@
 										class="rounded text-main-textDark-600 shadow-sm focus:ring focus:ring-main-textLight-460 focus:ring-opacity-40 focus:ring-offset-0 dark:text-main-textLight-600"
 										type="checkbox"
 									/>
-									<span class="ml-2 font-semibold text-main-textDark-500 dark:text-main-textLight-500">
+									<span
+										class="ml-2 font-semibold text-main-textDark-500 dark:text-main-textLight-500"
+									>
 										{{ child.name }}
 									</span>
 								</label>
@@ -103,7 +115,7 @@ const selectedChilds = ref([]);
 const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData)
 	.value!;
 const selectedLeagueChild = computed(
-	() => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues,
+	() => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues
 );
 
 onBeforeMount(async () => {
@@ -132,8 +144,10 @@ async function registerSeason() {
 	else if (moment(new Date(formData.get('end-date') as string)).isBefore(new Date()))
 		return notifications().error('End date is in past');
 	else if (
-		moment(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <=
-		13
+		moment(new Date(formData.get('end-date') as string)).diff(
+			new Date(formData.get('start-date') as string),
+			'days'
+		) <= 13
 	)
 		return notifications().error('Season duration must be 2 weeks or grater than it');
 
@@ -142,7 +156,7 @@ async function registerSeason() {
 			leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
 			startTime: formData.get('start-date') as string,
 			endTime: formData.get('end-date') as string,
-			childData: selectedChilds.value,
+			childData: selectedChilds.value
 		};
 		await league.newSeason(newSeasonData);
 	} else {
@@ -150,7 +164,7 @@ async function registerSeason() {
 			leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
 			childLeagueId: league.getLeagueLocalConfig?.child.id ?? 0,
 			startTime: formData.get('start-date') as string,
-			endTime: formData.get('end-date') as string,
+			endTime: formData.get('end-date') as string
 		};
 		await league.newChildSeason(childSeasonData);
 	}

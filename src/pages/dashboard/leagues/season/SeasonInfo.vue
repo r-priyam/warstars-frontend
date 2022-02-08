@@ -102,7 +102,9 @@
 									<span> Not In A Season </span>
 								</span>
 							</div>
-							<p class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl">
+							<p
+								class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl"
+							>
 								{{ selectedLeagueData.abbreviation }}
 							</p>
 							<p
@@ -116,7 +118,8 @@
 								v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
-								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Start Date: </span
 								>{{ moment(selectedLeagueData.startTime).format('MMM DD, YYYY') }}
 							</p>
@@ -124,7 +127,8 @@
 								v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
-								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>End Date: </span
 								>{{ moment(selectedLeagueData.endTime).format('MMM DD, YYYY') }}
 							</p>
@@ -205,7 +209,9 @@
 									<span> Not In A Season </span>
 								</span>
 							</div>
-							<p class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl">
+							<p
+								class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl"
+							>
 								{{ `${selectedLeagueData.abbreviation} ${child.name}` }}
 							</p>
 							<p
@@ -219,7 +225,8 @@
 								v-if="child.seasonActive !== null && child.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
-								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Start Date: </span
 								>{{ moment(child.startTime).format('MMM DD, YYYY') }}
 							</p>
@@ -227,7 +234,8 @@
 								v-if="child.seasonActive !== null && child.seasonActive"
 								class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
 							>
-								<span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>End Date: </span
 								>{{ moment(child.endTime).format('MMM DD, YYYY') }}
 							</p>
@@ -262,7 +270,7 @@ const league = leagueManagement();
 const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData)
 	.value!;
 const selectedLeagueData = computed(() =>
-	leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId),
+	leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId)
 );
 
 function saveForceSelectedLeague(child: TUserChildLeague) {
@@ -275,10 +283,10 @@ function saveForceSelectedLeague(child: TUserChildLeague) {
 				name: child.name,
 				abbreviation: child.abbreviation,
 				iconUrl: child.iconUrl,
-				seasonId: child.seasonId,
+				seasonId: child.seasonId
 			},
-			division: league.getLeagueLocalConfig?.division,
-		}),
+			division: league.getLeagueLocalConfig?.division
+		})
 	);
 }
 </script>

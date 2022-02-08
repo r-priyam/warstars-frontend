@@ -13,14 +13,16 @@
 							abbreviation: league.abbreviation,
 							seasonId: league.seasonId,
 							iconUrl: league.iconUrl,
-							seasonActive: league.seasonActive,
+							seasonActive: league.seasonActive
 						};
 						handleLeagueChange();
 					"
 				>
 					<img
 						class="m-1 h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
-						:class="[league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : '']"
+						:class="[
+							league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : ''
+						]"
 						:src="league.iconUrl"
 						:alt="league.name"
 						:title="league.name"
@@ -68,7 +70,11 @@
 					enter-from-class="translate-x-12 opacity-0"
 					enter-to-class="transition duration-300 ease-out transform-gpu"
 				>
-					<div v-for="childLeague in selectedLeagueChild" :key="childLeague.id" class="flex flex-wrap justify-center">
+					<div
+						v-for="childLeague in selectedLeagueChild"
+						:key="childLeague.id"
+						class="flex flex-wrap justify-center"
+					>
 						<button
 							@click="
 								selectedChildLeague = {
@@ -77,13 +83,17 @@
 									abbreviation: childLeague.abbreviation,
 									iconUrl: childLeague.iconUrl,
 									seasonId: childLeague.seasonId,
-									seasonActive: childLeague.seasonActive,
+									seasonActive: childLeague.seasonActive
 								}
 							"
 						>
 							<img
 								class="m-1 inline-flex h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
-								:class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
+								:class="[
+									childLeague.id === selectedChildLeague.id
+										? 'border-green-700 dark:border-green-500'
+										: ''
+								]"
 								:src="childLeague.iconUrl"
 								:alt="childLeague.name"
 								:title="childLeague.name"
@@ -136,7 +146,7 @@
 									:class="[
 										// probably will change select colour in future..
 										active ? '' : '',
-										checked ? 'bg-indigo-500 bg-opacity-75' : 'bg-indigo-400 hover:bg-indigo-500',
+										checked ? 'bg-indigo-500 bg-opacity-75' : 'bg-indigo-400 hover:bg-indigo-500'
 									]"
 									class="relative flex cursor-pointer rounded-lg px-5 py-2 shadow-md focus:outline-none"
 								>
@@ -146,7 +156,10 @@
 												<RadioGroupLabel as="p" class="font-bold text-black">
 													{{ division.name }}
 												</RadioGroupLabel>
-												<RadioGroupDescription as="span" class="inline font-semibold text-gray-900">
+												<RadioGroupDescription
+													as="span"
+													class="inline font-semibold text-gray-900"
+												>
 													<span> Changes will only apply to {{ division.name }}</span>
 												</RadioGroupDescription>
 											</div>
@@ -195,7 +208,7 @@ import type {
 	TSelectedChild,
 	TSelectedLeague,
 	TUserChildLeagueDivisions,
-	TUserLeagueData,
+	TUserLeagueData
 } from '~/types';
 import { notifications } from '~/stores/notifications';
 import router, { pushLeagueSaveRoute } from '~/router';
@@ -219,7 +232,7 @@ const selectedLeague = ref<TSelectedLeague>({
 	abbreviation: '',
 	seasonId: null,
 	iconUrl: '',
-	seasonActive: null,
+	seasonActive: null
 });
 const selectedChildLeague = ref<TSelectedChild>({
 	id: 0,
@@ -227,7 +240,7 @@ const selectedChildLeague = ref<TSelectedChild>({
 	abbreviation: '',
 	iconUrl: '',
 	seasonId: null,
-	seasonActive: null,
+	seasonActive: null
 });
 const selectedDivision = ref<TUserChildLeagueDivisions>({
 	id: 0,
@@ -236,18 +249,18 @@ const selectedDivision = ref<TUserChildLeagueDivisions>({
 	name: '',
 	abbreviation: '',
 	iconUrl: null,
-	clansCount: 0,
+	clansCount: 0
 });
 
 const selectedLeagueChild = computed(
-	() => leaguesData.find((league) => league.leagueId === selectedLeague.value.leagueId)?.childLeagues,
+	() => leaguesData.find((league) => league.leagueId === selectedLeague.value.leagueId)?.childLeagues
 );
 
 const selectedChildDivisions = computed(
 	() =>
 		leaguesData
 			.find((league) => league.leagueId === selectedLeague.value.leagueId)
-			?.childLeagues.find((child) => child.id === selectedChildLeague.value.id)?.divisions,
+			?.childLeagues.find((child) => child.id === selectedChildLeague.value.id)?.divisions
 );
 
 const handleReset = () => {
@@ -257,7 +270,7 @@ const handleReset = () => {
 		abbreviation: '',
 		seasonId: null,
 		iconUrl: '',
-		seasonActive: null,
+		seasonActive: null
 	};
 	selectedChildLeague.value = { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null };
 	selectedDivision.value = {
@@ -267,7 +280,7 @@ const handleReset = () => {
 		name: '',
 		abbreviation: '',
 		iconUrl: null,
-		clansCount: 0,
+		clansCount: 0
 	};
 };
 
@@ -282,8 +295,8 @@ const applyLeagueConfig = async () => {
 		JSON.stringify({
 			league: selectedLeague.value,
 			child: selectedChildLeague.value,
-			division: selectedDivision.value,
-		}),
+			division: selectedDivision.value
+		})
 	);
 	notifications().info('Settings saved successfully!');
 	await router.push({ name: pushLeagueSaveRoute.value });

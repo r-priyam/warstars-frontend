@@ -32,7 +32,8 @@
 					</div>
 					<div>
 						<label class="register-form-input-label mt-4 mb-2"
-							>Clan Tags <span class="text-xs font-bold text-red-600">(Clan tags must start with #)</span></label
+							>Clan Tags
+							<span class="text-xs font-bold text-red-600">(Clan tags must start with #)</span></label
 						>
 						<textarea name="clan-tags" class="register-form-input" rows="1" required></textarea>
 					</div>
@@ -100,7 +101,7 @@ async function addClans() {
 		divisionId: leagueData!.division.id, // @ts-expect-error, already checking for it when page is mounted
 		leagueSeasonId: leagueData!.league.seasonId, // @ts-expect-error, already checking for it when page is mounted
 		childSeasonId: leagueData!.child.seasonId,
-		clanTags,
+		clanTags
 	};
 	await league.seasonClanAdd(seasonClanRegisterData);
 }

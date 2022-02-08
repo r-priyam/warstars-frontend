@@ -35,7 +35,7 @@ export class RequestHandler {
 			method,
 			body,
 			signal: controller.signal,
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'application/json' }
 		});
 		clearTimeout(id);
 

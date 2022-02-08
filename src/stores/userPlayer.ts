@@ -12,7 +12,7 @@ export const userPlayer = defineStore({
 		playerData: [],
 		playersDataProcessing: false,
 		linkPlayerProcessing: false,
-		removePlayerProcessing: false,
+		removePlayerProcessing: false
 	}),
 
 	getters: {
@@ -21,7 +21,7 @@ export const userPlayer = defineStore({
 			state.playerData.forEach((item) => {
 				if (item.tag === playerTag) return item;
 			});
-		},
+		}
 	},
 
 	actions: {
@@ -66,8 +66,8 @@ export const userPlayer = defineStore({
 			} finally {
 				this.removePlayerProcessing = false;
 			}
-		},
-	},
+		}
+	}
 });
 
 if (import.meta.hot) {

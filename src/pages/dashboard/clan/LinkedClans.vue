@@ -8,7 +8,10 @@
 			@close-pop-up="() => (showPopUp = false)"
 			@confirmation="
 				async () => (
-					(popUpProcessing = true), await userClan.removeClan(clanTag), (popUpProcessing = false), (showPopUp = false)
+					(popUpProcessing = true),
+					await userClan.removeClan(clanTag),
+					(popUpProcessing = false),
+					(showPopUp = false)
 				)
 			"
 		/>
@@ -42,7 +45,10 @@
 							/>
 						</div>
 						<div class="h-32 w-full">
-							<div class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end" aria-hidden="true">
+							<div
+								class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end"
+								aria-hidden="true"
+							>
 								<div v-for="(labelUrl, labelName) in clan.labels" :key="labelUrl" class="mr-2 h-8 w-8">
 									<img :src="labelUrl" :alt="labelName" :title="labelName" class="h-8 w-8" />
 								</div>
@@ -63,7 +69,9 @@
 									</span>
 								</span>
 							</div>
-							<p class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl">
+							<p
+								class="text-xl font-extrabold text-main-textDark-500 dark:text-main-textLight-500 lg:text-2xl"
+							>
 								{{ clan.name }}
 								<span class="text-sm font-bold text-main-textDark-530 dark:text-main-textLight-530">
 									({{ clan.tag }})
@@ -75,21 +83,27 @@
 										showPopUp = true;
 									"
 								>
-									<heroicons-solid:trash class="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500" aria-hidden="true" />
+									<heroicons-solid:trash
+										class="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500"
+										aria-hidden="true"
+									/>
 								</button>
 							</p>
 							<p class="mt-4 text-sm font-semibold text-red-500 lg:text-base">
-								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Leader: </span
 								><span class="text-yellow-400">👑</span> {{ clan.leader }}
 							</p>
 							<p class="text-sm font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
-								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Location: </span
 								>{{ clan.location }}
 							</p>
 							<p class="text-sm font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
-								<span class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
+								<span
+									class="text-sm font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
 									>Members: </span
 								>{{ clan.members }}/50
 							</p>

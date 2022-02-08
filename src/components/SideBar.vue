@@ -15,14 +15,19 @@
 				@click="$emit('closeSidebar', false)"
 			>
 				<span class="sr-only">Close menu</span>
-				<heroicons-outline:x class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
+				<heroicons-outline:x
+					class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
+					aria-hidden="true"
+				/>
 			</div>
 		</div>
 
 		<div v-if="league.getLeagueLocalConfig !== null" class="mt-4 items-center px-4">
 			<h1 class="text-base font-extrabold text-main-textDark-600 dark:text-main-textLight-530">Current League</h1>
 			<div v-if="league.getLeagueLocalConfig.league.name === ''">
-				<h3 class="truncate text-center font-bold leading-tight text-red-700 dark:text-red-500">No League Selected</h3>
+				<h3 class="truncate text-center font-bold leading-tight text-red-700 dark:text-red-500">
+					No League Selected
+				</h3>
 			</div>
 			<div v-else class="mt-2 flex shrink-0 items-center">
 				<img class="h-12 w-12 rounded-lg" :src="league.getLeagueLocalConfig.league.iconUrl" />
@@ -33,7 +38,9 @@
 				</div>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.name === ''">
-				<h3 class="truncate text-center font-bold leading-tight text-green-700 dark:text-green-500">No Child League</h3>
+				<h3 class="truncate text-center font-bold leading-tight text-green-700 dark:text-green-500">
+					No Child League
+				</h3>
 			</div>
 			<div v-if="league.getLeagueLocalConfig.child.iconUrl !== ''" class="mt-2 flex shrink-0 items-center">
 				<img class="h-12 w-12 rounded-lg" :src="league.getLeagueLocalConfig.child.iconUrl" />
@@ -77,7 +84,10 @@
 					>
 						<component
 							:is="item.icon"
-							:class="[$route.path === item.href ? 'text-primary' : 'text-secondary-dark', 'mr-2 h-6 w-6 shrink-0']"
+							:class="[
+								$route.path === item.href ? 'text-primary' : 'text-secondary-dark',
+								'mr-2 h-6 w-6 shrink-0'
+							]"
 							aria-hidden="true"
 						/>
 						{{ item.name }}
@@ -120,22 +130,22 @@ const navigation = [
 		title: 'Player',
 		items: [
 			{ name: 'Link Player', href: '/dashboard/player-link', icon: LinkPlayer },
-			{ name: 'Linked Players', href: '/dashboard/players-linked', icon: LinkedPlayers },
-		],
+			{ name: 'Linked Players', href: '/dashboard/players-linked', icon: LinkedPlayers }
+		]
 	},
 	{
 		title: 'Clan',
 		items: [
 			{ name: 'Link Clan', href: '/dashboard/clan-link', icon: LinkClan },
-			{ name: 'Linked Clans', href: '/dashboard/clans-linked', icon: LinkedClans },
-		],
+			{ name: 'Linked Clans', href: '/dashboard/clans-linked', icon: LinkedClans }
+		]
 	},
 	{
 		title: 'League Registration',
 		items: [
 			{ name: "What's This?", href: '/dashboard/league-register-info', icon: LeagueQuetions },
-			{ name: 'Register', href: '/dashboard/register-league', icon: LeagueRegister },
-		],
+			{ name: 'Register', href: '/dashboard/register-league', icon: LeagueRegister }
+		]
 	},
 	{
 		title: 'League Core',
@@ -143,16 +153,16 @@ const navigation = [
 		items: [
 			{ name: 'Info', href: '/dashboard/league', icon: LeagueInfo },
 			{ name: 'Add Child League', href: '/dashboard/add-league-child', icon: LeagueChild },
-			{ name: 'Add Child Division', href: '/dashboard/add-child-division', icon: LeagueChildDivision },
-		],
+			{ name: 'Add Child Division', href: '/dashboard/add-child-division', icon: LeagueChildDivision }
+		]
 	},
 	{
 		title: 'League Admin',
 		href: '/',
 		items: [
 			{ name: 'Admins Info', href: '/dashboard/league-admin', icon: HeadAdmin },
-			{ name: 'Manage Admins', href: '/dashboard/league-admin-manage', icon: ManageHeadAdmin },
-		],
+			{ name: 'Manage Admins', href: '/dashboard/league-admin-manage', icon: ManageHeadAdmin }
+		]
 	},
 	{
 		title: 'League Season',
@@ -165,9 +175,9 @@ const navigation = [
 			{ name: 'Matches', href: '/', icon: SeasonMatches },
 			{ name: 'Results', href: '/', icon: SeasonResult },
 			{ name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },
-			{ name: 'Hit Rates', href: '/', icon: HitRates },
-		],
-	},
+			{ name: 'Hit Rates', href: '/', icon: HitRates }
+		]
+	}
 ];
 
 const toggleNavigation =
