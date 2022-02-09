@@ -259,25 +259,23 @@ const router = useRouter();
 const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const rawLeaguesData = useStorage('leagues-data', '{}');
+const leaguesData: TUserLeagueData[] = (JSON.parse(rawLeaguesData.value) as TLocalLeagueData).value!;
 const selectedLeagueData = computed(() =>
     leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId)
 );
 
 function saveForceSelectedLeague(child: TUserChildLeague) {
-    localStorage.setItem(
-        'selected-league-config',
-        JSON.stringify({
-            league: league.getLeagueLocalConfig?.league,
-            child: {
-                id: child.id,
-                name: child.name,
-                abbreviation: child.abbreviation,
-                iconUrl: child.iconUrl,
-                seasonId: child.seasonId
-            },
-            division: league.getLeagueLocalConfig?.division
-        })
-    );
+    rawLeaguesData.value = JSON.stringify({
+        league: league.getLeagueLocalConfig?.league,
+        child: {
+            id: child.id,
+            name: child.name,
+            abbreviation: child.abbreviation,
+            iconUrl: child.iconUrl,
+            seasonId: child.seasonId
+        },
+        division: league.getLeagueLocalConfig?.division
+    });
 }
 </script>

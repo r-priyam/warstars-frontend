@@ -200,7 +200,8 @@ onBeforeMount(async () => {
     }
 });
 
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const rawLeaguesData = useStorage('leagues-data', '{}');
+const leaguesData: TUserLeagueData[] = (JSON.parse(rawLeaguesData.value) as TLocalLeagueData).value!;
 const selectedLeague = ref<TSelectedLeague>({
     leagueId: 0,
     name: '',
@@ -263,14 +264,11 @@ const handleLeagueChange = () => {
 };
 
 const applyLeagueConfig = async () => {
-    localStorage.setItem(
-        'selected-league-config',
-        JSON.stringify({
-            league: selectedLeague.value,
-            child: selectedChildLeague.value,
-            division: selectedDivision.value
-        })
-    );
+    rawLeaguesData.value = JSON.stringify({
+        league: selectedLeague.value,
+        child: selectedChildLeague.value,
+        division: selectedDivision.value
+    });
     notifications().info('Settings saved successfully!');
     await router.push({ name: pushLeagueSaveRoute.value });
 };

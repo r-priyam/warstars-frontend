@@ -127,7 +127,7 @@ export const leagueManagement = defineStore({
         },
 
         async syncLeaguesData() {
-            const localLeaguesData: TLocalLeagueData = JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData;
+            const localLeaguesData: TLocalLeagueData = JSON.parse(useStorage('leagues-data', '').value) as TLocalLeagueData;
             if (Object.keys(localLeaguesData).length === 0) {
                 await this.refreshLeaguesData();
             } else {
