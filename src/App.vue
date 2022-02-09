@@ -17,7 +17,7 @@
                     <button
                         type="button"
                         class="-mr-1 flex rounded-md p-2 hover:bg-main-light-500 focus:outline-none dark:hover:bg-main-dark-500 sm:-mr-2"
-                        @click="setBetaNoticeValue()"
+                        @click="showBetaNotice = false"
                     >
                         <span class="sr-only">Dismiss</span>
                         <heroicons-outline:x class="h-6 w-6 text-red-500" aria-hidden="true" />
@@ -49,19 +49,8 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from '~/components/Navbar.vue';
-
 const router = useRouter();
-const showBetaNotice = ref(false);
-const setBetaNoticeValue = () => {
-    localStorage.setItem('beta-warning', 'false');
-    showBetaNotice.value = false;
-};
-onMounted(() => {
-    if (localStorage.getItem('beta-warning') !== 'false') {
-        showBetaNotice.value = true;
-    }
-});
+const showBetaNotice = useStorage('beta-warning', true);
 </script>
 
 <style>

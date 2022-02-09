@@ -100,7 +100,7 @@ const league = leagueManagement();
 const leagueSeason = ref(!prop.showChildSeason);
 const childSeason = ref(prop.showChildSeason);
 const selectedChilds = ref([]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(useStorage('leagues-data', '{}').value) as TLocalLeagueData).value!;
 const selectedLeagueChild = computed(
     () => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues
 );

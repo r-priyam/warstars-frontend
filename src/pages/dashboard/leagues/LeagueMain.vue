@@ -172,7 +172,7 @@ const leagueStore = leagueManagement();
 const league = ref(true); // true by default to show the league main page.
 const childLeague = ref(false);
 const division = ref(false);
-const leaguesData: TUserLeagueData[] = (JSON.parse(localStorage.getItem('leagues-data') ?? '{}') as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(useStorage('leagues-data', '{}').value) as TLocalLeagueData).value!;
 
 const leagueData = computed(() =>
     leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId)
