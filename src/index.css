@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @layer components {
-	.navbar-open-menu {
-		@apply inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:text-gray-400 focus:outline-none;
-	}
+    .navbar-open-menu {
+        @apply inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:text-gray-400 focus:outline-none;
+    }
 
-	.navbar-item {
-		@apply inline-flex items-center
+    .navbar-item {
+        @apply inline-flex items-center
 		rounded-md
 		py-3
 		px-4
@@ -20,45 +20,45 @@
 		focus-visible:ring-1
 		focus-visible:ring-white
 		dark:text-main-textLight-530 dark:hover:text-main-textLight-500;
-	}
+    }
 
-	.navbar-mobile-item {
-		@apply -m-3 flex items-center rounded-md p-3 text-main-textDark-600 hover:bg-main-light-560
+    .navbar-mobile-item {
+        @apply -m-3 flex items-center rounded-md p-3 text-main-textDark-600 hover:bg-main-light-560
 		dark:text-main-textLight-530
 		dark:hover:bg-main-dark-560;
-	}
+    }
 
-	.navbar-mobile-item-name {
-		@apply ml-3 text-base font-medium text-main-textDark-600 dark:text-main-textLight-530;
-	}
+    .navbar-mobile-item-name {
+        @apply ml-3 text-base font-medium text-main-textDark-600 dark:text-main-textLight-530;
+    }
 
-	.register-form-input-label {
-		@apply block text-base font-bold text-main-textDark-530 dark:text-main-textLight-530;
-	}
+    .register-form-input-label {
+        @apply block text-base font-bold text-main-textDark-530 dark:text-main-textLight-530;
+    }
 
-	.register-form-input {
-		@apply mt-2 block w-full appearance-none rounded-lg 
+    .register-form-input {
+        @apply mt-2 block w-full appearance-none rounded-lg 
 		border border-gray-300 bg-white px-3 
 		py-2 text-gray-900 placeholder-gray-500
 		shadow-sm focus:z-20
 		focus:outline-none focus:ring-2 focus:ring-main-textLight-460 dark:bg-gray-300 sm:text-sm;
-	}
+    }
 }
 
 #nprogress {
-	pointer-events: none;
+    pointer-events: none;
 }
 
 #nprogress .bar {
-	background: #0f4c75;
-	position: fixed;
-	z-index: 1031;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 2px;
+    background: #0f4c75;
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
 }
 
 .dark #nprogress .bar {
-	background: #2e78a9;
+    background: #2e78a9;
 }

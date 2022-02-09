@@ -9,41 +9,41 @@ import ViteRadar from 'vite-plugin-radar';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-	resolve: {
-		alias: {
-			'~/': `${resolve(__dirname, 'src')}/`
-		}
-	},
-	plugins: [
-		vue(),
-		AutoImport({
-			dts: 'src/auto-imports.d.ts',
-			imports: ['vue', 'vue-router', '@vueuse/core']
-		}),
-		Components({
-			dts: 'src/components.d.ts',
-			resolvers: [
-				IconsResolver({
-					prefix: false
-				})
-			]
-		}),
-		Icons({
-			autoInstall: true
-		}),
-		ViteRadar({
-			analytics: {
-				id: 'G-VPF07N5QBR'
-			}
-		}),
-		VitePWA({
-			registerType: 'autoUpdate'
-		})
-	],
-	server: {
-		host: true,
-		port: 3333,
-		strictPort: true
-	},
-	clearScreen: false
+    resolve: {
+        alias: {
+            '~/': `${resolve(__dirname, 'src')}/`
+        }
+    },
+    plugins: [
+        vue(),
+        AutoImport({
+            dts: 'src/auto-imports.d.ts',
+            imports: ['vue', 'vue-router', '@vueuse/core']
+        }),
+        Components({
+            dts: 'src/components.d.ts',
+            resolvers: [
+                IconsResolver({
+                    prefix: false
+                })
+            ]
+        }),
+        Icons({
+            autoInstall: true
+        }),
+        ViteRadar({
+            analytics: {
+                id: 'G-VPF07N5QBR'
+            }
+        }),
+        VitePWA({
+            registerType: 'autoUpdate'
+        })
+    ],
+    server: {
+        host: true,
+        port: 3333,
+        strictPort: true
+    },
+    clearScreen: false
 });

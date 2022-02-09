@@ -2,11 +2,11 @@ import { leagueManagement } from '~/stores/leagueManagement';
 import { notifications } from '~/stores/notifications';
 
 export async function checkLeague() {
-	const router = useRouter();
-	const league = leagueManagement();
+    const router = useRouter();
+    const league = leagueManagement();
 
-	if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
-		notifications().info('Please select a league to continue');
-		await router.push({ name: 'League Selector' });
-	}
+    if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
+        notifications().info('Please select a league to continue');
+        await router.push({ name: 'League Selector' });
+    }
 }

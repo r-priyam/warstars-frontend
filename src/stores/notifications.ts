@@ -1,52 +1,52 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 
 interface TNotification {
-	id?: number;
-	title: string;
-	text?: string;
+    id?: number;
+    title: string;
+    text?: string;
 }
 
 interface TNotifications {
-	notificationId: number;
-	notifications: TNotification[];
+    notificationId: number;
+    notifications: TNotification[];
 }
 
 export const notifications = defineStore({
-	id: 'notifications',
-	state: (): TNotifications => ({ notificationId: 0, notifications: [] }),
-	actions: {
-		removeNotification(id: number) {
-			this.notifications.splice(
-				this.notifications.findIndex((notification: TNotification) => notification.id === id),
-				1
-			);
-		},
+    id: 'notifications',
+    state: (): TNotifications => ({ notificationId: 0, notifications: [] }),
+    actions: {
+        removeNotification(id: number) {
+            this.notifications.splice(
+                this.notifications.findIndex((notification: TNotification) => notification.id === id),
+                1
+            );
+        },
 
-		notify(title: string, text: string, timeout: number) {
-			this.notificationId++;
-			const notificationPayload = { id: this.notificationId, title, text };
-			this.notifications.push(notificationPayload);
-			setTimeout(() => this.removeNotification(this.notificationId), timeout);
-		},
+        notify(title: string, text: string, timeout: number) {
+            this.notificationId++;
+            const notificationPayload = { id: this.notificationId, title, text };
+            this.notifications.push(notificationPayload);
+            setTimeout(() => this.removeNotification(this.notificationId), timeout);
+        },
 
-		info(text: string, timeout = 4000) {
-			this.notify('Info', text, timeout);
-		},
+        info(text: string, timeout = 4000) {
+            this.notify('Info', text, timeout);
+        },
 
-		success(text: string, timeout = 4000) {
-			this.notify('Success', text, timeout);
-		},
+        success(text: string, timeout = 4000) {
+            this.notify('Success', text, timeout);
+        },
 
-		warning(text: string, timeout = 4000) {
-			this.notify('Warning', text, timeout);
-		},
+        warning(text: string, timeout = 4000) {
+            this.notify('Warning', text, timeout);
+        },
 
-		error(text = 'Something went wrong!', timeout = 4000) {
-			this.notify('Error', text, timeout);
-		}
-	}
+        error(text = 'Something went wrong!', timeout = 4000) {
+            this.notify('Error', text, timeout);
+        }
+    }
 });
 
 if (import.meta.hot) {
-	import.meta.hot.accept(acceptHMRUpdate(notifications, import.meta.hot));
+    import.meta.hot.accept(acceptHMRUpdate(notifications, import.meta.hot));
 }
