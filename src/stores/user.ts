@@ -8,42 +8,42 @@ import { domain } from '~/env';
 const API = new RESTManager();
 
 export const userStore = defineStore({
-	id: 'user',
+    id: 'user',
 
-	state: () => ({
-		userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '' },
-		loggedIn: false
-	}),
+    state: () => ({
+        userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '' },
+        loggedIn: false
+    }),
 
-	actions: {
-		async setUserData() {
-			const notification = notifications();
-			this.loggedIn = true;
-			try {
-				this.userData = (await API.user()).data;
-			} catch (error) {
-				if (error instanceof HTTPError) notification.error(error.message);
-			}
-		},
+    actions: {
+        async setUserData() {
+            const notification = notifications();
+            this.loggedIn = true;
+            try {
+                this.userData = (await API.user()).data;
+            } catch (error) {
+                if (error instanceof HTTPError) notification.error(error.message);
+            }
+        },
 
-		async logOut() {
-			const router = useRouter();
-			const notification = notifications();
-			try {
-				await API.logOut();
-			} catch (error) {
-				notification.error();
-			} finally {
-				Cookies.remove('_league_permissions', { path: '', domain });
-				localStorage.removeItem('leagues-data');
-				localStorage.removeItem('selected-league-config');
-				this.loggedIn = false;
-				await router.push({ name: 'Home' });
-			}
-		}
-	}
+        async logOut() {
+            const router = useRouter();
+            const notification = notifications();
+            try {
+                await API.logOut();
+            } catch (error) {
+                notification.error();
+            } finally {
+                Cookies.remove('_league_permissions', { path: '', domain });
+                localStorage.removeItem('leagues-data');
+                localStorage.removeItem('selected-league-config');
+                this.loggedIn = false;
+                await router.push({ name: 'Home' });
+            }
+        }
+    }
 });
 
 if (import.meta.hot) {
-	import.meta.hot.accept(acceptHMRUpdate(userStore, import.meta.hot));
+    import.meta.hot.accept(acceptHMRUpdate(userStore, import.meta.hot));
 }
