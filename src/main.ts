@@ -1,7 +1,9 @@
 import { ViteSSG } from 'vite-ssg';
-import App from './App.vue';
-import './index.css';
-import routes from './router';
+import App from '~/App.vue';
+import routes from '~/router';
+import '~/index.css';
+
+import '@purge-icons/generated';
 
 export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }, async (ctx) => {
     // https://github.com/antfu/vite-ssg/issues/103

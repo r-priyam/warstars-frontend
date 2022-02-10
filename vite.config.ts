@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
+import PurgeIcons from 'vite-plugin-purge-icons';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -16,6 +17,7 @@ export default defineConfig({
     },
     plugins: [
         vue(),
+        PurgeIcons(),
         AutoImport({
             dts: 'src/auto-imports.d.ts',
             imports: ['vue', 'vue-router', '@vueuse/core']

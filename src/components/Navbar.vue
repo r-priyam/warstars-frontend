@@ -45,7 +45,7 @@
                                                 active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
                                                 'group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530'
                                             ]"
-                                            ><ic:sharp-dashboard class="mr-1" />Dashboard</router-link
+                                            ><IconHelper icon="ic:sharp-dashboard" icon-style="mr-1" />Dashboard</router-link
                                         >
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
@@ -56,7 +56,7 @@
                                             ]"
                                             @click="showPopUp = true"
                                         >
-                                            <bx:bx-log-out class="mr-1" />Log out
+                                            <IconHelper icon="bx:bx-log-out" icon-style="mr-1" />Log out
                                         </button>
                                     </MenuItem>
                                 </MenuItems>
@@ -76,15 +76,15 @@
                                 leave-to-class="transform translate-y-full"
                                 mode="out-in"
                             >
-                                <heroicons-outline-sun
+                                <IconHelper
                                     v-if="!isDarkMode"
-                                    class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
-                                    aria-hidden="true"
+                                    icon="heroicons-outline:sun"
+                                    icon-style="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
                                 />
-                                <heroicons-outline-moon
+                                <IconHelper
                                     v-else
-                                    class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
-                                    aria-hidden="true"
+                                    icon="heroicons-outline:moon"
+                                    icon-style="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
                                 />
                             </transition>
                         </button>
@@ -92,27 +92,27 @@
                             class="navbar-open-menu text-gray-800 hover:bg-main-light-560 dark:text-gray-100 dark:hover:bg-main-dark-560"
                         >
                             <span class="sr-only">Open menu</span>
-                            <heroicons-outline-menu
-                                class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
-                                aria-hidden="true"
+                            <IconHelper
+                                icon="heroicons-outline:menu"
+                                icon-style="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
                             />
                         </PopoverButton>
                     </div>
                     <PopoverGroup as="nav" class="hidden space-x-2 md:flex">
                         <router-link to="/" class="navbar-item">
-                            <heroicons-outline:home class="mr-1 h-5 w-5" aria-hidden="true" />
+                            <IconHelper icon="heroicons-outline:home" icon-style="mr-1 h-5 w-5" />
                             <span>Home</span>
                         </router-link>
                         <router-link to="/clans" class="navbar-item">
-                            <heroicons-outline:shield-check class="mr-1 h-5 w-5" aria-hidden="true" />
+                            <IconHelper icon="heroicons-outline:shield-check" icon-style="mr-1 h-5 w-5" />
                             <span>Clans</span>
                         </router-link>
                         <router-link to="/leagues" class="navbar-item">
-                            <heroicons-outline:globe class="mr-1 h-5 w-5" aria-hidden="true" />
+                            <IconHelper icon="heroicons-outline:globe" icon-style="mr-1 h-5 w-5" />
                             <span>Leagues</span>
                         </router-link>
                         <router-link to="/docs" class="navbar-item">
-                            <heroicons-outline:document-text class="mr-1 h-5 w-5" aria-hidden="true" />
+                            <IconHelper icon="heroicons-outline:document-text" icon-style="mr-1 h-5 w-5" />
                             <span>Docs</span>
                         </router-link>
                     </PopoverGroup>
@@ -131,15 +131,15 @@
                                 leave-to-class="transform translate-y-full"
                                 mode="out-in"
                             >
-                                <heroicons-outline-sun
+                                <IconHelper
                                     v-if="!isDarkMode"
-                                    class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
-                                    aria-hidden="true"
+                                    icon="heroicons-outline:sun"
+                                    icon-style="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
                                 />
-                                <heroicons-outline-moon
+                                <IconHelper
                                     v-else
-                                    class="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
-                                    aria-hidden="true"
+                                    icon="heroicons-outline:moon"
+                                    icon-style="h-6 w-6 fill-current text-main-textDark-600 dark:text-main-textLight-530"
                                 />
                             </transition>
                         </button>
@@ -148,7 +148,7 @@
                             class="ml-2 inline-flex items-center rounded-md bg-main-light-560 px-4 py-2 text-base font-semibold text-main-textDark-600 hover:bg-main-light-660 focus:outline-none focus-visible:ring-1 focus-visible:ring-white dark:bg-main-dark-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-660"
                             :href="`${apiUrl}/discord/login`"
                         >
-                            <mdi:discord class="mr-1 h-5 w-5" />
+                            <IconHelper icon="mdi:discord" icon-style="mr-1 h-5 w-5" />
                             <span>Login</span>
                         </a>
                         <Menu v-if="user.loggedIn" as="div" class="relative ml-3">
@@ -159,9 +159,9 @@
                                         class="h-9 w-9 rounded-full"
                                         :src="`https://cdn.discordapp.com/avatars/${user.userData.discordId}/${user.userData.avatar}.png?size=1024`"
                                     />
-                                    <heroicons-solid:chevron-down
-                                        class="ml-1 mt-2.5 h-5 w-5 text-main-textDark-600 hover:text-violet-100 dark:text-main-textLight-530"
-                                        aria-hidden="true"
+                                    <IconHelper
+                                        icon="heroicons-solid:chevron-down"
+                                        icon-style="ml-1 mt-2.5 h-5 w-5 text-main-textDark-600 hover:text-violet-100 dark:text-main-textLight-530"
                                     />
                                 </MenuButton>
                             </div>
@@ -183,7 +183,7 @@
                                                 active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
                                                 'group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530'
                                             ]"
-                                            ><ic:sharp-dashboard class="mr-1" />Dashboard</router-link
+                                            ><IconHelper icon="ic:sharp-dashboard" icon-style="mr-1" />Dashboard</router-link
                                         >
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
@@ -194,7 +194,7 @@
                                             ]"
                                             @click="showPopUp = true"
                                         >
-                                            <bx:bx-log-out class="mr-1" />Log out
+                                            <IconHelper icon="bx:bx-log-out" icon-style="mr-1" />Log out
                                         </button>
                                     </MenuItem>
                                 </MenuItems>
@@ -228,9 +228,9 @@
                                         class="inline-flex items-center justify-center rounded-md p-2 hover:bg-main-light-560 focus:outline-none dark:hover:bg-main-dark-560"
                                     >
                                         <span class="sr-only">Close menu</span>
-                                        <heroicons-outline:x
-                                            class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
-                                            aria-hidden="true"
+                                        <IconHelper
+                                            icon="heroicons-outline:x"
+                                            icon-style="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530"
                                         />
                                     </PopoverButton>
                                 </div>
@@ -239,22 +239,22 @@
                             <div class="mt-6">
                                 <nav class="grid gap-y-8">
                                     <router-link to="/" class="navbar-mobile-item" @click="close()">
-                                        <heroicons-outline:home />
+                                        <IconHelper icon="heroicons-outline:home" icon-style="h-5 w-5" />
                                         <span class="navbar-mobile-item-name">Home</span>
                                     </router-link>
 
                                     <router-link to="/clans" class="navbar-mobile-item" @click="close()">
-                                        <heroicons-outline:shield-check />
+                                        <IconHelper icon="heroicons-outline:shield-check" icon-style="h-5 w-5" />
                                         <span class="navbar-mobile-item-name">Clans</span>
                                     </router-link>
 
                                     <router-link to="/league" class="navbar-mobile-item" @click="close()">
-                                        <heroicons-outline:globe />
+                                        <IconHelper icon="heroicons-outline:globe" icon-style="h-5 w-5" />
                                         <span class="navbar-mobile-item-name">Leagues</span>
                                     </router-link>
 
                                     <router-link to="/docs" class="navbar-mobile-item" @click="close()">
-                                        <heroicons-outline:document-text />
+                                        <IconHelper icon="heroicons-outline:document-text" icon-style="h-5 w-5" />
                                         <span class="navbar-mobile-item-name">Documentation</span>
                                     </router-link>
                                 </nav>
@@ -269,7 +269,7 @@
                                     class="flex w-full items-center justify-center rounded-md border border-transparent bg-main-textDark-560 px-4 py-2 text-base font-medium text-gray-200 shadow-sm hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
                                     @click="close()"
                                 >
-                                    <mdi:discord class="mr-1 h-5 w-5" />Login with Discord
+                                    <IconHelper icon="mdi:discord" icon-style="mr-1 h-5 w-5" />Login with Discord
                                 </a>
                             </div>
                         </div>

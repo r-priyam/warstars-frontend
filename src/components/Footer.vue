@@ -11,13 +11,13 @@
             </p>
             <span class="mt-4 inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">
                 <a class="text-gray-100">
-                    <mdi:discord class="text-main-textDark-600 dark:text-main-textLight-530" />
+                    <IconHelper icon="mdi:discord" icon-style="h-5 w-5 text-main-textDark-600 dark:text-main-textLight-530" />
                 </a>
                 <a class="ml-3 text-gray-100">
-                    <mdi:patreon class="text-main-textDark-600 dark:text-main-textLight-530" />
+                    <IconHelper icon="mdi:patreon" icon-style="h-5 w-5 text-main-textDark-600 dark:text-main-textLight-530" />
                 </a>
                 <a class="ml-3 text-gray-100">
-                    <fa:envelope class="text-main-textDark-600 dark:text-main-textLight-530" />
+                    <IconHelper icon="fa:envelope" icon-style="h-5 w-5 text-main-textDark-600 dark:text-main-textLight-530" />
                 </a>
             </span>
         </div>

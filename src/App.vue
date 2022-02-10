@@ -4,7 +4,7 @@
             <div class="flex flex-wrap items-center justify-between">
                 <div class="flex w-0 flex-1 items-center">
                     <span class="flex rounded-lg bg-main-light-500 p-2 dark:bg-main-dark-500">
-                        <heroicons-outline:speakerphone class="h-6 w-6 text-red-500" aria-hidden="true" />
+                        <IconHelper icon="heroicons-outline:speakerphone" icon-style="h-6 w-6 text-red-500" />
                     </span>
                     <p class="ml-3 truncate font-medium text-red-500">
                         <span class="md:hidden">Site is under active development</span>
@@ -20,7 +20,7 @@
                         @click="showBetaNotice = false"
                     >
                         <span class="sr-only">Dismiss</span>
-                        <heroicons-outline:x class="h-6 w-6 text-red-500" aria-hidden="true" />
+                        <IconHelper icon="heroicons-outline:x" icon-style="h-6 w-6 text-red-500" />
                     </button>
                 </div>
             </div>
