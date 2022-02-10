@@ -188,6 +188,7 @@ import type { TLocalLeagueData, TSelectedChild, TSelectedLeague, TUserChildLeagu
 import { notifications } from '~/stores/notifications';
 import { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
+import { RawLeagueData } from '~/utils/leagueUtils';
 
 const router = useRouter();
 const leagueStore = leagueManagement();
@@ -200,8 +201,7 @@ onBeforeMount(async () => {
     }
 });
 
-const rawLeaguesData = useStorage('leagues-data', '{}');
-const leaguesData: TUserLeagueData[] = (JSON.parse(rawLeaguesData.value) as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const selectedLeague = ref<TSelectedLeague>({
     leagueId: 0,
     name: '',
@@ -264,7 +264,7 @@ const handleLeagueChange = () => {
 };
 
 const applyLeagueConfig = async () => {
-    rawLeaguesData.value = JSON.stringify({
+    RawLeagueData.value = JSON.stringify({
         league: selectedLeague.value,
         child: selectedChildLeague.value,
         division: selectedDivision.value

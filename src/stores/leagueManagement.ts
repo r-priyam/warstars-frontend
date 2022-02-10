@@ -14,9 +14,9 @@ import type {
     TNewSeason,
     TRegisterChild,
     TRegisterDivision,
-    TSeasoncClanAdd,
-    TUserLeagueData
+    TSeasoncClanAdd
 } from '~/types';
+import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
 interface TPermsData {
     epoch: string;
@@ -46,34 +46,14 @@ export const leagueManagement = defineStore({
             // eslint-disable-next-line no-lone-blocks
             {
                 if (Object.keys(state.permissions).length > 1) {
-                    const data = useStorage('selected-league-config', {
-                        league: {
-                            leagueId: 0,
-                            name: '',
-                            abbreviation: '',
-                            seasonId: null,
-                            iconUrl: '',
-                            seasonActive: null
-                        },
-                        child: { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null },
-                        division: {
-                            id: 0,
-                            childId: 0,
-                            seasonId: 0,
-                            name: '',
-                            abbreviation: '',
-                            iconUrl: null,
-                            clansCount: 0
-                        }
-                    });
                     const dataToReturn: TLocalLeagueConfig = {
-                        league: data.value.league,
-                        child: data.value.child,
-                        division: data.value.division
+                        league: RawSelectedLeague.value.league,
+                        child: RawSelectedLeague.value.child,
+                        division: RawSelectedLeague.value.division
                     };
                     return dataToReturn;
                 }
-                localStorage.removeItem('selected-league-config');
+                RawSelectedLeague.value = null;
                 return null;
             }
         }
@@ -117,8 +97,8 @@ export const leagueManagement = defineStore({
             this.leagueDataRefreshProcess = true;
             try {
                 const request = await API.getUserLeagueData();
-                if (!request.data) return localStorage.removeItem('leagues-data');
-                localStorage.setItem('leagues-data', JSON.stringify({ epoch: Date.now(), value: request.data as TUserLeagueData }));
+                if (!request.data) return (RawLeagueData.value = null);
+                RawLeagueData.value = JSON.stringify({ epoch: Date.now(), value: request.data });
             } catch (error) {
                 if (error instanceof HTTPError) notification.error(error.message);
             } finally {
@@ -127,7 +107,7 @@ export const leagueManagement = defineStore({
         },
 
         async syncLeaguesData() {
-            const localLeaguesData: TLocalLeagueData = JSON.parse(useStorage('leagues-data', '').value) as TLocalLeagueData;
+            const localLeaguesData: TLocalLeagueData = JSON.parse(RawLeagueData.value) as TLocalLeagueData;
             if (Object.keys(localLeaguesData).length === 0) {
                 await this.refreshLeaguesData();
             } else {

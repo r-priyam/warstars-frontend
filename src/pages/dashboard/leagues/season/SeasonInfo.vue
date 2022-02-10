@@ -243,7 +243,7 @@
 import moment from 'moment';
 import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
 import LoadingSpinner from '~/components/Spinner.vue';
-import { checkLeague } from '~/utils/leagueUtils';
+import { RawLeagueData, checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
@@ -259,14 +259,13 @@ const router = useRouter();
 const clickedChildData = ref({ childId: 0, seasonId: 0 });
 
 const league = leagueManagement();
-const rawLeaguesData = useStorage('leagues-data', '{}');
-const leaguesData: TUserLeagueData[] = (JSON.parse(rawLeaguesData.value) as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const selectedLeagueData = computed(() =>
     leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId)
 );
 
 function saveForceSelectedLeague(child: TUserChildLeague) {
-    rawLeaguesData.value = JSON.stringify({
+    RawLeagueData.value = JSON.stringify({
         league: league.getLeagueLocalConfig?.league,
         child: {
             id: child.id,
