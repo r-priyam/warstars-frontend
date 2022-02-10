@@ -92,6 +92,7 @@ import { notifications } from '~/stores/notifications';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import type { TLocalLeagueData, TNewChildSeason, TNewSeason, TUserLeagueData } from '~/types';
+import { RawLeagueData } from '~/utils/leagueUtils';
 
 const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showChildSeason: false });
 
@@ -100,7 +101,7 @@ const league = leagueManagement();
 const leagueSeason = ref(!prop.showChildSeason);
 const childSeason = ref(prop.showChildSeason);
 const selectedChilds = ref([]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(useStorage('leagues-data', '{}').value) as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const selectedLeagueChild = computed(
     () => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues
 );

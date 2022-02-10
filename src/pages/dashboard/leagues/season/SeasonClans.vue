@@ -155,12 +155,13 @@ import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
+import { RawLeagueData } from '~/utils/leagueUtils';
 
 const router = useRouter();
 const leagueStore = leagueManagement();
 const filterOptions = ref([{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id }]);
 const selectedOption = ref(filterOptions.value[0]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(useStorage('leagues-data', '{}').value) as TLocalLeagueData).value!;
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const clansData = ref<TChildClans[] | null>(null);
 
 const showPopUp = ref(false);

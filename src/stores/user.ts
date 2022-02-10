@@ -4,6 +4,7 @@ import { notifications } from './notifications';
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
+import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
 const API = new RESTManager();
 
@@ -35,8 +36,8 @@ export const userStore = defineStore({
                 notification.error();
             } finally {
                 Cookies.remove('_league_permissions', { path: '', domain });
-                localStorage.removeItem('leagues-data');
-                localStorage.removeItem('selected-league-config');
+                RawLeagueData.value = null;
+                RawSelectedLeague.value = null;
                 this.loggedIn = false;
                 await router.push({ name: 'Home' });
             }
