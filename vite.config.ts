@@ -10,6 +10,7 @@ import ViteRadar from 'vite-plugin-radar';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+    clearScreen: false,
     resolve: {
         alias: {
             '~/': `${resolve(__dirname, 'src')}/`
@@ -41,11 +42,5 @@ export default defineConfig({
         VitePWA({
             registerType: 'autoUpdate'
         })
-    ],
-    server: {
-        host: true,
-        port: 3333,
-        strictPort: true
-    },
-    clearScreen: false
+    ]
 });

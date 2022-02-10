@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "vite-ssg build",
-        "dev": "vite",
+        "dev": "vite --port 3333 --host",
         "format": "prettier --write .",
         "lint": "eslint \"**/*.{vue,ts,js}\"",
         "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
