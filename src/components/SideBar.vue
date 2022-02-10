@@ -15,7 +15,7 @@
                 @click="$emit('closeSidebar', false)"
             >
                 <span class="sr-only">Close menu</span>
-                <heroicons-outline:x class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
+                <IconHelper icon="heroicons-outline:x" icon-style="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" />
             </div>
         </div>
 
@@ -68,11 +68,7 @@
                         active-class="bg-main-light-600 dark:bg-main-dark-600"
                         @click="$emit('closeSidebar', false)"
                     >
-                        <component
-                            :is="item.icon"
-                            :class="[$route.path === item.href ? 'text-primary' : 'text-secondary-dark', 'mr-2 h-6 w-6 shrink-0']"
-                            aria-hidden="true"
-                        />
+                        <IconHelper :icon="item.icon" icon-style="mr-2 h-6 w-6 shrink-0" />
                         {{ item.name }}
                     </router-link>
                 </div>
@@ -82,26 +78,6 @@
 </template>
 
 <script setup lang="ts">
-// @ts-expect-error https://github.com/antfu/unplugin-icons/issues/5
-import LinkPlayer from '~icons/mdi/account-plus'; // @ts-expect-error Line 92
-import LinkedPlayers from '~icons/mdi/account-check'; // @ts-expect-error Line 92
-import LinkClan from '~icons/mdi/account-multiple-plus'; // @ts-expect-error Line 92
-import LinkedClans from '~icons/mdi/account-multiple-check'; // @ts-expect-error Line 92
-import LeagueQuetions from '~icons/mdi/chat-question'; // @ts-expect-error Line 92
-import LeagueRegister from '~icons/heroicons-solid/pencil-alt'; // @ts-expect-error Line 92
-import LeagueInfo from '~icons/heroicons-solid/information-circle'; // @ts-expect-error Line 92
-import LeagueChild from '~icons/mdi/shield-plus'; // @ts-expect-error Line 92
-import LeagueChildDivision from '~icons/mdi/shield-plus-outline'; // @ts-expect-error Line 92
-import HeadAdmin from '~icons/ri/shield-user-fill'; // @ts-expect-error Line 92
-import ManageHeadAdmin from '~icons/ri/user-settings-fill'; // @ts-expect-error Line 92
-import HitRates from '~icons/mdi/fire'; // @ts-expect-error Line 92
-import SeasonCore from '~icons/icon-park-outline/manual-gear'; // @ts-expect-error Line 92
-import SeasonInfo from '~icons/mdi/calendar-star'; // @ts-expect-error Line 92
-import SeasonAddClans from '~icons/ic/baseline-group-add'; // @ts-expect-error Line 92
-import SeasonClans from '~icons/mdi/account-group'; // @ts-expect-error Line 92
-import SeasonMatches from '~icons/mdi/sword-cross'; // @ts-expect-error Line 92
-import SeasonResult from '~icons/mdi/email-newsletter'; // @ts-expect-error Line 92
-import SeasonLeaderBoard from '~icons/ic/baseline-leaderboard';
 import { userStore } from '~/stores/user';
 import { leagueManagement } from '~/stores/leagueManagement';
 
@@ -112,53 +88,53 @@ const navigation = [
     {
         title: 'Player',
         items: [
-            { name: 'Link Player', href: '/dashboard/player-link', icon: LinkPlayer },
-            { name: 'Linked Players', href: '/dashboard/players-linked', icon: LinkedPlayers }
+            { name: 'Link Player', href: '/dashboard/player-link', icon: 'mdi:account-plus' },
+            { name: 'Linked Players', href: '/dashboard/players-linked', icon: 'mdi:account-check' }
         ]
     },
     {
         title: 'Clan',
         items: [
-            { name: 'Link Clan', href: '/dashboard/clan-link', icon: LinkClan },
-            { name: 'Linked Clans', href: '/dashboard/clans-linked', icon: LinkedClans }
+            { name: 'Link Clan', href: '/dashboard/clan-link', icon: 'mdi:account-multiple-plus' },
+            { name: 'Linked Clans', href: '/dashboard/clans-linked', icon: 'mdi:account-multiple-check' }
         ]
     },
     {
         title: 'League Registration',
         items: [
-            { name: "What's This?", href: '/dashboard/league-register-info', icon: LeagueQuetions },
-            { name: 'Register', href: '/dashboard/register-league', icon: LeagueRegister }
+            { name: "What's This?", href: '/dashboard/league-register-info', icon: 'mdi:chat-question' },
+            { name: 'Register', href: '/dashboard/register-league', icon: 'heroicons-solid:pencil-alt' }
         ]
     },
     {
         title: 'League Core',
         href: '/',
         items: [
-            { name: 'Info', href: '/dashboard/league', icon: LeagueInfo },
-            { name: 'Add Child League', href: '/dashboard/add-league-child', icon: LeagueChild },
-            { name: 'Add Child Division', href: '/dashboard/add-child-division', icon: LeagueChildDivision }
+            { name: 'Info', href: '/dashboard/league', icon: 'heroicons-solid:information-circle' },
+            { name: 'Add Child League', href: '/dashboard/add-league-child', icon: 'mdi:shield-plus' },
+            { name: 'Add Child Division', href: '/dashboard/add-child-division', icon: 'mdi:shield-plus-outline' }
         ]
     },
     {
         title: 'League Admin',
         href: '/',
         items: [
-            { name: 'Admins Info', href: '/dashboard/league-admin', icon: HeadAdmin },
-            { name: 'Manage Admins', href: '/dashboard/league-admin-manage', icon: ManageHeadAdmin }
+            { name: 'Admins Info', href: '/dashboard/league-admin', icon: 'ri:shield-user-fill' },
+            { name: 'Manage Admins', href: '/dashboard/league-admin-manage', icon: 'ri:user-settings-fill' }
         ]
     },
     {
         title: 'League Season',
         href: '/',
         items: [
-            { name: 'Info', href: '/dashboard/season-info', icon: SeasonInfo },
-            { name: 'Core', href: '/dashboard/season-core', icon: SeasonCore },
-            { name: 'Clans', href: '/dashboard/season-clans', icon: SeasonClans },
-            { name: 'Add Clans', href: '/dashboard/season-clans-add', icon: SeasonAddClans },
-            { name: 'Matches', href: '/', icon: SeasonMatches },
-            { name: 'Results', href: '/', icon: SeasonResult },
-            { name: 'Leaderboard', href: '/', icon: SeasonLeaderBoard },
-            { name: 'Hit Rates', href: '/', icon: HitRates }
+            { name: 'Info', href: '/dashboard/season-info', icon: 'mdi:calendar-star' },
+            { name: 'Core', href: '/dashboard/season-core', icon: 'icon-park-outline:manual-gear' },
+            { name: 'Clans', href: '/dashboard/season-clans', icon: 'mdi:account-group' },
+            { name: 'Add Clans', href: '/dashboard/season-clans-add', icon: 'ic:baseline-group-add' },
+            { name: 'Matches', href: '/', icon: 'mdi:sword-cross' },
+            { name: 'Results', href: '/', icon: 'mdi:email-newsletter' },
+            { name: 'Leaderboard', href: '/', icon: 'ic:baseline-leaderboard' },
+            { name: 'Hit Rates', href: '/', icon: 'mdi:fire' }
         ]
     }
 ];

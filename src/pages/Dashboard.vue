@@ -6,7 +6,7 @@
                 @click="sidebarOpen = true"
             >
                 <span class="sr-only">Open sidebar</span>
-                <heroicons-outline:menu-alt-1 class="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" aria-hidden="true" />
+                <IconHelper icon="heroicons-outline:menu-alt-1" icon-style="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" />
             </button>
         </div>
         <div class="scrolling-touch sidebar-height flex overflow-hidden bg-main-light-600 dark:bg-main-dark-630">
