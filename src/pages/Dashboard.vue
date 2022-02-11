@@ -93,7 +93,7 @@ import DashboardSidebar from '~/components/SideBar.vue';
 import { notifications } from '~/stores/notifications';
 const notification = notifications();
 
-const sidebarElement = $ref(null);
+const sidebarElement = ref(null);
 let sidebarOpen = $ref(false);
 const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen = eventPayload);
 onClickOutside(sidebarElement, () => (sidebarOpen = false));
