@@ -14,7 +14,7 @@
                     <button
                         class="shrink-0 rounded-lg bg-main-textDark-560 px-4 py-2 text-base font-semibold text-white shadow-md hover:bg-main-textLight-560 focus:outline-none dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
                         type="button"
-                        @click="router.go(-1)"
+                        @click="$router.go(-1)"
                     >
                         Go Back
                     </button>
@@ -23,7 +23,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-const router = useRouter();
-</script>
