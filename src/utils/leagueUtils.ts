@@ -12,23 +12,26 @@ export async function checkLeague() {
 }
 
 export const RawLeagueData = useStorage('leagues-data', '{}');
-export const RawSelectedLeague = useStorage('selected-league-config', {
-    league: {
-        leagueId: 0,
-        name: '',
-        abbreviation: '',
-        seasonId: null,
-        iconUrl: '',
-        seasonActive: null
-    },
-    child: { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null },
-    division: {
-        id: 0,
-        childId: 0,
-        seasonId: 0,
-        name: '',
-        abbreviation: '',
-        iconUrl: null,
-        clansCount: 0
-    }
-});
+export const RawSelectedLeague = useStorage(
+    'selected-league',
+    JSON.stringify({
+        league: {
+            leagueId: 0,
+            name: '',
+            abbreviation: '',
+            seasonId: null,
+            iconUrl: '',
+            seasonActive: null
+        },
+        child: { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null },
+        division: {
+            id: 0,
+            childId: 0,
+            seasonId: 0,
+            name: '',
+            abbreviation: '',
+            iconUrl: null,
+            clansCount: 0
+        }
+    })
+);

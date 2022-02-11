@@ -46,10 +46,11 @@ export const leagueManagement = defineStore({
             // eslint-disable-next-line no-lone-blocks
             {
                 if (Object.keys(state.permissions).length > 1) {
+                    const data = JSON.parse(RawSelectedLeague.value);
                     const dataToReturn: TLocalLeagueConfig = {
-                        league: RawSelectedLeague.value.league,
-                        child: RawSelectedLeague.value.child,
-                        division: RawSelectedLeague.value.division
+                        league: data.league,
+                        child: data.child,
+                        division: data.division
                     };
                     return dataToReturn;
                 }
