@@ -3,8 +3,7 @@
         <div class="flex shrink-0 items-center px-4">
             <img
                 class="h-12 w-12 rounded-lg"
-                :src="`https://cdn.discordapp.com/avatars/${user.userData.discordId}/${user.userData.avatar}.png?size=1024`"
-            />
+                :src="`https://cdn.discordapp.com/avatars/${user.userData.discordId}/${user.userData.avatar}.png?size=1024`" />
             <div class="overflow-hidden pl-2 text-base">
                 <h3 class="truncate font-black leading-tight text-main-textDark-600 dark:text-main-textLight-530">
                     {{ user.userData.username }}
@@ -12,8 +11,7 @@
             </div>
             <div
                 class="mb-8 ml-auto inline-flex items-end justify-end rounded-md bg-main-light-560 p-2 hover:bg-main-light-600 focus:outline-none dark:bg-main-dark-560 dark:hover:bg-main-dark-600 lg:hidden"
-                @click="$emit('closeSidebar', false)"
-            >
+                @click="$emit('closeSidebar', false)">
                 <span class="sr-only">Close menu</span>
                 <IconHelper icon="heroicons-outline:x" icon-style="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" />
             </div>
@@ -47,8 +45,7 @@
                 <router-link
                     to="/dashboard/league-selector"
                     class="rounded bg-main-textDark-560 p-1 text-sm font-bold text-white hover:bg-main-textLight-560 dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
-                    @click="$emit('closeSidebar', false)"
-                >
+                    @click="$emit('closeSidebar', false)">
                     Change Config
                 </router-link>
             </div>
@@ -66,8 +63,7 @@
                         :to="item.href"
                         class="group mt-1 flex items-center rounded-md px-2 py-2 text-sm font-semibold text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600"
                         active-class="bg-main-light-600 dark:bg-main-dark-600"
-                        @click="$emit('closeSidebar', false)"
-                    >
+                        @click="$emit('closeSidebar', false)">
                         <IconHelper :icon="item.icon" icon-style="mr-2 h-6 w-6 shrink-0" />
                         {{ item.name }}
                     </router-link>

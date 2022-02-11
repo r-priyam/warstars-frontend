@@ -12,20 +12,17 @@
                                 <tr>
                                     <th
                                         scope="col"
-                                        class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
-                                    >
+                                        class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500">
                                         Name
                                     </th>
                                     <th
                                         scope="col"
-                                        class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
-                                    >
+                                        class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500">
                                         Abbreviation
                                     </th>
                                     <th
                                         scope="col"
-                                        class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
-                                    >
+                                        class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500">
                                         Clans
                                     </th>
                                 </tr>
@@ -33,18 +30,15 @@
                             <tbody>
                                 <tr class="border-b border-gray-600 bg-main-light-330 dark:border-gray-400 dark:bg-main-dark-530">
                                     <td
-                                        class="whitespace-nowrap px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500"
-                                    >
+                                        class="whitespace-nowrap px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500">
                                         {{ division.name }}
                                     </td>
                                     <td
-                                        class="whitespace-nowrap px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500"
-                                    >
+                                        class="whitespace-nowrap px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500">
                                         {{ division.abbreviation }}
                                     </td>
                                     <td
-                                        class="whitespace-nowrap px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500"
-                                    >
+                                        class="whitespace-nowrap px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500">
                                         {{ division.clansCount }}
                                     </td>
                                 </tr>
@@ -61,8 +55,7 @@
         <div class="mt-2 flex flex-nowrap justify-center">
             <button
                 class="mt-4 rounded-lg bg-main-fail-450 px-4 py-2 text-base font-semibold text-gray-100 shadow-md hover:bg-main-fail-500 focus:outline-none dark:bg-main-fail-500 dark:hover:bg-main-fail-600"
-                @click="router.push({ name: 'Add Child Division' })"
-            >
+                @click="router.push({ name: 'Add Child Division' })">
                 Add Child Division
             </button>
         </div>

@@ -13,8 +13,7 @@
                             autocomplete="off"
                             required="true"
                             class="register-form-input"
-                            placeholder="League Name"
-                        />
+                            placeholder="League Name" />
                     </div>
                     <div>
                         <label for="abbreviation" class="register-form-input-label mt-4"
@@ -28,24 +27,21 @@
                             minlength="2"
                             class="register-form-input"
                             placeholder="League Abbreviation"
-                            oninput="this.value = this.value.toUpperCase()"
-                        />
+                            oninput="this.value = this.value.toUpperCase()" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Head Name</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="user.userData.username"
-                        />
+                            :placeholder="user.userData.username" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Head Discord ID</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="user.userData.discordId"
-                        />
+                            :placeholder="user.userData.discordId" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4"

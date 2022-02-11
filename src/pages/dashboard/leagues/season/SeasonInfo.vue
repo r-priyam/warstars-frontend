@@ -14,8 +14,7 @@
 				(showPopUp = false),
 				(forceEnd = false)
 			)
-		"
-    />
+		" />
     <LoadingSpinner v-if="league.leagueDataRefreshProcess" />
     <div v-else class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500">
         <div class="mx-auto max-w-4xl">
@@ -25,8 +24,7 @@
                 </div>
                 <div class="jusify-start relative flex">
                     <span
-                        class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                    >
+                        class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530">
                         Season Information
                     </span>
                 </div>
@@ -39,8 +37,7 @@
                             <img
                                 class="mb-4 h-24 w-24 rounded-full border-2 border-red-700 object-contain dark:border-red-500 md:h-32 md:w-32"
                                 :src="selectedLeagueData.iconUrl"
-                                :alt="`${selectedLeagueData.name} Icon`"
-                            />
+                                :alt="`${selectedLeagueData.name} Icon`" />
                         </div>
                         <div class="h-32 w-full">
                             <div class="absolute right-2 mt-auto ml-auto inline-flex items-end justify-end lg:p-2">
@@ -55,8 +52,7 @@
                                         showPopUp = true;
                                         type = 'league';
                                         forceEnd = true;
-                                    "
-                                >
+                                    ">
                                     >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
@@ -65,8 +61,7 @@
                                 </button>
                                 <router-link
                                     v-if="!selectedLeagueData.seasonActive || selectedLeagueData.seasonActive === null"
-                                    :to="{ name: 'Season Core' }"
-                                >
+                                    :to="{ name: 'Season Core' }">
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
                                         ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
@@ -80,8 +75,7 @@
                                         popUpDescription = `Are you sure you want to end season ${selectedLeagueData?.specificId}? This action is irreversible`;
                                         showPopUp = true;
                                         type = 'league';
-                                    "
-                                >
+                                    ">
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-red-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
                                         ><IconHelper icon="ph:calendar-x-fill" icon-style="mr-1 h-5 w-5" /> End
@@ -107,23 +101,20 @@
                             </p>
                             <p
                                 v-if="selectedLeagueData.seasonActive"
-                                class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
-                            >
+                                class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base">
                                 Season {{ selectedLeagueData.specificId }}
                             </p>
                             <p v-else class="mt-2 text-base font-bold text-red-500 lg:text-base">No Season</p>
                             <p
                                 v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
-                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
-                            >
+                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >Start Date: </span
                                 >{{ moment(selectedLeagueData.startTime).format('MMM DD, YYYY') }}
                             </p>
                             <p
                                 v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
-                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
-                            >
+                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >End Date: </span
                                 >{{ moment(selectedLeagueData.endTime).format('MMM DD, YYYY') }}
@@ -135,14 +126,12 @@
                     <div
                         v-for="child in selectedLeagueData.childLeagues"
                         :key="child.id"
-                        class="group mt-4 border-b border-gray-400 dark:border-gray-100 sm:flex lg:items-end"
-                    >
+                        class="group mt-4 border-b border-gray-400 dark:border-gray-100 sm:flex lg:items-end">
                         <div class="flex shrink-0 items-center justify-center sm:mb-0 sm:mr-4">
                             <img
                                 class="mb-4 h-24 w-24 rounded-full border-2 border-green-700 object-contain dark:border-green-500 md:h-32 md:w-32"
                                 :src="child.iconUrl"
-                                :alt="`${child.name} Icon`"
-                            />
+                                :alt="`${child.name} Icon`" />
                         </div>
                         <div class="h-32 w-full">
                             <div class="absolute right-2 mt-auto ml-auto inline-flex items-end justify-end lg:p-2">
@@ -157,8 +146,7 @@
 										type = 'childLeague';
 										clickedChildData = { childId: child.id, seasonId: child.seasonId! };
 										forceEnd = true;
-									"
-                                >
+									">
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
                                         ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
@@ -167,8 +155,7 @@
                                 <router-link
                                     v-if="!child.seasonActive || child.seasonActive === null"
                                     :to="{ name: 'Season Core', query: { showChildSeason: 'true' } }"
-                                    @click="saveForceSelectedLeague(child)"
-                                >
+                                    @click="saveForceSelectedLeague(child)">
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
                                         ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
@@ -183,8 +170,7 @@
 										showPopUp = true;
 										type = 'childLeague';
 										clickedChildData = { childId: child.id, seasonId: child.seasonId! };
-									"
-                                >
+									">
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-red-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
                                         ><IconHelper icon="ph:calendar-x-fill" icon-style="mr-1 h-5 w-5" /> End
@@ -210,23 +196,20 @@
                             </p>
                             <p
                                 v-if="child.seasonActive"
-                                class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
-                            >
+                                class="mt-2 text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base">
                                 Season {{ child.specificId }}
                             </p>
                             <p v-else class="mt-2 text-base font-bold text-red-500 lg:text-base">No Season</p>
                             <p
                                 v-if="child.seasonActive !== null && child.seasonActive"
-                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
-                            >
+                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >Start Date: </span
                                 >{{ moment(child.startTime).format('MMM DD, YYYY') }}
                             </p>
                             <p
                                 v-if="child.seasonActive !== null && child.seasonActive"
-                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base"
-                            >
+                                class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >End Date: </span
                                 >{{ moment(child.endTime).format('MMM DD, YYYY') }}

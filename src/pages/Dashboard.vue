@@ -3,8 +3,7 @@
         <div class="fixed z-20 flex shrink-0 lg:hidden">
             <button
                 class="inline-flex items-center rounded-br-md bg-main-light-600 p-2 text-base font-semibold hover:bg-main-light-630 dark:bg-main-dark-660 dark:hover:bg-main-dark-600"
-                @click="sidebarOpen = true"
-            >
+                @click="sidebarOpen = true">
                 <span class="sr-only">Open sidebar</span>
                 <IconHelper icon="heroicons-outline:menu-alt-1" icon-style="h-6 w-6 text-main-textDark-600 dark:text-main-textLight-530" />
             </button>
@@ -13,8 +12,7 @@
             <!-- Static sidebar for desktop -->
             <div class="hidden lg:flex lg:shrink-0">
                 <div
-                    class="custom-scroll relative flex w-64 flex-grow flex-col overflow-y-auto border-r bg-main-light-530 pt-5 pb-4 shadow-inner dark:bg-main-dark-530"
-                >
+                    class="custom-scroll relative flex w-64 flex-grow flex-col overflow-y-auto border-r bg-main-light-530 pt-5 pb-4 shadow-inner dark:bg-main-dark-530">
                     <DashboardSidebar />
                 </div>
             </div>
@@ -24,8 +22,7 @@
                     static
                     class="fixed bottom-0 left-0 right-0 top-14 z-50 flex lg:hidden"
                     :open="sidebarOpen"
-                    @close="sidebarOpen = false"
-                >
+                    @close="sidebarOpen = false">
                     <TransitionChild
                         as="template"
                         enter="transition ease-in-out duration-300 transform"
@@ -33,11 +30,9 @@
                         enter-to="translate-x-0"
                         leave="transition ease-in-out duration-300 transform"
                         leave-from="translate-x-0"
-                        leave-to="-translate-x-full"
-                    >
+                        leave-to="-translate-x-full">
                         <div
-                            class="relative flex w-full max-w-xs flex-1 flex-col border-r bg-main-light-530 shadow-inner dark:bg-main-dark-530"
-                        >
+                            class="relative flex w-full max-w-xs flex-1 flex-col border-r bg-main-light-530 shadow-inner dark:bg-main-dark-530">
                             <div ref="sidebarElement" class="custom-scroll overflow-hidden overflow-y-auto pt-5 pb-4">
                                 <DashboardSidebar @close-sidebar="handleSidebarEvent" />
                             </div>
@@ -64,13 +59,11 @@
                                 leave-active-class="transition duration-500 ease-in"
                                 leave-from-class="opacity-100"
                                 leave-to-class="opacity-0"
-                                move-class="transition duration-500"
-                            >
+                                move-class="transition duration-500">
                                 <div
                                     v-for="noti in notification.notifications"
                                     :key="noti.id"
-                                    class="mx-auto mt-2 flex w-full max-w-sm overflow-hidden rounded-lg bg-main-light-500 shadow-md dark:bg-main-dark-500"
-                                >
+                                    class="mx-auto mt-2 flex w-full max-w-sm overflow-hidden rounded-lg bg-main-light-500 shadow-md dark:bg-main-dark-500">
                                     <div class="-mx-3 px-4 py-2">
                                         <div class="mx-3">
                                             <span :class="`${notificationColor(noti.title)} font-semibold`">

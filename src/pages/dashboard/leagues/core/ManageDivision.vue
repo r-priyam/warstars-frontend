@@ -13,8 +13,7 @@
                             autocomplete="off"
                             required="true"
                             class="register-form-input"
-                            placeholder="Division Name"
-                        />
+                            placeholder="Division Name" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
@@ -26,24 +25,21 @@
                             minlength="3"
                             class="register-form-input"
                             placeholder="Division Abbreviation"
-                            oninput="this.value = this.value.toUpperCase()"
-                        />
+                            oninput="this.value = this.value.toUpperCase()" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Child League Name</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="league.getLeagueLocalConfig?.child.name"
-                        />
+                            :placeholder="league.getLeagueLocalConfig?.child.name" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Child League ID</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="String(league.getLeagueLocalConfig?.child.id)"
-                        />
+                            :placeholder="String(league.getLeagueLocalConfig?.child.id)" />
                     </div>
                     <ProcessButton :processing="league.divisionRegisterProcess" />
                 </form>

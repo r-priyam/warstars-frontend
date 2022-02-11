@@ -16,8 +16,7 @@
                             required="true"
                             class="mt-2 w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 shadow-sm focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
                             placeholder="Your Clan Tag"
-                            oninput="this.value = this.value.toUpperCase()"
-                        />
+                            oninput="this.value = this.value.toUpperCase()" />
                     </div>
                     <ProcessButton :processing="userClan.linkClanProcessing" />
                 </form>

@@ -3,14 +3,12 @@
         <div
             v-for="childLeague in childData"
             :key="childLeague.leagueId"
-            class="overflow-hidden rounded bg-main-light-530 shadow-lg dark:bg-main-dark-660"
-        >
+            class="overflow-hidden rounded bg-main-light-530 shadow-lg dark:bg-main-dark-660">
             <div class="flex items-center justify-center">
                 <img
                     class="mt-1 h-36 w-36 rounded-full border-2 border-white border-opacity-80 p-1"
                     :src="childLeague.iconUrl"
-                    :alt="childLeague.name"
-                />
+                    :alt="childLeague.name" />
             </div>
             <div class="px-6 py-4">
                 <div class="mb-2 text-center text-2xl font-extrabold text-green-600 dark:text-green-500">
@@ -49,8 +47,7 @@
         <div class="mt-2 flex flex-nowrap justify-center">
             <button
                 class="mt-4 rounded-lg bg-main-fail-450 px-4 py-2 text-base font-semibold text-gray-100 shadow-md hover:bg-main-fail-500 focus:outline-none dark:bg-main-fail-500 dark:hover:bg-main-fail-600"
-                @click="router.push({ name: 'Add Child League' })"
-            >
+                @click="router.push({ name: 'Add Child League' })">
                 Add Child League
             </button>
         </div>

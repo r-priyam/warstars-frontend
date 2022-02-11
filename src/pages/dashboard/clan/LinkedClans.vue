@@ -8,8 +8,7 @@
             @close-pop-up="() => (showPopUp = false)"
             @confirmation="
                 async () => ((popUpProcessing = true), await userClan.removeClan(clanTag), (popUpProcessing = false), (showPopUp = false))
-            "
-        />
+            " />
         <LoadingSpinner v-if="userClan.clansDataProcessing" />
         <NoLink v-if="!userClan.clansDataProcessing && !userClan.clanData.length" name="Clan" />
         <div v-if="!userClan.clansDataProcessing && userClan.clanData.length" class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500">
@@ -20,8 +19,7 @@
                     </div>
                     <div class="relative flex justify-start">
                         <span
-                            class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                        >
+                            class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530">
                             Clans Linked
                         </span>
                     </div>
@@ -33,8 +31,7 @@
                             <img
                                 class="mb-2 h-24 w-24 rounded-md object-contain md:h-32 md:w-32"
                                 :src="clan.badge || '/clash/clanless.png'"
-                                alt="clan-badge"
-                            />
+                                alt="clan-badge" />
                         </div>
                         <div class="h-32 w-full">
                             <div class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end" aria-hidden="true">
@@ -68,12 +65,10 @@
                                         clanName = clan.name;
                                         clanTag = clan.tag;
                                         showPopUp = true;
-                                    "
-                                >
+                                    ">
                                     <IconHelper
                                         icon="heroicons-solid:trash"
-                                        icon-style="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500"
-                                    />
+                                        icon-style="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500" />
                                 </button>
                             </p>
                             <p class="mt-4 text-sm font-semibold text-red-500 lg:text-base">
