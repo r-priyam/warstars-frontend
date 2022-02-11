@@ -1,7 +1,4 @@
 {
     "extends": ["@antfu", "plugin:prettier/recommended"],
-    "plugins": ["prettier"],
-    "rules": {
-        "prettier/prettier": ["error", { "trailingComma": "none" }]
-    }
+    "plugins": ["prettier"]
 }
