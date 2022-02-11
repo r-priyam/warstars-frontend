@@ -149,9 +149,9 @@ import { leagueManagement } from '~/stores/leagueManagement';
 onBeforeMount(() => checkLeague());
 
 const leagueStore = leagueManagement();
-const league = ref(true); // true by default to show the league main page.
-const childLeague = ref(false);
-const division = ref(false);
+const league = $ref(true); // true by default to show the league main page.
+const childLeague = $ref(false);
+const division = $ref(false);
 const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const iconsDefault = 'mb-1 h-4 w-4 mr-1';
 

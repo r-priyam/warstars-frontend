@@ -262,5 +262,5 @@ import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 
 const user = userStore();
-const showPopUp = ref(false);
+const showPopUp = $ref(false);
 </script>

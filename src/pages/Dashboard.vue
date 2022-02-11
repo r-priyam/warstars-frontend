@@ -93,10 +93,10 @@ import DashboardSidebar from '~/components/SideBar.vue';
 import { notifications } from '~/stores/notifications';
 const notification = notifications();
 
-const sidebarElement = ref(null);
-const sidebarOpen = ref(false);
-const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen.value = eventPayload);
-onClickOutside(sidebarElement, () => (sidebarOpen.value = false));
+const sidebarElement = $ref(null);
+let sidebarOpen = $ref(false);
+const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen = eventPayload);
+onClickOutside(sidebarElement, () => (sidebarOpen = false));
 
 // Just pass the whole class as it's causing some problem in rendering
 const notificationColor = (type: string) => {
