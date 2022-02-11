@@ -42,5 +42,13 @@ export default defineConfig({
         VitePWA({
             registerType: 'autoUpdate'
         })
-    ]
+    ],
+    ssgOptions: {
+        script: 'async',
+        formatting: 'minify'
+    },
+    optimizeDeps: {
+        include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
+        exclude: ['vue-demi']
+    }
 });
