@@ -2,3 +2,4 @@
 /dist
 src/auto-imports.d.ts
 src/components.d.ts
+netlify.toml

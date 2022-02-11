@@ -23,7 +23,7 @@ export default defineConfig({
         PurgeIcons(),
         AutoImport({
             dts: 'src/auto-imports.d.ts',
-            imports: ['vue', 'vue-router', '@vueuse/core']
+            imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head']
         }),
         Components({
             dts: 'src/components.d.ts',
@@ -42,7 +42,32 @@ export default defineConfig({
             }
         }),
         VitePWA({
-            registerType: 'autoUpdate'
+            registerType: 'autoUpdate',
+            includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
+            useCredentials: true,
+            manifest: {
+                name: 'War Stars',
+                short_name: 'War Stars',
+                theme_color: '#ffffff',
+                icons: [
+                    {
+                        src: '/pwa-192x192.png',
+                        sizes: '192x192',
+                        type: 'image/png'
+                    },
+                    {
+                        src: '/pwa-512x512.png',
+                        sizes: '512x512',
+                        type: 'image/png'
+                    },
+                    {
+                        src: '/pwa-512x512.png',
+                        sizes: '512x512',
+                        type: 'image/png',
+                        purpose: 'any maskable'
+                    }
+                ]
+            }
         })
     ],
     ssgOptions: {
