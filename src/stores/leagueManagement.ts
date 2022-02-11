@@ -87,8 +87,8 @@ export const leagueManagement = defineStore({
             if (permissionsCookie) {
                 const permsPayload: TPermsData = jwt_decode(permissionsCookie);
                 const checkTwoMins = Date.now() - Number(permsPayload.epoch);
-                // check for permissions change per 2 minutes
-                if (checkTwoMins > 120000) await this.syncPermsToken();
+                // check for permissions change per 10 minutes
+                if (checkTwoMins > 600000) await this.syncPermsToken();
                 else this.permissions = permsPayload as unknown as Record<string, unknown>;
             } else await this.syncPermsToken();
         },

@@ -5,22 +5,30 @@ import { userStore } from '~/stores/user';
 
 export const install: UserModule = ({ isClient, router }) => {
     if (isClient) {
-        router.beforeEach(async (to) => {
+        router.beforeEach(async (to, _from, next) => {
             const API = new RESTManager();
             const user = userStore();
             const league = leagueManagement();
 
-            try {
-                const checkAuthenticated = await API.checkAuthenticated();
-                if (checkAuthenticated.status === 200) {
-                    if (user.userData.discordId === '') await user.setUserData();
-                    await league.syncPermissions();
-                    await league.syncLeaguesData();
+            if (user.loggedIn) {
+                if (user.userData.discordId === '') await user.setUserData();
+                await league.syncPermissions();
+                await league.syncLeaguesData();
+                next();
+            } else {
+                try {
+                    const checkAuthenticated = await API.checkAuthenticated();
+                    if (checkAuthenticated.status === 200) {
+                        if (user.userData.discordId === '') await user.setUserData();
+                        await league.syncPermissions();
+                        await league.syncLeaguesData();
+                        next();
+                    }
+                } catch (error) {
+                    user.loggedIn = false;
+                    if (!to.fullPath.includes('/dashboard')) return next();
+                    next({ name: 'Home' });
                 }
-            } catch (error) {
-                user.loggedIn = false;
-                if (!to.fullPath.includes('/dashboard')) return true;
-                await router.push({ name: 'Home' });
             }
         });
     }
