@@ -4,8 +4,7 @@
         description="'You haven't selected any child division. All the changes will apply to the child league!!"
         :open="showPopUp"
         @close-pop-up="(outsideClick: Boolean) => {if(!outsideClick) showPopUp = false; router.push({name: 'League Selector'}); notification.info('Please select a division to continue!')}"
-        @confirmation="() => (showPopUp = false)"
-    />
+        @confirmation="() => (showPopUp = false)" />
     <div>
         <div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
             <h1 class="text-center text-3xl font-black text-main-textDark-600 dark:text-main-textLight-530">
@@ -19,16 +18,14 @@
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="`${league.getLeagueLocalConfig!.child.name} (${league.getLeagueLocalConfig!.child.abbreviation})`"
-                        />
+                            :placeholder="`${league.getLeagueLocalConfig!.child.name} (${league.getLeagueLocalConfig!.child.abbreviation})`" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Division Name & Abbreviation</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="`${league.getLeagueLocalConfig!.division.name || 'NA'} (${league.getLeagueLocalConfig!.division.abbreviation || 'NA'})`"
-                        />
+                            :placeholder="`${league.getLeagueLocalConfig!.division.name || 'NA'} (${league.getLeagueLocalConfig!.division.abbreviation || 'NA'})`" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4 mb-2"

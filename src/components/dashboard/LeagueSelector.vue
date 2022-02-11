@@ -16,15 +16,13 @@
                             seasonActive: league.seasonActive
                         };
                         handleLeagueChange();
-                    "
-                >
+                    ">
                     <img
                         class="m-1 h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
                         :class="[league.leagueId === selectedLeague?.leagueId ? 'border-red-700 dark:border-red-500' : '']"
                         :src="league.iconUrl"
                         :alt="league.name"
-                        :title="league.name"
-                    />
+                        :title="league.name" />
                 </button>
             </div>
         </div>
@@ -36,8 +34,7 @@
                 <transition-group
                     enter-active-class="transition duration-300 ease-out transform-gpu"
                     enter-from-class="translate-x-12 opacity-0"
-                    enter-to-class="translate-x-0 opacity-100"
-                >
+                    enter-to-class="translate-x-0 opacity-100">
                     <h1 v-if="selectedLeagueChild?.length === 0" class="text-center text-xl font-bold text-green-700 dark:text-green-500">
                         {{ selectedLeague.name }} has no child league
                     </h1>
@@ -48,8 +45,7 @@
                         <router-link to="/dashboard/add-league-child">
                             <button
                                 class="rounded-lg bg-green-700 px-4 py-2 text-base font-semibold text-gray-100 shadow-md hover:bg-green-800 focus:outline-none dark:bg-green-600 dark:hover:bg-green-700"
-                                @click="applyLeagueConfig()"
-                            >
+                                @click="applyLeagueConfig()">
                                 Add Child League
                             </button>
                         </router-link>
@@ -60,8 +56,7 @@
                 <transition-group
                     enter-active-class="transition duration-300 ease-out transform-gpu"
                     enter-from-class="translate-x-12 opacity-0"
-                    enter-to-class="transition duration-300 ease-out transform-gpu"
-                >
+                    enter-to-class="transition duration-300 ease-out transform-gpu">
                     <div v-for="childLeague in selectedLeagueChild" :key="childLeague.id" class="flex flex-wrap justify-center">
                         <button
                             @click="
@@ -73,15 +68,13 @@
                                     seasonId: childLeague.seasonId,
                                     seasonActive: childLeague.seasonActive
                                 }
-                            "
-                        >
+                            ">
                             <img
                                 class="m-1 inline-flex h-24 w-24 grow-0 rounded-full border-2 border-white p-1 text-center"
                                 :class="[childLeague.id === selectedChildLeague.id ? 'border-green-700 dark:border-green-500' : '']"
                                 :src="childLeague.iconUrl"
                                 :alt="childLeague.name"
-                                :title="childLeague.name"
-                            />
+                                :title="childLeague.name" />
                         </button>
                     </div>
                 </transition-group>
@@ -99,8 +92,7 @@
                     <router-link to="/dashboard/add-child-division">
                         <button
                             class="rounded-lg bg-indigo-700 px-4 py-2 text-base font-semibold text-gray-100 shadow-md hover:bg-indigo-800 focus:outline-none dark:bg-indigo-600 dark:hover:bg-indigo-700"
-                            @click="applyLeagueConfig()"
-                        >
+                            @click="applyLeagueConfig()">
                             Add Division
                         </button>
                     </router-link>
@@ -124,16 +116,14 @@
                                 :key="division.name"
                                 v-slot="{ active, checked }"
                                 as="template"
-                                :value="division"
-                            >
+                                :value="division">
                                 <div
                                     :class="[
                                         // probably will change select colour in future..
                                         active ? '' : '',
                                         checked ? 'bg-indigo-500 bg-opacity-75' : 'bg-indigo-400 hover:bg-indigo-500'
                                     ]"
-                                    class="relative flex cursor-pointer rounded-lg px-5 py-2 shadow-md focus:outline-none"
-                                >
+                                    class="relative flex cursor-pointer rounded-lg px-5 py-2 shadow-md focus:outline-none">
                                     <div class="flex w-full items-center justify-between">
                                         <div class="flex items-center">
                                             <div class="text-sm">
@@ -153,8 +143,7 @@
                                                     stroke="#000"
                                                     stroke-width="1.5"
                                                     stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
+                                                    stroke-linejoin="round" />
                                             </svg>
                                         </div>
                                     </div>
@@ -168,14 +157,12 @@
         <div class="mt-4 flex flex-nowrap justify-center space-x-4">
             <button
                 class="inline-flex w-full justify-center rounded-md bg-main-textDark-560 px-4 py-2 text-base font-medium text-gray-100 shadow-sm hover:bg-main-textLight-560 focus:outline-none dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                @click="handleReset()"
-            >
+                @click="handleReset()">
                 Reset
             </button>
             <button
                 class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-base font-medium text-gray-100 shadow-sm hover:bg-red-700 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                @click="applyLeagueConfig()"
-            >
+                @click="applyLeagueConfig()">
                 Apply
             </button>
         </div>

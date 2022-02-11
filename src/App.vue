@@ -17,8 +17,7 @@
                     <button
                         type="button"
                         class="-mr-1 flex rounded-md p-2 hover:bg-main-light-500 focus:outline-none dark:hover:bg-main-dark-500 sm:-mr-2"
-                        @click="showBetaNotice = false"
-                    >
+                        @click="showBetaNotice = false">
                         <span class="sr-only">Dismiss</span>
                         <IconHelper icon="heroicons-outline:x" icon-style="h-6 w-6 text-red-500" />
                     </button>
@@ -32,14 +31,12 @@
             <div class="bg-main-light-600 dark:bg-main-dark-630">
                 <div
                     v-if="!router.currentRoute.value.path.includes('/dashboard')"
-                    class="mx-auto min-h-full max-w-6xl bg-main-light-560 dark:bg-main-dark-560"
-                >
+                    class="mx-auto min-h-full max-w-6xl bg-main-light-560 dark:bg-main-dark-560">
                     <router-view />
                 </div>
                 <div
                     v-if="router.currentRoute.value.path.includes('/dashboard')"
-                    class="mx-auto max-w-6xl bg-main-light-560 dark:bg-main-dark-560"
-                >
+                    class="mx-auto max-w-6xl bg-main-light-560 dark:bg-main-dark-560">
                     <router-view />
                 </div>
                 <Footer v-if="!router.currentRoute.value.path.includes('/dashboard')" />

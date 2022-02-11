@@ -12,8 +12,7 @@
                     @click="
                         leagueSeason = true;
                         childSeason = false;
-                    "
-                >
+                    ">
                     League Season
                 </button>
                 <button
@@ -26,8 +25,7 @@
                     @click="
                         leagueSeason = false;
                         childSeason = true;
-                    "
-                >
+                    ">
                     Child League Season
                 </button>
             </div>
@@ -50,16 +48,14 @@
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="league.getLeagueLocalConfig?.league.name"
-                        />
+                            :placeholder="league.getLeagueLocalConfig?.league.name" />
                     </div>
                     <div v-if="childSeason">
                         <label class="register-form-input-label mt-4">Child League Name</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="league.getLeagueLocalConfig?.child.name"
-                        />
+                            :placeholder="league.getLeagueLocalConfig?.child.name" />
                     </div>
                     <div v-if="selectedLeagueChild?.length !== 0 && !childSeason" class="mt-4 block">
                         <span class="register-form-input-label">Select child leagues to start season for</span>
@@ -70,8 +66,7 @@
                                         v-model="selectedChilds"
                                         :value="child.id"
                                         class="rounded text-main-textDark-600 shadow-sm focus:ring focus:ring-main-textLight-460 focus:ring-opacity-40 focus:ring-offset-0 dark:text-main-textLight-600"
-                                        type="checkbox"
-                                    />
+                                        type="checkbox" />
                                     <span class="ml-2 font-semibold text-main-textDark-500 dark:text-main-textLight-500">
                                         {{ child.name }}
                                     </span>

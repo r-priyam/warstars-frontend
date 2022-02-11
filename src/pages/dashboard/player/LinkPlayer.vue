@@ -16,8 +16,7 @@
                             required="true"
                             class="mt-2 w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 shadow-sm focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
                             placeholder="Your Player Tag"
-                            oninput="this.value = this.value.toUpperCase()"
-                        />
+                            oninput="this.value = this.value.toUpperCase()" />
                     </div>
                     <div>
                         <label for="apiToken" class="mt-6 block text-lg font-bold text-gray-800 dark:text-gray-100">Game API Token</label>
@@ -27,8 +26,7 @@
                             autocomplete="off"
                             required="true"
                             class="mt-2 block w-full select-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 shadow-sm focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
-                            placeholder="Game API Token"
-                        />
+                            placeholder="Game API Token" />
                     </div>
                     <ProcessButton :processing="userPlayer.linkPlayerProcessing" />
                 </form>

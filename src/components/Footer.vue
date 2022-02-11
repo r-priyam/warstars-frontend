@@ -5,8 +5,7 @@
                 <span class="ml-3 text-xl font-bold text-main-textDark-600 dark:text-main-textLight-530">WarStars</span>
             </a>
             <p
-                class="mt-4 text-sm font-semibold text-main-textDark-630 dark:text-main-textLight-560 sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:pl-4"
-            >
+                class="mt-4 text-sm font-semibold text-main-textDark-630 dark:text-main-textLight-560 sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:pl-4">
                 &copy; {{ new Date().getFullYear() }} WarStars. All rights reserved.
             </p>
             <span class="mt-4 inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">

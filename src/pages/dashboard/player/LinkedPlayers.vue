@@ -10,14 +10,12 @@
                 async () => (
                     (popUpProcessing = true), await userPlayer.removePlayer(playerTag), (popUpProcessing = false), (showPopUp = false)
                 )
-            "
-        />
+            " />
         <LoadingSpinner v-if="userPlayer.playersDataProcessing" />
         <NoLink v-if="!userPlayer.playersDataProcessing && !userPlayer.playerData.length" name="Player" />
         <div
             v-if="!userPlayer.playersDataProcessing && userPlayer.playerData.length"
-            class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500"
-        >
+            class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500">
             <div class="mx-auto max-w-4xl">
                 <div class="relative">
                     <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -25,8 +23,7 @@
                     </div>
                     <div class="relative flex justify-start">
                         <span
-                            class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                        >
+                            class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530">
                             Players Linked
                         </span>
                     </div>
@@ -38,8 +35,7 @@
                             <img
                                 class="mb-2 h-24 w-24 rounded-md object-contain md:h-32 md:w-32"
                                 :src="`/clash/townHall/14.5.png`"
-                                alt="townhall"
-                            />
+                                alt="townhall" />
                         </div>
                         <div class="w-full">
                             <div class="absolute top-auto right-2 ml-auto inline-flex items-end justify-end p-2">
@@ -70,8 +66,7 @@
                                         playerName = player.name;
                                         playerTag = player.tag;
                                         showPopUp = true;
-                                    "
-                                >
+                                    ">
                                     <IconHelper icon="heroicons-solid:trash" icon-style="-ml-1 inline-flex h-6 w-6 p-1 text-red-500" />
                                 </button>
                             </p>

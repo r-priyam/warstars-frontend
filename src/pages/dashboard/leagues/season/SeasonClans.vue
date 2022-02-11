@@ -10,8 +10,7 @@
 				async () => (
 					(popUpProcessing = true), await leagueStore.seasonRemoveClan(removeClanData!), (popUpProcessing = false), (showPopUp = false), clansData?.splice(clansData.indexOf(removeClanData!), 1)
 				)
-			"
-        />
+			" />
     </div>
     <LoadingSpinner v-if="leagueStore.fetchingChildClans" />
     <div v-else class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500">
@@ -38,37 +37,31 @@
                                 <Listbox v-model="selectedOption">
                                     <div class="absolute top-auto right-6 inline-flex sm:right-6 lg:right-[1.8rem]">
                                         <ListboxButton
-                                            class="relative mr-[0.130rem] cursor-default focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm"
-                                        >
+                                            class="relative mr-[0.130rem] cursor-default focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm">
                                             <IconHelper
                                                 icon="heroicons-solid:filter"
-                                                icon-style="relative mb-2 inline-flex h-7 w-6 rounded-md text-main-textDark-500 hover:bg-main-light-560 dark:text-main-textLight-500 dark:hover:bg-main-dark-660"
-                                            />
+                                                icon-style="relative mb-2 inline-flex h-7 w-6 rounded-md text-main-textDark-500 hover:bg-main-light-560 dark:text-main-textLight-500 dark:hover:bg-main-dark-660" />
                                         </ListboxButton>
 
                                         <transition
                                             leave-active-class="transition duration-100 ease-in"
                                             leave-from-class="opacity-100"
-                                            leave-to-class="opacity-0"
-                                        >
+                                            leave-to-class="opacity-0">
                                             <ListboxOptions
-                                                class="absolute right-0 top-[1.8rem] max-h-60 overflow-auto rounded-md bg-main-light-460 py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-main-dark-560 sm:text-sm"
-                                            >
+                                                class="absolute right-0 top-[1.8rem] max-h-60 overflow-auto rounded-md bg-main-light-460 py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-main-dark-560 sm:text-sm">
                                                 <ListboxOption
                                                     v-for="data in filterOptions"
                                                     v-slot="{ active, selected }"
                                                     :key="data.name"
                                                     :value="data"
-                                                    as="template"
-                                                >
+                                                    as="template">
                                                     <li
                                                         :class="[
                                                             active
                                                                 ? 'bg-main-light-600 dark:bg-main-dark-600'
                                                                 : 'text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600',
                                                             'relative cursor-default select-none py-2 pl-10 pr-4'
-                                                        ]"
-                                                    >
+                                                        ]">
                                                         <span
                                                             :class="[
                                                                 selected ? 'font-bold' : 'font-semibold',
@@ -78,8 +71,7 @@
                                                         >
                                                         <span
                                                             v-if="selected"
-                                                            class="absolute inset-y-0 left-0 flex items-center pl-3 text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600"
-                                                        >
+                                                            class="absolute inset-y-0 left-0 flex items-center pl-3 text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600">
                                                             <IconHelper icon="heroicons-solid:check" icon-style="h-5 w-5" />
                                                         </span>
                                                     </li>
@@ -96,32 +88,27 @@
                                         <tr>
                                             <th
                                                 scope="col"
-                                                class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
-                                            >
+                                                class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500">
                                                 Name
                                             </th>
                                             <th
                                                 scope="col"
-                                                class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
-                                            >
+                                                class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500">
                                                 Clan Tag
                                             </th>
                                             <th
                                                 scope="col"
-                                                class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"
-                                            ></th>
+                                                class="px-6 py-4 text-sm font-semibold leading-tight text-main-textDark-500 dark:text-main-textLight-500"></th>
                                         </tr>
                                     </thead>
                                     <tbody v-for="clan in selectedOptionClans" :key="clan.tag">
                                         <tr class="border-b border-gray-600 bg-main-light-330 dark:border-gray-400 dark:bg-main-dark-530">
                                             <td
-                                                class="whitespace-nowrap px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500"
-                                            >
+                                                class="whitespace-nowrap px-6 py-4 text-sm font-medium text-main-textDark-500 dark:text-main-textLight-500">
                                                 {{ clan.name }}
                                             </td>
                                             <td
-                                                class="whitespace-nowrap px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500"
-                                            >
+                                                class="whitespace-nowrap px-6 py-4 text-sm font-normal text-main-textDark-500 dark:text-main-textLight-500">
                                                 {{ clan.tag }}
                                             </td>
                                             <td class="cursor-pointer whitespace-nowrap px-6 py-4 text-sm text-red-500 hover:text-red-600">
@@ -130,8 +117,7 @@
                                                         removeClanData = clan;
                                                         popUpMessage = `Are you sure you want to remove ${clan.name}(${clan.tag}) for the season?`;
                                                         showPopUp = true;
-                                                    "
-                                                >
+                                                    ">
                                                     Remove
                                                 </button>
                                             </td>

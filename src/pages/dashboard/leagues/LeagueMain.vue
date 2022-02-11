@@ -10,8 +10,7 @@
                     league = true;
                     childLeague = false;
                     division = false;
-                "
-            >
+                ">
                 League
             </button>
             <button
@@ -25,8 +24,7 @@
                     league = false;
                     childLeague = true;
                     division = false;
-                "
-            >
+                ">
                 Child Leagues
             </button>
             <button
@@ -40,8 +38,7 @@
                     league = false;
                     childLeague = false;
                     division = true;
-                "
-            >
+                ">
                 Divisions
             </button>
         </div>

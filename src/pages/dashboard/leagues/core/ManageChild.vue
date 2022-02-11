@@ -13,8 +13,7 @@
                             autocomplete="off"
                             required="true"
                             class="register-form-input"
-                            placeholder="Child Name"
-                        />
+                            placeholder="Child Name" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Abbreviation<span class="ml-0.5 text-red-500">*</span></label>
@@ -26,24 +25,21 @@
                             minlength="3"
                             class="register-form-input"
                             placeholder="Child Abbreviation"
-                            oninput="this.value = this.value.toUpperCase()"
-                        />
+                            oninput="this.value = this.value.toUpperCase()" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Main League Name</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="league.getLeagueLocalConfig?.league.name"
-                        />
+                            :placeholder="league.getLeagueLocalConfig?.league.name" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Main League ID</label>
                         <input
                             readonly="true"
                             class="register-form-input cursor-not-allowed focus-visible:ring-transparent"
-                            :placeholder="String(league.getLeagueLocalConfig?.league.leagueId)"
-                        />
+                            :placeholder="String(league.getLeagueLocalConfig?.league.leagueId)" />
                     </div>
                     <div>
                         <label class="register-form-input-label mt-4">Logo URL<span class="ml-0.5 text-red-500">*</span></label>
