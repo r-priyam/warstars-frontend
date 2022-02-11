@@ -19,7 +19,6 @@
             "~/*": ["src/*"]
         }
     },
-    "include": ["env.d.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
-    "references": [{ "path": "./tsconfig.node.json" }],
+    "include": ["env.d.ts", "vite.config.ts", "src/**/*"],
     "exclude": ["dist", "node_modules"]
 }
