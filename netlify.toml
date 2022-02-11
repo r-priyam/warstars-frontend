@@ -6,7 +6,8 @@
 [[redirects]]
   from = "https://www.warstars.priyam.tech"
   to = "https://warstars.priyam.tech"
-  status = 301!
+  status = 301
+  force = true
 
 [[headers]]
   for = "/manifest.webmanifest"
