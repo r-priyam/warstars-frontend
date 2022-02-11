@@ -2,12 +2,14 @@
     <div>
         <PopUp
             title="Remove Clan"
-            :description="`Are you sure you want to remove ${clanName} (${clanTag})? You can add it later again!`"
+            :description="`Are you sure you want to remove ${clanData.name} (${clanData.tag})? You can add it later again!`"
             :open="showPopUp"
             :processing="popUpProcessing"
             @close-pop-up="() => (showPopUp = false)"
             @confirmation="
-                async () => ((popUpProcessing = true), await userClan.removeClan(clanTag), (popUpProcessing = false), (showPopUp = false))
+                async () => (
+                    (popUpProcessing = true), await userClan.removeClan(clanData.tag), ((popUpProcessing = false), (showPopUp = false))
+                )
             " />
         <LoadingSpinner v-if="userClan.clansDataProcessing" />
         <NoLink v-if="!userClan.clansDataProcessing && !userClan.clanData.length" name="Clan" />
@@ -62,8 +64,8 @@
                                 </span>
                                 <button
                                     @click="
-                                        clanName = clan.name;
-                                        clanTag = clan.tag;
+                                        clanData.name = clan.name;
+                                        clanData.tag = clan.tag;
                                         showPopUp = true;
                                     ">
                                     <IconHelper
@@ -104,9 +106,7 @@ import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 const userClan = userClanOpeartions();
 onMounted(() => userClan.fetchClansData());
 
-const clanName = ref('');
-const clanTag = ref('');
-
+const clanData = ref({ name: '', tag: '' });
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
 </script>

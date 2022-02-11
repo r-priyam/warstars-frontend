@@ -145,34 +145,34 @@ import { RawLeagueData } from '~/utils/leagueUtils';
 
 const router = useRouter();
 const leagueStore = leagueManagement();
-const filterOptions = ref([{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id }]);
-const selectedOption = ref(filterOptions.value[0]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
-const clansData = ref<TChildClans[] | null>(null);
-
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
 const popUpMessage = ref('');
+
+let clansData = $ref<TChildClans[] | null>(null);
+const filterOptions = $ref([{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id }]);
+const selectedOption = $ref(filterOptions[0]);
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const removeClanData = ref<TChildClans | null>(null);
 
 const selectedChildDivisions = () =>
     leaguesData
         .find((league) => league.leagueId === leagueStore.getLeagueLocalConfig!.league.leagueId)
         ?.childLeagues.find((child) => child.id === leagueStore.getLeagueLocalConfig!.child.id)!
-        .divisions.map((data: TUserChildLeagueDivisions) => filterOptions.value.push({ name: data.name, id: data.id }));
+        .divisions.map((data: TUserChildLeagueDivisions) => filterOptions.push({ name: data.name, id: data.id }));
 
 const getSeasonChildClans = async () => {
     await leagueStore.seasonChildClans(
         leagueStore.getLeagueLocalConfig?.child.id ?? 0,
         leagueStore.getLeagueLocalConfig?.child.seasonId ?? 0
     );
-    clansData.value = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
+    clansData = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
 };
 
 const selectedOptionClans = computed(() => {
-    if (!clansData.value) return [];
-    if (selectedOption.value === filterOptions.value[0]) return clansData.value;
-    return clansData.value.filter((data) => data.divisionId === selectedOption.value.id);
+    if (!clansData) return [];
+    if (selectedOption === filterOptions[0]) return clansData;
+    return clansData.filter((data) => data.divisionId === selectedOption.id);
 });
 onMounted(async () => {
     selectedChildDivisions();

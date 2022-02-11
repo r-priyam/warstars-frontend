@@ -93,9 +93,9 @@ const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showCh
 
 const router = useRouter();
 const league = leagueManagement();
-const leagueSeason = ref(!prop.showChildSeason);
-const childSeason = ref(prop.showChildSeason);
-const selectedChilds = ref([]);
+const leagueSeason = $ref(!prop.showChildSeason);
+const childSeason = $ref(prop.showChildSeason);
+const selectedChilds = $ref([]);
 const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
 const selectedLeagueChild = computed(
     () => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues
@@ -106,7 +106,7 @@ onBeforeMount(async () => {
         notifications().warning('Please select a league to continue!');
         await router.push({ name: 'League Selector' });
     }
-    if (childSeason.value && league.getLeagueLocalConfig?.child.id === 0) {
+    if (childSeason && league.getLeagueLocalConfig?.child.id === 0) {
         notifications().warning('Please select a child league to continue!');
         await router.push({ name: 'League Selector' });
     }
@@ -127,12 +127,12 @@ async function registerSeason() {
     else if (moment(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <= 13)
         return notifications().error('Season duration must be 2 weeks or grater than it');
 
-    if (leagueSeason.value) {
+    if (leagueSeason) {
         const newSeasonData: TNewSeason = {
             leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
             startTime: formData.get('start-date') as string,
             endTime: formData.get('end-date') as string,
-            childData: selectedChilds.value
+            childData: selectedChilds
         };
         await league.newSeason(newSeasonData);
     } else {

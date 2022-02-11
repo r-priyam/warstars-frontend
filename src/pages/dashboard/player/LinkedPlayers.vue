@@ -2,13 +2,15 @@
     <div>
         <PopUp
             title="Remove Player"
-            :description="`Are you sure you want to remove ${playerName} (${playerTag})? You can add it later again!`"
+            :description="`Are you sure you want to remove ${playerData.name} (${playerData.tag})? You can add it later again!`"
             :open="showPopUp"
             :processing="popUpProcessing"
             @close-pop-up="() => (showPopUp = false)"
             @confirmation="
                 async () => (
-                    (popUpProcessing = true), await userPlayer.removePlayer(playerTag), (popUpProcessing = false), (showPopUp = false)
+                    (popUpProcessing = true),
+                    await userPlayer.removePlayer(playerData.tag),
+                    ((popUpProcessing = false), (showPopUp = false))
                 )
             " />
         <LoadingSpinner v-if="userPlayer.playersDataProcessing" />
@@ -63,8 +65,8 @@
                                 {{ player.name }}
                                 <button
                                     @click="
-                                        playerName = player.name;
-                                        playerTag = player.tag;
+                                        playerData.name = player.name;
+                                        playerData.tag = player.tag;
                                         showPopUp = true;
                                     ">
                                     <IconHelper icon="heroicons-solid:trash" icon-style="-ml-1 inline-flex h-6 w-6 p-1 text-red-500" />
@@ -100,9 +102,7 @@ import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 const userPlayer = userPlayerOpeartions();
 onMounted(() => userPlayer.fetchPlayersData());
 
-const playerName = ref('');
-const playerTag = ref('');
-
+const playerData = ref({ name: '', tag: '' });
 const showPopUp = ref(false);
 const popUpProcessing = ref(false);
 </script>

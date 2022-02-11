@@ -17,7 +17,9 @@ export default defineConfig({
         }
     },
     plugins: [
-        vue(),
+        vue({
+            reactivityTransform: true
+        }),
         PurgeIcons(),
         AutoImport({
             dts: 'src/auto-imports.d.ts',
