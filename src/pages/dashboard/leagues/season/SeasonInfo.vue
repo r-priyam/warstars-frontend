@@ -60,7 +60,7 @@
                                     >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
-                                        ><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
+                                        ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
                                     </span>
                                 </button>
                                 <router-link
@@ -69,7 +69,7 @@
                                 >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
-                                        ><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
+                                        ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
                                     </span>
                                 </router-link>
                                 <button
@@ -84,7 +84,7 @@
                                 >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-red-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
-                                        ><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" /> End
+                                        ><IconHelper icon="ph:calendar-x-fill" icon-style="mr-1 h-5 w-5" /> End
                                     </span>
                                 </button>
                             </div>
@@ -92,13 +92,13 @@
                                 <span
                                     v-if="selectedLeagueData.seasonActive"
                                     class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm dark:bg-main-dark-600"
-                                    ><bx:bxs-calendar-check class="mr-1 h-5 w-5 text-green-500" aria-hidden="true" />
+                                    ><IconHelper icon="bx:bxs-calendar-check" icon-style="mr-1 h-5 w-5 text-green-500" />
                                     <span class="font-bold text-green-600"> Season Active </span>
                                 </span>
                                 <span
                                     v-else
                                     class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm font-bold text-red-500 dark:bg-main-dark-600"
-                                    ><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" />
+                                    ><IconHelper icon="ph:calendar-x-fill" icon-style="mr-1 h-5 w-5" />
                                     <span> Not In A Season </span>
                                 </span>
                             </div>
@@ -161,7 +161,7 @@
                                 >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
-                                        ><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
+                                        ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
                                     </span>
                                 </button>
                                 <router-link
@@ -171,7 +171,7 @@
                                 >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-green-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
-                                        ><bx:bxs-calendar-plus class="mr-1 h-5 w-5" aria-hidden="true" />New
+                                        ><IconHelper icon="bx:bxs-calendar-plus" icon-style="mr-1 h-5 w-5" />New
                                     </span>
                                 </router-link>
                                 <button
@@ -187,7 +187,7 @@
                                 >
                                     <span
                                         class="mr-1 inline-flex rounded-md bg-main-light-430 px-2 py-1 text-sm font-bold text-red-600 hover:bg-main-light-500 dark:bg-main-dark-600 dark:hover:bg-main-dark-700"
-                                        ><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" /> End
+                                        ><IconHelper icon="ph:calendar-x-fill" icon-style="mr-1 h-5 w-5" /> End
                                     </span>
                                 </button>
                             </div>
@@ -195,13 +195,13 @@
                                 <span
                                     v-if="child.seasonActive"
                                     class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm dark:bg-main-dark-600"
-                                    ><bx:bxs-calendar-check class="mr-1 h-5 w-5 text-green-500" aria-hidden="true" />
+                                    ><IconHelper icon="bx:bxs-calendar-check" icon-style="mr-1 h-5 w-5 text-green-500" />
                                     <span class="font-bold text-green-600"> Season Active </span>
                                 </span>
                                 <span
                                     v-else
                                     class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm font-bold text-red-500 dark:bg-main-dark-600"
-                                    ><ph:calendar-x-fill class="mr-1 h-5 w-5" aria-hidden="true" />
+                                    ><IconHelper icon="ph:calendar-x-fill" icon-style="mr-1 h-5 w-5" />
                                     <span> Not In A Season </span>
                                 </span>
                             </div>

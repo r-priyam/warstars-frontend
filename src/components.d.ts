@@ -5,32 +5,13 @@
 declare module 'vue' {
   export interface GlobalComponents {
     BackToTop: typeof import('./components/BackToTop.vue')['default']
-    'Bx:bxsCalendarCheck': typeof import('~icons/bx/bxs-calendar-check')['default']
-    'Bx:bxsCalendarPlus': typeof import('~icons/bx/bxs-calendar-plus')['default']
-    'Entypo:trophy': typeof import('~icons/entypo/trophy')['default']
-    'FileIcons:moleculer': typeof import('~icons/file-icons/moleculer')['default']
     Footer: typeof import('./components/Footer.vue')['default']
-    'HeroiconsSolid:check': typeof import('~icons/heroicons-solid/check')['default']
-    'HeroiconsSolid:filter': typeof import('~icons/heroicons-solid/filter')['default']
-    'HeroiconsSolid:trash': typeof import('~icons/heroicons-solid/trash')['default']
-    'Ic:baselineDiscord': typeof import('~icons/ic/baseline-discord')['default']
     IconHelper: typeof import('./components/IconHelper.vue')['default']
-    'Iconoir:notes': typeof import('~icons/iconoir/notes')['default']
-    'Ion:iosPeople': typeof import('~icons/ion/ios-people')['default']
-    'Iwwa:year': typeof import('~icons/iwwa/year')['default']
     LeagueSelector: typeof import('./components/dashboard/LeagueSelector.vue')['default']
-    'Mdi:arrowRightThin': typeof import('~icons/mdi/arrow-right-thin')['default']
-    'Mdi:notebookCheck': typeof import('~icons/mdi/notebook-check')['default']
-    'Mdi:trophy': typeof import('~icons/mdi/trophy')['default']
-    'Mdi:twitter': typeof import('~icons/mdi/twitter')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
-    'Ph:calendarXFill': typeof import('~icons/ph/calendar-x-fill')['default']
-    'Ph:hashBold': typeof import('~icons/ph/hash-bold')['default']
     ProcessButton: typeof import('./components/ProcessButton.vue')['default']
     SideBar: typeof import('./components/SideBar.vue')['default']
     Spinner: typeof import('./components/Spinner.vue')['default']
-    'Subway:admin': typeof import('~icons/subway/admin')['default']
-    'Whh:website': typeof import('~icons/whh/website')['default']
   }
 }
 

@@ -17,30 +17,25 @@
                     {{ childLeague.name }}
                 </div>
                 <p class="item-name">
-                    Abbreviation
-                    <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
+                    Abbreviation <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{ childLeague.abbreviation }}</span>
                 </p>
                 <p class="item-name">
-                    Clans
-                    <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
+                    Clans <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{ childLeague.clansCount }}</span>
                 </p>
                 <p class="item-name">
-                    Season
-                    <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
+                    Season <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{ childLeague.specificId || 0 }}</span>
                 </p>
                 <p class="item-name">
-                    Start Date
-                    <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
+                    Start Date <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{
                         childLeague.startTime !== null ? moment(childLeague.startTime).format('MMM DD, YYYY') : '--:--:----'
                     }}</span>
                 </p>
                 <p class="item-name">
-                    End Date
-                    <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
+                    End Date <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{
                         childLeague.endTime !== null ? moment(childLeague.endTime).format('MMM DD, YYYY') : '--:--:----'
                     }}</span>

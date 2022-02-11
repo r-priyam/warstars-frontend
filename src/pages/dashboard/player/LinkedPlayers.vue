@@ -50,14 +50,14 @@
                             <div class="absolute right-2 mt-24 ml-auto inline-flex items-end justify-end p-2">
                                 <span
                                     class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                                    ><entypo:trophy class="mr-1 h-5 w-5 text-yellow-400" aria-hidden="true" />
+                                    ><IconHelper icon="entypo:trophy" icon-style="mr-1 h-5 w-5 text-yellow-400" />
                                     <span class="font-bold">
                                         {{ player.trophies }}
                                     </span>
                                 </span>
                                 <span
                                     class="inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                                    ><mdi:trophy class="mr-1 h-5 w-5 text-yellow-600" aria-hidden="true" />
+                                    ><IconHelper icon="mdi:trophy" icon-style="mr-1 h-5 w-5 text-yellow-600" />
                                     <span class="font-bold">
                                         {{ player.versusTrophies }}
                                     </span>
@@ -72,7 +72,7 @@
                                         showPopUp = true;
                                     "
                                 >
-                                    <heroicons-solid:trash class="-ml-1 inline-flex h-6 w-6 p-1 text-red-500" />
+                                    <IconHelper icon="heroicons-solid:trash" icon-style="-ml-1 inline-flex h-6 w-6 p-1 text-red-500" />
                                 </button>
                             </p>
                             <span class="text-sm font-black text-main-textDark-600 dark:text-main-textLight-530">

@@ -45,14 +45,14 @@
                             <div class="absolute right-2 mt-20 ml-auto inline-flex items-end justify-end lg:p-2">
                                 <span
                                     class="mr-1 inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                                    ><entypo:trophy class="mr-1 h-5 w-5 text-yellow-400" aria-hidden="true" />
+                                    ><IconHelper icon="entypo:trophy" icon-style="mr-1 h-5 w-5 text-yellow-400" />
                                     <span class="font-bold">
                                         {{ clan.trophies }}
                                     </span>
                                 </span>
                                 <span
                                     class="inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
-                                    ><mdi:trophy class="mr-1 h-5 w-5 text-yellow-600" aria-hidden="true" />
+                                    ><IconHelper icon="mdi:trophy" icon-style="mr-1 h-5 w-5 text-yellow-600" />
                                     <span class="font-bold">
                                         {{ clan.versusTrophies }}
                                     </span>
@@ -70,7 +70,10 @@
                                         showPopUp = true;
                                     "
                                 >
-                                    <heroicons-solid:trash class="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500" aria-hidden="true" />
+                                    <IconHelper
+                                        icon="heroicons-solid:trash"
+                                        icon-style="mt-0.5 -ml-1 inline-flex h-6 w-6 p-1 text-red-500"
+                                    />
                                 </button>
                             </p>
                             <p class="mt-4 text-sm font-semibold text-red-500 lg:text-base">

@@ -40,9 +40,9 @@
                                         <ListboxButton
                                             class="relative mr-[0.130rem] cursor-default focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm"
                                         >
-                                            <heroicons-solid:filter
-                                                class="relative mb-2 inline-flex h-7 w-6 rounded-md text-main-textDark-500 hover:bg-main-light-560 dark:text-main-textLight-500 dark:hover:bg-main-dark-660"
-                                                aria-hidden="true"
+                                            <IconHelper
+                                                icon="heroicons-solid:filter"
+                                                icon-style="relative mb-2 inline-flex h-7 w-6 rounded-md text-main-textDark-500 hover:bg-main-light-560 dark:text-main-textLight-500 dark:hover:bg-main-dark-660"
                                             />
                                         </ListboxButton>
 
@@ -80,7 +80,7 @@
                                                             v-if="selected"
                                                             class="absolute inset-y-0 left-0 flex items-center pl-3 text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600"
                                                         >
-                                                            <heroicons-solid:check class="h-5 w-5" aria-hidden="true" />
+                                                            <IconHelper icon="heroicons-solid:check" icon-style="h-5 w-5" />
                                                         </span>
                                                     </li>
                                                 </ListboxOption>

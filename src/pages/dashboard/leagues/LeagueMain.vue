@@ -59,26 +59,21 @@
                 <div class="league-info-item-box">
                     <div class="league-info-item-dark">
                         <span class="league-info-item-name">
-                            <mdi:notebook-check class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Abbreviation
+                            <IconHelper icon="mdi:notebook-check" :icon-style="iconsDefault" /> Abbreviation
                         </span>
                         <span class="league-info-item-data">{{ leagueData?.abbreviation }}</span>
                     </div>
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-light">
-                        <span class="league-info-item-name">
-                            <subway:admin class="mb-1 inline-flex h-3 w-4" aria-hidden="true" />
-                            Head Name
-                        </span>
+                        <span class="league-info-item-name"> <IconHelper icon="subway:admin" :icon-style="iconsDefault" /> Head Name </span>
                         <span class="league-info-item-data">{{ leagueData?.headAdmin }}</span>
                     </div>
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-dark">
                         <span class="league-info-item-name">
-                            <ph:hash-bold class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Head Discord ID
+                            <IconHelper icon="ph:hash-bold" :icon-style="iconsDefault" /> Head Discord ID
                         </span>
                         <span class="league-info-item-data">{{ leagueData?.discordId }}</span>
                     </div>
@@ -86,8 +81,7 @@
                 <div class="league-info-item-box">
                     <div class="league-info-item-light">
                         <span class="league-info-item-name">
-                            <file-icons:moleculer class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Child Leagues
+                            <IconHelper icon="file-icons:moleculer" :icon-style="iconsDefault" /> Child Leagues
                         </span>
                         <span class="league-info-item-data">{{ leagueData?.childLeagues.length }}</span>
                     </div>
@@ -95,26 +89,21 @@
                 <div class="league-info-item-box">
                     <div class="league-info-item-dark">
                         <span class="league-info-item-name">
-                            <ion:ios-people class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Total Admins
+                            <IconHelper icon="ion:ios-people" :icon-style="iconsDefault" /> Total Admins
                         </span>
                         <span class="league-info-item-data">{{ leagueData?.totalAdmins }}</span>
                     </div>
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-light">
-                        <span class="league-info-item-name">
-                            <iconoir:notes class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Rules
-                        </span>
+                        <span class="league-info-item-name"> <IconHelper icon="iconoir:notes" :icon-style="iconsDefault" /> Rules </span>
                         <span class="league-info-item-data">{{ leagueData?.rules || 'No Rules' }}</span>
                     </div>
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-dark">
                         <span class="league-info-item-name">
-                            <ic:baseline-discord class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Discord
+                            <IconHelper icon="ic:baseline-discord" :icon-style="iconsDefault" /> Discord
                         </span>
                         <span v-if="leagueData?.discordInvite" class="league-info-item-data">{{ leagueData?.discordInvite }}</span>
                         <span else class="league-info-item-data">Not Provided</span>
@@ -122,28 +111,22 @@
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-light">
-                        <span class="league-info-item-name">
-                            <mdi:twitter class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Twitter
-                        </span>
+                        <span class="league-info-item-name"> <IconHelper icon="mdi:twitter" :icon-style="iconsDefault" /> Twitter </span>
                         <span v-if="leagueData?.twitterHandle" class="league-info-item-data">{{ leagueData?.twitterHandle }}</span>
                         <span v-else class="league-info-item-data">Not Provided</span>
                     </div>
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-dark">
-                        <span class="league-info-item-name">
-                            <whh:website class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
-                            Website
-                        </span>
+                        <span class="league-info-item-name"> <IconHelper icon="whh:website" :icon-style="iconsDefault" /> Website </span>
                         <span v-if="leagueData?.website" class="league-info-item-data">{{ leagueData?.website }}</span>
                         <span v-else class="league-info-item-data">Not Provided</span>
                     </div>
                 </div>
                 <div class="league-info-item-box">
                     <div class="league-info-item-light">
-                        <span class="league-info-item-name">
-                            <iwwa:year class="mb-1 inline-flex h-4 w-4" aria-hidden="true" />
+                        <span class="league-info-item-name inline-flex">
+                            <IconHelper icon="iwwa:year" :icon-style="iconsDefault" />
                             Registered On
                         </span>
                         <span v-if="leagueData?.registerdOn" class="league-info-item-data">{{
@@ -173,6 +156,7 @@ const league = ref(true); // true by default to show the league main page.
 const childLeague = ref(false);
 const division = ref(false);
 const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
+const iconsDefault = 'mb-1 h-4 w-4 mr-1';
 
 const leagueData = computed(() =>
     leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId)
@@ -209,7 +193,7 @@ const leagueDivisions = () => {
 }
 
 .league-info-item-name {
-    @apply font-bold leading-tight text-main-textDark-500 dark:text-main-textLight-500;
+    @apply inline-flex font-bold leading-tight text-main-textDark-500 dark:text-main-textLight-500;
 }
 
 .league-info-item-data {
