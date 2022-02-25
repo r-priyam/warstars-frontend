@@ -8,7 +8,9 @@
                     </span>
                     <p class="ml-3 truncate font-medium text-red-500">
                         <span class="md:hidden">Site is under active development</span>
-                        <span class="hidden text-red-500 md:inline"> Site is under heavy development </span>
+                        <span class="hidden text-red-500 md:inline">
+                            Site is under heavy development and it doesn't represent the final version. Thank you!
+                        </span>
                     </p>
                 </div>
                 <div class="order-2 shrink-0 sm:order-3 sm:ml-3">
