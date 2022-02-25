@@ -10,7 +10,8 @@
         "lint": "eslint \"**/*.{vue,ts,js}\"",
         "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
         "serve": "vite preview",
-        "typecheck": "vue-tsc --noEmit"
+        "typecheck": "vue-tsc --noEmit",
+        "release": "bumpp --commit --push --tag"
     },
     "dependencies": {
         "@headlessui/vue": "1.5.0",
@@ -38,6 +39,7 @@
         "@vitejs/plugin-vue": "2.2.2",
         "@vueuse/head": "^0.7.5",
         "autoprefixer": "10.4.2",
+        "bumpp": "^7.1.1",
         "critters": "^0.0.16",
         "eslint": "8.9.0",
         "eslint-config-prettier": "8.4.0",
