@@ -8,10 +8,10 @@ declare module 'vue' {
     Footer: typeof import('./components/Footer.vue')['default']
     IconHelper: typeof import('./components/IconHelper.vue')['default']
     LeagueSelector: typeof import('./components/dashboard/LeagueSelector.vue')['default']
+    LoadingSpinner: typeof import('./components/LoadingSpinner.vue')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
     ProcessButton: typeof import('./components/ProcessButton.vue')['default']
     SideBar: typeof import('./components/SideBar.vue')['default']
-    Spinner: typeof import('./components/Spinner.vue')['default']
   }
 }
 

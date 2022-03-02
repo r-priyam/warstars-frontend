@@ -225,7 +225,6 @@
 <script setup lang="ts">
 import moment from 'moment';
 import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
-import LoadingSpinner from '~/components/Spinner.vue';
 import { RawLeagueData, checkLeague } from '~/utils/leagueUtils';
 import { leagueManagement } from '~/stores/leagueManagement';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';

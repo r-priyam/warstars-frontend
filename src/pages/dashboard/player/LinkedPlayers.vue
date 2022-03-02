@@ -95,7 +95,6 @@
 
 <script setup lang="ts">
 import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
-import LoadingSpinner from '~/components/Spinner.vue';
 import NoLink from '~/pages/dashboard/utils/NoLink.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 

@@ -99,7 +99,6 @@
 
 <script setup lang="ts">
 import { userClan as userClanOpeartions } from '~/stores/userClan';
-import LoadingSpinner from '~/components/Spinner.vue';
 import NoLink from '~/pages/dashboard/utils/NoLink.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 

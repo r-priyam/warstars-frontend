@@ -10,10 +10,6 @@
     </div>
 </template>
 
-<script lang="ts">
-export default defineComponent({ name: 'LoadingSpinner' });
-</script>
-
 <style scoped>
 .loading-height {
     height: calc(100vh - 8.8rem);

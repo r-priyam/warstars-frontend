@@ -137,7 +137,6 @@
 <script setup lang="ts">
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { leagueManagement } from '~/stores/leagueManagement';
-import LoadingSpinner from '~/components/Spinner.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { notifications } from '~/stores/notifications';
