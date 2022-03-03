@@ -83,9 +83,10 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import { notifications } from '~/stores/notifications';
+
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
+import { notifications } from '~/stores/notifications';
 import type { TLocalLeagueData, TNewChildSeason, TNewSeason, TUserLeagueData } from '~/types';
 import { RawLeagueData } from '~/utils/leagueUtils';
 

@@ -36,8 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import { userPlayer as userPlayerOperations } from '~/stores/userPlayer';
 import ProcessButton from '~/components/ProcessButton.vue';
+import { userPlayer as userPlayerOperations } from '~/stores/userPlayer';
 const userPlayer = userPlayerOperations();
 
 async function linkPlayer() {

@@ -74,8 +74,8 @@
 </template>
 
 <script setup lang="ts">
-import { userStore } from '~/stores/user';
 import { leagueManagement } from '~/stores/leagueManagement';
+import { userStore } from '~/stores/user';
 
 defineEmits(['closeSidebar']);
 const user = userStore();

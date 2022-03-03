@@ -256,10 +256,11 @@
 
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue';
-import { userStore } from '~/stores/user';
+
 import { apiUrl } from '~/env';
-import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import { userStore } from '~/stores/user';
+import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
 
 const user = userStore();
 const showPopUp = $ref(false);

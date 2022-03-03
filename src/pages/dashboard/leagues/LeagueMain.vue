@@ -140,11 +140,13 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
+
 import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
-import type { TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
-import { RawLeagueData, checkLeague } from '~/utils/leagueUtils';
+import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
+import type { TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
+// eslint-disable-next-line sort-imports
+import { checkLeague, RawLeagueData } from '~/utils/leagueUtils';
 
 onBeforeMount(() => checkLeague());
 

@@ -41,12 +41,12 @@
 </template>
 
 <script setup lang="ts">
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import ProcessButton from '~/components/ProcessButton.vue';
-import { notifications } from '~/stores/notifications';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
-import { formatTag, isValidTag } from '~/utils/clashUtils';
+import { notifications } from '~/stores/notifications';
 import type { TSeasoncClanAdd } from '~/types';
+import { formatTag, isValidTag } from '~/utils/clashUtils';
 
 const router = useRouter();
 const showPopUp = ref(false);

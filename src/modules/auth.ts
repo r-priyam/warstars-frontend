@@ -1,7 +1,7 @@
-import type { UserModule } from '~/types';
 import { RESTManager } from '~/api';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { userStore } from '~/stores/user';
+import type { UserModule } from '~/types';
 
 export const install: UserModule = ({ isClient, router }) => {
     if (isClient) {

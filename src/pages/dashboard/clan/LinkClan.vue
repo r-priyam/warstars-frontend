@@ -26,8 +26,8 @@
 </template>
 
 <script setup lang="ts">
-import { userClan as userClanOperations } from '~/stores/userClan';
 import ProcessButton from '~/components/ProcessButton.vue';
+import { userClan as userClanOperations } from '~/stores/userClan';
 
 const userClan = userClanOperations();
 

@@ -1,5 +1,6 @@
-import { HTTPError } from './HTTPError';
 import { apiUrl } from '~/env';
+
+import { HTTPError } from './HTTPError';
 
 interface Response<T> {
     ok: boolean;

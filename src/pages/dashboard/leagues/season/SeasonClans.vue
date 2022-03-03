@@ -136,10 +136,11 @@
 
 <script setup lang="ts">
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
-import { leagueManagement } from '~/stores/leagueManagement';
+
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
+import { leagueManagement } from '~/stores/leagueManagement';
 import { notifications } from '~/stores/notifications';
+import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { RawLeagueData } from '~/utils/leagueUtils';
 
 const router = useRouter();

@@ -1,7 +1,9 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { notifications } from './notifications';
+
 import { HTTPError, RESTManager } from '~/api';
 import type { TLeagueRegister } from '~/types';
+
+import { notifications } from './notifications';
 
 const API = new RESTManager();
 

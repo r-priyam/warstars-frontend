@@ -56,6 +56,7 @@
 
 <script setup lang="ts">
 import moment from 'moment';
+
 import type { TUserChildLeague } from '~/types';
 withDefaults(defineProps<{ childData: TUserChildLeague[] }>(), { childData: Array });
 

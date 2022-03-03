@@ -53,10 +53,10 @@
 </template>
 
 <script setup lang="ts">
-import type { TRegisterChild } from '~/types';
-import { checkLeague } from '~/utils/leagueUtils';
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
+import type { TRegisterChild } from '~/types';
+import { checkLeague } from '~/utils/leagueUtils';
 
 onBeforeMount(() => checkLeague());
 

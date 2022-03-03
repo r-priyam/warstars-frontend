@@ -224,10 +224,12 @@
 
 <script setup lang="ts">
 import moment from 'moment';
-import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
-import { RawLeagueData, checkLeague } from '~/utils/leagueUtils';
-import { leagueManagement } from '~/stores/leagueManagement';
+
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
+// eslint-disable-next-line sort-imports
+import { checkLeague, RawLeagueData } from '~/utils/leagueUtils';
 
 onBeforeMount(() => checkLeague());
 

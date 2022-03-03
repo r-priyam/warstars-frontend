@@ -94,9 +94,9 @@
 </template>
 
 <script setup lang="ts">
-import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
-import NoLink from '~/pages/dashboard/utils/NoLink.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import NoLink from '~/pages/dashboard/utils/NoLink.vue';
+import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
 
 const userPlayer = userPlayerOpeartions();
 onMounted(() => userPlayer.fetchPlayersData());

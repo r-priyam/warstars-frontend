@@ -1,10 +1,12 @@
 import Cookies from 'js-cookie';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { notifications } from './notifications';
+
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
 import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
+
+import { notifications } from './notifications';
 
 const API = new RESTManager();
 

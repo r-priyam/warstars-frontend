@@ -73,10 +73,10 @@
 </template>
 
 <script setup lang="ts">
-import { userStore } from '~/stores/user';
-import { leagues } from '~/stores/leagues';
-import type { TLeagueRegister } from '~/types';
 import ProcessButton from '~/components/ProcessButton.vue';
+import { leagues } from '~/stores/leagues';
+import { userStore } from '~/stores/user';
+import type { TLeagueRegister } from '~/types';
 
 defineComponent({ name: 'LeagueRegister' });
 

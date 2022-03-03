@@ -49,10 +49,10 @@
 </template>
 
 <script setup lang="ts">
-import type { TRegisterDivision } from '~/types';
-import { notifications } from '~/stores/notifications';
-import { leagueManagement } from '~/stores/leagueManagement';
 import ProcessButton from '~/components/ProcessButton.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import { notifications } from '~/stores/notifications';
+import type { TRegisterDivision } from '~/types';
 
 const router = useRouter();
 const league = leagueManagement();

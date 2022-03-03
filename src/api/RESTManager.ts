@@ -1,4 +1,3 @@
-import { RequestHandler } from './RequestHandler';
 import type {
     TAddAdmin,
     TChildClans,
@@ -18,6 +17,8 @@ import type {
     TUpdateAdminPermission,
     TUserPlayerLink
 } from '~/types';
+
+import { RequestHandler } from './RequestHandler';
 
 export class RESTManager {
     private readonly handler: RequestHandler;

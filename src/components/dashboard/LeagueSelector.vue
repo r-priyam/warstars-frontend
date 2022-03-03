@@ -171,10 +171,11 @@
 
 <script setup lang="ts">
 import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
-import type { TLocalLeagueData, TSelectedChild, TSelectedLeague, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
-import { notifications } from '~/stores/notifications';
+
 import { pushLeagueSaveRoute } from '~/router';
 import { leagueManagement } from '~/stores/leagueManagement';
+import { notifications } from '~/stores/notifications';
+import type { TLocalLeagueData, TSelectedChild, TSelectedLeague, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
 const router = useRouter();
