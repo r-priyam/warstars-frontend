@@ -115,7 +115,7 @@
                                                 <button
                                                     @click="
                                                         removeClanData = clan;
-                                                        popUpMessage = `Are you sure you want to remove ${clan.name}(${clan.tag}) for the season?`;
+                                                        popUpMessage = `Are you sure to remove ${clan.name}(${clan.tag}) for the season?`;
                                                         showPopUp = true;
                                                     ">
                                                     Remove

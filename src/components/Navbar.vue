@@ -1,7 +1,7 @@
 <template>
     <PopUp
         title="Log Out"
-        :description="`Are you sure you want to logout?`"
+        :description="`Are you sure to logout?`"
         :open="showPopUp"
         @close-pop-up="() => (showPopUp = false)"
         @confirmation="() => (user.logOut(), (showPopUp = false))" />

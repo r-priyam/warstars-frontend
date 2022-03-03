@@ -2,7 +2,7 @@
     <div>
         <PopUp
             title="Remove Player"
-            :description="`Are you sure you want to remove ${playerData.name} (${playerData.tag})? You can add it later again!`"
+            :description="`Are you sure to remove ${playerData.name} (${playerData.tag})? You can add it later again!`"
             :open="showPopUp"
             :processing="popUpProcessing"
             @close-pop-up="() => (showPopUp = false)"

@@ -48,7 +48,7 @@
                                         popUpTitle = 'Warning';
                                         // eslint-disable-next-line prettier/prettier
                                         popUpDescription =
-                                            'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
+                                            'Are you sure to start a new season? One season is active, Confiriming will end the current season!';
                                         showPopUp = true;
                                         type = 'league';
                                         forceEnd = true;
@@ -72,7 +72,7 @@
                                     title="End Season"
                                     @click="
                                         popUpTitle = 'End Season';
-                                        popUpDescription = `Are you sure you want to end season ${selectedLeagueData?.specificId}? This action is irreversible`;
+                                        popUpDescription = `Are you sure to end season ${selectedLeagueData?.specificId}? This action is irreversible`;
                                         showPopUp = true;
                                         type = 'league';
                                     ">
@@ -141,7 +141,7 @@
                                     @click="
 										popUpTitle = 'Warning';
 										// eslint-disable-next-line prettier/prettier
-										popUpDescription = 'Are you sure you want to start a new season? One season is active, Confiriming will end the current season!';
+										popUpDescription = 'Are you sure to start a new season? One season is active, Confiriming will end the current season!';
 										showPopUp = true;
 										type = 'childLeague';
 										clickedChildData = { childId: child.id, seasonId: child.seasonId! };
