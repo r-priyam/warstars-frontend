@@ -145,10 +145,9 @@ import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
 import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import type { TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
-// eslint-disable-next-line sort-imports
-import { checkLeague, RawLeagueData } from '~/utils/leagueUtils';
+import { CheckLeague, RawLeagueData } from '~/utils/leagueUtils';
 
-onBeforeMount(() => checkLeague());
+onBeforeMount(() => CheckLeague());
 
 const leagueStore = leagueManagement();
 const league = $ref(true); // true by default to show the league main page.

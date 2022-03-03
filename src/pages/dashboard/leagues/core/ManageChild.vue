@@ -56,9 +56,9 @@
 import ProcessButton from '~/components/ProcessButton.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import type { TRegisterChild } from '~/types';
-import { checkLeague } from '~/utils/leagueUtils';
+import { CheckLeague } from '~/utils/leagueUtils';
 
-onBeforeMount(() => checkLeague());
+onBeforeMount(() => CheckLeague());
 
 const league = leagueManagement();
 

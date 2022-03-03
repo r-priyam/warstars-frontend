@@ -1,7 +1,7 @@
 import { leagueManagement } from '~/stores/leagueManagement';
 import { notifications } from '~/stores/notifications';
 
-export async function checkLeague() {
+export async function CheckLeague() {
     const router = useRouter();
     const league = leagueManagement();
 

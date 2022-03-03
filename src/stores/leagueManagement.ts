@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { notifications } from './notifications';
+
 import { HTTPError, RESTManager } from '~/api';
 import type {
     TChildClans,
@@ -18,6 +18,8 @@ import type {
 } from '~/types';
 import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
+import { notifications } from './notifications';
+
 interface TPermsData {
     epoch: string;
     value: string;
@@ -30,7 +32,9 @@ export const leagueManagement = defineStore({
 
     state: (): TLeagueManagement => ({
         permissions: {},
+        leagueAdmins: [],
         childClans: {},
+        fetchingLeagueAdmins: false,
         childRegisterProcess: false,
         divisionRegisterProcess: false,
         newSeasonProcess: false,
@@ -61,6 +65,17 @@ export const leagueManagement = defineStore({
     },
 
     actions: {
+        async getLeagueAdmins(leagueId: number) {
+            this.fetchingLeagueAdmins = true;
+            try {
+                const response = await API.getAdmins(leagueId);
+                if (response.ok) this.leagueAdmins = response.data;
+            } catch (error) {
+                if (error instanceof HTTPError) notifications().error(error.message);
+            } finally {
+                this.fetchingLeagueAdmins = false;
+            }
+        },
         async syncPermsToken() {
             const notification = notifications();
             try {
