@@ -5,7 +5,7 @@ import type { UserModule } from '~/types';
 
 export const install: UserModule = ({ isClient, router }) => {
     if (isClient) {
-        router.beforeEach(async (to, _from, next) => {
+        router.beforeResolve(async (to, _from, next) => {
             const API = new RESTManager();
             const user = userStore();
             const league = leagueManagement();

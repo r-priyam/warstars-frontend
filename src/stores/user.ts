@@ -4,7 +4,6 @@ import { acceptHMRUpdate, defineStore } from 'pinia';
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
 import { domain } from '~/env';
-import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
 import { notifications } from './notifications';
 
@@ -30,7 +29,6 @@ export const userStore = defineStore({
         },
 
         async logOut() {
-            const router = useRouter();
             const notification = notifications();
             try {
                 await API.logOut();
@@ -38,10 +36,10 @@ export const userStore = defineStore({
                 notification.error();
             } finally {
                 Cookies.remove('_league_permissions', { path: '', domain });
-                RawLeagueData.value = null;
-                RawSelectedLeague.value = null;
+                localStorage.removeItem('leagues-data');
+                localStorage.removeItem('selected-league');
                 this.loggedIn = false;
-                await router.push({ name: 'Home' });
+                await this.router.push({ name: 'Home' });
             }
         }
     }

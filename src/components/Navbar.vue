@@ -4,7 +4,7 @@
         :description="`Are you sure to logout?`"
         :open="showPopUp"
         @close-pop-up="() => (showPopUp = false)"
-        @confirmation="() => (user.logOut(), (showPopUp = false))" />
+        @confirmation="async () => (await user.logOut(), (showPopUp = false))" />
     <header class="sticky top-0 z-40 border-b-2 border-main-light-600 bg-main-light-500 dark:border-main-dark-460 dark:bg-main-dark-500">
         <Popover class="sticky top-0">
             <div class="mx-auto max-w-7xl px-2 sm:px-6">
