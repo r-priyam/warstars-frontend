@@ -228,10 +228,9 @@ import moment from 'moment';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
-// eslint-disable-next-line sort-imports
-import { checkLeague, RawLeagueData } from '~/utils/leagueUtils';
+import { CheckLeague, RawLeagueData } from '~/utils/leagueUtils';
 
-onBeforeMount(() => checkLeague());
+onBeforeMount(() => CheckLeague());
 
 const popUpTitle = ref('');
 const popUpDescription = ref('');

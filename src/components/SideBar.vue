@@ -114,10 +114,7 @@ const navigation = [
     {
         title: 'League Admin',
         href: '/',
-        items: [
-            { name: 'Admins Info', href: '/dashboard/league-admin', icon: 'ri:shield-user-fill' },
-            { name: 'Manage Admins', href: '/dashboard/league-admin-manage', icon: 'ri:user-settings-fill' }
-        ]
+        items: [{ name: 'Admins Info', href: '/dashboard/league-admin', icon: 'ri:shield-user-fill' }]
     },
     {
         title: 'League Season',

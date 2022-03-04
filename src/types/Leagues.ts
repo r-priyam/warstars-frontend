@@ -147,9 +147,23 @@ export interface TLocalLeagueData {
     value?: TUserLeagueData[];
 }
 
+export interface TLeagueAdmin {
+    id: number;
+    discordId: string;
+    leagueId: number;
+    permissions: number;
+    headAdmin: boolean;
+    addedAt: string;
+    username: string;
+    discriminator: string;
+    avatar: string;
+}
+
 export interface TLeagueManagement {
     permissions: Record<string, unknown>;
+    leagueAdmins?: TLeagueAdmin[];
     childClans: Record<number, TChildClans[]>;
+    fetchingLeagueAdmins: boolean;
     childRegisterProcess: boolean;
     divisionRegisterProcess: boolean;
     newSeasonProcess: boolean;
@@ -160,20 +174,9 @@ export interface TLeagueManagement {
     clanRemoveProcess: boolean;
 }
 
-export interface TLeagueAdmin {
-    id: number;
-    discordId: string;
-    leagueId: number;
-    permissions: number;
-    addedAt: string;
-    username: string;
-    discriminator: string;
-    avatar: string;
-}
-
 export interface TAddAdmin {
     discordId: string;
-    leagueId: string;
+    leagueId: number;
     permissions: number;
 }
 
@@ -187,3 +190,13 @@ export interface TRemoveAdmin {
     adminId: number;
     leagueId: number;
 }
+
+export const PermissionsConstant: Record<string, number> = {
+    'Manage Child Divisions': 2,
+    'Manage Child Leagues': 4,
+    'Administrator': 8,
+    'Manage Clans': 16,
+    'Manage War Data': 32,
+    'Manage Season': 64,
+    'Manage League': 128
+};

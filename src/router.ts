@@ -76,12 +76,7 @@ const routes: RouteRecordRaw[] = [
             {
                 path: 'league-admin',
                 name: 'League Admin',
-                component: () => import('~/pages/dashboard/leagues/admin/Admin.vue')
-            },
-            {
-                path: 'league-admin-manage',
-                name: 'League Admin Manage',
-                component: () => import('~/pages/dashboard/leagues/admin/ManageAdmin.vue')
+                component: () => import('~/pages/dashboard/leagues/admin/AdminMain.vue')
             },
             // league season section
             {
