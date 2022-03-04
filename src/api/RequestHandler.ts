@@ -11,7 +11,7 @@ interface Response<T> {
 interface APIError {
     statusCode: number;
     timestamp: string;
-    detail: { error: string; message: string };
+    detail: string;
     path: string;
 }
 
@@ -44,7 +44,7 @@ export class RequestHandler {
 
         const data = (await response.json().catch(() => null)) as T;
 
-        if (!response.ok) throw new HTTPError((data as unknown as APIError).detail.message);
+        if (!response.ok) throw new HTTPError((data as unknown as APIError).detail);
         return { data, status: response.status, ok: response.status === 200 };
     }
 }
