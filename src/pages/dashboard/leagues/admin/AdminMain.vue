@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="h-32 w-full">
-                            <div class="inline-flex absolute right-2 mt-20 ml-auto items-end justify-end lg:p-2">
+                            <div class="absolute right-2 mt-20 ml-auto inline-flex items-end justify-end lg:p-2">
                                 <button v-if="admin.headAdmin" @click="addDialog = true">
                                     <span
                                         class="-mr-auto inline-flex rounded-full bg-main-light-430 px-3 py-1 text-sm text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530"
