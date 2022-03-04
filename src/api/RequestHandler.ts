@@ -16,16 +16,16 @@ interface APIError {
 }
 
 export class RequestHandler {
-    public async request<T>(path: string, method?: string, body?: string): Promise<Response<T>> {
+    public async request<T>(path: string, method?: string, body?: string, leagueId?: number): Promise<Response<T>> {
         try {
-            return await this.execute(path, method, body);
+            return await this.execute(path, method, body, leagueId);
         } catch (error) {
             if (error instanceof HTTPError) throw error;
             throw new HTTPError('Something went wrong!');
         }
     }
 
-    private async execute<T>(path: string, method?: string, body?: string): Promise<Response<T>> {
+    private async execute<T>(path: string, method?: string, body?: string, leagueId?: number): Promise<Response<T>> {
         // fetch doesn't have any timeout by default so implement by self. 30 seconds.
         const controller = new AbortController();
         const id = setTimeout(() => controller.abort(), 30000);
@@ -36,7 +36,9 @@ export class RequestHandler {
             method,
             body,
             signal: controller.signal,
-            headers: { 'Content-Type': 'application/json' }
+            headers: leagueId
+                ? { 'Content-Type': 'application/json', 'leagueid': String(leagueId) }
+                : { 'Content-Type': 'application/json' }
         });
         clearTimeout(id);
 
