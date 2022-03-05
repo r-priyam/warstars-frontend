@@ -29,13 +29,13 @@
                 <p class="item-name">
                     Start Date <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{
-                        childLeague.startTime !== null ? moment(childLeague.startTime).format('MMM DD, YYYY') : '--:--:----'
+                        childLeague.startTime !== null ? dayjs(childLeague.startTime).format('MMM DD, YYYY') : '--:--:----'
                     }}</span>
                 </p>
                 <p class="item-name">
                     End Date <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
                     <span class="item-data">{{
-                        childLeague.endTime !== null ? moment(childLeague.endTime).format('MMM DD, YYYY') : '--:--:----'
+                        childLeague.endTime !== null ? dayjs(childLeague.endTime).format('MMM DD, YYYY') : '--:--:----'
                     }}</span>
                 </p>
             </div>
@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import type { TUserChildLeague } from '~/types';
 withDefaults(defineProps<{ childData: TUserChildLeague[] }>(), { childData: Array });

@@ -127,7 +127,7 @@
                             Registered On
                         </span>
                         <span v-if="leagueData?.registerdOn" class="league-info-item-data">{{
-                            moment(leagueData.registerdOn).format('MMMM-DD-YYYY')
+                            dayjs(leagueData.registerdOn).format('MMMM-DD-YYYY')
                         }}</span>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
 </template>
 
 <script setup lang="ts">
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
 import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
