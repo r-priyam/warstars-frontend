@@ -2,7 +2,7 @@ name: Test
 on: [push, pull_request]
 jobs:
     build:
-        name: Website Build
+        name: Test
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
@@ -15,6 +15,12 @@ jobs:
 
             - name: Install Dependencies
               run: npm install
+            
+            - name: Lint
+              run: npm run lint
+            
+            - name: Typecheck
+              run: npm run typecheck
 
-            - name: Run Site Build
+            - name: Build
               run: npm run build
