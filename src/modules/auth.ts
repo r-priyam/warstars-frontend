@@ -27,7 +27,7 @@ export const install: UserModule = ({ isClient, router }) => {
                 } catch (error) {
                     user.loggedIn = false;
                     if (!to.fullPath.includes('/dashboard')) return next();
-                    next({ name: 'Home' });
+                    next('/');
                 }
             }
         });

@@ -39,7 +39,7 @@ export const userStore = defineStore({
                 localStorage.removeItem('leagues-data');
                 localStorage.removeItem('selected-league');
                 this.loggedIn = false;
-                await this.router.push({ name: 'Home' });
+                await this.router.push('/');
             }
         }
     }
