@@ -17,7 +17,7 @@ jobs:
     - name: Merge main to production
       run: |
           git fetch --unshallow
-          git checkout origin/production
+          git switch origin/production
           git pull
           git merge --no-ff origin/main -m "Auto-merge main on ${{ github.event.head_commit.message }}"
           git push
