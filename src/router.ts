@@ -29,20 +29,20 @@ const routes: RouteRecordRaw[] = [
             },
             // player section
             {
-                path: 'player-link',
-                name: 'Player Link',
+                path: 'link-player',
+                name: 'Link Player',
                 component: () => import('~/pages/dashboard/player/LinkPlayer.vue')
             },
             {
-                path: 'players-linked',
-                name: 'Players Linked',
+                path: 'linked-players',
+                name: 'Linked Players',
                 component: () => import('~/pages/dashboard/player/LinkedPlayers.vue')
             },
             // clan section
-            { path: 'clan-link', name: 'Clan Link', component: () => import('~/pages/dashboard/clan/LinkClan.vue') },
+            { path: 'link-clan', name: 'Link Clan', component: () => import('~/pages/dashboard/clan/LinkClan.vue') },
             {
-                path: 'clans-linked',
-                name: 'Clans Linked',
+                path: 'linked-clans',
+                name: 'Linked Clans',
                 component: () => import('~/pages/dashboard/clan/LinkedClans.vue')
             },
             // league registration section
