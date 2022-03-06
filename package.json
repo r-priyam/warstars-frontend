@@ -1,6 +1,6 @@
 {
     "name": "war-stars",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "private": true,
     "scripts": {
         "build": "vite-ssg build",
