@@ -10,7 +10,7 @@
                     <button
                         class="mt-6 shrink-0 rounded-lg bg-main-textDark-560 px-4 py-2 text-base font-semibold text-white shadow-md hover:bg-main-textLight-560 focus:outline-none dark:bg-main-textLight-560 dark:hover:bg-main-textDark-560"
                         type="button"
-                        @click="router.push({ name: `${name} Link` })">
+                        @click="router.push({ name: `Link ${name}` })">
                         Link {{ name }}
                     </button>
                 </div>

@@ -110,14 +110,14 @@
                                 class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >Start Date: </span
-                                >{{ moment(selectedLeagueData.startTime).format('MMM DD, YYYY') }}
+                                >{{ dayjs(selectedLeagueData.startTime).format('MMM DD, YYYY') }}
                             </p>
                             <p
                                 v-if="selectedLeagueData.seasonActive !== null && selectedLeagueData.seasonActive"
                                 class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >End Date: </span
-                                >{{ moment(selectedLeagueData.endTime).format('MMM DD, YYYY') }}
+                                >{{ dayjs(selectedLeagueData.endTime).format('MMM DD, YYYY') }}
                             </p>
                         </div>
                     </div>
@@ -205,14 +205,14 @@
                                 class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >Start Date: </span
-                                >{{ moment(child.startTime).format('MMM DD, YYYY') }}
+                                >{{ dayjs(child.startTime).format('MMM DD, YYYY') }}
                             </p>
                             <p
                                 v-if="child.seasonActive !== null && child.seasonActive"
                                 class="text-base font-semibold text-gray-800 dark:text-gray-200 lg:text-base">
                                 <span class="text-base font-bold text-main-textDark-560 dark:text-main-textLight-560 lg:text-base"
                                     >End Date: </span
-                                >{{ moment(child.endTime).format('MMM DD, YYYY') }}
+                                >{{ dayjs(child.endTime).format('MMM DD, YYYY') }}
                             </p>
                         </div>
                     </div>
@@ -223,7 +223,7 @@
 </template>
 
 <script setup lang="ts">
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import { leagueManagement } from '~/stores/leagueManagement';

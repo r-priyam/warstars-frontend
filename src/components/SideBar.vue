@@ -60,7 +60,7 @@
                     <router-link
                         v-for="item in nav.items"
                         :key="item.name"
-                        :to="item.href"
+                        :to="`/dashboard/${item.href}`"
                         class="group mt-1 flex items-center rounded-md px-2 py-2 text-sm font-semibold text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600"
                         active-class="bg-main-light-600 dark:bg-main-dark-600"
                         @click="$emit('closeSidebar', false)">
@@ -78,52 +78,50 @@ import { leagueManagement } from '~/stores/leagueManagement';
 import { userStore } from '~/stores/user';
 
 defineEmits(['closeSidebar']);
+
 const user = userStore();
 const league = leagueManagement();
 const navigation = [
     {
         title: 'Player',
         items: [
-            { name: 'Link Player', href: '/dashboard/player-link', icon: 'mdi:account-plus' },
-            { name: 'Linked Players', href: '/dashboard/players-linked', icon: 'mdi:account-check' }
+            { name: 'Link Player', href: 'link-player', icon: 'mdi:account-plus' },
+            { name: 'Linked Players', href: 'linked-players', icon: 'mdi:account-check' }
         ]
     },
     {
         title: 'Clan',
         items: [
-            { name: 'Link Clan', href: '/dashboard/clan-link', icon: 'mdi:account-multiple-plus' },
-            { name: 'Linked Clans', href: '/dashboard/clans-linked', icon: 'mdi:account-multiple-check' }
+            { name: 'Link Clan', href: 'link-clans', icon: 'mdi:account-multiple-plus' },
+            { name: 'Linked Clans', href: 'linked-clans', icon: 'mdi:account-multiple-check' }
         ]
     },
     {
         title: 'League Registration',
         items: [
-            { name: "What's This?", href: '/dashboard/league-register-info', icon: 'mdi:chat-question' },
-            { name: 'Register', href: '/dashboard/register-league', icon: 'heroicons-solid:pencil-alt' }
+            { name: "What's This?", href: 'league-register-info', icon: 'mdi:chat-question' },
+            { name: 'Register', href: 'register-league', icon: 'heroicons-solid:pencil-alt' }
         ]
     },
     {
         title: 'League Core',
-        href: '/',
         items: [
-            { name: 'Info', href: '/dashboard/league', icon: 'heroicons-solid:information-circle' },
-            { name: 'Add Child League', href: '/dashboard/add-league-child', icon: 'mdi:shield-plus' },
-            { name: 'Add Child Division', href: '/dashboard/add-child-division', icon: 'mdi:shield-plus-outline' }
+            { name: 'Info', href: 'league', icon: 'heroicons-solid:information-circle' },
+            { name: 'Add Child League', href: 'add-league-child', icon: 'mdi:shield-plus' },
+            { name: 'Add Child Division', href: 'add-child-division', icon: 'mdi:shield-plus-outline' }
         ]
     },
     {
         title: 'League Admin',
-        href: '/',
-        items: [{ name: 'Admins Info', href: '/dashboard/league-admin', icon: 'ri:shield-user-fill' }]
+        items: [{ name: 'Admins Info', href: 'league-admin', icon: 'ri:shield-user-fill' }]
     },
     {
         title: 'League Season',
-        href: '/',
         items: [
-            { name: 'Info', href: '/dashboard/season-info', icon: 'mdi:calendar-star' },
-            { name: 'Core', href: '/dashboard/season-core', icon: 'icon-park-outline:manual-gear' },
-            { name: 'Clans', href: '/dashboard/season-clans', icon: 'mdi:account-group' },
-            { name: 'Add Clans', href: '/dashboard/season-clans-add', icon: 'ic:baseline-group-add' },
+            { name: 'Info', href: 'season-info', icon: 'mdi:calendar-star' },
+            { name: 'Core', href: 'season-core', icon: 'icon-park-outline:manual-gear' },
+            { name: 'Clans', href: 'season-clans', icon: 'mdi:account-group' },
+            { name: 'Add Clans', href: 'season-clans-add', icon: 'ic:baseline-group-add' },
             { name: 'Matches', href: '/', icon: 'mdi:sword-cross' },
             { name: 'Results', href: '/', icon: 'mdi:email-newsletter' },
             { name: 'Leaderboard', href: '/', icon: 'ic:baseline-leaderboard' },

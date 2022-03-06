@@ -22,7 +22,7 @@
                     <div class="relative flex justify-start">
                         <span
                             class="bg-main-light-430 pl-2 pr-2 text-lg font-bold text-main-textDark-600 dark:bg-main-dark-600 dark:text-main-textLight-530">
-                            Clans Linked
+                            Linked Clans
                         </span>
                     </div>
                 </div>
