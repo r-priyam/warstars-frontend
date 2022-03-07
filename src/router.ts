@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router';
 export const pushLeagueSaveRoute = ref('');
 
 const routes: RouteRecordRaw[] = [
-    { path: '/', name: 'Home', component: () => import('~/pages/HomePage.vue') },
+    { path: '/', name: 'WarStars', component: () => import('~/pages/HomePage.vue') },
     {
         path: '/dashboard',
         name: 'Dashboard',

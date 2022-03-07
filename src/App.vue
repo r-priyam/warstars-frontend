@@ -46,6 +46,11 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: 'WarStars',
+    meta: [{ name: 'description', content: 'Complete package for  Clash of Clans tournament leagues.' }]
+});
+
 const router = useRouter();
 const showBetaNotice = useStorage('beta-warning', true);
 </script>
