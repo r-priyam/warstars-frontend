@@ -123,7 +123,7 @@ export interface TEndChildSeason extends TEndLeagueSeason {
     childLeagueId: number;
 }
 
-export interface TSeasoncClanAdd {
+export interface TSeasonClanAdd {
     leagueId: number;
     childId: number;
     divisionId: number;

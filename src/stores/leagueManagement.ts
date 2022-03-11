@@ -14,7 +14,7 @@ import type {
     TNewSeason,
     TRegisterChild,
     TRegisterDivision,
-    TSeasoncClanAdd
+    TSeasonClanAdd
 } from '~/types';
 import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
@@ -206,7 +206,7 @@ export const leagueManagement = defineStore({
             }
         },
 
-        async seasonClanAdd(data: TSeasoncClanAdd) {
+        async seasonClanAdd(data: TSeasonClanAdd) {
             const notification = notifications();
             this.seasonClanAddProcess = true;
             try {
