@@ -6,11 +6,7 @@
             :open="showPopUp"
             :processing="popUpProcessing"
             @close-pop-up="() => (showPopUp = false)"
-            @confirmation="
-				async () => (
-					(popUpProcessing = true), await leagueStore.seasonRemoveClan(removeClanData!), (popUpProcessing = false), (showPopUp = false), clansData?.splice(clansData.indexOf(removeClanData!), 1)
-				)
-			" />
+            @confirmation="handleConfirmation" />
     </div>
     <LoadingSpinner v-if="leagueStore.fetchingChildClans" />
     <div v-else class="mx-auto bg-main-light-530 px-4 dark:bg-main-dark-500">
@@ -188,4 +184,12 @@ onBeforeMount(async () => {
         await router.push({ name: 'League Selector' });
     }
 });
+
+async function handleConfirmation() {
+    popUpProcessing.value = true;
+    await leagueStore.seasonRemoveClan(removeClanData.value!);
+    popUpProcessing.value = false;
+    showPopUp.value = false;
+    clansData?.splice(clansData.indexOf(removeClanData.value!), 1);
+}
 </script>
