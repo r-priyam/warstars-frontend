@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie';
-import jwt_decode from 'jwt-decode';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 
 import { HTTPError, RESTManager } from '~/api';
@@ -19,11 +17,7 @@ import type {
 import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
 import { notifications } from './notifications';
-
-interface TPermsData {
-    epoch: string;
-    value: string;
-}
+import { userStore } from './user';
 
 const API = new RESTManager();
 
@@ -31,7 +25,6 @@ export const leagueManagement = defineStore({
     id: 'leagueManagement',
 
     state: (): TLeagueManagement => ({
-        permissions: {},
         leagueAdmins: [],
         childClans: {},
         fetchingLeagueAdmins: false,
@@ -46,21 +39,19 @@ export const leagueManagement = defineStore({
     }),
 
     getters: {
-        getLeagueLocalConfig: (state) => {
-            // eslint-disable-next-line no-lone-blocks
-            {
-                if (Object.keys(state.permissions).length > 1) {
-                    const data = JSON.parse(RawSelectedLeague.value);
-                    const dataToReturn: TLocalLeagueConfig = {
-                        league: data.league,
-                        child: data.child,
-                        division: data.division
-                    };
-                    return dataToReturn;
-                }
-                RawSelectedLeague.value = null;
-                return null;
+        getLeagueLocalConfig: (_state) => {
+            const user = userStore();
+            if (user.userData.showLeague) {
+                const data = JSON.parse(RawSelectedLeague.value);
+                const dataToReturn: TLocalLeagueConfig = {
+                    league: data.league,
+                    child: data.child,
+                    division: data.division
+                };
+                return dataToReturn;
             }
+            RawSelectedLeague.value = null;
+            return null;
         }
     },
 
@@ -75,37 +66,6 @@ export const leagueManagement = defineStore({
             } finally {
                 this.fetchingLeagueAdmins = false;
             }
-        },
-        async syncPermsToken() {
-            const notification = notifications();
-            try {
-                const request = await API.getUserLeaguePermissions();
-                // return here since API won't give any data when user is in no league.
-                if (request.status !== 200) {
-                    this.permissions = {};
-                    Cookies.remove('_league_permissions');
-                    return;
-                }
-                // Here if a response is successfull and user is in No League, i mean
-                // if a user permissions is null then it won't set a cookie or not it will
-                // return anything so return.
-                if (!Cookies.get('_league_permissions')) return Cookies.remove('_league_permissions');
-                const payloadData: TPermsData = jwt_decode(Cookies.get('_league_permissions')!);
-                this.permissions = payloadData as unknown as Record<string, unknown>;
-            } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
-            }
-        },
-
-        async syncPermissions() {
-            const permissionsCookie = Cookies.get('_league_permissions');
-            if (permissionsCookie) {
-                const permsPayload: TPermsData = jwt_decode(permissionsCookie);
-                const checkTwoMins = Date.now() - Number(permsPayload.epoch);
-                // check for permissions change per 10 minutes
-                if (checkTwoMins > 600000) await this.syncPermsToken();
-                else this.permissions = permsPayload as unknown as Record<string, unknown>;
-            } else await this.syncPermsToken();
         },
 
         async refreshLeaguesData() {

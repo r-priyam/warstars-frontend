@@ -160,7 +160,6 @@ export interface TLeagueAdmin {
 }
 
 export interface TLeagueManagement {
-    permissions: Record<string, unknown>;
     leagueAdmins?: TLeagueAdmin[];
     childClans: Record<number, TChildClans[]>;
     fetchingLeagueAdmins: boolean;

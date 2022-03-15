@@ -12,7 +12,6 @@ export const install: UserModule = ({ isClient, router }) => {
 
             if (user.loggedIn) {
                 if (user.userData.discordId === '') await user.setUserData();
-                await league.syncPermissions();
                 await league.syncLeaguesData();
                 next();
             } else {
@@ -20,7 +19,6 @@ export const install: UserModule = ({ isClient, router }) => {
                     const checkAuthenticated = await API.checkAuthenticated();
                     if (checkAuthenticated.status === 200) {
                         if (user.userData.discordId === '') await user.setUserData();
-                        await league.syncPermissions();
                         await league.syncLeaguesData();
                         next();
                     }

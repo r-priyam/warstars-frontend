@@ -173,17 +173,17 @@
 import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
 
 import { pushLeagueSaveRoute } from '~/router';
-import { leagueManagement } from '~/stores/leagueManagement';
 import { notifications } from '~/stores/notifications';
+import { userStore } from '~/stores/user';
 import type { TLocalLeagueData, TSelectedChild, TSelectedLeague, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
 import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
 
 const router = useRouter();
-const leagueStore = leagueManagement();
+const user = userStore();
 
 // Check if a user is in any league or not. If not redirect back to league info page.
 onBeforeMount(async () => {
-    if (Object.keys(leagueStore.permissions).length === 1) {
+    if (!user.userData.showLeague) {
         notifications().info("You aren't in any league.");
         await router.push({ name: 'League Register Info' });
     }
