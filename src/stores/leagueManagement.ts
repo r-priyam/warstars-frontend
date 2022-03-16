@@ -60,9 +60,13 @@ export const leagueManagement = defineStore({
             this.fetchingLeagueAdmins = true;
             try {
                 const response = await API.getAdmins(leagueId);
-                if (response.ok) this.leagueAdmins = response.data;
+                if (response.ok) {
+                    this.leagueAdmins = response.data;
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notifications().error(error.message);
+                if (error instanceof HTTPError) {
+                    notifications().error(error.message);
+                }
             } finally {
                 this.fetchingLeagueAdmins = false;
             }
@@ -73,10 +77,14 @@ export const leagueManagement = defineStore({
             this.leagueDataRefreshProcess = true;
             try {
                 const request = await API.getUserLeagueData();
-                if (!request.data) return (RawLeagueData.value = null);
+                if (!request.data) {
+                    return (RawLeagueData.value = null);
+                }
                 RawLeagueData.value = JSON.stringify({ epoch: Date.now(), value: request.data });
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.leagueDataRefreshProcess = false;
             }
@@ -87,10 +95,14 @@ export const leagueManagement = defineStore({
             if (Object.keys(localLeaguesData).length === 0) {
                 await this.refreshLeaguesData();
             } else {
-                if (!localLeaguesData.epoch) await this.refreshLeaguesData();
+                if (!localLeaguesData.epoch) {
+                    await this.refreshLeaguesData();
+                }
                 const checkFiveMins = Date.now() - Number(localLeaguesData.epoch);
                 // check for league data change per 5 minutes
-                if (checkFiveMins > 300000) await this.refreshLeaguesData();
+                if (checkFiveMins > 300000) {
+                    await this.refreshLeaguesData();
+                }
             }
         },
 
@@ -99,9 +111,13 @@ export const leagueManagement = defineStore({
             this.childRegisterProcess = true;
             try {
                 const response = await API.registerChildLeague(data);
-                if (response.status === 200) notification.success('Registered child league');
+                if (response.status === 200) {
+                    notification.success('Registered child league');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.childRegisterProcess = false;
             }
@@ -112,9 +128,13 @@ export const leagueManagement = defineStore({
             this.divisionRegisterProcess = true;
             try {
                 const response = await API.registerChildDivision(data);
-                if (response.status === 200) notification.success('Registered division');
+                if (response.status === 200) {
+                    notification.success('Registered division');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.divisionRegisterProcess = false;
             }
@@ -125,9 +145,13 @@ export const leagueManagement = defineStore({
             this.newSeasonProcess = true;
             try {
                 const response = await API.startNewSeason(data);
-                if (response.status === 200) notification.success('Season created');
+                if (response.status === 200) {
+                    notification.success('Season created');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.newSeasonProcess = false;
             }
@@ -138,9 +162,13 @@ export const leagueManagement = defineStore({
             this.childSeasonProcess = true;
             try {
                 const response = await API.startNewChildSeason(data);
-                if (response.status === 200) notification.success('Season created');
+                if (response.status === 200) {
+                    notification.success('Season created');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.childSeasonProcess = false;
             }
@@ -150,9 +178,13 @@ export const leagueManagement = defineStore({
             const notification = notifications();
             try {
                 const response = await API.endSeason(data);
-                if (response.status === 200) notification.success('Season ended');
+                if (response.status === 200) {
+                    notification.success('Season ended');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             }
         },
 
@@ -160,9 +192,13 @@ export const leagueManagement = defineStore({
             const notification = notifications();
             try {
                 const response = await API.endChildSeason(data);
-                if (response.status === 200) notification.success('Season ended');
+                if (response.status === 200) {
+                    notification.success('Season ended');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             }
         },
 
@@ -171,9 +207,13 @@ export const leagueManagement = defineStore({
             this.seasonClanAddProcess = true;
             try {
                 const response = await API.addSeasonClans(data);
-                if (response.status === 200) notification.success('Clans Added Successfully!');
+                if (response.status === 200) {
+                    notification.success('Clans Added Successfully!');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.seasonClanAddProcess = false;
             }
@@ -182,13 +222,19 @@ export const leagueManagement = defineStore({
         async seasonChildClans(childId: number, seasonId: number) {
             const notification = notifications();
             // eslint-disable-next-line no-prototype-builtins
-            if (this.childClans.hasOwnProperty(childId)) return;
+            if (this.childClans.hasOwnProperty(childId)) {
+                return;
+            }
             this.fetchingChildClans = true;
             try {
                 const response = await API.getLeagueChildClans(childId, seasonId);
-                if (response.status === 200) this.childClans[childId] = response.data;
+                if (response.status === 200) {
+                    this.childClans[childId] = response.data;
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.fetchingChildClans = false;
             }
@@ -199,9 +245,13 @@ export const leagueManagement = defineStore({
             this.clanRemoveProcess = true;
             try {
                 const response = await API.removeSeasonClan(data);
-                if (response.status === 200) notification.success('Clan Removed Successfully!');
+                if (response.status === 200) {
+                    notification.success('Clan Removed Successfully!');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.clanRemoveProcess = false;
             }

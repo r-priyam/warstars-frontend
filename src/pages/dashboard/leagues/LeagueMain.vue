@@ -162,7 +162,9 @@ const leagueData = computed(() =>
 
 const leagueDivisions = () => {
     const leagueData_ = leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId);
-    if (!leagueData_?.childLeagues) return [];
+    if (!leagueData_?.childLeagues) {
+        return [];
+    }
     const divisions: Array<TUserChildLeagueDivisions> = [];
     leagueData_.childLeagues.forEach((element) => {
         divisions.push(...element.divisions);

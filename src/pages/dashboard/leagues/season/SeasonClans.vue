@@ -166,8 +166,12 @@ const getSeasonChildClans = async () => {
 };
 
 const selectedOptionClans = computed(() => {
-    if (!clansData) return [];
-    if (selectedOption === filterOptions[0]) return clansData;
+    if (!clansData) {
+        return [];
+    }
+    if (selectedOption === filterOptions[0]) {
+        return clansData;
+    }
     return clansData.filter((data) => data.divisionId === selectedOption.id);
 });
 onMounted(async () => {

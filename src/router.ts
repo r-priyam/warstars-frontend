@@ -14,7 +14,9 @@ const routes: RouteRecordRaw[] = [
                 name: 'League Selector',
                 component: () => import('~/components/dashboard/LeagueSelector.vue'),
                 beforeEnter: (_to, from) => {
-                    if (!from.name) pushLeagueSaveRoute.value = 'League Info';
+                    if (!from.name) {
+                        pushLeagueSaveRoute.value = 'League Info';
+                    }
                     if (
                         from.fullPath !== '/dashboard/player-link' &&
                         from.fullPath !== '/dashboard/players-linked' &&
@@ -22,9 +24,11 @@ const routes: RouteRecordRaw[] = [
                         from.fullPath !== '/dashboard/clans-linked' &&
                         from.fullPath !== '/dashboard/league-register-info' &&
                         from.fullPath !== '/dashboard/register-league'
-                    )
+                    ) {
                         pushLeagueSaveRoute.value = String(from.name ?? 'League Info');
-                    else pushLeagueSaveRoute.value = 'League Info';
+                    } else {
+                        pushLeagueSaveRoute.value = 'League Info';
+                    }
                 }
             },
             // player section

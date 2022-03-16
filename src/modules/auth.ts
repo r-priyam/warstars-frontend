@@ -11,20 +11,26 @@ export const install: UserModule = ({ isClient, router }) => {
             const league = leagueManagement();
 
             if (user.loggedIn) {
-                if (user.userData.discordId === '') await user.setUserData();
+                if (user.userData.discordId === '') {
+                    await user.setUserData();
+                }
                 await league.syncLeaguesData();
                 next();
             } else {
                 try {
                     const checkAuthenticated = await API.checkAuthenticated();
                     if (checkAuthenticated.status === 200) {
-                        if (user.userData.discordId === '') await user.setUserData();
+                        if (user.userData.discordId === '') {
+                            await user.setUserData();
+                        }
                         await league.syncLeaguesData();
                         next();
                     }
                 } catch (error) {
                     user.loggedIn = false;
-                    if (!to.fullPath.includes('/dashboard')) return next();
+                    if (!to.fullPath.includes('/dashboard')) {
+                        return next();
+                    }
                     next('/');
                 }
             }

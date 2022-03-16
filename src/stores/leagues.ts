@@ -16,9 +16,13 @@ export const leagues = defineStore({
             this.registerProcessing = true;
             try {
                 const response = await API.registerLeague(data);
-                if (response.status === 200) notification.success('Registration application submitted');
+                if (response.status === 200) {
+                    notification.success('Registration application submitted');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.registerProcessing = false;
             }

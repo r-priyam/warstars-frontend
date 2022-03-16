@@ -22,7 +22,9 @@ export const userStore = defineStore({
             try {
                 this.userData = (await API.user()).data;
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             }
         },
 

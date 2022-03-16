@@ -124,8 +124,11 @@ let newAdmin = $ref({ discordId: '', permissions: [0] });
 watch(
     () => newAdmin.permissions,
     (newValue: number[]) => {
-        if (newValue.includes(8)) administratorSelected = true;
-        else administratorSelected = false;
+        if (newValue.includes(8)) {
+            administratorSelected = true;
+        } else {
+            administratorSelected = false;
+        }
     }
 );
 watch(
@@ -139,8 +142,12 @@ watch(
 );
 
 function handleConfirmation() {
-    if (!newAdmin.discordId) return notifications().warning('Enter new admin discord id');
-    if (newAdmin.permissions.length === 1) return notifications().warning('No permissions selected!');
+    if (!newAdmin.discordId) {
+        return notifications().warning('Enter new admin discord id');
+    }
+    if (newAdmin.permissions.length === 1) {
+        return notifications().warning('No permissions selected!');
+    }
     emit('addAdmin', newAdmin);
 }
 </script>

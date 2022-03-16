@@ -167,9 +167,13 @@ async function addAdmin(payload: { discordId: string; permissions: number[] }) {
             leagueId: leagueStore.getLeagueLocalConfig!.league.leagueId,
             permissions: payload.permissions.includes(8) ? 8 : payload.permissions.reduce((x, y) => x + y)
         });
-        if (res.ok) notification.info('Successfully added admin!');
+        if (res.ok) {
+            notification.info('Successfully added admin!');
+        }
     } catch (error) {
-        if (error instanceof HTTPError) notification.error(error.message);
+        if (error instanceof HTTPError) {
+            notification.error(error.message);
+        }
     } finally {
         addDialog = false;
         addProcessing = false;
@@ -180,10 +184,13 @@ async function removeAdmin() {
     popUpProcessing = true;
     try {
         const res = await API.removeAdmin({ adminId: selectedAdmin.adminId, leagueId: selectedAdmin.leagueId });
-        if (res.ok)
+        if (res.ok) {
             notification.info(`Successfully removed ${selectedAdmin.name} from ${leagueStore.getLeagueLocalConfig!.league.name} admins`);
+        }
     } catch (error) {
-        if (error instanceof HTTPError) notification.error(error.message);
+        if (error instanceof HTTPError) {
+            notification.error(error.message);
+        }
     } finally {
         showPopUp = false;
         popUpProcessing = false;
@@ -198,9 +205,13 @@ async function editPermissions(newPermissionVal: number) {
             leagueId: leagueStore.getLeagueLocalConfig!.league.leagueId,
             permissions: newPermissionVal
         });
-        if (res.ok) notification.info(`Successfully updated ${editAdmin.name} for ${leagueStore.getLeagueLocalConfig!.league.name}`);
+        if (res.ok) {
+            notification.info(`Successfully updated ${editAdmin.name} for ${leagueStore.getLeagueLocalConfig!.league.name}`);
+        }
     } catch (error) {
-        if (error instanceof HTTPError) notification.error(error.message);
+        if (error instanceof HTTPError) {
+            notification.error(error.message);
+        }
     } finally {
         editProcessing = false;
         editDialog = false;

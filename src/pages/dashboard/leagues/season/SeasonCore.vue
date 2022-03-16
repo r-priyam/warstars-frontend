@@ -123,10 +123,13 @@ watch(childSeason, async (now) => {
 async function registerSeason() {
     const form: HTMLFormElement | null = document.querySelector('#season');
     const formData = new FormData(form!);
-    if (dayjs(new Date(formData.get('start-date') as string)).isBefore(new Date())) return notifications().error('Start date is in past');
-    else if (dayjs(new Date(formData.get('end-date') as string)).isBefore(new Date())) return notifications().error('End date is in past');
-    else if (dayjs(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <= 13)
+    if (dayjs(new Date(formData.get('start-date') as string)).isBefore(new Date())) {
+        return notifications().error('Start date is in past');
+    } else if (dayjs(new Date(formData.get('end-date') as string)).isBefore(new Date())) {
+        return notifications().error('End date is in past');
+    } else if (dayjs(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <= 13) {
         return notifications().error('Season duration must be 2 weeks or grater than it');
+    }
 
     if (leagueSeason) {
         const newSeasonData: TNewSeason = {

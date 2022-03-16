@@ -20,7 +20,9 @@ export class RequestHandler {
         try {
             return await this.execute(path, method, body, leagueId);
         } catch (error) {
-            if (error instanceof HTTPError) throw error;
+            if (error instanceof HTTPError) {
+                throw error;
+            }
             throw new HTTPError('Something went wrong!');
         }
     }
@@ -44,7 +46,9 @@ export class RequestHandler {
 
         const data = (await response.json().catch(() => null)) as T;
 
-        if (!response.ok) throw new HTTPError((data as unknown as APIError).detail);
+        if (!response.ok) {
+            throw new HTTPError((data as unknown as APIError).detail);
+        }
         return { data, status: response.status, ok: response.status === 200 };
     }
 }
