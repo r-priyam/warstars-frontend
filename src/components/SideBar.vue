@@ -130,5 +130,5 @@ const navigation = [
     }
 ];
 
-const toggleNavigation = user.userData.showLeague ? navigation.splice(-navigation.length - 3, 3) : navigation;
+const toggleNavigation = user.userData.showLeague ? navigation : navigation.splice(-navigation.length - 3, 3);
 </script>
