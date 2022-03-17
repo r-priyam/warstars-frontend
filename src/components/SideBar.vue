@@ -92,7 +92,7 @@ const navigation = [
     {
         title: 'Clan',
         items: [
-            { name: 'Link Clan', href: 'link-clans', icon: 'mdi:account-multiple-plus' },
+            { name: 'Link Clan', href: 'link-clan', icon: 'mdi:account-multiple-plus' },
             { name: 'Linked Clans', href: 'linked-clans', icon: 'mdi:account-multiple-check' }
         ]
     },
