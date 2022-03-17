@@ -85,7 +85,12 @@
                                 <button
                                     v-if="user.userData.discordId === headAdmin && !admin.headAdmin"
                                     @click="
-                                        selectedAdmin = { name: admin.username, adminId: admin.id, leagueId: admin.leagueId };
+                                        selectedAdmin = {
+                                            name: admin.username,
+                                            adminId: admin.id,
+                                            discordId: admin.discordId,
+                                            leagueId: admin.leagueId
+                                        };
                                         showPopUp = true;
                                     ">
                                     <span
@@ -154,7 +159,7 @@ let addProcessing = $ref(false);
 let editDialog = $ref(false);
 let editProcessing = $ref(false);
 
-const selectedAdmin = $ref({ name: '', adminId: 0, leagueId: 0 });
+const selectedAdmin = $ref({ name: '', adminId: 0, discordId: '', leagueId: 0 });
 const editAdmin = $ref({ name: '', adminId: 0, permissions: 0, leagueId: 0 });
 
 const headAdmin = computed(() => leagueStore.leagueAdmins?.find((x) => x.headAdmin)?.discordId);
@@ -183,7 +188,11 @@ async function addAdmin(payload: { discordId: string; permissions: number[] }) {
 async function removeAdmin() {
     popUpProcessing = true;
     try {
-        const res = await API.removeAdmin({ adminId: selectedAdmin.adminId, leagueId: selectedAdmin.leagueId });
+        const res = await API.removeAdmin({
+            adminId: selectedAdmin.adminId,
+            adminDiscordId: selectedAdmin.discordId,
+            leagueId: selectedAdmin.leagueId
+        });
         if (res.ok) {
             notification.info(`Successfully removed ${selectedAdmin.name} from ${leagueStore.getLeagueLocalConfig!.league.name} admins`);
         }

@@ -187,6 +187,7 @@ export interface TUpdateAdminPermission {
 
 export interface TRemoveAdmin {
     adminId: number;
+    adminDiscordId: string;
     leagueId: number;
 }
 
