@@ -57,6 +57,9 @@ export const leagueManagement = defineStore({
 
     actions: {
         async getLeagueAdmins(leagueId: number) {
+            if (leagueId === 0) {
+                return;
+            }
             this.fetchingLeagueAdmins = true;
             try {
                 const response = await API.getAdmins(leagueId);
