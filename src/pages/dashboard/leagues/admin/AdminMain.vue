@@ -182,6 +182,7 @@ async function addAdmin(payload: { discordId: string; permissions: number[] }) {
     } finally {
         addDialog = false;
         addProcessing = false;
+        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
     }
 }
 
@@ -203,6 +204,7 @@ async function removeAdmin() {
     } finally {
         showPopUp = false;
         popUpProcessing = false;
+        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
     }
 }
 
@@ -224,6 +226,7 @@ async function editPermissions(newPermissionVal: number) {
     } finally {
         editProcessing = false;
         editDialog = false;
+        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
     }
 }
 </script>
