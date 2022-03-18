@@ -4,4 +4,5 @@ export interface TDiscordUserData {
     discriminator: string;
     avatar: string;
     createdAt: string;
+    showLeague: boolean;
 }

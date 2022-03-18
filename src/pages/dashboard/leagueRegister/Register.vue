@@ -92,10 +92,18 @@ async function registerLeague() {
         headAdmin: user.userData.username,
         discordId: user.userData.discordId
     };
-    if (formData.get('discord-invite')) leagueRegisterData.discordInvite = String(formData.get('discord-invite'));
-    if (formData.get('twitter-handle')) leagueRegisterData.twitterHandle = String(formData.get('twitter-handle'));
-    if (formData.get('website-url')) leagueRegisterData.website = String(formData.get('website-url'));
-    if (formData.get('league-rules')) leagueRegisterData.rules = String(formData.get('league-rules'));
+    if (formData.get('discord-invite')) {
+        leagueRegisterData.discordInvite = String(formData.get('discord-invite'));
+    }
+    if (formData.get('twitter-handle')) {
+        leagueRegisterData.twitterHandle = String(formData.get('twitter-handle'));
+    }
+    if (formData.get('website-url')) {
+        leagueRegisterData.website = String(formData.get('website-url'));
+    }
+    if (formData.get('league-rules')) {
+        leagueRegisterData.rules = String(formData.get('league-rules'));
+    }
     await league.registerLeague(leagueRegisterData);
 }
 </script>

@@ -136,8 +136,11 @@ const permissionsCheck = $computed<Record<string, boolean>>(() => {
 watch(
     () => newPermissions,
     (newValue: number[]) => {
-        if (newValue.includes(8)) administratorSelected = true;
-        else administratorSelected = false;
+        if (newValue.includes(8)) {
+            administratorSelected = true;
+        } else {
+            administratorSelected = false;
+        }
     }
 );
 watch(
@@ -152,7 +155,9 @@ watch(
                 newPermissions.push(8);
             } else {
                 for (const perm in permissionsCheck) {
-                    if (permissionsCheck[perm]) newPermissions.push(PermissionsConstant[perm]);
+                    if (permissionsCheck[perm]) {
+                        newPermissions.push(PermissionsConstant[perm]);
+                    }
                 }
             }
         }
@@ -160,7 +165,9 @@ watch(
 );
 
 function handleConfirmation() {
-    if (newPermissions.length === 1) return notifications().warning('No permissions selected!');
+    if (newPermissions.length === 1) {
+        return notifications().warning('No permissions selected!');
+    }
     const newPermissionVal = newPermissions.includes(8) ? 8 : newPermissions.reduce((x, y) => x + y);
     const updatedPerms = $computed(() => new AdminPermissions(newPermissionVal));
     const updatedCheck: Record<string, boolean> = {
@@ -173,7 +180,9 @@ function handleConfirmation() {
         'Manage League': updatedPerms.manageLeague
     };
 
-    if (JSON.stringify(permissionsCheck) === JSON.stringify(updatedCheck)) return notifications().warning('No permission change detected');
+    if (JSON.stringify(permissionsCheck) === JSON.stringify(updatedCheck)) {
+        return notifications().warning('No permission change detected');
+    }
     emit('updateAdmin', newPermissionVal);
 }
 </script>

@@ -23,9 +23,13 @@ export const userClan = defineStore({
             this.clansDataProcessing = true;
             try {
                 const response = await API.clans();
-                if (response.status === 200) this.clanData = response.data;
+                if (response.status === 200) {
+                    this.clanData = response.data;
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.clansDataProcessing = false;
             }
@@ -36,9 +40,13 @@ export const userClan = defineStore({
             this.linkClanProcessing = true;
             try {
                 const response = await API.addClan(clanTag);
-                if (response.status === 200) notification.success('Linked clan successfully!');
+                if (response.status === 200) {
+                    notification.success('Linked clan successfully!');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.linkClanProcessing = false;
             }
@@ -54,7 +62,9 @@ export const userClan = defineStore({
                     this.clanData.splice(this.clanData.findIndex((data: TClanData) => data.tag === clanTag));
                 }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.removeClanProcessing = false;
             }

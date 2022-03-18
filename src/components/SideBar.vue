@@ -92,7 +92,7 @@ const navigation = [
     {
         title: 'Clan',
         items: [
-            { name: 'Link Clan', href: 'link-clans', icon: 'mdi:account-multiple-plus' },
+            { name: 'Link Clan', href: 'link-clan', icon: 'mdi:account-multiple-plus' },
             { name: 'Linked Clans', href: 'linked-clans', icon: 'mdi:account-multiple-check' }
         ]
     },
@@ -130,5 +130,5 @@ const navigation = [
     }
 ];
 
-const toggleNavigation = Object.keys(league.permissions).length === 1 ? navigation.splice(-navigation.length - 3, 3) : navigation;
+const toggleNavigation = user.userData.showLeague ? navigation : navigation.splice(-navigation.length - 3, 3);
 </script>

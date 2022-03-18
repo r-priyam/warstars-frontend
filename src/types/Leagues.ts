@@ -123,7 +123,7 @@ export interface TEndChildSeason extends TEndLeagueSeason {
     childLeagueId: number;
 }
 
-export interface TSeasoncClanAdd {
+export interface TSeasonClanAdd {
     leagueId: number;
     childId: number;
     divisionId: number;
@@ -160,7 +160,6 @@ export interface TLeagueAdmin {
 }
 
 export interface TLeagueManagement {
-    permissions: Record<string, unknown>;
     leagueAdmins?: TLeagueAdmin[];
     childClans: Record<number, TChildClans[]>;
     fetchingLeagueAdmins: boolean;
@@ -188,6 +187,7 @@ export interface TUpdateAdminPermission {
 
 export interface TRemoveAdmin {
     adminId: number;
+    adminDiscordId: string;
     leagueId: number;
 }
 

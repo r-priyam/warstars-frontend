@@ -13,7 +13,7 @@ import type {
     TRegisterChild,
     TRegisterDivision,
     TRemoveAdmin,
-    TSeasoncClanAdd,
+    TSeasonClanAdd,
     TUpdateAdminPermission,
     TUserPlayerLink
 } from '~/types';
@@ -132,7 +132,7 @@ export class RESTManager {
         return this.handler.request('/league/season/end-child', 'PUT', JSON.stringify(payload));
     }
 
-    public addSeasonClans(payload: TSeasoncClanAdd) {
+    public addSeasonClans(payload: TSeasonClanAdd) {
         return this.handler.request('/league/season/add-clans', 'POST', JSON.stringify(payload));
     }
 

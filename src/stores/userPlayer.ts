@@ -19,9 +19,13 @@ export const userPlayer = defineStore({
 
     getters: {
         getPlayerData: (state) => (playerTag: string) => {
-            if (!state.playerData.length) return null;
+            if (!state.playerData.length) {
+                return null;
+            }
             state.playerData.forEach((item) => {
-                if (item.tag === playerTag) return item;
+                if (item.tag === playerTag) {
+                    return item;
+                }
             });
         }
     },
@@ -32,9 +36,13 @@ export const userPlayer = defineStore({
             this.playersDataProcessing = true;
             try {
                 const response = await API.players();
-                if (response.status === 200) this.playerData = response.data;
+                if (response.status === 200) {
+                    this.playerData = response.data;
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.playersDataProcessing = false;
             }
@@ -46,9 +54,13 @@ export const userPlayer = defineStore({
             const data: TUserPlayerLink = { playerTag, apiToken };
             try {
                 const response = await API.addPlayer(data);
-                if (response.status === 200) notification.success('Linked player successfully!');
+                if (response.status === 200) {
+                    notification.success('Linked player successfully!');
+                }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.linkPlayerProcessing = false;
             }
@@ -64,7 +76,9 @@ export const userPlayer = defineStore({
                     this.playerData.splice(this.playerData.findIndex((data: TPlayerData) => data.tag === playerTag));
                 }
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             } finally {
                 this.removePlayerProcessing = false;
             }

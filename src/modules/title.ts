@@ -12,7 +12,9 @@ export const install: UserModule = ({ isClient, router, head }) => {
                         meta: [{ name: 'description', content: 'Complete package for  Clash of Clans tournament leagues. ' }]
                     })
                 );
-                if (typeof window !== 'undefined') head?.updateDOM();
+                if (typeof window !== 'undefined') {
+                    head?.updateDOM();
+                }
             }
         });
     }

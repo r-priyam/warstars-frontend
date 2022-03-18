@@ -45,7 +45,7 @@ import ProcessButton from '~/components/ProcessButton.vue';
 import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
 import { leagueManagement } from '~/stores/leagueManagement';
 import { notifications } from '~/stores/notifications';
-import type { TSeasoncClanAdd } from '~/types';
+import type { TSeasonClanAdd } from '~/types';
 import { formatTag, isValidTag } from '~/utils/clashUtils';
 
 const router = useRouter();
@@ -89,7 +89,7 @@ async function addClans() {
         }
     }
 
-    const seasonClanRegisterData: TSeasoncClanAdd = {
+    const seasonClanRegisterData: TSeasonClanAdd = {
         // Ignore typecheck here because since season check is
         // already being checked above before mounting the page.
         leagueId: leagueData!.league.leagueId,

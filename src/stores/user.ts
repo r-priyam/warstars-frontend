@@ -1,9 +1,7 @@
-import Cookies from 'js-cookie';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 
 import { HTTPError } from '~/api/HTTPError';
 import { RESTManager } from '~/api/RESTManager';
-import { domain } from '~/env';
 
 import { notifications } from './notifications';
 
@@ -13,7 +11,7 @@ export const userStore = defineStore({
     id: 'user',
 
     state: () => ({
-        userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '' },
+        userData: { discordId: '', username: '', discriminator: '', avatar: '', createdAt: '', showLeague: false },
         loggedIn: false
     }),
 
@@ -24,7 +22,9 @@ export const userStore = defineStore({
             try {
                 this.userData = (await API.user()).data;
             } catch (error) {
-                if (error instanceof HTTPError) notification.error(error.message);
+                if (error instanceof HTTPError) {
+                    notification.error(error.message);
+                }
             }
         },
 
@@ -35,7 +35,6 @@ export const userStore = defineStore({
             } catch (error) {
                 notification.error();
             } finally {
-                Cookies.remove('_league_permissions', { path: '', domain });
                 localStorage.removeItem('leagues-data');
                 localStorage.removeItem('selected-league');
                 this.loggedIn = false;

@@ -8,6 +8,9 @@ export const install: UserModule = ({ isClient, router, initialState, app }) => 
         store.router = markRaw(router);
     });
     app.use(pinia);
-    if (isClient) pinia.state.value = initialState.pinia || {};
-    else initialState.pinia = pinia.state.value;
+    if (isClient) {
+        pinia.state.value = initialState.pinia || {};
+    } else {
+        initialState.pinia = pinia.state.value;
+    }
 };
