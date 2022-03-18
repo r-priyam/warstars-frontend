@@ -105,7 +105,7 @@ export const leagueManagement = defineStore({
                     await this.refreshLeaguesData();
                 }
                 const checkOneMin = Date.now() - Number(localLeaguesData.epoch);
-                if (checkOneMin > 60000) {
+                if (checkOneMin > 50000) {
                     await this.refreshLeaguesData();
                 }
             }
