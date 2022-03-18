@@ -133,7 +133,7 @@ export interface TSeasonClanAdd {
 }
 
 export interface TChildClans {
-    leagueIid: number;
+    leagueId: number;
     childId: number;
     divisionId: number;
     leagueSeasonId: number;
