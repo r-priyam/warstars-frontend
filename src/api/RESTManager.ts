@@ -99,11 +99,11 @@ export class RESTManager {
     }
 
     public registerChildLeague(payload: TRegisterChild) {
-        return this.handler.request('/league/register/child-league', 'POST', JSON.stringify(payload));
+        return this.handler.request('/league/register/child-league', 'POST', JSON.stringify(payload), payload.leagueId);
     }
 
     public registerChildDivision(payload: TRegisterDivision) {
-        return this.handler.request('/league/register/child-division', 'POST', JSON.stringify(payload));
+        return this.handler.request('/league/register/child-division', 'POST', JSON.stringify(payload), payload.leagueId);
     }
 
     // league season
@@ -117,23 +117,23 @@ export class RESTManager {
     }
 
     public startNewSeason(payload: TNewSeason) {
-        return this.handler.request('/league/season/new', 'POST', JSON.stringify(payload));
+        return this.handler.request('/league/season/new', 'POST', JSON.stringify(payload), payload.leagueId);
     }
 
     public startNewChildSeason(payload: TNewChildSeason) {
-        return this.handler.request('/league/season/new-child', 'POST', JSON.stringify(payload));
+        return this.handler.request('/league/season/new-child', 'POST', JSON.stringify(payload), payload.leagueId);
     }
 
     public endSeason(payload: TEndLeagueSeason) {
-        return this.handler.request('/league/season/end', 'PUT', JSON.stringify(payload));
+        return this.handler.request('/league/season/end', 'PUT', JSON.stringify(payload), payload.leagueId);
     }
 
     public endChildSeason(payload: TEndChildSeason) {
-        return this.handler.request('/league/season/end-child', 'PUT', JSON.stringify(payload));
+        return this.handler.request('/league/season/end-child', 'PUT', JSON.stringify(payload), payload.leagueId);
     }
 
     public addSeasonClans(payload: TSeasonClanAdd) {
-        return this.handler.request('/league/season/add-clans', 'POST', JSON.stringify(payload));
+        return this.handler.request('/league/season/add-clans', 'POST', JSON.stringify(payload), payload.leagueId);
     }
 
     public removeSeasonClan(payload: TChildClans) {
