@@ -252,6 +252,11 @@ const handleLeagueChange = () => {
 };
 
 const applyLeagueConfig = async () => {
+    if (selectedLeague.value.leagueId === 0) {
+        notifications().error('Please select a league.');
+        return;
+    }
+
     RawSelectedLeague.value = JSON.stringify({
         league: selectedLeague.value,
         child: selectedChildLeague.value,

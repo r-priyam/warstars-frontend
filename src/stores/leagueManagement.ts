@@ -83,6 +83,9 @@ export const leagueManagement = defineStore({
                 if (!request.data) {
                     return (RawLeagueData.value = null);
                 }
+                if ((request.data as []).length === 0) {
+                    return;
+                }
                 RawLeagueData.value = JSON.stringify({ epoch: Date.now(), value: request.data });
             } catch (error) {
                 if (error instanceof HTTPError) {
@@ -101,9 +104,8 @@ export const leagueManagement = defineStore({
                 if (!localLeaguesData.epoch) {
                     await this.refreshLeaguesData();
                 }
-                const checkFiveMins = Date.now() - Number(localLeaguesData.epoch);
-                // check for league data change per 5 minutes
-                if (checkFiveMins > 300000) {
+                const checkOneMin = Date.now() - Number(localLeaguesData.epoch);
+                if (checkOneMin > 60000) {
                     await this.refreshLeaguesData();
                 }
             }
