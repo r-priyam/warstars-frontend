@@ -15,25 +15,25 @@
                     {{ childLeague.name }}
                 </div>
                 <p class="item-name">
-                    Abbreviation <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
+                    Abbreviation <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
                     <span class="item-data">{{ childLeague.abbreviation }}</span>
                 </p>
                 <p class="item-name">
-                    Clans <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
+                    Clans <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
                     <span class="item-data">{{ childLeague.clansCount }}</span>
                 </p>
                 <p class="item-name">
-                    Season <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
+                    Season <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
                     <span class="item-data">{{ childLeague.specificId || 0 }}</span>
                 </p>
                 <p class="item-name">
-                    Start Date <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
+                    Start Date <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
                     <span class="item-data">{{
                         childLeague.startTime !== null ? dayjs(childLeague.startTime).format('MMM DD, YYYY') : '--:--:----'
                     }}</span>
                 </p>
                 <p class="item-name">
-                    End Date <IconHelper icon="mdi:arrow-right-thin" icon-style="mb-0.5 inline-flex h-4 w-4" />
+                    End Date <mdi:arrow-right-thin class="mb-0.5 inline-flex h-4 w-4" aria-hidden="true" />
                     <span class="item-data">{{
                         childLeague.endTime !== null ? dayjs(childLeague.endTime).format('MMM DD, YYYY') : '--:--:----'
                     }}</span>

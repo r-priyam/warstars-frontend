@@ -9,6 +9,7 @@ declare module 'vue' {
     IconHelper: typeof import('./components/IconHelper.vue')['default']
     LeagueSelector: typeof import('./components/dashboard/LeagueSelector.vue')['default']
     LoadingSpinner: typeof import('./components/LoadingSpinner.vue')['default']
+    'Mdi:arrowRightThin': typeof import('~icons/mdi/arrow-right-thin')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
     ProcessButton: typeof import('./components/ProcessButton.vue')['default']
     SideBar: typeof import('./components/SideBar.vue')['default']
