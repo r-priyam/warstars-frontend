@@ -137,6 +137,6 @@ export class RESTManager {
     }
 
     public removeSeasonClan(payload: TChildClans) {
-        return this.handler.request('/league/season/remove-clan', 'DELETE', JSON.stringify({ payload }));
+        return this.handler.request('/league/season/remove-clan', 'DELETE', JSON.stringify(payload), payload.leagueId);
     }
 }
