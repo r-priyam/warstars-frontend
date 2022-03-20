@@ -122,7 +122,7 @@ const navigation = [
             { name: 'Core', href: 'season-core', icon: 'icon-park-outline:manual-gear' },
             { name: 'Clans', href: 'season-clans', icon: 'mdi:account-group' },
             { name: 'Add Clans', href: 'season-clans-add', icon: 'ic:baseline-group-add' },
-            { name: 'Matches', href: '/', icon: 'mdi:sword-cross' },
+            { name: 'Schedules', href: '/', icon: 'mdi:sword-cross' },
             { name: 'Results', href: '/', icon: 'mdi:email-newsletter' },
             { name: 'Leaderboard', href: '/', icon: 'ic:baseline-leaderboard' },
             { name: 'Hit Rates', href: '/', icon: 'mdi:fire' }
