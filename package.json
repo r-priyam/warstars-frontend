@@ -60,6 +60,6 @@
         "vite-plugin-radar": "0.4.2",
         "vite-ssg": "^0.19.0",
         "vue-eslint-parser": "8.3.0",
-        "vue-tsc": "0.33.4"
+        "vue-tsc": "0.33.7"
     }
 }
