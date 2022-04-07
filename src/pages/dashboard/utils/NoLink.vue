@@ -1,3 +1,9 @@
+<script setup lang="ts">
+withDefaults(defineProps<{ name?: string }>(), { name: '' });
+
+const router = useRouter();
+</script>
+
 <template>
     <div class="px-2 pt-12 pb-6 md:px-0 md:pt-20">
         <div class="container mx-auto my-8 flex flex-col items-center justify-center px-5">
@@ -18,9 +24,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-withDefaults(defineProps<{ name?: string }>(), { name: '' });
-
-const router = useRouter();
-</script>

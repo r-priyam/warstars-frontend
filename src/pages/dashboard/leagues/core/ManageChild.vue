@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import ProcessButton from '~/components/ProcessButton.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import type { TRegisterChild } from '~/types';
+import { CheckLeague } from '~/utils/leagueUtils';
+
+onBeforeMount(() => CheckLeague());
+
+const league = leagueManagement();
+
+async function registerChild() {
+    const form: HTMLFormElement | null = document.querySelector('#register-child');
+    const formData = new FormData(form!);
+    const childRegisterData: TRegisterChild = {
+        leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
+        name: formData.get('child-name') as string,
+        abbreviation: formData.get('child-abbreviation') as string,
+        iconUrl: formData.get('icon-url') as string
+    };
+    await league.registerChild(childRegisterData);
+}
+</script>
+
 <template>
     <div>
         <div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
@@ -51,26 +74,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import ProcessButton from '~/components/ProcessButton.vue';
-import { leagueManagement } from '~/stores/leagueManagement';
-import type { TRegisterChild } from '~/types';
-import { CheckLeague } from '~/utils/leagueUtils';
-
-onBeforeMount(() => CheckLeague());
-
-const league = leagueManagement();
-
-async function registerChild() {
-    const form: HTMLFormElement | null = document.querySelector('#register-child');
-    const formData = new FormData(form!);
-    const childRegisterData: TRegisterChild = {
-        leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
-        name: formData.get('child-name') as string,
-        abbreviation: formData.get('child-abbreviation') as string,
-        iconUrl: formData.get('icon-url') as string
-    };
-    await league.registerChild(childRegisterData);
-}
-</script>

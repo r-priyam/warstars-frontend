@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import dayjs from 'dayjs';
+
+import type { TUserChildLeague } from '~/types';
+withDefaults(defineProps<{ childData: TUserChildLeague[] }>(), { childData: Array });
+
+const router = useRouter();
+</script>
+
 <template>
     <div v-if="childData.length > 0" class="grid grid-cols-1 gap-5 p-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
         <div
@@ -53,15 +62,6 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from 'dayjs';
-
-import type { TUserChildLeague } from '~/types';
-withDefaults(defineProps<{ childData: TUserChildLeague[] }>(), { childData: Array });
-
-const router = useRouter();
-</script>
 
 <style scoped>
 .item-name {

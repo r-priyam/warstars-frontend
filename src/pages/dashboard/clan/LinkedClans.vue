@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import NoLink from '~/pages/dashboard/utils/NoLink.vue';
+import { userClan as userClanOpeartions } from '~/stores/userClan';
+
+const userClan = userClanOpeartions();
+onMounted(() => userClan.fetchClansData());
+
+const clanData = ref({ name: '', tag: '' });
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+</script>
+
 <template>
     <div>
         <PopUp
@@ -96,16 +109,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import NoLink from '~/pages/dashboard/utils/NoLink.vue';
-import { userClan as userClanOpeartions } from '~/stores/userClan';
-
-const userClan = userClanOpeartions();
-onMounted(() => userClan.fetchClansData());
-
-const clanData = ref({ name: '', tag: '' });
-const showPopUp = ref(false);
-const popUpProcessing = ref(false);
-</script>

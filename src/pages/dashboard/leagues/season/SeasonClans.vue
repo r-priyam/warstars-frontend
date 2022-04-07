@@ -1,3 +1,71 @@
+<script setup lang="ts">
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
+
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import { notifications } from '~/stores/notifications';
+import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
+import { RawLeagueData } from '~/utils/leagueUtils';
+
+const router = useRouter();
+const leagueStore = leagueManagement();
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+const popUpMessage = ref('');
+
+let clansData = $ref<TChildClans[] | null>(null);
+const filterOptions = $ref([{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id }]);
+const selectedOption = $ref(filterOptions[0]);
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
+const removeClanData = ref<TChildClans | null>(null);
+
+const selectedChildDivisions = () =>
+    leaguesData
+        .find((league) => league.leagueId === leagueStore.getLeagueLocalConfig!.league.leagueId)
+        ?.childLeagues.find((child) => child.id === leagueStore.getLeagueLocalConfig!.child.id)!
+        .divisions.map((data: TUserChildLeagueDivisions) => filterOptions.push({ name: data.name, id: data.id }));
+
+const getSeasonChildClans = async () => {
+    await leagueStore.seasonChildClans(
+        leagueStore.getLeagueLocalConfig?.child.id ?? 0,
+        leagueStore.getLeagueLocalConfig?.child.seasonId ?? 0
+    );
+    clansData = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
+};
+
+const selectedOptionClans = computed(() => {
+    if (!clansData) {
+        return [];
+    }
+    if (selectedOption === filterOptions[0]) {
+        return clansData;
+    }
+    return clansData.filter((data) => data.divisionId === selectedOption.id);
+});
+onMounted(async () => {
+    selectedChildDivisions();
+    await getSeasonChildClans();
+});
+
+onBeforeMount(async () => {
+    if (leagueStore.getLeagueLocalConfig?.league.leagueId === 0 || !leagueStore.getLeagueLocalConfig) {
+        notifications().warning('Please config a league to continue!');
+        await router.push({ name: 'League Selector' });
+    } else if (leagueStore.getLeagueLocalConfig.child.id === 0) {
+        notifications().warning('Please select a child league to continue!');
+        await router.push({ name: 'League Selector' });
+    }
+});
+
+async function handleConfirmation() {
+    popUpProcessing.value = true;
+    await leagueStore.seasonRemoveClan(removeClanData.value!);
+    popUpProcessing.value = false;
+    showPopUp.value = false;
+    clansData?.splice(clansData.indexOf(removeClanData.value!), 1);
+}
+</script>
+
 <template>
     <div>
         <PopUp
@@ -129,71 +197,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
-
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { leagueManagement } from '~/stores/leagueManagement';
-import { notifications } from '~/stores/notifications';
-import type { TChildClans, TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
-import { RawLeagueData } from '~/utils/leagueUtils';
-
-const router = useRouter();
-const leagueStore = leagueManagement();
-const showPopUp = ref(false);
-const popUpProcessing = ref(false);
-const popUpMessage = ref('');
-
-let clansData = $ref<TChildClans[] | null>(null);
-const filterOptions = $ref([{ name: leagueStore.getLeagueLocalConfig!.child.name, id: leagueStore.getLeagueLocalConfig!.child.id }]);
-const selectedOption = $ref(filterOptions[0]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
-const removeClanData = ref<TChildClans | null>(null);
-
-const selectedChildDivisions = () =>
-    leaguesData
-        .find((league) => league.leagueId === leagueStore.getLeagueLocalConfig!.league.leagueId)
-        ?.childLeagues.find((child) => child.id === leagueStore.getLeagueLocalConfig!.child.id)!
-        .divisions.map((data: TUserChildLeagueDivisions) => filterOptions.push({ name: data.name, id: data.id }));
-
-const getSeasonChildClans = async () => {
-    await leagueStore.seasonChildClans(
-        leagueStore.getLeagueLocalConfig?.child.id ?? 0,
-        leagueStore.getLeagueLocalConfig?.child.seasonId ?? 0
-    );
-    clansData = leagueStore.childClans[leagueStore.getLeagueLocalConfig!.child.id] as TChildClans[];
-};
-
-const selectedOptionClans = computed(() => {
-    if (!clansData) {
-        return [];
-    }
-    if (selectedOption === filterOptions[0]) {
-        return clansData;
-    }
-    return clansData.filter((data) => data.divisionId === selectedOption.id);
-});
-onMounted(async () => {
-    selectedChildDivisions();
-    await getSeasonChildClans();
-});
-
-onBeforeMount(async () => {
-    if (leagueStore.getLeagueLocalConfig?.league.leagueId === 0 || !leagueStore.getLeagueLocalConfig) {
-        notifications().warning('Please config a league to continue!');
-        await router.push({ name: 'League Selector' });
-    } else if (leagueStore.getLeagueLocalConfig.child.id === 0) {
-        notifications().warning('Please select a child league to continue!');
-        await router.push({ name: 'League Selector' });
-    }
-});
-
-async function handleConfirmation() {
-    popUpProcessing.value = true;
-    await leagueStore.seasonRemoveClan(removeClanData.value!);
-    popUpProcessing.value = false;
-    showPopUp.value = false;
-    clansData?.splice(clansData.indexOf(removeClanData.value!), 1);
-}
-</script>

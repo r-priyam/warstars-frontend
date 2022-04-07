@@ -1,3 +1,9 @@
+<script setup lang="ts">
+withDefaults(defineProps<{ processing: boolean }>(), {
+    processing: false
+});
+</script>
+
 <template>
     <button
         v-if="!processing"
@@ -19,9 +25,3 @@
         Processing
     </button>
 </template>
-
-<script setup lang="ts">
-withDefaults(defineProps<{ processing: boolean }>(), {
-    processing: false
-});
-</script>

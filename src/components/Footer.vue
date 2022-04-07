@@ -1,3 +1,7 @@
+<script lang="ts">
+export default defineComponent({ name: 'SiteFooter' });
+</script>
+
 <template>
     <footer class="relative border-t-2 border-main-light-600 bg-main-light-500 dark:border-main-dark-460 dark:bg-main-dark-500">
         <div class="container mx-auto flex flex-col items-center px-2 py-2.5 sm:flex-row">
@@ -22,7 +26,3 @@
         </div>
     </footer>
 </template>
-
-<script lang="ts">
-export default defineComponent({ name: 'SiteFooter' });
-</script>

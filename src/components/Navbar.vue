@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { Menu, MenuButton, MenuItem, MenuItems, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue';
+
+import { apiUrl } from '~/env';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import { userStore } from '~/stores/user';
+import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
+
+const user = userStore();
+const showPopUp = $ref(false);
+</script>
+
 <template>
     <PopUp
         title="Log Out"
@@ -253,15 +265,3 @@
         </Popover>
     </header>
 </template>
-
-<script setup lang="ts">
-import { Menu, MenuButton, MenuItem, MenuItems, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue';
-
-import { apiUrl } from '~/env';
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { userStore } from '~/stores/user';
-import { isDarkMode, toggleDarkMode } from '~/utils/darkMode';
-
-const user = userStore();
-const showPopUp = $ref(false);
-</script>

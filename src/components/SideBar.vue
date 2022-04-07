@@ -1,3 +1,63 @@
+<script setup lang="ts">
+import { leagueManagement } from '~/stores/leagueManagement';
+import { userStore } from '~/stores/user';
+
+defineEmits(['closeSidebar']);
+
+const user = userStore();
+const league = leagueManagement();
+const navigation = [
+    {
+        title: 'Player',
+        items: [
+            { name: 'Link Player', href: 'link-player', icon: 'mdi:account-plus' },
+            { name: 'Linked Players', href: 'linked-players', icon: 'mdi:account-check' }
+        ]
+    },
+    {
+        title: 'Clan',
+        items: [
+            { name: 'Link Clan', href: 'link-clan', icon: 'mdi:account-multiple-plus' },
+            { name: 'Linked Clans', href: 'linked-clans', icon: 'mdi:account-multiple-check' }
+        ]
+    },
+    {
+        title: 'League Registration',
+        items: [
+            { name: "What's This?", href: 'league-register-info', icon: 'mdi:chat-question' },
+            { name: 'Register', href: 'register-league', icon: 'heroicons-solid:pencil-alt' }
+        ]
+    },
+    {
+        title: 'League Core',
+        items: [
+            { name: 'Info', href: 'league', icon: 'heroicons-solid:information-circle' },
+            { name: 'Add Child League', href: 'add-league-child', icon: 'mdi:shield-plus' },
+            { name: 'Add Child Division', href: 'add-child-division', icon: 'mdi:shield-plus-outline' }
+        ]
+    },
+    {
+        title: 'League Admin',
+        items: [{ name: 'Admins Info', href: 'league-admin', icon: 'ri:shield-user-fill' }]
+    },
+    {
+        title: 'League Season',
+        items: [
+            { name: 'Info', href: 'season-info', icon: 'mdi:calendar-star' },
+            { name: 'Core', href: 'season-core', icon: 'icon-park-outline:manual-gear' },
+            { name: 'Clans', href: 'season-clans', icon: 'mdi:account-group' },
+            { name: 'Add Clans', href: 'season-clans-add', icon: 'ic:baseline-group-add' },
+            { name: 'Schedules', href: '/', icon: 'mdi:sword-cross' },
+            { name: 'Results', href: '/', icon: 'mdi:email-newsletter' },
+            { name: 'Leaderboard', href: '/', icon: 'ic:baseline-leaderboard' },
+            { name: 'Hit Rates', href: '/', icon: 'mdi:fire' }
+        ]
+    }
+];
+
+const toggleNavigation = user.userData.showLeague ? navigation : navigation.splice(-navigation.length - 3, 3);
+</script>
+
 <template>
     <div>
         <div class="flex shrink-0 items-center px-4">
@@ -72,63 +132,3 @@
         </nav>
     </div>
 </template>
-
-<script setup lang="ts">
-import { leagueManagement } from '~/stores/leagueManagement';
-import { userStore } from '~/stores/user';
-
-defineEmits(['closeSidebar']);
-
-const user = userStore();
-const league = leagueManagement();
-const navigation = [
-    {
-        title: 'Player',
-        items: [
-            { name: 'Link Player', href: 'link-player', icon: 'mdi:account-plus' },
-            { name: 'Linked Players', href: 'linked-players', icon: 'mdi:account-check' }
-        ]
-    },
-    {
-        title: 'Clan',
-        items: [
-            { name: 'Link Clan', href: 'link-clan', icon: 'mdi:account-multiple-plus' },
-            { name: 'Linked Clans', href: 'linked-clans', icon: 'mdi:account-multiple-check' }
-        ]
-    },
-    {
-        title: 'League Registration',
-        items: [
-            { name: "What's This?", href: 'league-register-info', icon: 'mdi:chat-question' },
-            { name: 'Register', href: 'register-league', icon: 'heroicons-solid:pencil-alt' }
-        ]
-    },
-    {
-        title: 'League Core',
-        items: [
-            { name: 'Info', href: 'league', icon: 'heroicons-solid:information-circle' },
-            { name: 'Add Child League', href: 'add-league-child', icon: 'mdi:shield-plus' },
-            { name: 'Add Child Division', href: 'add-child-division', icon: 'mdi:shield-plus-outline' }
-        ]
-    },
-    {
-        title: 'League Admin',
-        items: [{ name: 'Admins Info', href: 'league-admin', icon: 'ri:shield-user-fill' }]
-    },
-    {
-        title: 'League Season',
-        items: [
-            { name: 'Info', href: 'season-info', icon: 'mdi:calendar-star' },
-            { name: 'Core', href: 'season-core', icon: 'icon-park-outline:manual-gear' },
-            { name: 'Clans', href: 'season-clans', icon: 'mdi:account-group' },
-            { name: 'Add Clans', href: 'season-clans-add', icon: 'ic:baseline-group-add' },
-            { name: 'Schedules', href: '/', icon: 'mdi:sword-cross' },
-            { name: 'Results', href: '/', icon: 'mdi:email-newsletter' },
-            { name: 'Leaderboard', href: '/', icon: 'ic:baseline-leaderboard' },
-            { name: 'Hit Rates', href: '/', icon: 'mdi:fire' }
-        ]
-    }
-];
-
-const toggleNavigation = user.userData.showLeague ? navigation : navigation.splice(-navigation.length - 3, 3);
-</script>

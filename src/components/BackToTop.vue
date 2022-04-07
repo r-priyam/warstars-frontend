@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const scrollTo = () => document.getElementById('container')?.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
+
 <template>
     <div class="fixed bottom-0 right-0 pb-4">
         <div class="px-6 lg:px-8">
@@ -9,7 +13,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-const scrollTo = () => document.getElementById('container')?.scrollTo({ top: 0, behavior: 'smooth' });
-</script>

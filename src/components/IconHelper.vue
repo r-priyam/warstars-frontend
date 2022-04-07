@@ -1,7 +1,3 @@
-<template>
-    <div ref="el" :class="$attrs.class" />
-</template>
-
 <script setup lang="ts">
 import Iconify from '@purge-icons/generated';
 const props = defineProps({
@@ -35,6 +31,10 @@ const update = async () => {
 watch(() => props.icon, update, { flush: 'post' });
 onMounted(update);
 </script>
+
+<template>
+    <div ref="el" :class="$attrs.class" />
+</template>
 
 <style>
 span.iconify {

@@ -1,3 +1,39 @@
+<script setup lang="ts">
+import ProcessButton from '~/components/ProcessButton.vue';
+import { leagues } from '~/stores/leagues';
+import { userStore } from '~/stores/user';
+import type { TLeagueRegister } from '~/types';
+
+defineComponent({ name: 'LeagueRegister' });
+
+const user = userStore();
+const league = leagues();
+
+async function registerLeague() {
+    const form: HTMLFormElement | null = document.querySelector('#register-league');
+    const formData = new FormData(form!);
+    const leagueRegisterData: TLeagueRegister = {
+        name: formData.get('league-name') as string,
+        abbreviation: formData.get('league-abbreviation') as string,
+        headAdmin: user.userData.username,
+        discordId: user.userData.discordId
+    };
+    if (formData.get('discord-invite')) {
+        leagueRegisterData.discordInvite = String(formData.get('discord-invite'));
+    }
+    if (formData.get('twitter-handle')) {
+        leagueRegisterData.twitterHandle = String(formData.get('twitter-handle'));
+    }
+    if (formData.get('website-url')) {
+        leagueRegisterData.website = String(formData.get('website-url'));
+    }
+    if (formData.get('league-rules')) {
+        leagueRegisterData.rules = String(formData.get('league-rules'));
+    }
+    await league.registerLeague(leagueRegisterData);
+}
+</script>
+
 <template>
     <div>
         <div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
@@ -71,39 +107,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import ProcessButton from '~/components/ProcessButton.vue';
-import { leagues } from '~/stores/leagues';
-import { userStore } from '~/stores/user';
-import type { TLeagueRegister } from '~/types';
-
-defineComponent({ name: 'LeagueRegister' });
-
-const user = userStore();
-const league = leagues();
-
-async function registerLeague() {
-    const form: HTMLFormElement | null = document.querySelector('#register-league');
-    const formData = new FormData(form!);
-    const leagueRegisterData: TLeagueRegister = {
-        name: formData.get('league-name') as string,
-        abbreviation: formData.get('league-abbreviation') as string,
-        headAdmin: user.userData.username,
-        discordId: user.userData.discordId
-    };
-    if (formData.get('discord-invite')) {
-        leagueRegisterData.discordInvite = String(formData.get('discord-invite'));
-    }
-    if (formData.get('twitter-handle')) {
-        leagueRegisterData.twitterHandle = String(formData.get('twitter-handle'));
-    }
-    if (formData.get('website-url')) {
-        leagueRegisterData.website = String(formData.get('website-url'));
-    }
-    if (formData.get('league-rules')) {
-        leagueRegisterData.rules = String(formData.get('league-rules'));
-    }
-    await league.registerLeague(leagueRegisterData);
-}
-</script>
