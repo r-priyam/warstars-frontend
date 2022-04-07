@@ -61,5 +61,6 @@
         "vite-ssg": "^0.19.2",
         "vue-eslint-parser": "8.3.0",
         "vue-tsc": "0.33.9"
-    }
+    },
+    "packageManager": "yarn@3.2.0"
 }

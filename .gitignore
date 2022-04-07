@@ -16,3 +16,7 @@ npm-debug.log*
 dist
 vite-ssg-dist
 .vite-ssg-temp
+
+# yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
