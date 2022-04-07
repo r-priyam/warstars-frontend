@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import dayjs from 'dayjs';
+
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
+import { CheckLeague, RawLeagueData } from '~/utils/leagueUtils';
+
+onBeforeMount(() => CheckLeague());
+
+const popUpTitle = ref('');
+const popUpDescription = ref('');
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+const type = ref('');
+const forceEnd = ref(false);
+const router = useRouter();
+const clickedChildData = ref({ childId: 0, seasonId: 0 });
+
+const league = leagueManagement();
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
+const selectedLeagueData = computed(() =>
+    leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId)
+);
+
+function saveForceSelectedLeague(child: TUserChildLeague) {
+    RawLeagueData.value = JSON.stringify({
+        league: league.getLeagueLocalConfig?.league,
+        child: {
+            id: child.id,
+            name: child.name,
+            abbreviation: child.abbreviation,
+            iconUrl: child.iconUrl,
+            seasonId: child.seasonId
+        },
+        division: league.getLeagueLocalConfig?.division
+    });
+}
+</script>
+
 <template>
     <PopUp
         :title="popUpTitle"
@@ -221,43 +261,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from 'dayjs';
-
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { leagueManagement } from '~/stores/leagueManagement';
-import type { TLocalLeagueData, TUserChildLeague, TUserLeagueData } from '~/types';
-import { CheckLeague, RawLeagueData } from '~/utils/leagueUtils';
-
-onBeforeMount(() => CheckLeague());
-
-const popUpTitle = ref('');
-const popUpDescription = ref('');
-const showPopUp = ref(false);
-const popUpProcessing = ref(false);
-const type = ref('');
-const forceEnd = ref(false);
-const router = useRouter();
-const clickedChildData = ref({ childId: 0, seasonId: 0 });
-
-const league = leagueManagement();
-const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
-const selectedLeagueData = computed(() =>
-    leaguesData.find((leagueData) => leagueData.leagueId === league.getLeagueLocalConfig?.league.leagueId)
-);
-
-function saveForceSelectedLeague(child: TUserChildLeague) {
-    RawLeagueData.value = JSON.stringify({
-        league: league.getLeagueLocalConfig?.league,
-        child: {
-            id: child.id,
-            name: child.name,
-            abbreviation: child.abbreviation,
-            iconUrl: child.iconUrl,
-            seasonId: child.seasonId
-        },
-        division: league.getLeagueLocalConfig?.division
-    });
-}
-</script>

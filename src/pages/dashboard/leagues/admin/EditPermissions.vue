@@ -1,3 +1,91 @@
+<script setup lang="ts">
+import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
+
+import { notifications } from '~/stores/notifications';
+import { PermissionsConstant } from '~/types/Leagues';
+import { AdminPermissions } from '~/utils/adminPermissions';
+
+const emit = defineEmits(['closePopUp', 'updateAdmin']);
+
+const props = defineProps({
+    open: { type: Boolean, required: true },
+    processing: { type: Boolean, required: true },
+    name: String,
+    permissions: { type: Number, required: true }
+});
+
+const dialogOpen = ref(false);
+
+let administratorSelected = $ref(false);
+let newPermissions = $ref([0]);
+
+const permissions = $computed(() => new AdminPermissions(props.permissions));
+const permissionsCheck = $computed<Record<string, boolean>>(() => {
+    return {
+        'Manage Child Divisions': permissions.manageChildDivisions,
+        'Manage Child Leagues': permissions.manageChildLeagues,
+        'Administrator': permissions.administrator,
+        'Manage Clans': permissions.manageClans,
+        'Manage War Data': permissions.manageWarData,
+        'Manage Season': permissions.manageSeason,
+        'Manage League': permissions.manageLeague
+    };
+});
+
+watch(
+    () => newPermissions,
+    (newValue: number[]) => {
+        if (newValue.includes(8)) {
+            administratorSelected = true;
+        } else {
+            administratorSelected = false;
+        }
+    }
+);
+watch(
+    () => props.open,
+    (newValue: boolean) => {
+        if (!newValue) {
+            administratorSelected = false;
+            newPermissions = [];
+        } else if (newValue) {
+            if (permissions.administrator) {
+                administratorSelected = true;
+                newPermissions.push(8);
+            } else {
+                for (const perm in permissionsCheck) {
+                    if (permissionsCheck[perm]) {
+                        newPermissions.push(PermissionsConstant[perm]);
+                    }
+                }
+            }
+        }
+    }
+);
+
+function handleConfirmation() {
+    if (newPermissions.length === 1) {
+        return notifications().warning('No permissions selected!');
+    }
+    const newPermissionVal = newPermissions.includes(8) ? 8 : newPermissions.reduce((x, y) => x + y);
+    const updatedPerms = $computed(() => new AdminPermissions(newPermissionVal));
+    const updatedCheck: Record<string, boolean> = {
+        'Manage Child Divisions': updatedPerms.manageChildDivisions,
+        'Manage Child Leagues': updatedPerms.manageChildLeagues,
+        'Administrator': updatedPerms.administrator,
+        'Manage Clans': updatedPerms.manageClans,
+        'Manage War Data': updatedPerms.manageWarData,
+        'Manage Season': updatedPerms.manageSeason,
+        'Manage League': updatedPerms.manageLeague
+    };
+
+    if (JSON.stringify(permissionsCheck) === JSON.stringify(updatedCheck)) {
+        return notifications().warning('No permission change detected');
+    }
+    emit('updateAdmin', newPermissionVal);
+}
+</script>
+
 <template>
     <TransitionRoot as="template" :show="props.open">
         <Dialog as="div" class="fixed inset-0 z-10 overflow-y-auto" :open="dialogOpen" @close="$emit('closePopUp', true)">
@@ -98,91 +186,3 @@
         </Dialog>
     </TransitionRoot>
 </template>
-
-<script setup lang="ts">
-import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
-
-import { notifications } from '~/stores/notifications';
-import { PermissionsConstant } from '~/types/Leagues';
-import { AdminPermissions } from '~/utils/adminPermissions';
-
-const emit = defineEmits(['closePopUp', 'updateAdmin']);
-
-const props = defineProps({
-    open: { type: Boolean, required: true },
-    processing: { type: Boolean, required: true },
-    name: String,
-    permissions: { type: Number, required: true }
-});
-
-const dialogOpen = ref(false);
-
-let administratorSelected = $ref(false);
-let newPermissions = $ref([0]);
-
-const permissions = $computed(() => new AdminPermissions(props.permissions));
-const permissionsCheck = $computed<Record<string, boolean>>(() => {
-    return {
-        'Manage Child Divisions': permissions.manageChildDivisions,
-        'Manage Child Leagues': permissions.manageChildLeagues,
-        'Administrator': permissions.administrator,
-        'Manage Clans': permissions.manageClans,
-        'Manage War Data': permissions.manageWarData,
-        'Manage Season': permissions.manageSeason,
-        'Manage League': permissions.manageLeague
-    };
-});
-
-watch(
-    () => newPermissions,
-    (newValue: number[]) => {
-        if (newValue.includes(8)) {
-            administratorSelected = true;
-        } else {
-            administratorSelected = false;
-        }
-    }
-);
-watch(
-    () => props.open,
-    (newValue: boolean) => {
-        if (!newValue) {
-            administratorSelected = false;
-            newPermissions = [];
-        } else if (newValue) {
-            if (permissions.administrator) {
-                administratorSelected = true;
-                newPermissions.push(8);
-            } else {
-                for (const perm in permissionsCheck) {
-                    if (permissionsCheck[perm]) {
-                        newPermissions.push(PermissionsConstant[perm]);
-                    }
-                }
-            }
-        }
-    }
-);
-
-function handleConfirmation() {
-    if (newPermissions.length === 1) {
-        return notifications().warning('No permissions selected!');
-    }
-    const newPermissionVal = newPermissions.includes(8) ? 8 : newPermissions.reduce((x, y) => x + y);
-    const updatedPerms = $computed(() => new AdminPermissions(newPermissionVal));
-    const updatedCheck: Record<string, boolean> = {
-        'Manage Child Divisions': updatedPerms.manageChildDivisions,
-        'Manage Child Leagues': updatedPerms.manageChildLeagues,
-        'Administrator': updatedPerms.administrator,
-        'Manage Clans': updatedPerms.manageClans,
-        'Manage War Data': updatedPerms.manageWarData,
-        'Manage Season': updatedPerms.manageSeason,
-        'Manage League': updatedPerms.manageLeague
-    };
-
-    if (JSON.stringify(permissionsCheck) === JSON.stringify(updatedCheck)) {
-        return notifications().warning('No permission change detected');
-    }
-    emit('updateAdmin', newPermissionVal);
-}
-</script>

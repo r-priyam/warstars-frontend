@@ -1,3 +1,13 @@
+<script setup lang="ts">
+useHead({
+    title: 'WarStars',
+    meta: [{ name: 'description', content: 'Complete package for  Clash of Clans tournament leagues.' }]
+});
+
+const router = useRouter();
+const showBetaNotice = useStorage('beta-warning', true);
+</script>
+
 <template>
     <div v-if="showBetaNotice" class="bg-main-light-560 dark:bg-main-dark-560">
         <div class="mx-auto max-w-7xl px-2 py-1 sm:px-6 lg:px-6">
@@ -44,16 +54,6 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-useHead({
-    title: 'WarStars',
-    meta: [{ name: 'description', content: 'Complete package for  Clash of Clans tournament leagues.' }]
-});
-
-const router = useRouter();
-const showBetaNotice = useStorage('beta-warning', true);
-</script>
 
 <style>
 .grid-layout {

@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import ProcessButton from '~/components/ProcessButton.vue';
+import { userPlayer as userPlayerOperations } from '~/stores/userPlayer';
+const userPlayer = userPlayerOperations();
+
+async function linkPlayer() {
+    const form: HTMLFormElement | null = document.querySelector('#player-link');
+    const formData = new FormData(form!);
+    const playerTag = formData.get('player-tag') as string;
+    const apiToken = formData.get('api-token') as string;
+    await userPlayer.linkPlayer(playerTag, apiToken);
+}
+</script>
+
 <template>
     <div>
         <div class="mx-auto max-w-lg rounded-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
@@ -34,17 +48,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import ProcessButton from '~/components/ProcessButton.vue';
-import { userPlayer as userPlayerOperations } from '~/stores/userPlayer';
-const userPlayer = userPlayerOperations();
-
-async function linkPlayer() {
-    const form: HTMLFormElement | null = document.querySelector('#player-link');
-    const formData = new FormData(form!);
-    const playerTag = formData.get('player-tag') as string;
-    const apiToken = formData.get('api-token') as string;
-    await userPlayer.linkPlayer(playerTag, apiToken);
-}
-</script>

@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import ProcessButton from '~/components/ProcessButton.vue';
+import { userClan as userClanOperations } from '~/stores/userClan';
+
+const userClan = userClanOperations();
+
+async function linkClan() {
+    const form: HTMLFormElement | null = document.querySelector('#clan-link');
+    const formData = new FormData(form!);
+    const clanTag = formData.get('clan-tag') as string;
+    await userClan.linkClan(clanTag);
+}
+</script>
+
 <template>
     <div>
         <div class="mx-auto max-w-lg rounded-lg bg-main-light-530 p-8 shadow-xl dark:bg-main-dark-500 md:p-12">
@@ -24,17 +38,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import ProcessButton from '~/components/ProcessButton.vue';
-import { userClan as userClanOperations } from '~/stores/userClan';
-
-const userClan = userClanOperations();
-
-async function linkClan() {
-    const form: HTMLFormElement | null = document.querySelector('#clan-link');
-    const formData = new FormData(form!);
-    const clanTag = formData.get('clan-tag') as string;
-    await userClan.linkClan(clanTag);
-}
-</script>

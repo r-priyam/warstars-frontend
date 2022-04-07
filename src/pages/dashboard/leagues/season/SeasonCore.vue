@@ -1,3 +1,73 @@
+<script setup lang="ts">
+import dayjs from 'dayjs';
+
+import ProcessButton from '~/components/ProcessButton.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import { notifications } from '~/stores/notifications';
+import type { TLocalLeagueData, TNewChildSeason, TNewSeason, TUserLeagueData } from '~/types';
+import { RawLeagueData } from '~/utils/leagueUtils';
+
+const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showChildSeason: false });
+
+const router = useRouter();
+const league = leagueManagement();
+const leagueSeason = $ref(!prop.showChildSeason);
+const childSeason = $ref(prop.showChildSeason);
+const selectedChilds = $ref([]);
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
+const selectedLeagueChild = computed(
+    () => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues
+);
+
+onBeforeMount(async () => {
+    if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
+        notifications().warning('Please select a league to continue!');
+        await router.push({ name: 'League Selector' });
+    }
+    if (childSeason && league.getLeagueLocalConfig?.child.id === 0) {
+        notifications().warning('Please select a child league to continue!');
+        await router.push({ name: 'League Selector' });
+    }
+});
+
+watch(childSeason, async (now) => {
+    if (now && league.getLeagueLocalConfig?.child.id === 0) {
+        notifications().warning('Please select a child league to continue!');
+        await router.push({ name: 'League Selector' });
+    }
+});
+
+async function registerSeason() {
+    const form: HTMLFormElement | null = document.querySelector('#season');
+    const formData = new FormData(form!);
+    if (dayjs(new Date(formData.get('start-date') as string)).isBefore(new Date())) {
+        return notifications().error('Start date is in past');
+    } else if (dayjs(new Date(formData.get('end-date') as string)).isBefore(new Date())) {
+        return notifications().error('End date is in past');
+    } else if (dayjs(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <= 13) {
+        return notifications().error('Season duration must be 2 weeks or grater than it');
+    }
+
+    if (leagueSeason) {
+        const newSeasonData: TNewSeason = {
+            leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
+            startTime: formData.get('start-date') as string,
+            endTime: formData.get('end-date') as string,
+            childData: selectedChilds
+        };
+        await league.newSeason(newSeasonData);
+    } else {
+        const childSeasonData: TNewChildSeason = {
+            leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
+            childLeagueId: league.getLeagueLocalConfig?.child.id ?? 0,
+            startTime: formData.get('start-date') as string,
+            endTime: formData.get('end-date') as string
+        };
+        await league.newChildSeason(childSeasonData);
+    }
+}
+</script>
+
 <template>
     <div>
         <div class="mx-auto max-w-lg rounded-b-lg bg-main-light-530 p-8 shadow-lg dark:bg-main-dark-500 md:p-12">
@@ -80,76 +150,6 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from 'dayjs';
-
-import ProcessButton from '~/components/ProcessButton.vue';
-import { leagueManagement } from '~/stores/leagueManagement';
-import { notifications } from '~/stores/notifications';
-import type { TLocalLeagueData, TNewChildSeason, TNewSeason, TUserLeagueData } from '~/types';
-import { RawLeagueData } from '~/utils/leagueUtils';
-
-const prop = withDefaults(defineProps<{ showChildSeason?: boolean }>(), { showChildSeason: false });
-
-const router = useRouter();
-const league = leagueManagement();
-const leagueSeason = $ref(!prop.showChildSeason);
-const childSeason = $ref(prop.showChildSeason);
-const selectedChilds = $ref([]);
-const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
-const selectedLeagueChild = computed(
-    () => leaguesData.find((child) => child.leagueId === league.getLeagueLocalConfig?.league.leagueId)?.childLeagues
-);
-
-onBeforeMount(async () => {
-    if (league.getLeagueLocalConfig?.league.leagueId === 0 || !league.getLeagueLocalConfig) {
-        notifications().warning('Please select a league to continue!');
-        await router.push({ name: 'League Selector' });
-    }
-    if (childSeason && league.getLeagueLocalConfig?.child.id === 0) {
-        notifications().warning('Please select a child league to continue!');
-        await router.push({ name: 'League Selector' });
-    }
-});
-
-watch(childSeason, async (now) => {
-    if (now && league.getLeagueLocalConfig?.child.id === 0) {
-        notifications().warning('Please select a child league to continue!');
-        await router.push({ name: 'League Selector' });
-    }
-});
-
-async function registerSeason() {
-    const form: HTMLFormElement | null = document.querySelector('#season');
-    const formData = new FormData(form!);
-    if (dayjs(new Date(formData.get('start-date') as string)).isBefore(new Date())) {
-        return notifications().error('Start date is in past');
-    } else if (dayjs(new Date(formData.get('end-date') as string)).isBefore(new Date())) {
-        return notifications().error('End date is in past');
-    } else if (dayjs(new Date(formData.get('end-date') as string)).diff(new Date(formData.get('start-date') as string), 'days') <= 13) {
-        return notifications().error('Season duration must be 2 weeks or grater than it');
-    }
-
-    if (leagueSeason) {
-        const newSeasonData: TNewSeason = {
-            leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
-            startTime: formData.get('start-date') as string,
-            endTime: formData.get('end-date') as string,
-            childData: selectedChilds
-        };
-        await league.newSeason(newSeasonData);
-    } else {
-        const childSeasonData: TNewChildSeason = {
-            leagueId: league.getLeagueLocalConfig?.league.leagueId ?? 0,
-            childLeagueId: league.getLeagueLocalConfig?.child.id ?? 0,
-            startTime: formData.get('start-date') as string,
-            endTime: formData.get('end-date') as string
-        };
-        await league.newChildSeason(childSeasonData);
-    }
-}
-</script>
 
 <style scoped>
 .tab-item {

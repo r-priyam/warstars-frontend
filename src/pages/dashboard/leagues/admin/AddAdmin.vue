@@ -1,3 +1,50 @@
+<script setup lang="ts">
+import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
+
+import { notifications } from '~/stores/notifications';
+import { PermissionsConstant } from '~/types/Leagues';
+
+const emit = defineEmits(['closePopUp', 'addAdmin']);
+const props = defineProps({
+    open: { type: Boolean, required: true },
+    processing: { type: Boolean, required: true },
+    permissions: Number
+});
+
+let administratorSelected = $ref(false);
+let newAdmin = $ref({ discordId: '', permissions: [0] });
+
+watch(
+    () => newAdmin.permissions,
+    (newValue: number[]) => {
+        if (newValue.includes(8)) {
+            administratorSelected = true;
+        } else {
+            administratorSelected = false;
+        }
+    }
+);
+watch(
+    () => props.open,
+    (newValue: boolean) => {
+        if (!newValue) {
+            administratorSelected = false;
+            newAdmin = { discordId: '', permissions: [] };
+        }
+    }
+);
+
+function handleConfirmation() {
+    if (!newAdmin.discordId) {
+        return notifications().warning('Enter new admin discord id');
+    }
+    if (newAdmin.permissions.length === 1) {
+        return notifications().warning('No permissions selected!');
+    }
+    emit('addAdmin', newAdmin);
+}
+</script>
+
 <template>
     <TransitionRoot as="template" :show="props.open">
         <Dialog as="div" class="fixed inset-0 z-10 overflow-y-auto" @close="$emit('closePopUp', true)">
@@ -104,50 +151,3 @@
         </Dialog>
     </TransitionRoot>
 </template>
-
-<script setup lang="ts">
-import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
-
-import { notifications } from '~/stores/notifications';
-import { PermissionsConstant } from '~/types/Leagues';
-
-const emit = defineEmits(['closePopUp', 'addAdmin']);
-const props = defineProps({
-    open: { type: Boolean, required: true },
-    processing: { type: Boolean, required: true },
-    permissions: Number
-});
-
-let administratorSelected = $ref(false);
-let newAdmin = $ref({ discordId: '', permissions: [0] });
-
-watch(
-    () => newAdmin.permissions,
-    (newValue: number[]) => {
-        if (newValue.includes(8)) {
-            administratorSelected = true;
-        } else {
-            administratorSelected = false;
-        }
-    }
-);
-watch(
-    () => props.open,
-    (newValue: boolean) => {
-        if (!newValue) {
-            administratorSelected = false;
-            newAdmin = { discordId: '', permissions: [] };
-        }
-    }
-);
-
-function handleConfirmation() {
-    if (!newAdmin.discordId) {
-        return notifications().warning('Enter new admin discord id');
-    }
-    if (newAdmin.permissions.length === 1) {
-        return notifications().warning('No permissions selected!');
-    }
-    emit('addAdmin', newAdmin);
-}
-</script>

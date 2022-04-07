@@ -1,3 +1,30 @@
+<script setup lang="ts">
+import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
+
+import DashboardSidebar from '~/components/SideBar.vue';
+import { notifications } from '~/stores/notifications';
+const notification = notifications();
+
+const sidebarElement = ref(null);
+let sidebarOpen = $ref(false);
+const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen = eventPayload);
+onClickOutside(sidebarElement, () => (sidebarOpen = false));
+
+// Just pass the whole class as it's causing some problem in rendering
+const notificationColor = (type: string) => {
+    switch (type) {
+        case 'Info':
+            return 'text-blue-500';
+        case 'Warning':
+            return 'text-yellow-500';
+        case 'Error':
+            return 'text-red-500';
+        case 'Success':
+            return 'text-green-500';
+    }
+};
+</script>
+
 <template>
     <div>
         <div class="fixed z-20 flex shrink-0 lg:hidden">
@@ -86,33 +113,6 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
-
-import DashboardSidebar from '~/components/SideBar.vue';
-import { notifications } from '~/stores/notifications';
-const notification = notifications();
-
-const sidebarElement = ref(null);
-let sidebarOpen = $ref(false);
-const handleSidebarEvent = (eventPayload: boolean) => (sidebarOpen = eventPayload);
-onClickOutside(sidebarElement, () => (sidebarOpen = false));
-
-// Just pass the whole class as it's causing some problem in rendering
-const notificationColor = (type: string) => {
-    switch (type) {
-        case 'Info':
-            return 'text-blue-500';
-        case 'Warning':
-            return 'text-yellow-500';
-        case 'Error':
-            return 'text-red-500';
-        case 'Success':
-            return 'text-green-500';
-    }
-};
-</script>
 
 <style>
 .sidebar-height {

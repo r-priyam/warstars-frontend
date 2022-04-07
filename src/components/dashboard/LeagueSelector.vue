@@ -1,3 +1,101 @@
+<script setup lang="ts">
+import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
+
+import { pushLeagueSaveRoute } from '~/router';
+import { notifications } from '~/stores/notifications';
+import { userStore } from '~/stores/user';
+import type { TLocalLeagueData, TSelectedChild, TSelectedLeague, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
+import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
+
+const router = useRouter();
+const user = userStore();
+
+// Check if a user is in any league or not. If not redirect back to league info page.
+onBeforeMount(async () => {
+    if (!user.userData.showLeague) {
+        notifications().info("You aren't in any league.");
+        await router.push({ name: 'League Register Info' });
+    }
+});
+
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
+const selectedLeague = ref<TSelectedLeague>({
+    leagueId: 0,
+    name: '',
+    abbreviation: '',
+    seasonId: null,
+    iconUrl: '',
+    seasonActive: null
+});
+const selectedChildLeague = ref<TSelectedChild>({
+    id: 0,
+    name: '',
+    abbreviation: '',
+    iconUrl: '',
+    seasonId: null,
+    seasonActive: null
+});
+const selectedDivision = ref<TUserChildLeagueDivisions>({
+    id: 0,
+    childId: 0,
+    seasonId: 0,
+    name: '',
+    abbreviation: '',
+    iconUrl: null,
+    clansCount: 0
+});
+
+const selectedLeagueChild = computed(() => leaguesData.find((league) => league.leagueId === selectedLeague.value.leagueId)?.childLeagues);
+
+const selectedChildDivisions = computed(
+    () =>
+        leaguesData
+            .find((league) => league.leagueId === selectedLeague.value.leagueId)
+            ?.childLeagues.find((child) => child.id === selectedChildLeague.value.id)?.divisions
+);
+
+const handleReset = () => {
+    selectedLeague.value = {
+        leagueId: 0,
+        name: '',
+        abbreviation: '',
+        seasonId: null,
+        iconUrl: '',
+        seasonActive: null
+    };
+    selectedChildLeague.value = { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null };
+    selectedDivision.value = {
+        id: 0,
+        childId: 0,
+        seasonId: 0,
+        name: '',
+        abbreviation: '',
+        iconUrl: null,
+        clansCount: 0
+    };
+};
+
+const handleLeagueChange = () => {
+    selectedChildLeague.value.id = 0;
+    selectedChildLeague.value.name = '';
+};
+
+const applyLeagueConfig = async () => {
+    if (selectedLeague.value.leagueId === 0) {
+        notifications().error('Please select a league.');
+        return;
+    }
+
+    RawSelectedLeague.value = JSON.stringify({
+        league: selectedLeague.value,
+        child: selectedChildLeague.value,
+        division: selectedDivision.value
+    });
+    notifications().info('Settings saved successfully!');
+    await router.push({ name: pushLeagueSaveRoute.value });
+};
+</script>
+
 <template>
     <div class="transparent max-w-full p-8 md:p-12">
         <div class="mb-8">
@@ -168,101 +266,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
-
-import { pushLeagueSaveRoute } from '~/router';
-import { notifications } from '~/stores/notifications';
-import { userStore } from '~/stores/user';
-import type { TLocalLeagueData, TSelectedChild, TSelectedLeague, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
-import { RawLeagueData, RawSelectedLeague } from '~/utils/leagueUtils';
-
-const router = useRouter();
-const user = userStore();
-
-// Check if a user is in any league or not. If not redirect back to league info page.
-onBeforeMount(async () => {
-    if (!user.userData.showLeague) {
-        notifications().info("You aren't in any league.");
-        await router.push({ name: 'League Register Info' });
-    }
-});
-
-const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
-const selectedLeague = ref<TSelectedLeague>({
-    leagueId: 0,
-    name: '',
-    abbreviation: '',
-    seasonId: null,
-    iconUrl: '',
-    seasonActive: null
-});
-const selectedChildLeague = ref<TSelectedChild>({
-    id: 0,
-    name: '',
-    abbreviation: '',
-    iconUrl: '',
-    seasonId: null,
-    seasonActive: null
-});
-const selectedDivision = ref<TUserChildLeagueDivisions>({
-    id: 0,
-    childId: 0,
-    seasonId: 0,
-    name: '',
-    abbreviation: '',
-    iconUrl: null,
-    clansCount: 0
-});
-
-const selectedLeagueChild = computed(() => leaguesData.find((league) => league.leagueId === selectedLeague.value.leagueId)?.childLeagues);
-
-const selectedChildDivisions = computed(
-    () =>
-        leaguesData
-            .find((league) => league.leagueId === selectedLeague.value.leagueId)
-            ?.childLeagues.find((child) => child.id === selectedChildLeague.value.id)?.divisions
-);
-
-const handleReset = () => {
-    selectedLeague.value = {
-        leagueId: 0,
-        name: '',
-        abbreviation: '',
-        seasonId: null,
-        iconUrl: '',
-        seasonActive: null
-    };
-    selectedChildLeague.value = { id: 0, name: '', abbreviation: '', iconUrl: '', seasonId: null, seasonActive: null };
-    selectedDivision.value = {
-        id: 0,
-        childId: 0,
-        seasonId: 0,
-        name: '',
-        abbreviation: '',
-        iconUrl: null,
-        clansCount: 0
-    };
-};
-
-const handleLeagueChange = () => {
-    selectedChildLeague.value.id = 0;
-    selectedChildLeague.value.name = '';
-};
-
-const applyLeagueConfig = async () => {
-    if (selectedLeague.value.leagueId === 0) {
-        notifications().error('Please select a league.');
-        return;
-    }
-
-    RawSelectedLeague.value = JSON.stringify({
-        league: selectedLeague.value,
-        child: selectedChildLeague.value,
-        division: selectedDivision.value
-    });
-    notifications().info('Settings saved successfully!');
-    await router.push({ name: pushLeagueSaveRoute.value });
-};
-</script>

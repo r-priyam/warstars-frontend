@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
+
+defineEmits(['closePopUp', 'confirmation']);
+withDefaults(defineProps<{ title: string; description: string; open: boolean; processing?: boolean }>(), {
+    title: '',
+    description: '',
+    open: false,
+    processing: false
+});
+</script>
+
 <template>
     <TransitionRoot as="template" :show="open">
         <Dialog as="div" class="fixed inset-0 z-10 overflow-y-auto" @close="$emit('closePopUp', true)">
@@ -81,15 +93,3 @@
         </Dialog>
     </TransitionRoot>
 </template>
-
-<script setup lang="ts">
-import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
-
-defineEmits(['closePopUp', 'confirmation']);
-withDefaults(defineProps<{ title: string; description: string; open: boolean; processing?: boolean }>(), {
-    title: '',
-    description: '',
-    open: false,
-    processing: false
-});
-</script>

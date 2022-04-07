@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import type { TUserChildLeague, TUserChildLeagueDivisions } from '~/types';
+withDefaults(defineProps<{ divisionsData: TUserChildLeagueDivisions[]; childData: TUserChildLeague[] }>(), {
+    divisionsData: Array,
+    childData: Array
+});
+
+const router = useRouter();
+</script>
+
 <template>
     <div v-for="(child, index) in childData" :key="index">
         <h1 v-if="child.divisions.length > 0" class="mt-6 text-center text-3xl font-bold text-green-700 dark:text-green-500 md:text-3xl">
@@ -61,13 +71,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import type { TUserChildLeague, TUserChildLeagueDivisions } from '~/types';
-withDefaults(defineProps<{ divisionsData: TUserChildLeagueDivisions[]; childData: TUserChildLeague[] }>(), {
-    divisionsData: Array,
-    childData: Array
-});
-
-const router = useRouter();
-</script>

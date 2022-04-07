@@ -1,3 +1,105 @@
+<script setup lang="ts">
+import dayjs from 'dayjs';
+
+import { HTTPError, RESTManager } from '~/api';
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import { notifications } from '~/stores/notifications';
+import { userStore } from '~/stores/user';
+import { CheckLeague } from '~/utils/leagueUtils';
+
+import AddAdmin from './AddAdmin.vue';
+import EditPermissions from './EditPermissions.vue';
+
+const leagueStore = leagueManagement();
+const user = userStore();
+
+onBeforeMount(() => CheckLeague());
+onMounted(async () => await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId));
+
+const API = new RESTManager();
+const notification = notifications();
+let showPopUp = $ref(false);
+let popUpProcessing = $ref(false);
+
+let addDialog = $ref(false);
+let addProcessing = $ref(false);
+
+let editDialog = $ref(false);
+let editProcessing = $ref(false);
+
+const selectedAdmin = $ref({ name: '', adminId: 0, discordId: '', leagueId: 0 });
+const editAdmin = $ref({ name: '', adminId: 0, permissions: 0, leagueId: 0 });
+
+const headAdmin = computed(() => leagueStore.leagueAdmins?.find((x) => x.headAdmin)?.discordId);
+
+async function addAdmin(payload: { discordId: string; permissions: number[] }) {
+    addProcessing = true;
+    try {
+        const res = await API.addAdmin({
+            discordId: payload.discordId,
+            leagueId: leagueStore.getLeagueLocalConfig!.league.leagueId,
+            permissions: payload.permissions.includes(8) ? 8 : payload.permissions.reduce((x, y) => x + y)
+        });
+        if (res.ok) {
+            notification.info('Successfully added admin!');
+        }
+    } catch (error) {
+        if (error instanceof HTTPError) {
+            notification.error(error.message);
+        }
+    } finally {
+        addDialog = false;
+        addProcessing = false;
+        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
+    }
+}
+
+async function removeAdmin() {
+    popUpProcessing = true;
+    try {
+        const res = await API.removeAdmin({
+            adminId: selectedAdmin.adminId,
+            adminDiscordId: selectedAdmin.discordId,
+            leagueId: selectedAdmin.leagueId
+        });
+        if (res.ok) {
+            notification.info(`Successfully removed ${selectedAdmin.name} from ${leagueStore.getLeagueLocalConfig!.league.name} admins`);
+        }
+    } catch (error) {
+        if (error instanceof HTTPError) {
+            notification.error(error.message);
+        }
+    } finally {
+        showPopUp = false;
+        popUpProcessing = false;
+        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
+    }
+}
+
+async function editPermissions(newPermissionVal: number) {
+    editProcessing = true;
+    try {
+        const res = await API.updateAdminPermission({
+            adminId: editAdmin.adminId,
+            leagueId: leagueStore.getLeagueLocalConfig!.league.leagueId,
+            permissions: newPermissionVal
+        });
+        if (res.ok) {
+            notification.info(`Successfully updated ${editAdmin.name} for ${leagueStore.getLeagueLocalConfig!.league.name}`);
+        }
+    } catch (error) {
+        if (error instanceof HTTPError) {
+            notification.error(error.message);
+        }
+    } finally {
+        editProcessing = false;
+        editDialog = false;
+        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
+    }
+}
+</script>
+
 <template>
     <div>
         <PopUp
@@ -128,105 +230,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from 'dayjs';
-
-import { HTTPError, RESTManager } from '~/api';
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import { leagueManagement } from '~/stores/leagueManagement';
-import { notifications } from '~/stores/notifications';
-import { userStore } from '~/stores/user';
-import { CheckLeague } from '~/utils/leagueUtils';
-
-import AddAdmin from './AddAdmin.vue';
-import EditPermissions from './EditPermissions.vue';
-
-const leagueStore = leagueManagement();
-const user = userStore();
-
-onBeforeMount(() => CheckLeague());
-onMounted(async () => await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId));
-
-const API = new RESTManager();
-const notification = notifications();
-let showPopUp = $ref(false);
-let popUpProcessing = $ref(false);
-
-let addDialog = $ref(false);
-let addProcessing = $ref(false);
-
-let editDialog = $ref(false);
-let editProcessing = $ref(false);
-
-const selectedAdmin = $ref({ name: '', adminId: 0, discordId: '', leagueId: 0 });
-const editAdmin = $ref({ name: '', adminId: 0, permissions: 0, leagueId: 0 });
-
-const headAdmin = computed(() => leagueStore.leagueAdmins?.find((x) => x.headAdmin)?.discordId);
-
-async function addAdmin(payload: { discordId: string; permissions: number[] }) {
-    addProcessing = true;
-    try {
-        const res = await API.addAdmin({
-            discordId: payload.discordId,
-            leagueId: leagueStore.getLeagueLocalConfig!.league.leagueId,
-            permissions: payload.permissions.includes(8) ? 8 : payload.permissions.reduce((x, y) => x + y)
-        });
-        if (res.ok) {
-            notification.info('Successfully added admin!');
-        }
-    } catch (error) {
-        if (error instanceof HTTPError) {
-            notification.error(error.message);
-        }
-    } finally {
-        addDialog = false;
-        addProcessing = false;
-        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
-    }
-}
-
-async function removeAdmin() {
-    popUpProcessing = true;
-    try {
-        const res = await API.removeAdmin({
-            adminId: selectedAdmin.adminId,
-            adminDiscordId: selectedAdmin.discordId,
-            leagueId: selectedAdmin.leagueId
-        });
-        if (res.ok) {
-            notification.info(`Successfully removed ${selectedAdmin.name} from ${leagueStore.getLeagueLocalConfig!.league.name} admins`);
-        }
-    } catch (error) {
-        if (error instanceof HTTPError) {
-            notification.error(error.message);
-        }
-    } finally {
-        showPopUp = false;
-        popUpProcessing = false;
-        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
-    }
-}
-
-async function editPermissions(newPermissionVal: number) {
-    editProcessing = true;
-    try {
-        const res = await API.updateAdminPermission({
-            adminId: editAdmin.adminId,
-            leagueId: leagueStore.getLeagueLocalConfig!.league.leagueId,
-            permissions: newPermissionVal
-        });
-        if (res.ok) {
-            notification.info(`Successfully updated ${editAdmin.name} for ${leagueStore.getLeagueLocalConfig!.league.name}`);
-        }
-    } catch (error) {
-        if (error instanceof HTTPError) {
-            notification.error(error.message);
-        }
-    } finally {
-        editProcessing = false;
-        editDialog = false;
-        await leagueStore.getLeagueAdmins(leagueStore.getLeagueLocalConfig!.league.leagueId);
-    }
-}
-</script>

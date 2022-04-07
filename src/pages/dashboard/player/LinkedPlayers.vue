@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
+import NoLink from '~/pages/dashboard/utils/NoLink.vue';
+import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
+
+const userPlayer = userPlayerOpeartions();
+onMounted(() => userPlayer.fetchPlayersData());
+
+const playerData = ref({ name: '', tag: '' });
+const showPopUp = ref(false);
+const popUpProcessing = ref(false);
+</script>
+
 <template>
     <div>
         <PopUp
@@ -92,16 +105,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import PopUp from '~/pages/dashboard/utils/ConfirmationPopup.vue';
-import NoLink from '~/pages/dashboard/utils/NoLink.vue';
-import { userPlayer as userPlayerOpeartions } from '~/stores/userPlayer';
-
-const userPlayer = userPlayerOpeartions();
-onMounted(() => userPlayer.fetchPlayersData());
-
-const playerData = ref({ name: '', tag: '' });
-const showPopUp = ref(false);
-const popUpProcessing = ref(false);
-</script>

@@ -1,3 +1,38 @@
+<script setup lang="ts">
+import dayjs from 'dayjs';
+
+import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
+import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
+import { leagueManagement } from '~/stores/leagueManagement';
+import type { TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
+import { CheckLeague, RawLeagueData } from '~/utils/leagueUtils';
+
+onBeforeMount(() => CheckLeague());
+
+const leagueStore = leagueManagement();
+const league = $ref(true); // true by default to show the league main page.
+const childLeague = $ref(false);
+const division = $ref(false);
+const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
+const iconsDefault = 'mb-1 h-4 w-4 mr-1';
+
+const leagueData = computed(() =>
+    leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId)
+);
+
+const leagueDivisions = () => {
+    const leagueData_ = leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId);
+    if (!leagueData_?.childLeagues) {
+        return [];
+    }
+    const divisions: Array<TUserChildLeagueDivisions> = [];
+    leagueData_.childLeagues.forEach((element) => {
+        divisions.push(...element.divisions);
+    });
+    return divisions;
+};
+</script>
+
 <template>
     <div>
         <div class="m-2 grid grid-cols-3 gap-5">
@@ -137,41 +172,6 @@
         <ChildDivision v-if="division" :child-data="leagueData?.childLeagues" :divisions-data="leagueDivisions()" />
     </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from 'dayjs';
-
-import ChildDivision from '~/pages/dashboard/leagues/core/ChildDivision.vue';
-import LeagueChild from '~/pages/dashboard/leagues/core/LeagueChild.vue';
-import { leagueManagement } from '~/stores/leagueManagement';
-import type { TLocalLeagueData, TUserChildLeagueDivisions, TUserLeagueData } from '~/types';
-import { CheckLeague, RawLeagueData } from '~/utils/leagueUtils';
-
-onBeforeMount(() => CheckLeague());
-
-const leagueStore = leagueManagement();
-const league = $ref(true); // true by default to show the league main page.
-const childLeague = $ref(false);
-const division = $ref(false);
-const leaguesData: TUserLeagueData[] = (JSON.parse(RawLeagueData.value) as TLocalLeagueData).value!;
-const iconsDefault = 'mb-1 h-4 w-4 mr-1';
-
-const leagueData = computed(() =>
-    leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId)
-);
-
-const leagueDivisions = () => {
-    const leagueData_ = leaguesData.find((leagueData) => leagueData.leagueId === leagueStore.getLeagueLocalConfig?.league.leagueId);
-    if (!leagueData_?.childLeagues) {
-        return [];
-    }
-    const divisions: Array<TUserChildLeagueDivisions> = [];
-    leagueData_.childLeagues.forEach((element) => {
-        divisions.push(...element.divisions);
-    });
-    return divisions;
-};
-</script>
 
 <style scoped>
 .tab-item {
