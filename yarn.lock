@@ -116,6 +116,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@antfu/utils@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "@antfu/utils@npm:0.5.1"
+  checksum: 54a64a1a7d451d07be2ead39dee534281f0cca35db2e72b995f4d81baedfe4c8889f428e46ebefe32c7f4444fc2d5389a5a52223fe8cef01cc98415c8ffc9491
+  languageName: node
+  linkType: hard
+
 "@apideck/better-ajv-errors@npm:^0.3.1":
   version: 0.3.3
   resolution: "@apideck/better-ajv-errors@npm:0.3.3"
@@ -1412,13 +1419,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:2.1.27":
-  version: 2.1.27
-  resolution: "@iconify/json@npm:2.1.27"
+"@iconify/json@npm:2.1.28":
+  version: 2.1.28
+  resolution: "@iconify/json@npm:2.1.28"
   dependencies:
     "@iconify/types": ^1.1.0
     pathe: ^0.2.0
-  checksum: 35cf79bc45f31c7cdebc2c044ed72b0cbf54b9d8a61f6ba14d58a93076a7b47904980f058b36ae5d6ee5da4dff0d792bb7d19c1af410f1d6279f4e71547f5043
+  checksum: 510492f43c50b294d64a6889c6a777a17edbeb57416a98b2e7271ed53dcf05f2d177f985c7e6cda4d408dcff19542fd0d6c4442ae062ca0208225413ae7cc8e6
   languageName: node
   linkType: hard
 
@@ -7928,11 +7935,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-auto-import@npm:0.7.0":
-  version: 0.7.0
-  resolution: "unplugin-auto-import@npm:0.7.0"
+"unplugin-auto-import@npm:0.7.1":
+  version: 0.7.1
+  resolution: "unplugin-auto-import@npm:0.7.1"
   dependencies:
-    "@antfu/utils": ^0.5.0
+    "@antfu/utils": ^0.5.1
     "@rollup/pluginutils": ^4.2.0
     local-pkg: ^0.4.1
     magic-string: ^0.26.1
@@ -7943,7 +7950,7 @@ __metadata:
   peerDependenciesMeta:
     "@vueuse/core":
       optional: true
-  checksum: 7d1a156f946ad24bd574eed137fba94bdb2090c02cf4324fe1612c961740118306f87cb95f89cd50892945d5b4afde0e1c13622ff72cf3705d08b20a4d1b6f10
+  checksum: 93262fdf200b551495abcf3190f0cae1a999796195e8dfafe9fe24be6d83629f9b82f19e468502c0a02044c8ed56484558b6c044350e622465edd09a1ac28da1
   languageName: node
   linkType: hard
 
@@ -8304,7 +8311,7 @@ __metadata:
     "@antfu/eslint-config": ^0.20.2
     "@headlessui/vue": 1.5.0
     "@iconify/iconify": ^2.2.1
-    "@iconify/json": 2.1.27
+    "@iconify/json": 2.1.28
     "@tailwindcss/aspect-ratio": 0.4.0
     "@tailwindcss/forms": 0.5.0
     "@tailwindcss/line-clamp": 0.3.1
@@ -8334,7 +8341,7 @@ __metadata:
     purge-icons: ^0.8.0
     tailwindcss: 3.0.24
     typescript: 4.6.3
-    unplugin-auto-import: 0.7.0
+    unplugin-auto-import: 0.7.1
     unplugin-icons: 0.14.1
     unplugin-vue-components: 0.19.2
     vite: 2.9.1
