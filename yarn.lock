@@ -2153,12 +2153,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/head@npm:^0.7.5":
-  version: 0.7.5
-  resolution: "@vueuse/head@npm:0.7.5"
+"@vueuse/head@npm:^0.7.6":
+  version: 0.7.6
+  resolution: "@vueuse/head@npm:0.7.6"
   peerDependencies:
     vue: ">=3"
-  checksum: c6c7221078fa4bd9b509995950e3659b523e1dddb57ca9be2df2f1736ae41c3da195663c7fedfe71443e5468dcda946aecd55d8745b727c0045059b8c66f4be3
+  checksum: d8f49f5c2894b0d517231424a73e0efc42c6887cf2cc9e9dce7190229ac736a1864bc60d952080be3fa620e1309dd120b34595ae7a02800f29c44949f1590a21
   languageName: node
   linkType: hard
 
@@ -8187,9 +8187,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:2.9.1":
-  version: 2.9.1
-  resolution: "vite@npm:2.9.1"
+"vite@npm:2.9.4":
+  version: 2.9.4
+  resolution: "vite@npm:2.9.4"
   dependencies:
     esbuild: ^0.14.27
     fsevents: ~2.3.2
@@ -8212,7 +8212,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 0f0ac9337fa5c17faa4a59831a2df17475563b23a6162e86b2b60b19835ca1277f3249ea7a6608880354b39caf05779e9bad1e3b1f5b27010deced224aae47ea
+  checksum: 40c8e37f9442cda3021bdbfda25b9aeb9e2204d346565588f87eb4d157b5e10fbe937f8feb4b0fb3e67ab86858763015166aca7ca45f1adb29bd40da4cb1afb6
   languageName: node
   linkType: hard
 
@@ -8320,7 +8320,7 @@ __metadata:
     "@types/nprogress": 0.2.0
     "@vitejs/plugin-vue": 2.3.1
     "@vueuse/core": 8.2.5
-    "@vueuse/head": ^0.7.5
+    "@vueuse/head": ^0.7.6
     "@vueuse/motion": 2.0.0-beta.12
     autoprefixer: 10.4.4
     bumpp: ^7.1.1
@@ -8344,7 +8344,7 @@ __metadata:
     unplugin-auto-import: 0.7.1
     unplugin-icons: 0.14.1
     unplugin-vue-components: 0.19.2
-    vite: 2.9.1
+    vite: 2.9.4
     vite-plugin-purge-icons: ^0.8.1
     vite-plugin-pwa: ^0.11.13
     vite-plugin-radar: 0.4.2
