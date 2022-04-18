@@ -1412,13 +1412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:2.1.28":
-  version: 2.1.28
-  resolution: "@iconify/json@npm:2.1.28"
+"@iconify/json@npm:2.1.29":
+  version: 2.1.29
+  resolution: "@iconify/json@npm:2.1.29"
   dependencies:
     "@iconify/types": ^1.1.0
     pathe: ^0.2.0
-  checksum: 510492f43c50b294d64a6889c6a777a17edbeb57416a98b2e7271ed53dcf05f2d177f985c7e6cda4d408dcff19542fd0d6c4442ae062ca0208225413ae7cc8e6
+  checksum: 415110ed3242186da7905424f93ee71c3a83ca9b108e2e4b37ce577b087d1109f49101cb69136dc0a735a1b00a9e4735eff06731aea911b15105a47f9f2a9961
   languageName: node
   linkType: hard
 
@@ -8263,7 +8263,7 @@ __metadata:
     "@antfu/eslint-config": ^0.20.6
     "@headlessui/vue": 1.5.0
     "@iconify/iconify": ^2.2.1
-    "@iconify/json": 2.1.28
+    "@iconify/json": 2.1.29
     "@tailwindcss/aspect-ratio": 0.4.0
     "@tailwindcss/forms": 0.5.0
     "@tailwindcss/line-clamp": 0.3.1
