@@ -1412,13 +1412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:2.1.29":
-  version: 2.1.29
-  resolution: "@iconify/json@npm:2.1.29"
+"@iconify/json@npm:2.1.30":
+  version: 2.1.30
+  resolution: "@iconify/json@npm:2.1.30"
   dependencies:
     "@iconify/types": ^1.1.0
     pathe: ^0.2.0
-  checksum: 415110ed3242186da7905424f93ee71c3a83ca9b108e2e4b37ce577b087d1109f49101cb69136dc0a735a1b00a9e4735eff06731aea911b15105a47f9f2a9961
+  checksum: 8c188928223b3f8fbf27df6f6e023d7d66c3cebb44efc9c52d03f999d2f6ad0bf286015b082ac80ae5d7483ad2a57539086f77f119b5bb8604ea2e54e9a135f7
   languageName: node
   linkType: hard
 
@@ -2048,7 +2048,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:8.2.6, @vueuse/core@npm:^8.0.1":
+"@vueuse/core@npm:8.3.0":
+  version: 8.3.0
+  resolution: "@vueuse/core@npm:8.3.0"
+  dependencies:
+    "@vueuse/metadata": 8.3.0
+    "@vueuse/shared": 8.3.0
+    vue-demi: "*"
+  peerDependencies:
+    "@vue/composition-api": ^1.1.0
+    vue: ^2.6.0 || ^3.2.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+    vue:
+      optional: true
+  checksum: 5538fc1fb0c3ccbb13f309d258f9bd06f049dc58a1e3986c3912daf7777a868064b396d242ffd7d9cff4a756c250ee995418994eb05ce2bae335b5254ae07092
+  languageName: node
+  linkType: hard
+
+"@vueuse/core@npm:^8.0.1":
   version: 8.2.6
   resolution: "@vueuse/core@npm:8.2.6"
   dependencies:
@@ -2080,6 +2099,13 @@ __metadata:
   version: 8.2.6
   resolution: "@vueuse/metadata@npm:8.2.6"
   checksum: 3ec3ba8ba27e9f92e127442da3bca6af753ff412281da73df8d360ddd876a6c552e00b53403b4f3237da867bb8fd10fd38b70942949eb8368ddc61869f267708
+  languageName: node
+  linkType: hard
+
+"@vueuse/metadata@npm:8.3.0":
+  version: 8.3.0
+  resolution: "@vueuse/metadata@npm:8.3.0"
+  checksum: a7492cc2ed0c37de331df3b4c787418d5552654099cfb38daf320f7862caa13f39e89d8022c394847190cb15694875a23c7d47fb5ff2b057cbb899c95a51b05b
   languageName: node
   linkType: hard
 
@@ -2117,6 +2143,23 @@ __metadata:
     vue:
       optional: true
   checksum: 247ae888e87e5c5e10d4c2379f79b20cb7d1f6f3008be91768046ec68a8a3919c2662a02790bfc6c665429d3b2fc29f740651aabe12bbf940f87ae448e67b1b9
+  languageName: node
+  linkType: hard
+
+"@vueuse/shared@npm:8.3.0":
+  version: 8.3.0
+  resolution: "@vueuse/shared@npm:8.3.0"
+  dependencies:
+    vue-demi: "*"
+  peerDependencies:
+    "@vue/composition-api": ^1.1.0
+    vue: ^2.6.0 || ^3.2.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+    vue:
+      optional: true
+  checksum: bc4f3988f46c1077579654d68b640b5a50197e368149451a034fa88832570323949a619be91e41e8b14fbd52a154c89a25e9f7f91e74508f97636bc7edad9090
   languageName: node
   linkType: hard
 
@@ -6517,12 +6560,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:0.1.9":
-  version: 0.1.9
-  resolution: "prettier-plugin-tailwindcss@npm:0.1.9"
+"prettier-plugin-tailwindcss@npm:0.1.10":
+  version: 0.1.10
+  resolution: "prettier-plugin-tailwindcss@npm:0.1.10"
   peerDependencies:
     prettier: ">=2.2.0"
-  checksum: f11de2659e5103474413764626cc9ba15c87542eb2d9e96b606a8a909c76f189ca94c56cae7b273076e13db55747111c12d138d010913d3470418511175c63b6
+  checksum: 465a7e02bd2224f9773f35190b6b4d19f281848d0492d4d43eabf403b33117303222faf775d8d569d0ce8bbb75336aa4db005db1935bb78c551ff711a8f89537
   languageName: node
   linkType: hard
 
@@ -8270,7 +8313,7 @@ __metadata:
     "@antfu/eslint-config": ^0.20.6
     "@headlessui/vue": 1.5.0
     "@iconify/iconify": ^2.2.1
-    "@iconify/json": 2.1.29
+    "@iconify/json": 2.1.30
     "@tailwindcss/aspect-ratio": 0.4.0
     "@tailwindcss/forms": 0.5.0
     "@tailwindcss/line-clamp": 0.3.1
@@ -8278,7 +8321,7 @@ __metadata:
     "@types/node": ^17.0.21
     "@types/nprogress": 0.2.0
     "@vitejs/plugin-vue": 2.3.1
-    "@vueuse/core": 8.2.6
+    "@vueuse/core": 8.3.0
     "@vueuse/head": ^0.7.6
     "@vueuse/motion": 2.0.0-beta.12
     autoprefixer: 10.4.4
@@ -8296,7 +8339,7 @@ __metadata:
     postcss: 8.4.12
     prettier: 2.6.2
     prettier-plugin-organize-imports: 2.3.4
-    prettier-plugin-tailwindcss: 0.1.9
+    prettier-plugin-tailwindcss: 0.1.10
     purge-icons: ^0.8.0
     tailwindcss: 3.0.24
     typescript: 4.6.3
