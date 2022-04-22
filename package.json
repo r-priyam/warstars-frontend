@@ -38,7 +38,7 @@
         "autoprefixer": "10.4.4",
         "bumpp": "^7.1.1",
         "critters": "^0.0.16",
-        "eslint": "8.13.0",
+        "eslint": "8.14.0",
         "eslint-config-prettier": "8.5.0",
         "eslint-plugin-prettier": "4.0.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
