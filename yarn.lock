@@ -1412,13 +1412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:2.1.30":
-  version: 2.1.30
-  resolution: "@iconify/json@npm:2.1.30"
+"@iconify/json@npm:2.1.31":
+  version: 2.1.31
+  resolution: "@iconify/json@npm:2.1.31"
   dependencies:
     "@iconify/types": ^1.1.0
     pathe: ^0.2.0
-  checksum: 8c188928223b3f8fbf27df6f6e023d7d66c3cebb44efc9c52d03f999d2f6ad0bf286015b082ac80ae5d7483ad2a57539086f77f119b5bb8604ea2e54e9a135f7
+  checksum: a9813fc1c40ee5052b3ac13fac7fe16b3463b0d65956946d6029474b09952a40a022c05c88f0d55b7bc0982634b24daf85692a4b456fde67687398aa7ba29901
   languageName: node
   linkType: hard
 
@@ -3959,7 +3959,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:8.6.0, eslint-plugin-vue@npm:^8.5.0":
+"eslint-plugin-vue@npm:8.7.1":
+  version: 8.7.1
+  resolution: "eslint-plugin-vue@npm:8.7.1"
+  dependencies:
+    eslint-utils: ^3.0.0
+    natural-compare: ^1.4.0
+    nth-check: ^2.0.1
+    postcss-selector-parser: ^6.0.9
+    semver: ^7.3.5
+    vue-eslint-parser: ^8.0.1
+  peerDependencies:
+    eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
+  checksum: c3aefb226dea126db32cab4c570f17f4b4047d609f4f5748e8dc410e929fbbfacdc07af1421c0f7773398513e9363de4480694714bc85fa2188ca50d1d19cfbc
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-vue@npm:^8.5.0":
   version: 8.6.0
   resolution: "eslint-plugin-vue@npm:8.6.0"
   dependencies:
@@ -6499,7 +6515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.6":
+"postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.6, postcss-selector-parser@npm:^6.0.9":
   version: 6.0.10
   resolution: "postcss-selector-parser@npm:6.0.10"
   dependencies:
@@ -8313,7 +8329,7 @@ __metadata:
     "@antfu/eslint-config": ^0.20.6
     "@headlessui/vue": 1.5.0
     "@iconify/iconify": ^2.2.1
-    "@iconify/json": 2.1.30
+    "@iconify/json": 2.1.31
     "@tailwindcss/aspect-ratio": 0.4.0
     "@tailwindcss/forms": 0.5.0
     "@tailwindcss/line-clamp": 0.3.1
@@ -8332,7 +8348,7 @@ __metadata:
     eslint-config-prettier: 8.5.0
     eslint-plugin-prettier: 4.0.0
     eslint-plugin-simple-import-sort: ^7.0.0
-    eslint-plugin-vue: 8.6.0
+    eslint-plugin-vue: 8.7.1
     https-localhost: ^4.7.1
     nprogress: 0.2.0
     pinia: 2.0.13
