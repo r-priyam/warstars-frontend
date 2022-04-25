@@ -1369,12 +1369,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/vue@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@headlessui/vue@npm:1.5.0"
+"@headlessui/vue@npm:1.6.0":
+  version: 1.6.0
+  resolution: "@headlessui/vue@npm:1.6.0"
   peerDependencies:
     vue: ^3.2.0
-  checksum: 0aab7484326ae4a4bea379618ad08a8b03408edf8d48500bfcf6cad433dd29735687073ba3518be6a37da3c84fdee049fc3f68bf9e6870d67bb2ed508a93f548
+  checksum: de53210d13f3b5d026e3304bbc283113de127552418cf78395098b6e490199b573ad51d95ee26ce50448d3952271a815524f1581d64cd94e26330069f0de2cfd
   languageName: node
   linkType: hard
 
@@ -8313,7 +8313,7 @@ __metadata:
   resolution: "war-stars@workspace:."
   dependencies:
     "@antfu/eslint-config": ^0.21.0
-    "@headlessui/vue": 1.5.0
+    "@headlessui/vue": 1.6.0
     "@iconify/iconify": ^2.2.1
     "@iconify/json": 2.1.32
     "@tailwindcss/aspect-ratio": 0.4.0
