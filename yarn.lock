@@ -1412,13 +1412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:2.1.32":
-  version: 2.1.32
-  resolution: "@iconify/json@npm:2.1.32"
+"@iconify/json@npm:2.1.33":
+  version: 2.1.33
+  resolution: "@iconify/json@npm:2.1.33"
   dependencies:
     "@iconify/types": ^1.1.0
     pathe: ^0.2.0
-  checksum: f4cbc9d88adce489d6fb313631e40b0b251a00ab670def61c5090d058611f5b3ac82c3de7be7265574e9708c8af9ea77663073fd6b859527653c1af7fd8f2b8b
+  checksum: ac9914ca93bc4ee92ef4ccc892601f00d84698b5296851855a0921855c5ceafe541d490948d6b332e54ef464de8bd8fc60e6aa5d1c3ac80b1628bd5f1fce9e33
   languageName: node
   linkType: hard
 
@@ -1648,12 +1648,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/line-clamp@npm:0.3.1":
-  version: 0.3.1
-  resolution: "@tailwindcss/line-clamp@npm:0.3.1"
+"@tailwindcss/line-clamp@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@tailwindcss/line-clamp@npm:0.4.0"
   peerDependencies:
     tailwindcss: ">=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1"
-  checksum: 805322a6333f029d6d961e02f23099d16f55d31f4736511bc741efff4097a1ad1574a7dff0530b17dbc974e08138b3beb13766f809e0116ebc192b0edf38b737
+  checksum: 71ba25a4a18323496a7af34e55871121b8459530b0e5696c4173fd65a76162675619f1d1158a8a32e1ace2069333949bef6f1061b17f49fef98dc2291a979dcd
   languageName: node
   linkType: hard
 
@@ -8315,10 +8315,10 @@ __metadata:
     "@antfu/eslint-config": ^0.21.1
     "@headlessui/vue": 1.6.0
     "@iconify/iconify": ^2.2.1
-    "@iconify/json": 2.1.32
+    "@iconify/json": 2.1.33
     "@tailwindcss/aspect-ratio": 0.4.0
     "@tailwindcss/forms": 0.5.0
-    "@tailwindcss/line-clamp": 0.3.1
+    "@tailwindcss/line-clamp": 0.4.0
     "@tailwindcss/typography": 0.5.2
     "@types/node": ^17.0.21
     "@types/nprogress": 0.2.0
