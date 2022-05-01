@@ -35,7 +35,7 @@
         "@types/nprogress": "0.2.0",
         "@vitejs/plugin-vue": "2.3.1",
         "@vueuse/head": "^0.7.6",
-        "autoprefixer": "10.4.5",
+        "autoprefixer": "10.4.6",
         "bumpp": "^7.1.1",
         "critters": "^0.0.16",
         "eslint": "8.14.0",
