@@ -120,17 +120,15 @@ async function handleConfirmation() {
                                                     :value="data"
                                                     as="template">
                                                     <li
+                                                        class="relative cursor-default select-none py-2 pl-10 pr-4"
                                                         :class="[
                                                             active
                                                                 ? 'bg-main-light-600 dark:bg-main-dark-600'
-                                                                : 'text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600',
-                                                            'relative cursor-default select-none py-2 pl-10 pr-4'
+                                                                : 'text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600'
                                                         ]">
                                                         <span
-                                                            :class="[
-                                                                selected ? 'font-bold' : 'font-semibold',
-                                                                'block truncate text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600'
-                                                            ]"
+                                                            class="block truncate text-main-textDark-600 hover:bg-main-light-560 dark:text-main-textLight-530 dark:hover:bg-main-dark-600"
+                                                            :class="[selected ? 'font-bold' : 'font-semibold']"
                                                             >{{ data.name }}</span
                                                         >
                                                         <span

@@ -4,13 +4,13 @@ import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } f
 import { notifications } from '~/stores/notifications';
 import { PermissionsConstant } from '~/types/Leagues';
 
-const emit = defineEmits(['closePopUp', 'addAdmin']);
 const props = defineProps({
     open: { type: Boolean, required: true },
     processing: { type: Boolean, required: true },
     permissions: Number
 });
 
+const emit = defineEmits(['closePopUp', 'addAdmin']);
 let administratorSelected = $ref(false);
 let newAdmin = $ref({ discordId: '', permissions: [0] });
 

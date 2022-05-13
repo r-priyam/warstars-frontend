@@ -49,7 +49,7 @@ const popUpProcessing = ref(false);
                         <div class="mb-4 flex shrink-0 items-center justify-center sm:mb-0 sm:mr-4">
                             <img
                                 class="mb-2 h-24 w-24 rounded-md object-contain md:h-32 md:w-32"
-                                :src="`/clash/townHall/14.5.png`"
+                                src="`/clash/townHall/14.5.png`"
                                 alt="townhall" />
                         </div>
                         <div class="w-full">
