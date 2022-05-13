@@ -5,14 +5,14 @@ import { notifications } from '~/stores/notifications';
 import { PermissionsConstant } from '~/types/Leagues';
 import { AdminPermissions } from '~/utils/adminPermissions';
 
-const emit = defineEmits(['closePopUp', 'updateAdmin']);
-
 const props = defineProps({
     open: { type: Boolean, required: true },
     processing: { type: Boolean, required: true },
     name: String,
     permissions: { type: Number, required: true }
 });
+
+const emit = defineEmits(['closePopUp', 'updateAdmin']);
 
 const dialogOpen = ref(false);
 

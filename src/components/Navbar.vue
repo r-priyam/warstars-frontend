@@ -13,7 +13,7 @@ const showPopUp = $ref(false);
 <template>
     <PopUp
         title="Log Out"
-        :description="`Are you sure to logout?`"
+        description="Are you sure to logout?"
         :open="showPopUp"
         @close-pop-up="() => (showPopUp = false)"
         @confirmation="async () => (await user.logOut(), (showPopUp = false))" />
@@ -49,19 +49,15 @@ const showPopUp = $ref(false);
                                     <MenuItem v-slot="{ active }">
                                         <router-link
                                             to="/dashboard"
-                                            :class="[
-                                                active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-                                                'group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530'
-                                            ]"
+                                            class="group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530"
+                                            :class="[active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '']"
                                             ><IconHelper icon="ic:sharp-dashboard" icon-style="mr-1" />Dashboard</router-link
                                         >
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
                                         <button
-                                            :class="[
-                                                active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-                                                'group flex w-full items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530'
-                                            ]"
+                                            class="group flex w-full items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530"
+                                            :class="[active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '']"
                                             @click="showPopUp = true">
                                             <IconHelper icon="bx:bx-log-out" icon-style="mr-1" />Log out
                                         </button>
@@ -171,19 +167,15 @@ const showPopUp = $ref(false);
                                     <MenuItem v-slot="{ active }">
                                         <router-link
                                             to="/dashboard"
-                                            :class="[
-                                                active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-                                                'group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530'
-                                            ]"
+                                            class="group flex items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530"
+                                            :class="[active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '']"
                                             ><IconHelper icon="ic:sharp-dashboard" icon-style="mr-1" />Dashboard</router-link
                                         >
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
                                         <button
-                                            :class="[
-                                                active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '',
-                                                'group flex w-full items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530'
-                                            ]"
+                                            class="group flex w-full items-center rounded-md px-4 py-2 text-sm font-semibold text-main-textDark-600 dark:text-main-textLight-530"
+                                            :class="[active ? 'hover:bg-main-light-560 dark:hover:bg-main-dark-560' : '']"
                                             @click="showPopUp = true">
                                             <IconHelper icon="bx:bx-log-out" icon-style="mr-1" />Log out
                                         </button>
