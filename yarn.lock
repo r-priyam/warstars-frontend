@@ -1412,13 +1412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:2.1.45":
-  version: 2.1.45
-  resolution: "@iconify/json@npm:2.1.45"
+"@iconify/json@npm:2.1.46":
+  version: 2.1.46
+  resolution: "@iconify/json@npm:2.1.46"
   dependencies:
     "@iconify/types": ^1.1.0
     pathe: ^0.2.0
-  checksum: fbd291f6ae99e710f8ef759f6c29f62c85f1c9e8af16211b2167a67e9d962d224764c172bc3bd40ad75c0b3c48d8ec250680e71ea532cf1c51587e5ab1f1ad2f
+  checksum: 2e49b7d8bd9ac083948a311e94020aefe1734666a27842a2c8c1cbfb9431ffa000c37102d24cc844874e57f3dbd3e49eda6cc21293d24926d14b5cdef02260a4
   languageName: node
   linkType: hard
 
@@ -1637,14 +1637,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/forms@npm:0.5.1":
-  version: 0.5.1
-  resolution: "@tailwindcss/forms@npm:0.5.1"
+"@tailwindcss/forms@npm:0.5.2":
+  version: 0.5.2
+  resolution: "@tailwindcss/forms@npm:0.5.2"
   dependencies:
     mini-svg-data-uri: ^1.2.3
   peerDependencies:
     tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
-  checksum: c9dc0124235692db6205960a16cfc8fa09ffd6491b9989cddaaaaf92bf252b9029de2e766dc1714aed056d56f9c347d5548dbb5b9a95f512b3301e20054fdbc9
+  checksum: 3c4df23491d14b37d8cef88d0f3df80f92b684b801d59c23d600773a4ccac11353a555ca36bea68ae4a82134f9c030d1353c05890a5f0085c1c40c649f806640
   languageName: node
   linkType: hard
 
@@ -5977,6 +5977,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "nanoid@npm:3.3.4"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 2fddd6dee994b7676f008d3ffa4ab16035a754f4bb586c61df5a22cf8c8c94017aadd360368f47d653829e0569a92b129979152ff97af23a558331e47e37cd9c
+  languageName: node
+  linkType: hard
+
 "natural-compare@npm:^1.4.0":
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
@@ -6616,14 +6625,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.13, postcss@npm:^8.4.13":
-  version: 8.4.13
-  resolution: "postcss@npm:8.4.13"
+"postcss@npm:8.4.14":
+  version: 8.4.14
+  resolution: "postcss@npm:8.4.14"
   dependencies:
-    nanoid: ^3.3.3
+    nanoid: ^3.3.4
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-  checksum: 514fb3552805a5d039a2d6b4df3e73f657001716ca93c0d57e6067b0473abdea70276d80afc96005c9aaff82ed5d98062bd97724d3f47ca400fba0b5e9e436ed
+  checksum: fe58766ff32e4becf65a7d57678995cfd239df6deed2fe0557f038b47c94e4132e7e5f68b5aa820c13adfec32e523b693efaeb65798efb995ce49ccd83953816
   languageName: node
   linkType: hard
 
@@ -6635,6 +6644,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 248e3d0f9bbb8efaafcfda7f91627a29bdc9a19f456896886330beb28c5abea0e14c7901b35191928602e2eccbed496b1e94097d27a0b2a980854cd00c7a835f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.13":
+  version: 8.4.13
+  resolution: "postcss@npm:8.4.13"
+  dependencies:
+    nanoid: ^3.3.3
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 514fb3552805a5d039a2d6b4df3e73f657001716ca93c0d57e6067b0473abdea70276d80afc96005c9aaff82ed5d98062bd97724d3f47ca400fba0b5e9e436ed
   languageName: node
   linkType: hard
 
@@ -8425,9 +8445,9 @@ __metadata:
     "@antfu/eslint-config": ^0.23.1
     "@headlessui/vue": 1.6.1
     "@iconify/iconify": ^2.2.1
-    "@iconify/json": 2.1.45
+    "@iconify/json": 2.1.46
     "@tailwindcss/aspect-ratio": 0.4.0
-    "@tailwindcss/forms": 0.5.1
+    "@tailwindcss/forms": 0.5.2
     "@tailwindcss/line-clamp": 0.4.0
     "@tailwindcss/typography": 0.5.2
     "@types/node": ^17.0.21
@@ -8448,7 +8468,7 @@ __metadata:
     https-localhost: ^4.7.1
     nprogress: 0.2.0
     pinia: 2.0.14
-    postcss: 8.4.13
+    postcss: 8.4.14
     prettier: 2.6.2
     prettier-plugin-organize-imports: 2.3.4
     prettier-plugin-tailwindcss: 0.1.11
