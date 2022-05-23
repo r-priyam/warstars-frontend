@@ -24,13 +24,13 @@
         "dayjs": "^1.11.2",
         "nprogress": "0.2.0",
         "pinia": "2.0.14",
-        "vue": "3.2.35",
+        "vue": "3.2.36",
         "vue-router": "4.0.15"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^0.23.1",
         "@iconify/iconify": "^2.2.1",
-        "@iconify/json": "2.1.47",
+        "@iconify/json": "2.1.48",
         "@types/node": "^17.0.21",
         "@types/nprogress": "0.2.0",
         "@vitejs/plugin-vue": "2.3.3",
@@ -60,7 +60,7 @@
         "vite-plugin-radar": "0.4.2",
         "vite-ssg": "^0.20.0",
         "vue-eslint-parser": "9.0.2",
-        "vue-tsc": "0.34.15"
+        "vue-tsc": "0.34.16"
     },
     "resolutions": {
         "async": "^3.2.3"
