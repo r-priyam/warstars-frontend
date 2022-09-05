@@ -1891,13 +1891,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:2.3.3":
-  version: 2.3.3
-  resolution: "@vitejs/plugin-vue@npm:2.3.3"
+"@vitejs/plugin-vue@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@vitejs/plugin-vue@npm:3.1.0"
   peerDependencies:
-    vite: ^2.5.10
+    vite: ^3.0.0
     vue: ^3.2.25
-  checksum: 9303dcb9c8580d0ee9b33542639ac1a36ad9cc0e773a1f9b9b05623d74574f6a901ce781918b53f5a58eb3c6218ba96c27ef6efbf3e7ef6be16864fc1cae1626
+  checksum: 351436306090dee709314f71bb52f0b502c284c8f556d4aecbbdfea840b1d35a8af32e78e962df28d3a6034a75c78886448e3371cee320f711dab833f6ada274
   languageName: node
   linkType: hard
 
@@ -8809,7 +8809,7 @@ __metadata:
     "@tailwindcss/typography": 0.5.4
     "@types/node": ^17.0.21
     "@types/nprogress": 0.2.0
-    "@vitejs/plugin-vue": 2.3.3
+    "@vitejs/plugin-vue": 3.1.0
     "@vueuse/core": 8.9.3
     "@vueuse/head": ^0.7.6
     "@vueuse/motion": 2.0.0-beta.12
