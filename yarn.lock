@@ -1767,10 +1767,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/web-bluetooth@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "@types/web-bluetooth@npm:0.0.14"
-  checksum: 1eb694ff2ba6ef239e10024bfb205c087fb1a43aa8b4a31f3a3b7c90eccf2f55c7fb4c1057e382e1c2f4d6d8a137e68bf1255790b980c5ac95026419a623c6b5
+"@types/web-bluetooth@npm:^0.0.15":
+  version: 0.0.15
+  resolution: "@types/web-bluetooth@npm:0.0.15"
+  checksum: 4e3b3b1c0baf6735690ce0c5ffaac53de3dbd16362316cbc5e32970bcb1e1baf16dae0a9f30fe86256ad0ee22a4533423f443835273efc54b15235086ebda85b
   languageName: node
   linkType: hard
 
@@ -2062,23 +2062,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:8.9.3":
-  version: 8.9.3
-  resolution: "@vueuse/core@npm:8.9.3"
+"@vueuse/core@npm:9.2.0":
+  version: 9.2.0
+  resolution: "@vueuse/core@npm:9.2.0"
   dependencies:
-    "@types/web-bluetooth": ^0.0.14
-    "@vueuse/metadata": 8.9.3
-    "@vueuse/shared": 8.9.3
+    "@types/web-bluetooth": ^0.0.15
+    "@vueuse/metadata": 9.2.0
+    "@vueuse/shared": 9.2.0
     vue-demi: "*"
-  peerDependencies:
-    "@vue/composition-api": ^1.1.0
-    vue: ^2.6.0 || ^3.2.0
-  peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
-    vue:
-      optional: true
-  checksum: 00ca931e5265b3d5a08dddb77cb7b0bf31ecb8e4546bb901ce99eaaa839285018a2a12c3356291ddee22531c2d3e9dafc0701a92d8470de002db306eb0641b8c
+  checksum: 2ae6ef58ae932fe260911239888405e39e7cf7f9afdd512cc184248d97b66e1ec15a6a54b75835db040e68c35eafefe265071ff1a42b45d220217b8f9974a403
   languageName: node
   linkType: hard
 
@@ -2117,10 +2109,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/metadata@npm:8.9.3":
-  version: 8.9.3
-  resolution: "@vueuse/metadata@npm:8.9.3"
-  checksum: 6c2732e408231fcf9061612b0bd83cdafb7ebf585ca369ff97db3ace3fbae62518df42abe699212818ddd8bb6bb182a847c8b7c4c9803b8b6a8ff1721e090e52
+"@vueuse/metadata@npm:9.2.0":
+  version: 9.2.0
+  resolution: "@vueuse/metadata@npm:9.2.0"
+  checksum: 99c63f3ba1bf8b4aac9ec226d918906842589a93f3affafb17aaa9c64da433c8747f6fd829ac6a2f313c1d8c6003742ccbedba45d2dcce38da7ea5ff657e63c9
   languageName: node
   linkType: hard
 
@@ -2161,20 +2153,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/shared@npm:8.9.3":
-  version: 8.9.3
-  resolution: "@vueuse/shared@npm:8.9.3"
+"@vueuse/shared@npm:9.2.0":
+  version: 9.2.0
+  resolution: "@vueuse/shared@npm:9.2.0"
   dependencies:
     vue-demi: "*"
-  peerDependencies:
-    "@vue/composition-api": ^1.1.0
-    vue: ^2.6.0 || ^3.2.0
-  peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
-    vue:
-      optional: true
-  checksum: 1986f0e2840b316e1eec48715411ff65496a17cf03ea28ded6ae94872f48f2b5b1aa842f5fdd5a9eec10cf6c566d08c9d029a84f7b1368e92038ea5d6092783b
+  checksum: b4d84dbb29e42fce062d8f33a011107d3187f40f1fa8cc83a28bc67c2280f4e33864309b5e70ecd078c5cb3c14106accd696b78c81c3ea6ed896ab5357ebc055
   languageName: node
   linkType: hard
 
@@ -8810,7 +8794,7 @@ __metadata:
     "@types/node": ^17.0.21
     "@types/nprogress": 0.2.0
     "@vitejs/plugin-vue": 2.3.3
-    "@vueuse/core": 8.9.3
+    "@vueuse/core": 9.2.0
     "@vueuse/head": ^0.7.6
     "@vueuse/motion": 2.0.0-beta.12
     autoprefixer: 10.4.7
