@@ -1412,10 +1412,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/iconify@npm:>=2.0.0-rc.6, @iconify/iconify@npm:^2.2.1":
+"@iconify/iconify@npm:>=2.0.0-rc.6":
   version: 2.2.1
   resolution: "@iconify/iconify@npm:2.2.1"
   checksum: 6bf05aa6d617358b444d5fa06b67843a9d808363313d4cf3dbe39451afeef2b81f6e4e6c3560b1877e94fd5c51e08e22c4b8bf19d354db46c062995e0065a7ef
+  languageName: node
+  linkType: hard
+
+"@iconify/iconify@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@iconify/iconify@npm:3.0.0"
+  dependencies:
+    "@iconify/types": ^2.0.0
+  checksum: 88854e8eeac645d3d8f3501d0e07f0ce0181627aa6399bd5508f0fe9c61ef54aed54c48aeb808d0772cc0393ae037c5a8d75611f85c1a087b81ace4db59ed2c0
   languageName: node
   linkType: hard
 
@@ -1433,6 +1442,13 @@ __metadata:
   version: 1.1.0
   resolution: "@iconify/types@npm:1.1.0"
   checksum: beffcdbf14e879ff74e79ac29ea0f4f4874f9df632f1994d97395b3f05cbeebaf10f1abc73cf850dc7444924cd57ed92e0e2ca55bacfe3374eff7542d489fbd0
+  languageName: node
+  linkType: hard
+
+"@iconify/types@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@iconify/types@npm:2.0.0"
+  checksum: 029f58542c160e9d4a746869cf2e475b603424d3adf3994c5cc8d0406c47e6e04a3b898b2707840c1c5b9bd5563a1660a34b110d89fce43923baca5222f4e597
   languageName: node
   linkType: hard
 
@@ -8801,7 +8817,7 @@ __metadata:
   dependencies:
     "@antfu/eslint-config": ^0.25.2
     "@headlessui/vue": 1.6.7
-    "@iconify/iconify": ^2.2.1
+    "@iconify/iconify": ^3.0.0
     "@iconify/json": 2.1.77
     "@tailwindcss/aspect-ratio": 0.4.0
     "@tailwindcss/forms": 0.5.2
